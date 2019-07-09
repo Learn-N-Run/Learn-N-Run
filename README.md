@@ -1,2 +1,0 @@
-# Learn&Run
-Team3
