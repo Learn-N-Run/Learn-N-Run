@@ -12,4 +12,18 @@ show databases;		/*데이터베이스 조회*/
 use learnrun;		/*데이터베이스 사용*/
 show tables;		/*테이블 조회*/
 
+desc bank;
+desc bank_name;
+desc buyer;
+desc category;
+desc class;
+desc coupon;
+desc curriculum;
+desc jjim;
+desc message;
+desc receiver_info;
+desc reply;
+desc subject;
+desc user;
+desc user_group;
 
