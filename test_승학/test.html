@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	function fnMessage() {
+		$(".message_info_h").fadeIn("fast");
+	}
+
+	$(function(){
+		$("#message_send_h").click(function(){
+			$(".container_h").animate({margin :'-40% auto 30%'},"fast");
+			$(".container1_h").fadeIn("fast");
+		});
+
+		$("#reset_h").click(function(){
+			$(".container_h").animate({margin :'15% auto'},"fast");
+			$(".container1_h").fadeOut("fast");
+		});
+
+		$("#reset1_h").click(function(){
+			$(".container_h").animate({margin :'15% auto'},"fast");
+			$(".container2_h").fadeOut("fast");
+		})
+
+		$("#detail_content").click(function(){
+			$(".container_h").animate({margin :'-40% auto 30%'},"fast");
+			$(".container2_h").fadeIn("fast");
+		});
+
+		$("#outMessage").click(function(){
+			$(".message_info_h").css("display","none");
+		})
+
+	});
+
+</script>
+
+<style type="text/css">
+
+	body{
+		background-color: black;
+	}
+
+	/*쪽지 모달 배경 색 */        
+	.message_info_h {
+		position: fixed;
+		display: none;
+		z-index: 1;
+		overflow: hidden;
+		left : 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: gray;
+		-webkit-border-radius: 3px;
+		-webkit-box-shadow: 0px 0px 20px #999;
+	}
+
+	/*쪽지함 */
+	.container_h {
+	            background-color: lightblue;
+	            margin: 15% auto; /* 15% from the top and centered */
+
+	            width: 40%; /* Could be more or less, depending on screen size */  
+	            border-radius: 5px;
+    			border: 1px solid rgba(0,0,0,.4);
+    			-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.7);
+    			box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    			transition: all 2s;                        
+	 }
+
+	 /*쪽지함(버튼)*/
+	 .container_h>button{
+	 	margin-top: 20px;
+	 }
+	 
+	 /*쪽지함(테이블)*/
+	 .container_h>thead{
+	 	margin-top: 20px;
+	 }
+	 
+	 .table_h{
+	 	width: 100%;
+	 	background-color: lightgray;
+	 	text-align: center;
+	 }
+	 
+	 .table_h table{
+	 	margin: auto;
+	 }
+	 .table_h thead td{
+	 	background:  linear-gradient(to bottom , #E6E6E6, #848484);
+	 	color: white;
+	 }
+	 .table_h tbody td{
+	 	height: 30px;
+	 	background-color: #F2F2F2;
+	 	font-size: 15px;
+    	font-weight: 300;
+	 }
+	.table_h tbody td img{
+		width: 70%; 
+		height:100%;
+		vertical-align: center;
+	}
+
+	 /*쪽지 보내기 */
+	 .container1_h {
+	 			display: none;
+	 			background-color: #fefefe;
+	            margin: 0% auto; /* 15% from the top and centered */
+	            padding: 20px;
+	            width: 40%; /* Could be more or less, depending on screen size */  
+	            border-radius: 5px;
+    			border: 1px solid rgba(0,0,0,.4);
+    			-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.7);
+    			box-shadow: 0 3px 9px rgba(0,0,0,.5);      
+	 }
+	 
+	 .textsize { width: 100%; height:200px;}
+
+	 .container2_h{
+	 		display: none;
+	 		background-color: #fefefe;
+            margin: 0% auto; /* 15% from the top and centered */
+            padding: 20px;
+            width: 40%; /* Could be more or less, depending on screen size */  
+            border-radius: 5px;
+			border: 1px solid rgba(0,0,0,.4);
+			-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.7);
+			box-shadow: 0 3px 9px rgba(0,0,0,.5);
+	 }
+
+	 #outMessage,#message_send_h,#reset_h,#delete,#sendMessage,#reset1_h{
+	 	font-size: 13px;
+	 	font-weight: 200;
+	 	width: 30%px;
+	 	border-radius: 5px;
+	 	background-color: #E6E6E6;
+		color: black;
+		cursor: pointer;
+	 }
+
+	 #outMessage,#message_send_h,#reset_h,#delete,#sendMessage,#reset1_h{
+	 	
+	 }
+	 #outMessage:hover{
+	 	background-color: darkgray;
+	 	color: white;
+	 }
+	 .message_top{
+	 	margin: 7px 7px 0;
+	    height: 25px;
+	    background-color: lightblue;
+	    border-radius: 5px 5px 0 0;
+	    color: white;
+	 }
+	 .message_top>span{
+	 	height: 100%;
+	    background-color: white;
+	    display: inline-block;
+	    border-radius: 20px 20px 0 0;
+	    width: 40%;
+	    color: #0489B1;
+	    font-weight: 700;
+	    background-color: white;
+	    text-align: center;
+	    box-shadow: 5px 0px 7px grey;
+	 }
+
+	 .message_content{
+	 	min-height: 300px;
+	 	border-radius: 0 5px 5px 5px;
+	    margin: 0 7px 7px 7px;
+	    box-shadow: 5px 5px 4px grey;
+	    background: white;
+	 }
+
+</style>
+</head>
+<body>
+	<button onclick="fnMessage()">쪽지함</button>
+
+
+	<!--start of 쪽지 보내기-->
+	<div class="message_info_h">
+		<div class="container_h">
+			<div class="message_top">
+				<span>&nbsp;받은 쪽지함</span>
+				<button type="button" id="outMessage">나가기</button>
+			</div>
+			<div class="message_content">
+				<br>
+				<!-- <button id="message_send_h">메세지 보내기</button> -->
+				<div class="table_h">
+					<table border="0">
+						<thead>
+							<tr>
+								<td width="15%">보낸 사람</td>
+								<td width="60%">제 목</td>
+								<td width="15%">받은 시간</td>
+								<td width="10%">읽음 유무</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a id="detail_content">asdf</a></td>
+								<td>asdf</td>
+								<td>asdf</td>
+								<td><img src="check.png"></td>
+							</tr>
+							<tr>
+								<td><a id="detail_content">asdf</a></td>
+								<td>asdf</td>
+								<td >asdf</td>
+								<td><img src="new.png"></td>
+							</tr>
+							<tr>
+								<td><a id="detail_content">asdf</a></td>
+								<td>asdf</td>
+								<td >asdf</td>
+								<td><img src="new.png"></td>
+							</tr>
+							<tr>
+								<td><a id="detail_content">asdf</a></td>
+								<td>asdf</td>
+								<td >asdf</td>
+								<td><img src="new.png"></td>
+							</tr>
+							<tr>
+								<td><a id="detail_content">asdf</a></td>
+								<td>asdf</td>
+								<td >asdf</td>
+								<td><img src="new.png"></td>
+							</tr>
+							<tr>
+								<td><a id="detail_content">asdf</a></td>
+								<td>asdf</td>
+								<td >asdf</td>
+								<td><img src="new.png"></td>
+							</tr>
+							<tr>
+								<td><a id="detail_content">asdf</a></td>
+								<td>asdf</td>
+								<td >asdf</td>
+								<td><img src="new.png"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div align="right">
+			<button type="button" id="message_send_h">쪽지 쓰기</button>
+			</div>
+			
+		</div>
+	
+		<!--end of 쪽지함-->
+
+		<!--start of 쪽지 보내기-->
+		<form method="post" action="">
+			<div class="container1_h">
+				<p>쪽지 보내기</p>
+				<div>
+				<label for="receiver_id">받는 사람</label>
+					<input type="text" name="receiver_id" placeholder="받는사람 ID">
+				</div>
+				<div>
+				<p style="margin-bottom: 0px">내 용</p>
+				<textarea class="textsize" name="content"></textarea>
+				</div>
+				<button id="sendMessage"><a href="javascript">보내기<a></button>&nbsp;
+				<button type="button" id="reset_h">돌아가기</button>
+			</div>
+		</form>
+		<!--end of 쪽지 보내기 -->
+
+		<div class="container2_h">
+	 	<p>쪽지함</p>
+		<div>
+		<label for="receiver_id">보낸 사람</label>
+			<input type="text" readonly="" value="">
+		</div>
+		<div>
+			<p style="margin-bottom: 0px">내 용</p>
+			<textarea class="textsize" name="content" readonly></textarea>
+		</div>
+		<button type="button" id="reset1_h">돌아가기</button>
+		<button type="button" id="delete">삭제하기</button>
+		</div>
+		<!--쪽지 읽기-->
+		
+
+	</div>
+	<!--end of 쪽지보내기 -->
+
+	
+
+</body>
+</html>
