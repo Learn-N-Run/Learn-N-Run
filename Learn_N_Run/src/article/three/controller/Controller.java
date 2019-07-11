@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 // TODO 태흥: ↓web.xml이 아닌 서블릿내에서 매핑작업을 해주시면 됩니다.
-/*@WebServlet("/*.do")*/
+@WebServlet("/*.do")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -10,7 +10,7 @@ import dto.ReplyDTO;
 public interface ReplyDAO {
 
 	// 메인페이지 TOP5 페이지
-	List top5Info(BuyerDTO bean);
+	List<BuyerDTO> top5Info(BuyerDTO bean);
 	/*
 	 * sql = "SELECT c.cover_img, c.category, c.title, count(b.class_no) AS 'count'
 	 * FROM class c inner join buyer b GROUP BY c.cover_img,c.category,c.title ORDER
