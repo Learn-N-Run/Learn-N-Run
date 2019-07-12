@@ -1,21 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel = "stylesheet" href = "css/bootstrap.css">
-<link rel = "stylesheet" href = "css/index.css"> <!-- 부트 스트랩 제외한 index.jsp만의 css -->
-
-<link href="https://fonts.googleapis.com/css?family=Gugi&display=swap" rel="stylesheet"> <!-- 폰트 썻는데 맘에 안들면 바꾸셔도 되고 안 바꾸셔도 되고요 -->
-
-<title>메인페이지</title>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
+<%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width">
+<!--외부참조(script.js, style.css) START LINE -->
+<link rel="stylesheet" href="./css/style.css">
+<script src="./js/script.js"></script>
+<!--JQUERY(1EA), BOOTSTRAP(2EA) CDN START LINE-->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!--외부참조 + CDN END -->
+<title></title>
 </head>
 <body>
 	<div id = "wrap"> <!-- 전체 페이지 감싸는 div 태그 -->
 		
-		<!-- header 부분 -->"
+		<!-- header 부분 -->
 		<jsp:include page="../1_Include/header.jsp"></jsp:include>
 	
 	
@@ -53,7 +57,7 @@
 		
 		<!-- top5 영역 -->
 		<section class = "sec2">
-		<h3 style="font-family: 'Gugi', cursive;">잉끼 TOP5</h3>
+		<h3>Popularly TOP5</h3>
 		</section>
 		<section class = "sec02">
 			<div  id = "one">
@@ -140,6 +144,11 @@
 																  <div style="width: 100%; height: 20px;">요리</div></a>
 				
 			</div>
+			
+			
+			
+			
+			
 		</section>
 			<!-- 카테고리 아이콘 영역  끝-->
 			
