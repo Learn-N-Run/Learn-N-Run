@@ -10,7 +10,10 @@ public class commandExam implements Service{
 
 	@Override
 	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		/*한글처리 */
+		request.setCharacterEncoding("utf-8");
+		
 		
 	}
 
