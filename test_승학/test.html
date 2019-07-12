@@ -3,10 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Hi+Melody|Jua&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	function fnMessage() {
-		$(".message_info_h").fadeIn("fast");
+		$(".mask_h").fadeIn("fast");
 	}
 
 	$(function(){
@@ -44,8 +45,8 @@
 		background-color: black;
 	}
 
-	/*쪽지 모달 배경 색 */        
-	.message_info_h {
+	/*쪽지 마스크 배경 색 */        
+	.mask_h {
 		position: fixed;
 		display: none;
 		z-index: 1;
@@ -59,22 +60,16 @@
 		-webkit-box-shadow: 0px 0px 20px #999;
 	}
 
-	/*쪽지함 */
+	/*받은 쪽지함 */
 	.container_h {
 	            background-color: lightblue;
 	            margin: 15% auto; /* 15% from the top and centered */
-
 	            width: 40%; /* Could be more or less, depending on screen size */  
 	            border-radius: 5px;
     			border: 1px solid rgba(0,0,0,.4);
     			-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.7);
     			box-shadow: 0 3px 9px rgba(0,0,0,.5);
     			transition: all 2s;                        
-	 }
-
-	 /*쪽지함(버튼)*/
-	 .container_h>button{
-	 	margin-top: 20px;
 	 }
 	 
 	 /*쪽지함(테이블)*/
@@ -111,9 +106,9 @@
 	 .container1_h {
 	 			display: none;
 	 			background-color: #fefefe;
-	            margin: 0% auto; /* 15% from the top and centered */
+	            margin: 0% auto; 
 	            padding: 20px;
-	            width: 40%; /* Could be more or less, depending on screen size */  
+	            width: 40%; 
 	            border-radius: 5px;
     			border: 1px solid rgba(0,0,0,.4);
     			-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.7);
@@ -125,9 +120,9 @@
 	 .container2_h{
 	 		display: none;
 	 		background-color: #fefefe;
-            margin: 0% auto; /* 15% from the top and centered */
+            margin: 0% auto;
             padding: 20px;
-            width: 40%; /* Could be more or less, depending on screen size */  
+            width: 40%;
             border-radius: 5px;
 			border: 1px solid rgba(0,0,0,.4);
 			-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.7);
@@ -137,19 +132,16 @@
 	 #outMessage,#message_send_h,#reset_h,#delete,#sendMessage,#reset1_h{
 	 	font-size: 13px;
 	 	font-weight: 200;
-	 	width: 30%px;
+	 	width: 20%;
 	 	border-radius: 5px;
-	 	background-color: #E6E6E6;
 		color: black;
 		cursor: pointer;
-	 }
-
-	 #outMessage,#message_send_h,#reset_h,#delete,#sendMessage,#reset1_h{
-	 	
-	 }
-	 #outMessage:hover{
-	 	background-color: darkgray;
-	 	color: white;
+		float: right;
+		background: linear-gradient(to bottom , #EFFBFB, #A9F5F2);
+		height: 23px;
+		color: #04B4AE;
+		font-weight: 700;
+		border: 1px solid #A9F5F2;
 	 }
 	 .message_top{
 	 	margin: 7px 7px 0;
@@ -164,19 +156,32 @@
 	    display: inline-block;
 	    border-radius: 20px 20px 0 0;
 	    width: 40%;
-	    color: #0489B1;
-	    font-weight: 700;
+	    color: black;
+	    font-family: 'Jua', sans-serif;
+	    font-weight: 200;
 	    background-color: white;
 	    text-align: center;
 	    box-shadow: 5px 0px 7px grey;
+	    letter-spacing: 3px;
+	    font-size: 17px;
 	 }
 
 	 .message_content{
-	 	min-height: 300px;
+	 	min-height: 350px;
 	 	border-radius: 0 5px 5px 5px;
 	    margin: 0 7px 7px 7px;
 	    box-shadow: 5px 5px 4px grey;
 	    background: white;
+	 }
+
+	 .message_content>span{
+	 	text-align: center;
+	 }
+
+	 .bottom_button{
+ 	    clear: both;
+	    height: 27px;
+	    padding-right: 4px;
 	 }
 
 </style>
@@ -185,8 +190,8 @@
 	<button onclick="fnMessage()">쪽지함</button>
 
 
-	<!--start of 쪽지 보내기-->
-	<div class="message_info_h">
+	<!--start of 받은 쪽지함-->
+	<div class="mask_h">
 		<div class="container_h">
 			<div class="message_top">
 				<span>&nbsp;받은 쪽지함</span>
@@ -251,33 +256,35 @@
 						</tbody>
 					</table>
 				</div>
+				<span>[1]</span>
 			</div>
-			<div align="right">
-			<button type="button" id="message_send_h">쪽지 쓰기</button>
+			<div align="right" class="bottom_button">
+				<button type="button" id="message_send_h">쪽지 쓰기</button>
 			</div>
-			
 		</div>
-	
-		<!--end of 쪽지함-->
+		<!--end of 받은 쪽지함-->
 
 		<!--start of 쪽지 보내기-->
-		<form method="post" action="">
+		
 			<div class="container1_h">
-				<p>쪽지 보내기</p>
-				<div>
-				<label for="receiver_id">받는 사람</label>
-					<input type="text" name="receiver_id" placeholder="받는사람 ID">
-				</div>
-				<div>
-				<p style="margin-bottom: 0px">내 용</p>
-				<textarea class="textsize" name="content"></textarea>
-				</div>
-				<button id="sendMessage"><a href="javascript">보내기<a></button>&nbsp;
-				<button type="button" id="reset_h">돌아가기</button>
+				<form method="post" action="">
+					<p>쪽지 보내기</p>
+					<div>
+					<label for="receiver_id">받는 사람</label>
+						<input type="text" name="receiver_id" placeholder="받는사람 ID">
+					</div>
+					<div>
+					<p style="margin-bottom: 0px">내 용</p>
+					<textarea class="textsize" name="content"></textarea>
+					</div>
+					<button id="sendMessage"><a href="javascript">보내기<a></button>&nbsp;
+					<button type="button" id="reset_h">돌아가기</button>
+				</form>
 			</div>
-		</form>
+		
 		<!--end of 쪽지 보내기 -->
 
+		<!--start of 쪽지 상세보기 -->
 		<div class="container2_h">
 	 	<p>쪽지함</p>
 		<div>
@@ -291,9 +298,8 @@
 		<button type="button" id="reset1_h">돌아가기</button>
 		<button type="button" id="delete">삭제하기</button>
 		</div>
-		<!--쪽지 읽기-->
+		<!--end of 쪽지 상세보기-->
 		
-
 	</div>
 	<!--end of 쪽지보내기 -->
 
