@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<style type="text/css">
+	.wrap{
+		width: 1280px;
+		overflow: hidden;
+		margin: 0 auto;
+	}
+
+	.event_wrap{
+		margin: 50px 50px 50px 50px;
+		background-image: url('event2.png');
+		width: 65%;
+		height: 1200px;
+		background-size: 100% 100%;
+		margin: 0 auto;
+	}
+
+	.event_wrap1{
+		background-image: url('event1.png');
+		width: 65%;
+		height: 1200px;
+		background-size: 100% 100%;
+		margin: 100px auto;
+	}
+
+	.rightEmail{
+		text-align: center;
+		padding-top: 800px;
+	}
+
+	.input_Email{
+		width: 25%;
+	    margin-left: 30px;
+	    height: 30px;
+	    background-color: white;
+	    font-size: 20px;
+	    padding-left: 10px;
+	    border: 0.5px solid #5F4C0B;
+	    border-radius: 7px 7px;
+	    color: goldenrod;
+	}
+
+	.btn_Email{
+		width: 13%;
+	    height: 35px;
+	    border-radius: 7px 7px;
+	    background: linear-gradient(45deg, white, transparent);
+	    font-weight: 700;
+	    color: white;
+	    cursor: pointer;
+	}
+
+	.share_event{
+		text-align: center;
+    	padding-top: 130px;
+	}
+
+	.share_event button{
+		background-color: transparent;
+	    height: 27px;
+	    color: floralwhite;
+	    font-size: 1.0em;
+	    padding: 0 50px;
+	    border-radius: 3px 3px;
+        box-shadow: 6px 0px 6px 0px #48350a, 6px 0px 15px rgba(23, 13, 2, 0.4);
+        cursor: pointer;
+	}
+
+	.share_event button:active{
+		outline: none;
+		border: none;
+	}
+
+	.btn_Email:active {
+	    outline: none;
+	    border: none;
+	}
+
+	.share_event button:hover{
+		background-color: #4F380B;
+		box-shadow: 0px 5px 0px 5px #48350a,, 0px 0px 0px rgba(23, 13, 2, 0.4);
+		border-color: #4F380B;
+	}
+
+	.btn_Email:hover{
+		background: linear-gradient(45deg,  transparent, white);
+	}
+
+</style>
+<body>
+	<div class="wrap">
+		<div class="event_wrap1">
+			<div class="rightEmail">
+				<input type="text" class="input_Email" name="email" value="las2706@naver.com" readonly="readonly">
+				<button type="button" class="btn_Email">인증 요청</button>
+
+				<input type="text" class="input_Email" name="rightNum">
+				<button type="button" class="btn_Email">쿠폰 받기</button>
+			</div>
+			<div class="share_event">
+				<button type="button">twitter 공유하기</button>
+				<button type="button">FaceBook 공유하기</button>
+				<button type="button">Naver Blog 공유하기</button>
+			</div>
+		</div>
+
+		<div class="event_wrap">
+		</div>
+</body>
+</html>
