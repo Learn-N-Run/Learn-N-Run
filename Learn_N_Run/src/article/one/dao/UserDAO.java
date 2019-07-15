@@ -1,4 +1,4 @@
-package artcle.one.dao;
+package article.one.dao;
 /*
 	DB연동부분.
 
