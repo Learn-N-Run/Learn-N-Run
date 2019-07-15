@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+	/*전체 div*/
+	#wrap{
+
+	 margin: 0 auto;
+
+	 width: 1280px;
+	}
+	
+	/*section 안에 div태그 */
+	#wrap>section>div{
+		float: left;
+		margin-right: 2%;
+	}
+	/*전체 화면에서의 좌측 컨텐츠*/
+	.show{
+	width: 78%;
+	
+	}
+	
+	/*섬네일 이미지 영역*/
+	.thumb{
+	width: 100%; 
+	height: 500px;
+	}
+	
+	/*닉네임 표시 영역*/
+	.nick{
+	height: 35px;
+	}
+	
+	
+	/*클래스 제목 텍스트 영역*/
+	.title{
+		height: 115px;
+		text-overflow: ellipsis;
+ 	 	display: -webkit-box;
+   		-webkit-line-clamp: 3;
+  		-webkit-box-orient: vertical;
+  	 	overflow-wrap: break-word;
+		overflow: hidden;
+   		font-size: 25px;
+  		font-weight: bold;
+  		line-height: 38px;
+  		margin: 0px;
+	}
+	
+	/*카테고리 알릴 영역*/
+	.category_sec{
+		height: 30px;
+	}
+	
+
+	
+	
+	
+	/* 화면 줄였을 때 생길 #submit*/
+	.submit_a{
+		width: 100%;
+		display: none;
+	}
+	.submit_a>div{
+		width: 100%;
+		margin-bottom: 5px;
+	}
+	
+	/*전체화면 우측 컨텐츠*/
+	#submit{
+  		 width: 340px;
+  		 background-color: white;
+  		 border : 1px solid;
+  		 position: fixed;
+   		 margin-bottom: 100px;
+	}
+	#submit>div{
+		width: 100%;
+		margin-bottom: 2px;
+	}
+	
+	/* #submit 안에 찜하기 쪽 추가 css*/
+	.bnt{
+		width : 338px;
+	}
+	
+	/* #submit 안에 수강하기버튼 쪽 추가 css*/
+	.bbb{
+		background-color: #000;
+		color : #fff;
+	}
+	
+	/*footer쪽 추가 css*/
+	footer{
+	clear: both;
+	}
+	
+	
+	/*화면 줄였을 때  보여지는 컨텐츠*/
+	 @media (max-width: 1500px) {
+	.show{
+		width: 100%;
+		}
+	.submit_a{
+		display: block;
+		}
+	#submit{
+		display: none;
+		}
+	
+}
+	
