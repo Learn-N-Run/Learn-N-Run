@@ -1,4 +1,4 @@
-package artcle.three.dao;
+package article.three.dao;
 
 import java.util.List;
 
