@@ -15,7 +15,39 @@
 <title>메인페이지</title>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
+	$(function() {
+		$("#coupon_submit_h").click(function() {
+			$(".coupon_modal_h").fadeIn();
+			$("#couponNo").fadeIn();
+		});
+		
+		var sale = $("#couponNo").val();
+		var result = 10000-sale;
+		alert(result);
+		
+		$("#remove_coupon_submit").click(function() {
+			$("#couponNo").val('').css("display","none");
+		});
+	});
+
+	function coupon1_submit1() {
+		$("input[name=couponNo]").val(5000);
+		$(".coupon_modal_h").css("display","none");
+		
+	}
+	
+	function coupon1_submit2() {
+		$("input[name=couponNo]").val(7000);
+		$(".coupon_modal_h").css("display","none");
+	}
+	
+	function coupon1_submit3() {
+		$("input[name=couponNo]").val(10000);
+		$(".coupon_modal_h").css("display","none");
+	}
+	
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -198,6 +230,86 @@
 	width: 49%;
 }
 
+
+
+.coupon_modal_h{
+		    background-color: white;
+		    position: fixed;
+		    display: none;
+		    z-index: 1;
+		    overflow: hidden;
+		    left: 0;
+		    top: 0;
+		    width: 300px;
+   			height: 310px;
+		    -webkit-border-radius: 3px;
+		    -webkit-box-shadow: 0px 0px 20px #999;
+	        left: 40%;
+    		top: 40%;
+		}
+		
+		.coupon_title_h{
+		    width: 100%;
+			  height: 40px;
+			  text-align: center;
+			  font-size: 20px;
+			  font-weight: 700;
+			  border-bottom: 0.5px solid lightgray;
+			  background-color: black;
+			  color: white;
+			  line-height: 40px;
+		}
+		
+		.coupon_modal_h table{
+			border : 0.3px solid lightgray;
+			width: 100%;
+		}
+		
+		.coupon_modal_h tr{
+			padding: 5px 5px 5px 10px;
+		}
+		
+		.coupon_modal_h th{
+			width: 70%;
+			height: 90px;
+			
+			background-color: black;
+		}
+		
+		.coupon_modal_h td{
+			font-size: 20px;
+			font-weight: 700;
+			text-align: center;
+			
+		}
+		
+		.coupon_bottom_h{
+			line-height: 40px;
+			text-align: center;
+			font-size: 20px;
+			font-weight: 700;
+		}
+		
+		.coupon1{
+			background: url("img/5000coupon.png");
+			background-size: 100% 100%;
+		}
+		
+		.coupon2{
+			background: url("img/7000coupon.png");
+			background-size: 100% 100%;
+		}
+		
+		.coupon3{
+			background: url("img/10000coupon.png");
+			background-size: 100% 100%;
+		}
+		
+		#couponNo{
+			text-align:right;
+			display: none;
+			width:100px;
+		}
 </style>
 </head>
 <body>
@@ -253,14 +365,16 @@
 								</tr>
 								<tr>
 									<th>쿠폰 적용하기</th>
-									<td>
-										<button>적용</button>
-										<button>미적용</button>
+									<td class="coupon_submit">
+										<button id="coupon_submit_h">적용</button>
+										<button id="remove_coupon_submit">미적용</button>
+										<input type="text" id="couponNo" name="couponNo">
 									</td>
+									
 								</tr>
 								<tr>
 									<th>최종 가격</th>
-									<td>100,000원</td>
+									<td class="last_tuition"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -275,5 +389,24 @@
 		<jsp:include page="footer.jsp"></jsp:include>
 
 	</div>
+	
+		<div class="coupon_modal_h">
+				<div class="coupon_title_h">내 쿠폰 보유 현황</div>
+				<table>
+					<tr>
+						<th class="coupon1"></th>
+						<td ><p>2개</p><button onclick="coupon1_submit1()">적용</button></td>
+					</tr>
+					<tr>
+						<th class="coupon2"></th>
+						<td><p>2개</p><button onclick="coupon1_submit2()">적용</button></td>
+						</tr>
+					<tr>
+						<th class="coupon3"></th>
+						<td><p>2개</p><button onclick="coupon1_submit3()">적용</button></td>
+					</tr>
+				</table>
+			</div>
+	
 </body>
 </html>
