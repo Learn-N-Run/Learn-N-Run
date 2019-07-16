@@ -1,6 +1,6 @@
-package artcle.one.dao;
+package article.one.dao;
 /*
-	DB연동부분.
+	DB�뿰�룞遺�遺�.
 
  */
 
@@ -14,52 +14,52 @@ import dto.UserDTO;
 
 public interface UserDAO {
 
-	// 유저 부분.
+	// �쑀�� 遺�遺�.
 
 	void addUser(UserDTO dto);
 
 	/*
-	 * 유저 추가 sql = "INSERT into user(~~,user_group_no) VALUES(?,1); 1번 일반유저 2번 크리에이터
+	 * �쑀�� 異붽� sql = "INSERT into user(~~,user_group_no) VALUES(?,1); 1踰� �씪諛섏쑀�� 2踰� �겕由ъ뿉�씠�꽣
 	 */
 	int updateUser(UserDTO dto, String pass);
 
 	/*
-	 * 유저 개인정보 수정, pass값 select해서 확인후, update시킴 ResultSet값 인트형으로 받아서, 유효성검사. sql =
+	 * �쑀�� 媛쒖씤�젙蹂� �닔�젙, pass媛� select�빐�꽌 �솗�씤�썑, update�떆�궡 ResultSet媛� �씤�듃�삎�쑝濡� 諛쏆븘�꽌, �쑀�슚�꽦寃��궗. sql =
 	 * "SELECT pass from user where pass=?" sql =
 	 * "UPDATE user SET pass=?, WHERE pass=?"
 	 */
 	void delUser(UserDTO dto);
 
 	/*
-	 * 유저 삭제 비밀번호 값 확인, id컬럼 삭제. sql = "SELECT pass from user where pass=?" DELETE
+	 * �쑀�� �궘�젣 鍮꾨�踰덊샇 媛� �솗�씤, id而щ읆 �궘�젣. sql = "SELECT pass from user where pass=?" DELETE
 	 * FROM user id=?"
 	 */
 	int idCheck(String id);
 
 	/*
-	 * (회원가입 시)유저 아이디 중복검사 확인. //sql = "SELECT* FROM user where id=?"
+	 * (�쉶�썝媛��엯 �떆)�쑀�� �븘�씠�뵒 以묐났寃��궗 �솗�씤. //sql = "SELECT* FROM user where id=?"
 	 */
 	int userCheck(String id, String pass);
 
 	/*
-	 * (로그인 시)사용자 아이디,비밀번호 확인. sql = "SELECT* FROM user where id=?" return String id
+	 * (濡쒓렇�씤 �떆)�궗�슜�옄 �븘�씠�뵒,鍮꾨�踰덊샇 �솗�씤. sql = "SELECT* FROM user where id=?" return String id
 	 * session.setAttribute("id");
 	 */
 	int emailCheck(String email);
 
 	/*
-	 * 유저 이메일 중복검사 확인. sql = "SELECT* FROM user where email=?"
+	 * �쑀�� �씠硫붿씪 以묐났寃��궗 �솗�씤. sql = "SELECT* FROM user where email=?"
 	 * 
 	 */
 	UserDTO UserInfo(String id);
 
 	/*
-	 * 유저정보 가져와서 뿌려주기. sql = "SELECT* FROM user where id=?"
+	 * �쑀���젙蹂� 媛��졇���꽌 肉뚮젮二쇨린. sql = "SELECT* FROM user where id=?"
 	 */
 	String creatorCheck(String id);
 
 	/*
-	 * 유저가 크리에이터인지, 일반유저인지 확인 하기 위함. sql = "SELECT g.name FROM user AS u join
+	 * �쑀��媛� �겕由ъ뿉�씠�꽣�씤吏�, �씪諛섏쑀���씤吏� �솗�씤 �븯湲� �쐞�븿. sql = "SELECT g.name FROM user AS u join
 	 * user_group AS g ON g.no = g.user_group_no WHERE u.id=?"
 	 * 
 	 * return String idGroup <c:test ${SessionScope.idGroup}
@@ -68,39 +68,39 @@ public interface UserDAO {
 	 */
 	int updateCreator(UserDTO bean);
 	/*
-	 * 크리에이터 등급 올리기, url,nickname,profileimg, 본인인증 email확인후. User에 업데이트시,
-	 * UserGroup(번호 번경). sql = "UPDATE user SET url=?, nickname=?,profile_img=?
+	 * �겕由ъ뿉�씠�꽣 �벑湲� �삱由ш린, url,nickname,profileimg, 蹂몄씤�씤利� email�솗�씤�썑. User�뿉 �뾽�뜲�씠�듃�떆,
+	 * UserGroup(踰덊샇 踰덇꼍). sql = "UPDATE user SET url=?, nickname=?,profile_img=?
 	 * user_group_no=2;
 	 */
 
-	// 내 쪽지함
+	// �궡 履쎌��븿
 	void sendMessage(MessageDTO dto, String id);
 	/*
-	 * Message보내기. MessageBean객체를 넘김 sql = "INSERT INTO message
+	 * Message蹂대궡湲�. MessageBean媛앹껜瑜� �꽆源� sql = "INSERT INTO message
 	 * (send_id,receiver_id,content,send_time,read_yn); "VALUES (id,?,?,sysdate,0);
 	 */
 
-	// 메일 보내기부분.
+	// 硫붿씪 蹂대궡湲곕�遺�.
 	void sendMail(String receiver, String code_check);
-	// 받는 사람 이메일주소, 인증번호.
-	// 형석이행님.
+	// 諛쏅뒗 �궗�엺 �씠硫붿씪二쇱냼, �씤利앸쾲�샇.
+	// �삎�꽍�씠�뻾�떂.
 	// ---------------------------------------------------------------user
 
 	int countReadMessage(String id);
 	/*
-	 * 들고와서, return해주기. sql =
+	 * �뱾怨좎��꽌, return�빐二쇨린. sql =
 	 * "SELECT COUNT(read_yn) FROM message WHERE read_yn = 0;";
 	 */
 
 	List<MessageDTO> getMessage(MessageDTO bean, String id);
 	/*
-	 * 받은 메세지함 전체 보기. sql = "SELECT * FROM message where receiver_id= ?";
+	 * 諛쏆� 硫붿꽭吏��븿 �쟾泥� 蹂닿린. sql = "SELECT * FROM message where receiver_id= ?";
 	 */
 
 	MessageDTO getMessageInfo(int MessageNo);
 	/*
-	 * 메세지 상세보기 메세지 번호값을 넘겨주고, select해서 넘겨준 값에 해당하는 메세지 정보출력, update시켜서 read_yn값
-	 * 1증가시킴. 읽음/안읽음 표시를 위해 sql = "SELECT * FROM message WHERE no=?;
+	 * 硫붿꽭吏� �긽�꽭蹂닿린 硫붿꽭吏� 踰덊샇媛믪쓣 �꽆寃⑥＜怨�, select�빐�꽌 �꽆寃⑥� 媛믪뿉 �빐�떦�븯�뒗 硫붿꽭吏� �젙蹂댁텧�젰, update�떆耳쒖꽌 read_yn媛�
+	 * 1利앷��떆�궡. �씫�쓬/�븞�씫�쓬 �몴�떆瑜� �쐞�빐 sql = "SELECT * FROM message WHERE no=?;
 	 * if(rs.getInt("read_yn") ==1) "UPDATE message SET read_yn=1";
 	 */
 
@@ -109,39 +109,39 @@ public interface UserDAO {
 	 * sql="DELETE FROM message where no=?;"
 	 */
 
-//-------------------------------------------------------------------쪽지주고받기, 동영상 강의부분에 댓글부분.
+//-------------------------------------------------------------------履쎌�二쇨퀬諛쏄린, �룞�쁺�긽 媛뺤쓽遺�遺꾩뿉 �뙎湲�遺�遺�.
 
-	// 쿠폰함 페이지
+	// 荑좏룿�븿 �럹�씠吏�
 	CouponDTO myCouponInfo(String id);
 	/*
-	 * 내 쿠폰함 눌렀을때... sql = "SELECT * FROM coupon WHERE user_id=?";
+	 * �궡 荑좏룿�븿 �닃���쓣�븣... sql = "SELECT * FROM coupon WHERE user_id=?";
 	 */
 
-	// 클래스 결제 페이지
+	// �겢�옒�뒪 寃곗젣 �럹�씠吏�
 	int buyClass(int classNo);
 	/*
-	 * 결제 신청 눌렀을때.. sql = "SELECT tuition FROM class where no = ?"
+	 * 寃곗젣 �떊泥� �닃���쓣�븣.. sql = "SELECT tuition FROM class where no = ?"
 	 * 
 	 */
 
 	CouponDTO CouponClass(String id);
 	/*
-	 * 쿠폰 적용 눌렀을때.. sql = "SELECT * FROM coupon WHERE user_id=?"; 없으면 없다고 띄우고 있으면
-	 * 사용할수있게함.
+	 * 荑좏룿 �쟻�슜 �닃���쓣�븣.. sql = "SELECT * FROM coupon WHERE user_id=?"; �뾾�쑝硫� �뾾�떎怨� �쓣�슦怨� �엳�쑝硫�
+	 * �궗�슜�븷�닔�엳寃뚰븿.
 	 */
 
 	void addBuy(BuyerDTO bean, String id, int classNo);
 	/*
 	 * 
-	 * 결제하기 버튼눌렀을때..
+	 * 寃곗젣�븯湲� 踰꾪듉�닃���쓣�븣..
 	 * 
-	 * session영역에저장.
+	 * session�쁺�뿭�뿉���옣.
 	 */
 
-	// 찜목록 페이지
+	// 李쒕ぉ濡� �럹�씠吏�
 	JjimDTO getJjim(String id);
 	/*
-	 * 내 찜목록 눌렀을때... SELECT cover_img, title,
+	 * �궡 李쒕ぉ濡� �닃���쓣�븣... SELECT cover_img, title,
 	 */
 
 }
