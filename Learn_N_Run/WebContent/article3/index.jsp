@@ -102,7 +102,7 @@
 		
 		<!-- 카테고리 아이콘 영역 -->
 		<section class = "sec3">
-		<h3 style="font-family: 'Gugi', cursive;" >클래스별 카테고리</h3>
+		<h3>Category</h3>
 		</section>
 		<section class = "sec03"> 
 			<div id = "categ">

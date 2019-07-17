@@ -14,139 +14,99 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
-<script type="text/javascript">
-	function show() {
-		$(".list").slideToggle("normal");
-
-	}
-</script>
 <style type="text/css">
-header {
-	padding: 10px;
-	height: 120px;
-}
-
-header>div {
-	float: left;
-}
-
-form>div {
-	float: left;
-	margin-left: 5px;
-	margin-top: 30px;
-}
-
-header>section>span {
-	float: right;
-	margin-right: 10px;
-	margin-top: 30px;
-}
-
-.logo {
-	margin-top: 10px;
-	width: 18%;
+#inc_header{
 	height: 100px;
-	background: url("img/large.png");
-	background-repeat: no-repeat;
-	background-size: 100% 50%;
+	position: relative;
+	vertical-align: middle;
+	max-width: 1200px;
+	width: 100vw;
+	border-bottom: 1px double rgba(0,0,0,0.2);
+}
+#inc_menuList{
+	font-size: 15px;
+	font-weight: bold;
+	text-align: right;
+	float: left;
+}
+#inc_menuList>ul>li{
+ 	margin-left: 10px;
+ 	margin-right: 10px;
+ 	vertical-align: middle;
+ 	transition: all 0.5s
+}
+#inc_menuList>ul>li:HOVER{
+/* 	animation-duration: 0.5s; */
+/* 	animation-name: inc_menuHOVER; */
+	font-size:30px;
 }
 
-.list {
-	display: none;
+.inc_floating{
+	position: relative;
+	top: 30px;
 }
 
-.search {
-	width: 400px;
-}
 
-.view>img {
-	margin-top: 25px;
-	margin-left: 8px;
-	width: 50px;
-	height: 42px;
-	display: none;
-}
 
-@media ( max-width : 1280px) {
-	#wrap {
-		width: 100%;
-	}
-}
-
-@media ( max-width : 968px) {
-	#wrap {
-		width: 100%;
-	}
-	.search {
-		width: 380px;
-	}
-	header>section {
-		float: left;
-	}
-	.logo {
-		margin-top: 10px;
-		background: url("img/small.png");
-		background-repeat: no-repeat;
-		background-size: 100% 50%;
-	}
-}
-
-@media ( max-width : 724px) {
-	#wrap {
-		width: 100%;
-	}
-	.search {
-		width: 280px;
-	}
-	header>section {
-		display: none;
-	}
-	.view>img {
-		display: block;
-	}
-}
 </style>
 <title></title>
 </head>
 <body>
-	<div id="wrap">
-		<header>
-			<div class="logo"></div>
-
-			<div class="search">
+	<header id="inc_header">
+		<div class="col-xs-2" align="center">
+			<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
+				<img src="img/large.png">
+			</a>
+		</div>
+		<div class="inc_floating col-xs-10" align="left">
+			<div class="col-xs-8">
 				<form>
-					<div style="width: 80%;">
+					<div class="input-group">
 						<input type="text" class="form-control" placeholder="카테고리 + 제목">
-					</div>
-					<div style="width: 10%;">
-						<input type="submit" class="btn btn-default" value="검색">
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-default" style="background-color: white;">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</button>
+						</span>
 					</div>
 				</form>
 			</div>
-
-			<div class="view" style="float: right;">
-				<img alt="" src="img/list.png" onclick="show()">
+			<div class="col-xs-4" align="right">
+				<div id="inc_menuList" class="visible-lg-inline">
+					<ul class="list-inline">
+						<li>
+							<a href="#"
+							 style="text-decoration: none; color: black;">
+								로그아웃
+							</a>
+						</li>
+						<li>
+							<a href="#"
+							 style="text-decoration: none; color: black;">
+							 마이페이지
+							</a>
+						</li>
+						<li>
+							<a href="#"
+							 style="text-decoration: none; color: black;">
+							로그인
+							</a>
+						</li>
+						<li>
+							<a href="#"
+							 style="text-decoration: none; color: black;">
+							회원가입
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div id="inc_hamburger" class="visible-xs-inline visible-sm-inline visible-md-inline">
+					<span class="glyphicon glyphicon-menu-hamburger"
+							style="font-size: 25px;">
+					</span>
+				</div>
 			</div>
-
-
-
-			<section>
-				<span class="btn btn-default"> <a>JOIN</a>
-				</span> <span class="btn btn-default"> <a>LOGIN</a>
-				</span>
-			</section>
-
-		</header>
-
-		<div class="list">
-
-			<span style="width: 100%;" class="form-control"><a href="#"
-				style="text-decoration: none;">LOGIN</a></span> <span style="width: 100%;"
-				class="form-control"><a href="#"
-				style="text-decoration: none;">JOIN</a></span>
-
 		</div>
-
-	</div>
+	</header>
 </body>
 </html>
