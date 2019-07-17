@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import article.one.command.LoginCheckService;
+import article.one.command.SelectMessageService;
 
 // TODO 태흥: ↓web.xml이 아닌 서블릿내에서 매핑작업을 해주시면 됩니다.
 @WebServlet("*.do")
@@ -40,9 +41,10 @@ public class Controller extends HttpServlet {
 			LoginCheckService forward = new LoginCheckService();
 			forward.excute(request, response);
 			path="headerCoupon.jsp";
-		}else if (command.equals("여기에넣으세요")) {
+		}else if (command.equals("/article1/selectMessage.do")) {
+			SelectMessageService forward = new SelectMessageService();
+			forward.excute(request, response);
 			
-			path="";
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";
@@ -65,10 +67,11 @@ public class Controller extends HttpServlet {
 			
 			path="";
 		}
-		
+		if(path != null) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		/*▲포워딩주소설정*/
 		dispatcher.forward(request, response);
+		}
 		/*▲설정된주소로 res+req 전달하여 포워딩*/		
 	}
 }

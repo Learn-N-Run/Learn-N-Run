@@ -3,6 +3,7 @@ package article.one.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -152,9 +153,32 @@ public class UserDAIOImpl implements UserDAO{
 	}
 
 	@Override
-	public List<MessageDTO> getMessage(MessageDTO bean, String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MessageDTO> getMessage(MessageDTO dto,String id) {
+		ArrayList<MessageDTO> list = new ArrayList<MessageDTO>();
+		try {
+			con = getConnection();
+			sql = "select* from message where receiver_id=? order by send_time";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			UserDTO udto = new UserDTO();
+			while (rs.next()) {
+				udto.setId(rs.getString("send_id"));
+				dto.setSend_user(udto);
+				dto.setContent(rs.getString("content"));
+				dto.setSend_time(rs.getTimestamp("send_time"));
+				dto.setRead_yn(rs.getInt("read_yn"));
+				
+				list.add(dto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		return list;
 	}
 
 	@Override

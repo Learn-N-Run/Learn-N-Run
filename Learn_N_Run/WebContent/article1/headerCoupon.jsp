@@ -10,7 +10,7 @@
 <c:if test="${result==-1 }">
 	<script>alert("아이디가 틀립니다.")</script>
 </c:if>
-<!DOCTYPE html><html><head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
 <!-- <link rel="stylesheet" href="./css/style.css"> -->
@@ -28,26 +28,26 @@
 $(function(){
 	/*받은 쪽지함에서 쪽지 작성을 눌렀을때 */
 	$(".message_send_h").click(function(){
-		$(".message_main").animate({margin :'-100% auto 30%'},"fast");
+		$(".message_main").fadeOut("fast");
 		$(".container1_h").fadeIn("fast");
 		$("#real_receiver_id").val('');
 	});
 
 	/*쪽지 쓰기에서 돌아가기를 눌렀을때*/
 	$(".reset_h").click(function(){
-		$(".message_main").animate({margin :'15% auto'},"fast");
+		$(".message_main").fadeIn("fast");
 		$(".container1_h").fadeOut("fast");
 	});
 
 	/*쪽지 상세보기에서 돌아가기를 눌렀을때*/
 	$(".reset1_h").click(function(){
-		$(".message_main").animate({margin :'15% auto'},"fast");
+		$(".message_main").fadeIn("fast");
 		$(".container2_h").fadeOut("fast");
 	});
 
 	/*받은 쪽지함에서 컬럼한개를 눌렀을때 상세페이지 로딩*/
 	$("#detail_content").click(function(){
-		$(".message_main").animate({margin :'-40% auto 30%'},"fast");
+		$(".message_main").fadeOut("fast");
 		$(".container2_h").fadeIn("fast");
 	});
 
@@ -64,13 +64,30 @@ $(function(){
 		$(".container1_h").fadeIn("fast");
 	});
 
+	$("#message_info_h").click(function() {
+		alert("클릭함");
+		$.ajax({
+			type:'POST',
+			url : "selectMessage.do",
+			success : function(data,textStatus,jqXHR) {
+				alert(data);
+			},error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
+
+          });
+
+		});
+
+		
+	
+
 });
 
 
 /*메인에서 쪽지함 눌렀을때 */
-function fnMessage() {
-	$(".mask_h").fadeIn("fast");
-}
+
+
 </script>
 
 
@@ -96,9 +113,6 @@ header>section>span {
 	margin-top: 10px;
 	width: 18%;
 	height: 100px;
-	background: url("img/large.png");
-	background-repeat: no-repeat;
-	background-size: 100% 50%;
 }
 
 .list {
@@ -122,7 +136,7 @@ header>section>span {
 	/*쪽지 마스크 배경 색 */        
 	.mask_h {
 		position: fixed;
-		display: block;
+		display: none;
 		z-index: 1;
 		overflow: hidden;
 		left : 0;
@@ -241,7 +255,7 @@ header>section>span {
 
 	 /*쪽지 보내기 */
 	 .container1_h {
-	 			display: block;
+	 			display: none;
 	 			background-color: lightblue;
 	            margin: 0% auto; 
 	            width: 40%; 
@@ -303,13 +317,9 @@ header>section>span {
 				</form>
 			</div>
 
-			<div class="view" style="float: right;">
-				<img alt="" src="img/list.png" onclick="show()">
-			</div>
-
 			<section>
 			<c:if test="${sessionScope.id != null }">
-				<span class="btn btn-default"><a href="javascript:;" onclick="fnMessage()">쪽지함</a></span> 
+				<span class="btn btn-default"><a href="javascript:;" id="message_info_h">쪽지함</a></span> 
 				<span class="btn btn-default"><a>LOGOUT</a></span> 
 				<span class="btn btn-default"><a href="#login-box" class="login-window">내정보</a></span>
 			</c:if>
@@ -350,48 +360,19 @@ header>section>span {
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach var="list" items="${requestScope.list }">
 							<tr>
-								<td><a id="detail_content">asdf</a></td>
-								<td>asdf</td>
-								<td>asdf</td>
-								<td><img src="check.png"></td>
+								<td><a id="detail_content">${list.send_user.id }</a></td>
+								<td>${list.content }</td>
+								<td>${list.send_time }</td>
+								<c:if test="${list.read_yn == 1 }">
+									<td><img src="img/check.png"></td>
+								</c:if>	
+								<c:if test="${list.read_yn == 0 }">
+									<td><img src="img/new.png"></td>
+								</c:if>
 							</tr>
-							<tr>
-								<td><a id="detail_content">asdf</a></td>
-								<td>asdf</td>
-								<td >asdf</td>
-								<td><img src="new.png"></td>
-							</tr>
-							<tr>
-								<td><a id="detail_content">asdf</a></td>
-								<td>asdf</td>
-								<td >asdf</td>
-								<td><img src="new.png"></td>
-							</tr>
-							<tr>
-								<td><a id="detail_content">asdf</a></td>
-								<td>asdf</td>
-								<td >asdf</td>
-								<td><img src="new.png"></td>
-							</tr>
-							<tr>
-								<td><a id="detail_content">asdf</a></td>
-								<td>asdf</td>
-								<td >asdf</td>
-								<td><img src="new.png"></td>
-							</tr>
-							<tr>
-								<td><a id="detail_content">asdf</a></td>
-								<td>asdf</td>
-								<td >asdf</td>
-								<td><img src="new.png"></td>
-							</tr>
-							<tr>
-								<td><a id="detail_content">asdf</a></td>
-								<td>asdf</td>
-								<td >asdf</td>
-								<td><img src="new.png"></td>
-							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
