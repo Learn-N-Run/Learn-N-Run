@@ -24,29 +24,196 @@
 	border-bottom: 1px double rgba(0,0,0,0.2);
 }
 #inc_menuList{
-	font-size: 15px;
+	content: "";
+	position: absolute;
+	font-size: 20px;
 	font-weight: bold;
-	text-align: right;
-	float: left;
 }
 #inc_menuList>ul>li{
  	margin-left: 10px;
  	margin-right: 10px;
+ 	margin-top: 10px;
+ 	margin-bottom: 10px;
  	vertical-align: middle;
  	transition: all 0.5s
 }
 #inc_menuList>ul>li:HOVER{
-/* 	animation-duration: 0.5s; */
-/* 	animation-name: inc_menuHOVER; */
 	font-size:30px;
 }
-
 .inc_floating{
 	position: relative;
 	top: 30px;
 }
 
-
+/* 햄버거메뉴 */
+	#inc_hamburger {
+		display:none;
+		position: fixed;
+		float: right;
+		right: 1vw;
+		top: 50px;
+		width: 50px;
+		height: 50px;
+		transform: translate(-50%, -50%);
+		cursor: pointer;
+		background: rgba(0,0,0,0.7);
+		border-radius: 50%;
+		border: none;
+		outline: none;
+	}
+	
+	#inc_hamburger span {
+		position: absolute;
+		width: 30px;
+		height: 4px;
+		top: 50%;
+		left: 50%;
+		background: rgba(255,255,255,0.8);
+		border-radius: 2px;
+		overflow: hidden;
+		transition: all 0.3s linear;
+	}
+	
+	#inc_hamburger span::before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 100%;
+		top: 0;
+		right: 0;
+		background: rgba(255,255,255,0.2);
+		transition: all 0.3s linear;
+	}
+	
+	#inc_hamburger span:nth-child(1) {
+		animation: span-first-off 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+	
+	#inc_hamburger span:nth-child(2) {
+		animation: span-second-off 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+	
+	#inc_hamburger span:nth-child(3) {
+		animation: span-third-off 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+	
+	#inc_hamburger.on:hover span::before {
+		width: 100%;
+		transition: all 0.3s linear;
+	}
+	
+	#inc_hamburger.on span:nth-child(1) {
+		animation: span-first-on 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+	
+	#inc_hamburger.on span:nth-child(2) {
+		animation: span-second-on 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+	
+	#inc_hamburger.on span:nth-child(3) {
+		animation: span-third-on 0.5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+	
+	@keyframes span-first-on {
+		0% {
+			transform: translate(-50%, -300%);
+		}
+		30% {
+			transform: translate(-50%, -50%);
+		}
+		100% {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+	}
+	
+	@keyframes span-first-off {
+		0% {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+		30% {
+			transform: translate(-50%, -50%) rotate(0deg);
+		}
+		100% {
+			transform: translate(-50%, -300%);
+		}
+	}
+	
+	@keyframes span-second-on {
+		0% {
+			transform: translate(-50%, -50%);
+		}
+		25% {
+			background: gray;
+		}
+		50% {
+			transform: translate(-50%, -50%) scale(1);
+		}
+		100% {
+			transform: translate(-150%, -50%) scale(0);
+		}
+	}
+	
+	@keyframes span-second-off {
+		0% {
+			transform: translate(-150%, -50%) scale(0);
+		}
+		25% {
+			background: gray;
+		}
+		50% {
+			transform: translate(-50%, -50%) scale(1);
+		}
+		100% {
+			transform: translate(-50%, -50%);
+		}
+	}
+	
+	@keyframes span-third-on {
+		0% {
+			transform: translate(-50%, 200%);
+		}
+		30% {
+			transform: translate(-50%, -50%);
+		}
+		100% {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+	}
+	
+	@keyframes span-third-off {
+		0% {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+		30% {
+			transform: translate(-50%, -50%) rotate(0deg);
+		}
+		100% {
+			transform: translate(-50%, 200%);
+		}
+	}
+	@media(max-width:1200px){
+		#inc_hamburger{
+			display: inline;
+ 			z-index: 1000;
+		}
+		#inc_menuList>ul{
+			position: fixed;
+			float: right;
+			top: 0px;
+			right: 0px;
+ 			background-color: rgba(255,255,255,0.8);
+ 			width: 200px;
+ 			height: 100vh;
+ 			z-index: 1;
+ 			padding-top: 100px;
+		}
+	}
 
 </style>
 <title></title>
@@ -71,42 +238,63 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-xs-4" align="right">
-				<div id="inc_menuList" class="visible-lg-inline">
+			<div class="col-xs-4">
+				<div id="inc_menuList" class="visible-lg-block">
 					<ul class="list-inline">
-						<li>
-							<a href="#"
-							 style="text-decoration: none; color: black;">
-								로그아웃
-							</a>
-						</li>
-						<li>
-							<a href="#"
-							 style="text-decoration: none; color: black;">
-							 마이페이지
-							</a>
-						</li>
-						<li>
-							<a href="#"
-							 style="text-decoration: none; color: black;">
-							로그인
-							</a>
-						</li>
-						<li>
-							<a href="#"
-							 style="text-decoration: none; color: black;">
-							회원가입
-							</a>
-						</li>
+						<!-- 세션영역에서 유저빈의 유무 판별 --> 
+						<c:choose>
+							<c:when test="${null ne sessionScope.user }">
+								<li>
+									<a href="#"
+									 style="text-decoration: none; color: black;">
+										로그아웃
+									</a>
+								</li>
+								<li>
+									<a href="#"
+									 style="text-decoration: none; color: black;">
+										 마이페이지
+									</a>
+								</li>
+							</c:when>
+							<c:when test="${null eq sessionScope.user }">
+								<li>
+									<a href="#"
+									 style="text-decoration: none; color: black;">
+										로그인
+									</a>
+								</li>
+								<li>
+									<a href="#"
+									 style="text-decoration: none; color: black;">
+										회원가입
+									</a>
+								</li>
+							</c:when>
+						</c:choose>
 					</ul>
 				</div>
-				<div id="inc_hamburger" class="visible-xs-inline visible-sm-inline visible-md-inline">
-					<span class="glyphicon glyphicon-menu-hamburger"
-							style="font-size: 25px;">
-					</span>
-				</div>
+				<button id="inc_hamburger" data-toggle="collapse" data-target="#inc_menuList" aria-expanded="false" aria-controls="#inc_menuList">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
 			</div>
 		</div>
 	</header>
+<!-- 햄버거메뉴 -->	
+<script type="text/javascript">
+	var inc_menuList = document.querySelector('#inc_menuList');
+	var inc_menu_ul = document.querySelector('#inc_menuList>ul');
+	
+	document.getElementById('inc_hamburger').addEventListener('click', function() {
+		if (this.className == 'on'){
+			this.classList.remove('on');
+			inc_menuList.classList.add('visible-lg-block');
+		}else{
+			this.classList.add('on');
+			inc_menuList.classList.remove('visible-lg-block');
+		}});
+</script>
 </body>
 </html>

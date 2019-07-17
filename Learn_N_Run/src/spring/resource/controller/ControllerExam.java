@@ -11,7 +11,7 @@ public class ControllerExam {
 	public ModelAndView helloworld() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("data", "시발놈아");
+		mav.addObject("data", "테스트중입니다.");
 		mav.setViewName("index");
 		
 		return mav;
