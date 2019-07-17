@@ -93,44 +93,6 @@ $(function(){
 
 
 <style type="text/css">
-header {
-	padding: 10px;
-	height: 120px;
-}
-
-header>div {
-	float: left;
-}
-
-header>section>span {
-
-	float: right;
-	margin-right: 10px;
-	margin-top: 30px;
-}
-
-.logo {
-	margin-top: 10px;
-	width: 18%;
-	height: 100px;
-}
-
-.list {
-	display: none;
-}
-
-.search {
-	width: 400px;
-}
-
-.view>img {
-	margin-top: 25px;
-	margin-left: 8px;
-	width: 50px;
-	height: 42px;
-	display: none;
-}
-
 
 
 	/*쪽지 마스크 배경 색 */        
@@ -301,7 +263,6 @@ header>section>span {
 <title></title>
 </head>
 <body>
-	<jsp:include page="loginModal.jsp"></jsp:include>
 	
 	<div id="wrap">
 		<header>
