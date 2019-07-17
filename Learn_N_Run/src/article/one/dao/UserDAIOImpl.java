@@ -1,6 +1,13 @@
 package article.one.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 import dto.BuyerDTO;
 import dto.CouponDTO;
@@ -10,6 +17,46 @@ import dto.UserDTO;
 
 public class UserDAIOImpl implements UserDAO{
 
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	DataSource ds = null;
+	String sql="";
+	
+	/*connection객체 얻기 메소드*/
+	private Connection getConnection() throws Exception{
+		Connection con = null;
+		
+		Context init = new InitialContext();
+		DataSource ds = (DataSource)init.lookup("java:comp/env/jdbc/learnrun");
+		con = ds.getConnection();
+		return con;
+	}
+	
+	/*자원해제 메소드*/
+	public void freeResource() {
+
+		if (con != null)
+			try {
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		if (rs != null)
+			try {
+				rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		if (pstmt != null)
+			try {
+				pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	
 	@Override
 	public void addUser(UserDTO dto) {
 		// TODO Auto-generated method stub
@@ -36,8 +83,30 @@ public class UserDAIOImpl implements UserDAO{
 
 	@Override
 	public int userCheck(String id, String pass) {
-		// TODO Auto-generated method stub
-		return 0;
+			int check = 0;
+			try {
+				con = getConnection();
+				sql = "select* from user where id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					if (pass.equals(rs.getString("pass"))) {
+						check = 1;
+					} else { 
+						check = 0; 
+					}
+				} else { 
+					check = -1;
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				freeResource();
+			}
+			return check;
 	}
 
 	@Override

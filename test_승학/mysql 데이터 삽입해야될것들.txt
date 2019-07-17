@@ -1,0 +1,5 @@
+mysql 
+
+insert into user_group(no,name) values(1,'회원'),(2,'크리에이터'),(3,'관리자') ;
+
+먼저 넣어주기!!

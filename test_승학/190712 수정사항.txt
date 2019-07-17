@@ -1,0 +1,21 @@
+mysql 
+
+insert into user_group(no,name) values(1,'회원'),(2,'크리에이터'),(3,'관리자') ;
+
+[DB insert]
+
+show databases;
+
+use learnrun;
+
+show tables;
+
+select * from user;
+
+insert into user(id,pass,name,email,joinDate,user_group_no) VALUES('admin','admin','hak','hak@gmail.com',now(),1);
+
+select * from user_group;
+
+insert into user_group(no,name) values(1,'회원'),(2,'크리에이터'),(3,'관리자') ;
+
+[DB insert]
