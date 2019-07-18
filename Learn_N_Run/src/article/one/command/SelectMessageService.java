@@ -44,7 +44,7 @@ public class SelectMessageService implements Service {
 			messageArray.add(messageInfo);
 			System.out.println(messageArray.toJSONString());
 			
-			totalObject.
+			totalObject.put("message", messageArray);
 		}
 			System.out.println(totalObject.toJSONString());
 		
