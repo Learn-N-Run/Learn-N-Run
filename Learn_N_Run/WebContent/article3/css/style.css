@@ -2,18 +2,22 @@
 
 	/*페이지 전체 영역 가로 크기와 마진*/
 	#wrap{
-
-	 margin: 0 auto;
-
-	 width: 1200px;
-
+		margin: 0 auto;
+		max-width: 1200px;
+		width: 100vw;
 	}
-
+	#wrap div{
+		background-size: contain;
+	}
+	
+	#myCarousel{
+		
+		
+	}
+	
 	/*이미지슬라이드  영역 세로 크기*/
 	.sec01{
-
 	height: 350px;
-
 	}
 	
 	/*top5  영역 세로 크기*/

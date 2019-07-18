@@ -40,6 +40,20 @@
 #inc_menuList>ul>li:HOVER{
 	font-size:30px;
 }
+#inc_mainlogo{
+	animation-duration: 2s;
+	animation-name: visible_incmainlogo;
+}
+@keyframes visible_incmainlogo{
+	0% {
+ 		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		
+	}
+}
+
 .inc_floating{
 	position: relative;
 	top: 30px;
@@ -207,26 +221,37 @@
 			float: right;
 			top: 0px;
 			right: 0px;
- 			background-color: rgba(255,255,255,0.8);
  			width: 200px;
  			height: 100vh;
  			z-index: 1;
  			padding-top: 100px;
+ 			animation-duration: 1s;
+ 			animation-name: slide_for_left;
+ 			background-color: rgba(255,255,255,0.8);
 		}
+		
 	}
-
+		@keyframes slide_for_left{
+			0%{
+				background-color: rgba(255,255,255,0);
+			}
+			100%{
+				background-color: rgba(255,255,255,0.8);
+			}
+		}
+	
 </style>
 <title></title>
 </head>
 <body>
 	<header id="inc_header">
-		<div class="col-xs-2" align="center">
+		<div id="inc_mainlogo" class="col-xs-3" align="center">
 			<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
 				<img src="img/large.png">
 			</a>
 		</div>
-		<div class="inc_floating col-xs-10" align="left">
-			<div class="col-xs-8">
+		<div class="inc_floating col-xs-9" align="left">
+			<div class="col-xs-6">
 				<form>
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="카테고리 + 제목">
@@ -238,7 +263,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-6" style="text-align: right;">
 				<div id="inc_menuList" class="visible-lg-block">
 					<ul class="list-inline">
 						<!-- 세션영역에서 유저빈의 유무 판별 --> 

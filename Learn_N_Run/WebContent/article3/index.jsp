@@ -26,21 +26,21 @@
 		<!--이미지 슬라이드(캐러셀) 섹션 영역 -->
 		<section class = "sec01">
 	
-		<div id = "myCarousel" class = "carousel slide" data-ride = "carousel">
-			<ol class = "carousel-indicators">
+		<div id ="myCarousel" class = "carousel slide" data-ride = "carousel">
+			<ol class ="carousel-indicators">
 				<li data-target = "#myCarousel" data-slide-to = "0" class="active"></li>
 				<li data-target = "#myCarousel" data-slide-to = "1"></li>
 				<li data-target = "#myCarousel" data-slide-to = "2"></li>
 			</ol>
-			<div class = "carousel-inner">
-				<div class= "item active">
-					<img style = "width: 100%; height: 350px;" src="img/aaa.jpg">
+			<div class ="carousel-inner">
+				<div class="item active">
+					<img style = "width: 100%; height: 350px;" src="img/uh.jpg">
 				</div>
 				<div class= "item">
-					<img style = "width: 100%; height: 350px;" src="img/bbb.jpg">
+					<img style = "width: 100%; height: 350px;" src="img/popcorn.gif">
 				</div>
 				<div class= "item">
-					<img style = "width: 100%; height: 350px;" src="img/ccc.jpg">
+					<img style = "width: 100%; height: 350px;" src="img/gg.jpg">
 				</div>
 			</div>
 			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
