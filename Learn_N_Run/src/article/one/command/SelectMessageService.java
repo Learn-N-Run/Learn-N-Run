@@ -38,22 +38,14 @@ public class SelectMessageService implements Service {
 			totalObject = new JSONObject();
 			messageInfo.put("send_id", list.get(i).getSend_user().getId());
 			messageInfo.put("content", list.get(i).getContent() );
-			messageInfo.put("send_time", list.get(i).getSend_time());
+			messageInfo.put("send_time", list.get(i).getSend_time().toString().replaceAll("-",".").replaceAll(":", "."));
 			messageInfo.put("read_yn", list.get(i).getRead_yn());
 			
 			messageArray.add(messageInfo);
 			System.out.println(messageArray.toJSONString());
-			
 			totalObject.put("message", messageArray);
+			String jsonInfo = totalObject.toJSONString();
+			out.print(jsonInfo);
 		}
-			System.out.println(totalObject.toJSONString());
-		
-		String jsonInfo = totalObject.toJSONString();
-		
-		
-		out.print(jsonInfo);
 	}
-	
-	  
-	 
 }

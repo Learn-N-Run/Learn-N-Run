@@ -95,7 +95,14 @@ $(function(){
 			type:'POST',
 			url : "selectMessage.do",
 			success : function(data,textStatus,jqXHR) {
-				alert(data);
+				var jsonInfo = JSON.parse(data);
+				var messageInfo = "";
+				for(var i in jsonInfo.membersArray){
+					messageInfo += "<td>"+jsonInfo.membersArray[i].send_id+"</td>";
+				}
+				
+				alert(messageInfo);
+				
 			},error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
