@@ -10,7 +10,7 @@
 <c:if test="${result==-1 }">
 	<script>alert("아이디가 틀립니다.")</script>
 </c:if>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+<!DOCTYPE><html><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
 <!-- <link rel="stylesheet" href="./css/style.css"> -->

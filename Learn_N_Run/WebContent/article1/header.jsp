@@ -3,6 +3,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
 <%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
+<c:set var="result" value="${requestScope.result }"/>
+<c:if test="${result==0 }">
+	<script>alert("비밀번호가 틀립니다.")</script>
+</c:if>
+<c:if test="${result==-1 }">
+	<script>alert("아이디가 틀립니다.")</script>
+</c:if>
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
@@ -37,13 +44,12 @@ $(function(){
 		return false;
 	});
 	
-	$('a.close, #mask').live('click', function() { 
+	$('div').on('click','a.close_h, #mask' ,function() { 
 	  $('#mask , .login-popup').fadeOut(300 , function() {
 		$('#mask').remove();  
 	}); 
 	return false;
-	});
-});//로그인
+});
 	
 	/*받은 쪽지함에서 쪽지 작성을 눌렀을때 */
 	$(".message_send_h").click(function(){
@@ -95,17 +101,17 @@ $(function(){
 		       }
           });
 	});
+	
 });
 </script>
 
-<link href="header.css" rel="stylesheet">
+<link href="css/header.css" rel="stylesheet">
 	<!-- header에들어가는 모든 css모음. -->
 
 
 <title></title>
 </head>
 <body>
-	<jsp:include page="loginModal.jsp"></jsp:include>
 	<header id="inc_header">
 		<div class="col-xs-2" align="center">
 			<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
@@ -129,8 +135,7 @@ $(function(){
 				<div id="inc_menuList" class="visible-lg-block">
 					<ul class="list-inline">
 						<!-- 세션영역에서 유저빈의 유무 판별 --> 
-						<c:choose>
-							<c:when test="${null ne sessionScope.user }">
+							<c:if test="${sessionScope.id != null }">
 								<li>
 									<a href="javascript:;" id="message_info_h"
 									 style="text-decoration: none; color: black;">
@@ -149,8 +154,8 @@ $(function(){
 										 마이페이지
 									</a>
 								</li>
-							</c:when>
-							<c:when test="${null eq sessionScope.user }">
+							</c:if>
+							<c:if test="${sessionScope.id == null }">
 								<li>
 									<a href="#login-box" class="login-window"
 									 style="text-decoration: none; color: black;">
@@ -163,8 +168,7 @@ $(function(){
 										회원가입
 									</a>
 								</li>
-							</c:when>
-						</c:choose>
+							</c:if>
 					</ul>
 				</div>
 				<button id="inc_hamburger" data-toggle="collapse" data-target="#inc_menuList" aria-expanded="false" aria-controls="#inc_menuList">
@@ -192,12 +196,13 @@ $(function(){
 		}});
 	</script>
 	
-	<script src="channelio.js"></script>
+	<script src="js/channelio.js"></script>
 	<!-- channelioAPI 불러옴 -->
 	
-
     <div id="login-box" class="login-popup">
+    	
 		<form class="form_h" action="login.do" method="post">
+			<a class="close_h">EXIT</a>
 	        <svg id="ryan" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
 	            <path d="M0,150 C0,65 120,65 120,150" fill="#e0a243" stroke="#000" stroke-width="2.5" />
 	            <g class="ears">
@@ -222,9 +227,9 @@ $(function(){
 	        </svg>
 	        <input class="H_inputText" id="H_login_id" name="userid" type="text" placeholder="email">
 	        <input class="H_inputText" id="H_login_pass" name="userpass" type="password" placeholder="Password">
-	        <input type="submit" class="H_submit" value="로그인하기">
-	        <a href="#" class="H_join">회원가입</a>
-	        <script src="ryan.js"></script>
+	        <input type="submit" class="H_submit" value="Let's log in!">
+	        <a href="#" class="H_join">Join us!</a>
+	        <script src="js/ryan.js"></script>
 	    </form>
    </div>
 	<!-- 로그인 팝업 -->	

@@ -163,20 +163,39 @@ public class UserDAIOImpl implements UserDAO{
 			rs = pstmt.executeQuery();
 			
 			UserDTO udto = new UserDTO();
+			
 			while (rs.next()) {
+				dto = new MessageDTO();
 				udto.setId(rs.getString("send_id"));
 				dto.setSend_user(udto);
 				dto.setContent(rs.getString("content"));
 				dto.setSend_time(rs.getTimestamp("send_time"));
 				dto.setRead_yn(rs.getInt("read_yn"));
-				
+				System.out.println(dto);
 				list.add(dto);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			freeResource();
+			if (con != null)
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		}
 		return list;
 	}

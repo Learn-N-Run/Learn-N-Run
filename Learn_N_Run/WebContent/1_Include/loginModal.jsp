@@ -1,19 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$(".login-window").click(function() {
 		
-		// Getting the variable's value from a link 
 		var loginBox = $(this).attr('href');
 
-		//Fade in the Popup and add close button
 		$(loginBox).fadeIn(300);
 		
-		//Set the center alignment padding + border
 		var popMargTop = ($(loginBox).height() + 24) / 2; 
 		var popMargLeft = ($(loginBox).width() + 24) / 2; 
 		
@@ -22,14 +18,12 @@ $(document).ready(function() {
 			'margin-left' : -popMargLeft
 		});
 		
-		// Add the mask to body
 		$('body').append('<div id="mask"></div>');
 		$('#mask').fadeIn(300);
 		
 		return false;
 	});
 	
-	// When clicking on the button close or the mask layer the popup closed
 	$('a.close, #mask').live('click', function() { 
 	  $('#mask , .login-popup').fadeOut(300 , function() {
 		$('#mask').remove();  

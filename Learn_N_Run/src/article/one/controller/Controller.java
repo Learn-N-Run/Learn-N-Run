@@ -40,7 +40,7 @@ public class Controller extends HttpServlet {
 		if (command.equals("/article1/login.do")) {
 			LoginCheckService forward = new LoginCheckService();
 			forward.excute(request, response);
-			path="headerCoupon.jsp";
+			path="header.jsp";
 		}else if (command.equals("/article1/selectMessage.do")) {
 			SelectMessageService forward = new SelectMessageService();
 			forward.excute(request, response);
