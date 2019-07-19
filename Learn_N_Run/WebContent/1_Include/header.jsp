@@ -21,7 +21,7 @@
 	}
 </script>
 <style type="text/css">
-header {
+header 
 	padding: 10px;
 	height: 120px;
 }
