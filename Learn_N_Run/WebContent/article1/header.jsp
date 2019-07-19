@@ -24,7 +24,7 @@
 <script type="text/javascript">
 $(function(){
 	
-	
+	var messageNo;
 	$(".login-window").click(function() {
 		
 		var loginBox = $(this).attr('href');
@@ -71,21 +71,6 @@ $(function(){
 		$(".container2_h").fadeOut("fast");
 	});
 
-	/*받은 쪽지함에서 컬럼한개를 눌렀을때 상세페이지 로딩*/
-	$(document).on("click","#detail_content",function(){
-		
-		var messageNo = $("#messageNo").val();
-		alert(messageNo)
-		$.ajax({
-			url : "selectDetailMessage.do?messageNo=",
-			success : function(data,textStatus,jqXHR) {
-			},error:function(request,status,error){
-		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		       }
-			});
-		$(".message_main").fadeOut("fast");
-		$(".container2_h").fadeIn("fast");
-	});
 
 	/*나가기 버튼을 눌렸을때, mask 없앰*/
 	$(".outMessage_h").click(function(){
@@ -109,9 +94,10 @@ $(function(){
 				var jsonInfo = JSON.parse(data);
 				alert(data)
 				var messageInfo = "";
+					
 				for(var i in jsonInfo.message){
-					messageInfo += "<tr id='detail_content'><td>"+jsonInfo.message[i].send_id+"</td>"
-					messageInfo += "<input type='hidden' id='messageNo' name='messageNo' value='"+jsonInfo.message[i].messageNo+"'>"
+					messageInfo += "<tr id='detail_content' data-value="+jsonInfo.message[i].messageNo+"><td>"+jsonInfo.message[i].send_id+"</td>"
+					/* messageInfo += "<input type='hidden' id='messageNo' name='messageNo' value='"+jsonInfo.message[i].messageNo+"'>" */
 					messageInfo += "<td>"+jsonInfo.message[i].content+"</td>"
 					messageInfo += "<td>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>"
 					messageInfo += "<td>"+jsonInfo.message[i].read_yn+"</td></tr>"
@@ -121,6 +107,24 @@ $(function(){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
           });
+	});
+
+	/*받은 쪽지함에서 컬럼한개를 눌렀을때 상세페이지 로딩*/
+	$(document).on("click","#detail_content",function(){
+		var hi= $(this).attr("data-value");
+		alert(hi)
+		$.ajax({
+			type: "post",
+			url : "selectDetailMessage.do",
+			data : {"messageNo" : hi},
+			success : function(data,textStatus,jqXHR) {
+				alert("성공함")
+			},error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
+			});
+		$(".message_main").fadeOut("fast");
+		$(".container2_h").fadeIn("fast");
 	});
 	
 });
@@ -276,7 +280,6 @@ $(function(){
 							</tr>
 						</thead>
 						<tbody class="table_h_h">
-					
 						</tbody>
 					</table>
 				</div>
