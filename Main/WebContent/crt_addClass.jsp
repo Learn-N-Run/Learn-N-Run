@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>클래스 생성</title>
 <link rel = "stylesheet" href = "css/crt_addClass.css">
-
+<link rel = "stylesheet" href = "css/bootstrap.css">
 <script type="text/javascript">
-
+	
 // 이미지 파일 첨부시 미리보기 기능을 구현하는 함수
 function read_1(input){ // <input type = "file"> 태그 매개변수로 전달 받음
 	console.debug(input);
@@ -26,7 +26,7 @@ function read_1(input){ // <input type = "file"> 태그 매개변수로 전달 �
 	// ... 아래의 input type = "file" 태그가 업로드 하기위해 파일을 선택 했다면
 	if(input.files && input.files[0]){
 		// 동적으로 img 태그를 만들어 추가함
-		$("#cover").html("<img src = '#' id = 'preview' width = 997 height = 500 />");
+		$("#cover").html("<img src = '#' id = 'pre' width = 997 height = 500 />");
 		
 		// 파일을 읽어올 객체 생성
 		var reader = new FileReader();
@@ -43,7 +43,7 @@ function read_1(input){ // <input type = "file"> 태그 매개변수로 전달 �
 				// src 속성에 new FileReader() 객체를 이용하여
 				// 읽어들인 첨부할 file 객체 정보를 지정하여
 				// 추가함으로서 이미지 파일의 미리보기 기능이 가능한 것이다.
-				$('#preview').attr('src', ProgressEvent.target.result);
+				$('#pre').attr('src', ProgressEvent.target.result);
 				
 		}
 	}
@@ -88,10 +88,7 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 	}
 	
 }
-function com() {
-	
-	$("#cla_title").attr("readonly", "readonly");
-}
+
 
 </script>
 
@@ -129,28 +126,25 @@ function com() {
 		
 	
 		<form action="">
-		<table style= "margin: 30px auto; width: 78%;" >
+		<table style= "margin: 30px auto; width: 78%;" id = "#adc">
 		
-			<tr>
-				<td colspan = "2">클래스 커버 이미지 추가</td>
+			<tr >
+				<td colspan = "2">클래스 커버 이미지 추가
+								  <br> <div>※권장 : 가로 1000px, 세로 500px</div></td>
 			</tr>
 			<tr>
-				<td id = "cover" width="1000" height="500" colspan = "2"><%-- 첨부할 다른 이미지 파일을 선택해서 변화가 일어나면 
-						 readURL이라는 함수 호출시 변화가 일어난 input태그 전달
+				<td id = "cover"  colspan = "2" width = 997 height = 500>
+				<%-- 첨부할 다른 이미지 파일을 선택해서 변화가 일어나면 
+					 readURL이라는 함수 호출시 변화가 일어난 input태그 전달
 					 --%>
 					<input type="file" name = "coverImg" onchange = "read_1(this)"></td>
-			</tr>
-			<tr>
-				<td colspan = "2">
-					
-				</td>
 			</tr>
 			
 			<tr>
 				<td colspan = "2">클래스 제목 추가</td>
 			</tr>
 			<tr>
-				<td colspan = "2"><input type="text" id = "cla_title"><input type="button" value = "ok" onclick="com()"></td>
+				<td colspan = "2"><input type="text" id = "cla_title" size = "50"></td>
 			</tr>
 			
 			<tr>
@@ -158,7 +152,7 @@ function com() {
 			</tr>
 			<tr>
 				<td colspan = "2">
-					<select>
+					<select >
 						<option disabled selected>카테고리를 선택해주세요</option>
 						<option>운동</option>
 						<option>켈리그라피</option>
@@ -169,28 +163,33 @@ function com() {
 						<option>그림</option>
 						<option>요리</option>
 					</select>
-					<input type="button" value = "ok">
+					
 				</td>
 			</tr>
 			
 			<tr>
 				<td colspan = "2">클래스 상세 카테고리 추가
-								  <br> ※키워드 2개
-								  <br> 예) #something_A #somthing_B </td>
+								  <br><div> ※키워드 2개
+								  <br> 예) #something_A, #somthing_B</div> </td>
 			</tr>			
 			<tr>
-				<td colspan = "2"><input type="text" placeholder="15자 이내로 간략하게 작성해주세요" style="width: 300px;"><input type="button" value = "ok"></td>
+				<td colspan = "2">
+					<input type="text" placeholder="15자 이내로 간략하게 작성해주세요" size = "30">
+				</td>
 			</tr>
 			
 			<tr>
 				<td colspan = "2">클래스 상세 정보 추가</td>
 			</tr>
 			<tr>
-				<td colspan = "2"><input type="text" style="width: 300px;" ></td>
+				<td colspan = "2">
+					<input type="text" size = "50" >
+				</td>
 			</tr>
 			
 			<tr>
-				<td colspan = "2">클래스 준비물 정보 추가</td>
+				<td colspan = "2">클래스 준비물 정보 추가
+						       <br><div>※권장 : 가로 300px, 세로 200px</div></td>
 			</tr>
 			<tr>
 				<td id = "item" width="300"  height="200"></td>
@@ -203,11 +202,16 @@ function com() {
 			</tr>
 			
 			<tr>
-				<td colspan="2"><input type = "text" placeholder="준비물 pakage NAME" style="width: 300px;"><input type="button" value = "ok"></td>
+				<td colspan="2">
+					<input type = "text" placeholder="준비물 pakage NAME" size = "50">
+				</td>
 			</tr>
 			
 			<tr align="right">
-				<td colspan="2"><input type = "reset" value = "다시 작성">&nbsp;&nbsp;&nbsp;<input type = "submit" value = "다음 단계로"></td>
+				<td colspan="2">
+					<input type = "reset" value = "다시 작성">&nbsp;&nbsp;&nbsp;
+					<input type = "submit" value = "다음 단계로">
+				</td>
 			</tr>
 			
 		</table>

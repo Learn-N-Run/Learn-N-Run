@@ -19,6 +19,16 @@
 	
 	}
 	
+	
+	/*전체화면 우측 컨텐츠*/
+	#submit{
+  		 width: 340px;
+  		 background-color: white;
+  		 border : 1px solid;
+  		 position: fixed;
+   		 margin-bottom: 100px;
+	}
+	
 	/*섬네일 이미지 영역*/
 	.thumb{
 	width: 100%; 
@@ -65,14 +75,6 @@
 		margin-bottom: 5px;
 	}
 	
-	/*전체화면 우측 컨텐츠*/
-	#submit{
-  		 width: 340px;
-  		 background-color: white;
-  		 border : 1px solid;
-  		 position: fixed;
-   		 margin-bottom: 100px;
-	}
 	#submit>div{
 		width: 100%;
 		margin-bottom: 2px;

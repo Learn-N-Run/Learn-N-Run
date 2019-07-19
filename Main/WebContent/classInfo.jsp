@@ -92,7 +92,7 @@
 						<td>●) Pakage Name</td>
 					</tr>
 					<tr>
-						<td align="center" height="300">
+						<td align="center" height="200">
 							<img alt="" src="img/junbi.png" width="30%" height="100%">
 						</td>
 					</tr>
@@ -136,7 +136,7 @@
 					</tr>
 					<tr>
 						<td>
-							<img alt="" src="img/junbi.png" width="100%" height="100%">
+							<img alt="" src="img/junbi.png" width="300px" height="200px">
 						</td>
 					</tr>
 					

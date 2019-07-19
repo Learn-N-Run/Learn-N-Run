@@ -48,3 +48,35 @@
 .sec01_div2_1a{
 	color: #e77b34 !important;
 }
+
+table tr:NTH-OF-TYPE(2n-1){
+
+font-weight: bolder;
+font-size: 25px;
+}
+
+table tr:NTH-OF-TYPE(2n){
+
+font-size: 20px;
+}
+
+table tr:NTH-OF-TYPE(13){
+text-align: left;
+font-weight: normal;
+font-size: 15px;
+}
+
+table tr td>div{
+	text-align : left;
+	font-size : 12px;
+	background-color: #aeaeae;
+	
+}
+
+table tr{
+	height: 80px;
+	
+}
+
+
+
