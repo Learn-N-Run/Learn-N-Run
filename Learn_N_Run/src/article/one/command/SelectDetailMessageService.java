@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import article.one.dao.UserDAIOImpl;
+
 public class SelectDetailMessageService implements Service{
 
 	@Override
@@ -15,8 +17,11 @@ public class SelectDetailMessageService implements Service{
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
+		UserDAIOImpl dao = new UserDAIOImpl();
 		
-		String messageNo = request.getParameter("messageNo");
+		int messageNo =Integer.parseInt(request.getParameter("messageNo"));
+		
 		System.out.println(messageNo);
+		dao.getMessageInfo(messageNo);
 	}
 }
