@@ -166,6 +166,7 @@ public class UserDAIOImpl implements UserDAO{
 			
 			while (rs.next()) {
 				dto = new MessageDTO();
+				dto.setNo(rs.getInt("no"));
 				udto.setId(rs.getString("send_id"));
 				dto.setSend_user(udto);
 				dto.setContent(rs.getString("content"));

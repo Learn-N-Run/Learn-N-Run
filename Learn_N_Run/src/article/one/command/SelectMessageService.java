@@ -31,21 +31,40 @@ public class SelectMessageService implements Service {
 		MessageDTO dto = new MessageDTO(); 
 		List<MessageDTO> list =dao.getMessage(dto,id); 
 		JSONObject totalObject = null;
-		JSONArray messageArray = null;
-		JSONObject messageInfo = new JSONObject();
+		JSONArray messageArray = new JSONArray();
 		for(int i=0; i<list.size(); i++) {
-			messageArray = new JSONArray();
-			totalObject = new JSONObject();
+			JSONObject messageInfo = new JSONObject();
+			messageInfo.put("messageNo", list.get(i).getNo());
 			messageInfo.put("send_id", list.get(i).getSend_user().getId());
 			messageInfo.put("content", list.get(i).getContent() );
 			messageInfo.put("send_time", list.get(i).getSend_time().toString().replaceAll("-",".").replaceAll(":", "."));
 			messageInfo.put("read_yn", list.get(i).getRead_yn());
-			
 			messageArray.add(messageInfo);
-			System.out.println(messageArray.toJSONString());
-			totalObject.put("message", messageArray);
-			String jsonInfo = totalObject.toJSONString();
-			out.print(jsonInfo);
 		}
+		totalObject = new JSONObject();
+		System.out.println(messageArray.toJSONString());
+		totalObject.put("message", messageArray);
+		String jsonInfo = totalObject.toJSONString();
+		System.out.println(totalObject.toJSONString());
+		out.print(jsonInfo);
+		
+		/*
+	 	{
+		"message":[
+					{
+						"send_id":"admin2",
+						"send_time":"2019.07.18 19.02.27.0",
+						"read_yn":0,
+						"content":"hi"
+					},
+					{
+						"send_id":"admin2",
+						"send_time":"2019.07.18 19.02.28.0",
+						"read_yn":0,
+						"content":"hi2"
+					}
+				]
+		}			 
+	 */
 	}
 }

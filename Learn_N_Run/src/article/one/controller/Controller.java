@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import article.one.command.LoginCheckService;
+import article.one.command.SelectDetailMessageService;
 import article.one.command.SelectMessageService;
 
 // TODO 태흥: ↓web.xml이 아닌 서블릿내에서 매핑작업을 해주시면 됩니다.
@@ -45,9 +46,10 @@ public class Controller extends HttpServlet {
 			SelectMessageService forward = new SelectMessageService();
 			forward.excute(request, response);
 			
-		}else if (command.equals("여기에넣으세요")) {
+		}else if (command.equals("/article1/selectDetailMessage.do")) {
+			SelectDetailMessageService forward = new SelectDetailMessageService();
+			forward.excute(request, response);
 			
-			path="";
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";

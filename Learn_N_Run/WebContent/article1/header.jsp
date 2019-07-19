@@ -24,6 +24,7 @@
 <script type="text/javascript">
 $(function(){
 	
+	
 	$(".login-window").click(function() {
 		
 		var loginBox = $(this).attr('href');
@@ -71,7 +72,17 @@ $(function(){
 	});
 
 	/*받은 쪽지함에서 컬럼한개를 눌렀을때 상세페이지 로딩*/
-	$("#detail_content").click(function(){
+	$(document).on("click","#detail_content",function(){
+		
+		var messageNo = $("#messageNo").val();
+		alert(messageNo)
+		$.ajax({
+			url : "selectDetailMessage.do?messageNo=",
+			success : function(data,textStatus,jqXHR) {
+			},error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
+			});
 		$(".message_main").fadeOut("fast");
 		$(".container2_h").fadeIn("fast");
 	});
@@ -90,19 +101,22 @@ $(function(){
 	});
 
 	$("#message_info_h").click(function() {
-		alert("클릭함");
 		$.ajax({
 			type:'POST',
 			url : "selectMessage.do",
 			success : function(data,textStatus,jqXHR) {
+				$(".mask_h").fadeIn("fast")
 				var jsonInfo = JSON.parse(data);
+				alert(data)
 				var messageInfo = "";
-				for(var i in jsonInfo.membersArray){
-					messageInfo += "<td>"+jsonInfo.membersArray[i].send_id+"</td>";
+				for(var i in jsonInfo.message){
+					messageInfo += "<tr id='detail_content'><td>"+jsonInfo.message[i].send_id+"</td>"
+					messageInfo += "<input type='hidden' id='messageNo' name='messageNo' value='"+jsonInfo.message[i].messageNo+"'>"
+					messageInfo += "<td>"+jsonInfo.message[i].content+"</td>"
+					messageInfo += "<td>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>"
+					messageInfo += "<td>"+jsonInfo.message[i].read_yn+"</td></tr>"
 				}
-				
-				alert(messageInfo);
-				
+				$(".table_h_h").html(messageInfo);
 			},error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
@@ -240,6 +254,93 @@ $(function(){
 	    </form>
    </div>
 	<!-- 로그인 팝업 -->	
+	
+	<!--start of 받은 쪽지함-->
+	<div class="mask_h">
+		<div class="message_main">
+			<div class="message_top">
+				<span>&nbsp;받은 쪽지함</span>
+				<button type="button" class="outMessage_h hover_button_h">나가기</button>
+			</div>
+			<div class="message_content">
+				<br>
+				<!-- <button id="message_send_h">메세지 보내기</button> -->
+				<div class="table_h">
+					<table>
+						<thead>
+							<tr>
+								<td width="15%">보낸 사람</td>
+								<td width="60%">제 목</td>
+								<td width="15%">받은 시간</td>
+								<td width="10%">읽음 유무</td>
+							</tr>
+						</thead>
+						<tbody class="table_h_h">
+					
+						</tbody>
+					</table>
+				</div>
+				<span>[1]</span>
+			</div>
+			<div align="right" class="bottom_button">
+				<button type="button" class="message_send_h hover_button_h">쪽지 쓰기</button>
+			</div>
+		</div>
+		<!--end of 받은 쪽지함-->
+
+		<!--start of 쪽지 쓰기-->
+			<div class="container1_h">
+				<div class="message_top">
+					<span>&nbsp;쪽지 쓰기</span>
+					<button type="button" class="outMessage_h hover_button_h" >나가기</button>
+				</div>
+
+				<div class="message_content">
+					<form method="post" action="">
+						<div class="message_send_top">
+						<span>받는 사람</span> :
+							<input type="text" id="real_receiver_id" name="receiver_id" placeholder="받는사람 ID">
+						</div>
+						<div class="message_send_content">
+							<textarea class="textsize" name="content"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="bottom_button">
+					<button class="send_Message_h hover_button_h">보내기</button>&nbsp;
+					<button type="button" class="reset_h hover_button_h" >돌아가기</button>
+				</div>
+			</div>
+	
+		<!--end of 쪽지 보내기 -->
+
+		<!--start of 쪽지 상세보기 -->
+		<div class="container2_h">
+			<div class="message_top">
+				<span>&nbsp;받은 쪽지</span>
+				<button type="button"class="outMessage_h hover_button_h">나가기</button>
+			</div>
+			<div class="message_content">
+					<div class="message_send_top">
+					<span>받는 사람</span> :
+						<input type="text" value="las2706" readonly="readonly">
+					</div>
+					<div class="message_send_top">
+					<span>보낸 사람</span> :
+						<input type="text" id="receiver_id" value="seunghak12" readonly="readonly">
+					</div>
+					<div class="message_send_content">
+						<textarea class="textsize" name="content" readonly>뀨??</textarea>
+					</div>
+			</div>
+			<div class="bottom_button">
+				<button class="message_delete_h hover_button_h">삭제하기</button>
+				<button class="send_Message_h hover_button_h">답장하기</button>&nbsp;
+				<button type="button" class ="reset1_h hover_button_h">돌아가기</button>
+			</div>
+		</div>
+	</div>
+	<!--end of 쪽지보내기 -->
 
 </body>
 </html>
