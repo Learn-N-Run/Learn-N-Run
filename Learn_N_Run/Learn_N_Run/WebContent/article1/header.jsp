@@ -112,6 +112,7 @@ $(function(){
 <title></title>
 </head>
 <body>
+	<h1>확인입니다222.</h1>
 	<header id="inc_header">
 		<div class="col-xs-2" align="center">
 			<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
