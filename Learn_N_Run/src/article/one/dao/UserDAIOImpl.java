@@ -203,6 +203,7 @@ public class UserDAIOImpl implements UserDAO{
 
 	@Override
 	public MessageDTO getMessageInfo(int MessageNo) {
+		MessageDTO dto = new MessageDTO();
 		try {
 			con = getConnection();
 			sql = "select * from message where no=?";
@@ -210,9 +211,9 @@ public class UserDAIOImpl implements UserDAO{
 			pstmt.setInt(1, MessageNo);
 			rs = pstmt.executeQuery();
 			
-			UserDTO dto = new UserDTO();
+			UserDTO udto = new UserDTO();
 			if(rs.next()) {
-				rs.getString("send_id");
+				dto.setSend_user(send_user);
 			}
 			
 		} catch (Exception e) {
