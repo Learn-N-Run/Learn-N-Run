@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import article.one.command.DeleteMessageService;
 import article.one.command.LoginCheckService;
 import article.one.command.SelectDetailMessageService;
 import article.one.command.SelectMessageService;
@@ -55,9 +56,11 @@ public class Controller extends HttpServlet {
 			System.out.println("insertMessage 불러냄");
 			SendMessageService forward = new SendMessageService();
 			forward.excute(request, response);
-		}else if (command.equals("여기에넣으세요")) {
 			
-			path="";
+		}else if (command.equals("/article1/deleteMessage.do")) {
+			DeleteMessageService forward = new DeleteMessageService();
+			forward.excute(request, response);
+			path="selectMessage.do";
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";

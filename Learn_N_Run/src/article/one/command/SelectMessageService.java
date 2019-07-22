@@ -47,6 +47,8 @@ public class SelectMessageService implements Service {
 		String jsonInfo = totalObject.toJSONString();
 		System.out.println(totalObject.toJSONString());
 		out.print(jsonInfo);
+		out.flush();
+		out.close();
 		
 		/*
 	 	{

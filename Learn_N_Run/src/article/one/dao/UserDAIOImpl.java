@@ -278,8 +278,17 @@ public class UserDAIOImpl implements UserDAO{
 
 	@Override
 	public void delMessage(int no) {
-		// TODO Auto-generated method stub
-		
+		sql = "delete from message where no=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
 	}
 
 	@Override

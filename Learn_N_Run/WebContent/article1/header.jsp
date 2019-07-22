@@ -124,7 +124,7 @@ $(function(){
 				alert(jsonIn.send_id);
 				$("#receiver_id").val(jsonIn.send_id).html("<span>"+jsonIn.send_time+"</span");
 				
-				$(".textsize").append(jsonIn.content);
+				$(".textsize").text(jsonIn.content);
 			},error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
@@ -141,7 +141,6 @@ $(function(){
 			alert(data);
 			if(data==1){
 				alert("받는이 아이디를 확인하세요")
-				
 			}else{
 				alert("발송 성공")
 				$("container1_h").fadeOut("fast");
@@ -153,6 +152,28 @@ $(function(){
 	       }
 		});
 	});
+	
+	/*쪽지 삭제를 눌렀을때*/
+	$(document).on("click","#deleteMessage_h", function() {
+		var hi= $("#detail_content").attr("data-value");
+		var result = confirm("해당 메세지를 삭제하시겠습니까?")
+		if(result){
+			$.ajax({
+				type:"POST",
+				url : "deleteMessage.do",
+				data : {"messageNo" : hi},
+				success : function(data) {
+					$(".message_main").fadeIn("fast");
+					$(".mask_h").fadeOut("fast");
+					alert("삭제가 완료 되었습니다.")
+				},error: function(request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+			});	
+			
+		}else{alert("삭제안해")}
+		
+	})
 });
 </script>
 
@@ -360,7 +381,7 @@ $(function(){
 					</div>
 			</div>
 			<div class="bottom_button">
-				<button class="message_delete_h hover_button_h">삭제하기</button>
+				<button type="button" id="deleteMessage_h" class="message_delete_h hover_button_h">삭제하기</button>
 				<button class="send_Message_h hover_button_h">답장하기</button>&nbsp;
 				<button type="button" class ="reset1_h hover_button_h">돌아가기</button>
 			</div>
