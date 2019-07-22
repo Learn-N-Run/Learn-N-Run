@@ -13,6 +13,8 @@ import article.one.command.LoginCheckService;
 import article.one.command.SelectDetailMessageService;
 import article.one.command.SelectMessageService;
 import article.one.command.SendMessageService;
+import article.one.command.coupon3Service;
+import article.one.command.getEmailService;
 
 // TODO 태흥: ↓web.xml이 아닌 서블릿내에서 매핑작업을 해주시면 됩니다.
 @WebServlet("*.do")
@@ -61,11 +63,13 @@ public class Controller extends HttpServlet {
 			DeleteMessageService forward = new DeleteMessageService();
 			forward.excute(request, response);
 			path="selectMessage.do";
-		}else if (command.equals("여기에넣으세요")) {
-			
-			path="";
-		}else if (command.equals("여기에넣으세요")) {
-			
+		}else if (command.equals("/article1/event.do")) {
+			getEmailService forward = new getEmailService();
+			forward.excute(request, response);
+			path="event.jsp";
+		}else if (command.equals("/article1/coupon3.do")) {
+			coupon3Service forward = new coupon3Service();
+			forward.excute(request, response);
 			path="";
 		}else if (command.equals("여기에넣으세요")) {
 			

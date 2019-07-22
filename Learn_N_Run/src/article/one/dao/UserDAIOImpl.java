@@ -57,6 +57,7 @@ public class UserDAIOImpl implements UserDAO{
 			}
 	}
 	
+
 	
 	@Override
 	public void addUser(UserDTO dto) {
@@ -82,6 +83,7 @@ public class UserDAIOImpl implements UserDAO{
 		return 0;
 	}
 
+	//로그인 시 아이디체크 메소드
 	@Override
 	public int userCheck(String id, String pass) {
 			int check = 0;
@@ -134,6 +136,7 @@ public class UserDAIOImpl implements UserDAO{
 		return 0;
 	}
 
+	//메세지 보내기
 	@Override
 	public int sendMessage(MessageDTO dto, String send_id) {
 		int RightIdCheck =0;
@@ -176,6 +179,7 @@ public class UserDAIOImpl implements UserDAO{
 		return 0;
 	}
 
+	//쪽지함 클릭했을때.
 	@Override
 	public List<MessageDTO> getMessage(MessageDTO dto,String id) {
 		ArrayList<MessageDTO> list = new ArrayList<MessageDTO>();
@@ -225,6 +229,7 @@ public class UserDAIOImpl implements UserDAO{
 		return list;
 	}
 
+	//메세지 상세보기 페이지
 	@Override
 	public MessageDTO getMessageInfo(int MessageNo) {
 		MessageDTO dto = new MessageDTO();
@@ -276,6 +281,7 @@ public class UserDAIOImpl implements UserDAO{
 		return dto;
 	}
 
+	//메세지 삭제
 	@Override
 	public void delMessage(int no) {
 		sql = "delete from message where no=?";
@@ -319,6 +325,34 @@ public class UserDAIOImpl implements UserDAO{
 	public JjimDTO getJjim(String id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	//3번 쿠폰 받기. 
+	@Override
+	public int getCoupon3(CouponDTO dto, String id) {
+		
+		return 0;
+	}
+	
+	//이벤트 페이지 유저 이메일 정보 뿌려주기.
+	@Override
+	public String getEmail(String id) {
+		String email = "";
+		sql = "select * from user where id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				email = rs.getString("email");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return email;
 	}
 	
 }

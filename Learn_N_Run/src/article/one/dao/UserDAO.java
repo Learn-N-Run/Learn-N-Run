@@ -14,6 +14,9 @@ import dto.UserDTO;
 
 public interface UserDAO {
 
+	int getCoupon3(CouponDTO dto, String id);
+	
+	String getEmail(String id);
 	// 유저 부분.
 
 	void addUser(UserDTO dto);

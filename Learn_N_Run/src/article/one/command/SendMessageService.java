@@ -18,8 +18,7 @@ public class SendMessageService implements Service {
 	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setCharacterEncoding("utf-8");
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		String send_id = (String) session.getAttribute("id");
 		System.out.println("보내는 이"+send_id);

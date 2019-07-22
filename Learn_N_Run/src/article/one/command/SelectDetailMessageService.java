@@ -18,7 +18,7 @@ public class SelectDetailMessageService implements Service{
 	@Override
 	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		UserDAIOImpl dao = new UserDAIOImpl();
