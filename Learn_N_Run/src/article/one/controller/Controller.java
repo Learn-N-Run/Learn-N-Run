@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import article.one.command.LoginCheckService;
 import article.one.command.SelectDetailMessageService;
 import article.one.command.SelectMessageService;
+import article.one.command.SendMessageService;
 
 // TODO 태흥: ↓web.xml이 아닌 서블릿내에서 매핑작업을 해주시면 됩니다.
 @WebServlet("*.do")
@@ -50,9 +51,10 @@ public class Controller extends HttpServlet {
 			SelectDetailMessageService forward = new SelectDetailMessageService();
 			forward.excute(request, response);
 			
-		}else if (command.equals("여기에넣으세요")) {
-			
-			path="";
+		}else if (command.equals("/article1/insertMessage.do")) {
+			System.out.println("insertMessage 불러냄");
+			SendMessageService forward = new SendMessageService();
+			forward.excute(request, response);
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";

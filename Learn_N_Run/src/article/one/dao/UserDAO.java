@@ -74,7 +74,7 @@ public interface UserDAO {
 	 */
 
 	// 내 쪽지함
-	void sendMessage(MessageDTO dto, String id);
+	int sendMessage(MessageDTO dto, String id);
 	/*
 	 * Message보내기. MessageBean객체를 넘김 sql = "INSERT INTO message
 	 * (send_id,receiver_id,content,send_time,read_yn); "VALUES (id,?,?,sysdate,0);

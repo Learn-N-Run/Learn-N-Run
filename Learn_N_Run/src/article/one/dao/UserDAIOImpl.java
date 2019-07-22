@@ -135,8 +135,32 @@ public class UserDAIOImpl implements UserDAO{
 	}
 
 	@Override
-	public void sendMessage(MessageDTO dto, String id) {
-		// TODO Auto-generated method stub
+	public int sendMessage(MessageDTO dto, String send_id) {
+		int RightIdCheck =0;
+		sql = "select id from user where id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getReceiver_user().getId());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				sql = "insert into message(send_id,receiver_id,content,send_time,read_yn) values(?,?,?,now(),0)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, send_id);
+				pstmt.setString(2, dto.getReceiver_user().getId());
+				pstmt.setString(3, dto.getContent());
+				pstmt.executeUpdate();
+				RightIdCheck = 0;
+			}else {
+				RightIdCheck = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		
+		return RightIdCheck;
 		
 	}
 
@@ -213,15 +237,43 @@ public class UserDAIOImpl implements UserDAO{
 			
 			UserDTO udto = new UserDTO();
 			if(rs.next()) {
-				dto.setSend_user(send_user);
+				udto.setId(rs.getString("send_id"));
+				dto.setSend_user(udto);
+				dto.setContent(rs.getString("content"));
+				dto.setSend_time(rs.getTimestamp("send_time"));
+				
+				if(rs.getInt("read_yn")==0) {
+				sql = "update message set read_yn=1 where no=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, MessageNo);
+				pstmt.executeUpdate();
+				dto.setRead_yn(rs.getInt("read_yn"));
+				}
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			if (con != null)
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		}
-		
-		
-		return null;
+		return dto;
 	}
 
 	@Override

@@ -80,11 +80,11 @@ $(function(){
 	/*답장 버튼을 눌렀을때*/
 	$(".send_Message_h").click(function(){
 		var receiver_id = $("#receiver_id").val();
-		$("#real_receiver_id").val(receiver_id);
 		$(".container2_h").fadeOut("fast");
 		$(".container1_h").fadeIn("fast");
 	});
 
+	/*쪽지함을 눌렀을때*/
 	$("#message_info_h").click(function() {
 		$.ajax({
 			type:'POST',
@@ -114,17 +114,44 @@ $(function(){
 		var hi= $(this).attr("data-value");
 		alert(hi)
 		$.ajax({
-			type: "post",
+			type: "POST",
 			url : "selectDetailMessage.do",
 			data : {"messageNo" : hi},
 			success : function(data,textStatus,jqXHR) {
-				alert("성공함")
+				$(".message_main").fadeOut("fast");
+				$(".container2_h").fadeIn("fast");
+				var jsonIn = JSON.parse(data);
+				alert(jsonIn.send_id);
+				$("#receiver_id").val(jsonIn.send_id).html("<span>"+jsonIn.send_time+"</span");
+				
+				$(".textsize").append(jsonIn.content);
 			},error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
 			});
-		$(".message_main").fadeOut("fast");
-		$(".container2_h").fadeIn("fast");
+	});
+	
+	/*쪽지작성이후 보내기를 눌렀을때*/
+	$(document).on("click","#sendMessage_h",function(){
+		$.ajax({
+		type: "POST",
+		url : "insertMessage.do",
+		data : {"receiver_id" : $("#real_receiver_id").val(), "content" : $(".textsize").val() },
+		success : function(data,textStatus,jqXHR) {
+			alert(data);
+			if(data==1){
+				alert("받는이 아이디를 확인하세요")
+				
+			}else{
+				alert("발송 성공")
+				$("container1_h").fadeOut("fast");
+				$(".message_main").fadeIn("fast");	
+			}
+			
+		},error:function(request,status,error){
+	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	       }
+		});
 	});
 	
 });
@@ -298,22 +325,19 @@ $(function(){
 					<span>&nbsp;쪽지 쓰기</span>
 					<button type="button" class="outMessage_h hover_button_h" >나가기</button>
 				</div>
-
-				<div class="message_content">
-					<form method="post" action="">
-						<div class="message_send_top">
-						<span>받는 사람</span> :
-							<input type="text" id="real_receiver_id" name="receiver_id" placeholder="받는사람 ID">
-						</div>
-						<div class="message_send_content">
-							<textarea class="textsize" name="content"></textarea>
-						</div>
-					</form>
-				</div>
-				<div class="bottom_button">
-					<button class="send_Message_h hover_button_h">보내기</button>&nbsp;
-					<button type="button" class="reset_h hover_button_h" >돌아가기</button>
-				</div>
+					<div class="message_content">
+							<div class="message_send_top">
+							<span>받는 사람</span> :
+								<input type="text" id="real_receiver_id" name="receiver_id" placeholder="받는사람 ID">
+							</div>
+							<div class="message_send_content">
+								<textarea class="textsize" name="content"></textarea>
+							</div>
+					</div>
+					<div class="bottom_button">
+						<button type="button" id="sendMessage_h" class="send_Message_h hover_button_h">보내기</button>&nbsp;
+						<button type="button" class="reset_h hover_button_h" >돌아가기</button>
+					</div>
 			</div>
 	
 		<!--end of 쪽지 보내기 -->
@@ -327,14 +351,14 @@ $(function(){
 			<div class="message_content">
 					<div class="message_send_top">
 					<span>받는 사람</span> :
-						<input type="text" value="las2706" readonly="readonly">
+						<input type="text" value="${sessionScope.id }" readonly="readonly">
 					</div>
 					<div class="message_send_top">
 					<span>보낸 사람</span> :
-						<input type="text" id="receiver_id" value="seunghak12" readonly="readonly">
+						<input type="text" id="receiver_id" readonly="readonly">
 					</div>
 					<div class="message_send_content">
-						<textarea class="textsize" name="content" readonly>뀨??</textarea>
+						<textarea class="textsize" name="content" readonly></textarea>
 					</div>
 			</div>
 			<div class="bottom_button">
