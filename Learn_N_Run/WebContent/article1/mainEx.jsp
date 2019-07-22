@@ -6,7 +6,6 @@
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
-<link rel="stylesheet" href="./css/style.css">
 <script src="./js/script.js"></script>
 <!--JQUERY(1EA), BOOTSTRAP(2EA) CDN START LINE-->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>

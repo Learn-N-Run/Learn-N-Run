@@ -4,7 +4,7 @@
 	.mask_h {
 		position: fixed;
 		display: none;
-		z-index: 1;
+		z-index: 999;
 		overflow: hidden;
 		left : 0;
 		top: 0;
@@ -55,19 +55,19 @@
 	    color: white;
 	 }
 	 .message_top>span{
-	 	height: 100%;
-	    background-color: white;
-	    display: inline-block;
-	    border-radius: 20px 20px 0 0;
-	    width: 40%;
-	    color: black;
-	    font-family: 'Jua', sans-serif;
-	    font-weight: 200;
-	    background-color: white;
-	    text-align: center;
-	    box-shadow: 5px 0px 7px grey;
-	    letter-spacing: 3px;
-	    font-size: 17px;
+			height: 100%;
+		    background-color: white;
+		    display: inline-block;
+		    border-radius: 20px 20px 0 0;
+		    width: 40%;
+		    color: black;
+		    font-family: 'Jua', sans-serif;
+		    font-weight: 700;
+		    background-color: white;
+		    text-align: center;
+		    box-shadow: 5px 0px 7px grey;
+		    letter-spacing: 3px;
+		    font-size: 17px;
 	 }
 
 	 /*content영역*/
@@ -105,8 +105,11 @@
 	 
 	 /*메시지 안 영역들*/
 	 .table_h thead td{
-	 	background:  linear-gradient(to bottom , #E6E6E6, #848484);
-	 	color: white;
+	 	background: linear-gradient(to bottom , #E6E6E6, #848484);
+	    color: white;
+	    height: 50px;
+	    font-size: 17px;
+	 	
 	 }
 	 .table_h tbody td{
 	 	height: 30px;
@@ -125,7 +128,7 @@
 	 .container1_h {
 	 			display: none;
 	 			background-color: lightblue;
-	            margin: 0% auto; 
+               margin: 15% auto;
 	            width: 40%; 
 	            border-radius: 5px;
     			border: 1px solid rgba(0,0,0,.4);
@@ -140,7 +143,7 @@
 	 .container2_h{
 	 		display: none;
 	 		background-color: lightblue;
-            margin: 0% auto;
+            margin: 15% auto;
             width: 40%;
             border-radius: 5px;
 			border: 1px solid rgba(0,0,0,.4);
@@ -498,7 +501,6 @@
 	display: none;
 	background: #000; 
 	position: fixed; left: 0; top: 0; 
-	z-index: 10;
 	width: 100%; height: 100%;
 	opacity: 0.8;
 	z-index: 999;
