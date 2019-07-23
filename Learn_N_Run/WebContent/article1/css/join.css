@@ -12,7 +12,7 @@ body {
 
 .required_fieldin {
 	border:2px solid gray;
-	height:650px;
+	height:750px;
 	width:500px;
 	border-radius: 10px;
 	margin: 100px auto 0;
@@ -23,6 +23,13 @@ body {
 	background-color: white;
 	margin-left:45px;
 	margin-top:40px;
+}
+
+#name {
+	border:1px solid black;
+	height: 30px;
+    width: 400px;
+    text-align: left;
 }
 
 #id {

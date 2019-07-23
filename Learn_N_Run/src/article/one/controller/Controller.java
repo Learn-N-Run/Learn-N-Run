@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import article.one.command.Buy_getClassInfoService;
 import article.one.command.DeleteMessageService;
 import article.one.command.InsertbuyClassService;
+import article.one.command.JoinRegisterService;
 import article.one.command.LoginCheckService;
 import article.one.command.SelectDetailMessageService;
 import article.one.command.SelectMessageService;
@@ -101,9 +102,10 @@ public class Controller extends HttpServlet {
 			InsertbuyClassService forward = new InsertbuyClassService();
 			forward.excute(request, response);
 			path="";
-		}else if (command.equals("여기에넣으세요")) {
-			
-			path="";
+		}else if (command.equals("/article1/join.do")) {
+			JoinRegisterService forward = new JoinRegisterService();
+			forward.excute(request, response);
+			path="join.jsp";
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";

@@ -13,6 +13,19 @@
 
 <script type="text/javascript">
 $(function(){
+	
+	$("#name").blur(function(){
+		var name = $(this).val();
+		if(name ==''){
+			$("#nameErr").text("필수 입력 사항입니다.");
+		}else{
+			var reg = /^[가-힣]{2,5}$/;
+			if(!reg.test(name)){
+				$("#nameErr").text("잘 못된 이름입니다.");
+			}else{ $("#nameErr").text(''); }
+		}
+	});
+	
 	$("#id").blur(function(){
 		var id = $(this).val();
 		if(id ==''){
@@ -20,7 +33,7 @@ $(function(){
 		}else{
 			var reg = RegExp(/^[a-zA-Z0-9]{4,12}$/);
 			if(!reg.test(id)){
-				$("#idErr").text("id형식이 맞지 않습니다.");
+				$("#idErr").text("아이디 형식이 맞지 않습니다.");
 			}else{ $("#idErr").text(''); }
 		}
 	});
@@ -32,7 +45,7 @@ $(function(){
 		}else{
 			var reg = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 			if(!reg.test(id)){
-				$("#emailErr").html("email형식이 맞지 않습니다.");
+				$("#emailErr").html("이메일 형식이 맞지 않습니다.");
 			}else{ $("#emailErr").text(''); }
 		}
 	});
@@ -51,10 +64,15 @@ function pwdCheckFunction() {
 		
 function register(){
 	var result = 1;
+	var name = $("#name");
 	var id = $("#id");
 	var email = $("#email");
 	var pwd = $("#pwd");
 			
+	if(name.val()==''){
+		$("#nameErr").text("필수 입력 사항입니다.");
+		result = 0;
+	}
 	if(id.val()==''){
 		$("#idErr").text("필수 입력 사항입니다.");
 		result = 0;
@@ -83,7 +101,12 @@ function register(){
 
 	<div class="required_fieldin">
 		<h1 style="text-align:center; margin-top:30px;"> 회원가입 </h1>
-		<form class="required_field">
+			<form class="required_field" action="${contextPath }/me/join.me" method="post" onsubmit="return register()">
+		<div class="mem_form_group">
+			<label for="name">이름</label><br>
+			<input type="text" class="mem_reg_name" id="name" name="name" placeholder="이름을 입력해주세요."><br>
+			<span style="color: red;" id="nameErr"></span>
+		</div>
 		<div class="mem_form_group">
 			<label for="id">아이디</label><br>
 			<input type="text" class="mem_reg_id" id="id" name="id" placeholder="아이디를 입력해주세요."><br>

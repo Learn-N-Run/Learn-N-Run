@@ -68,10 +68,31 @@ public class UserDAIOImpl implements UserDAO{
 
 	
 	@Override
-	public void addUser(UserDTO dto) {
-		// TODO Auto-generated method stub
+	public int addUser(UserDTO dto) {
+		int state = 0; // 0: 실패, 1: 성공
+
+		try {
+			con = getConnection();
+			sql = "INSERT INTO member(name, id, pass, email) VALUES(?,?,?,?)";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getId());
+			pstmt.setString(3, dto.getPass());
+			pstmt.setString(4, dto.getEmail());
 		
+
+			state = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("addUser()에서 오류: " + e);
+		} finally {
+			freeResource();
+		}
+
+		return state;
 	}
+		
 
 	@Override
 	public int updateUser(UserDTO dto, String pass) {
@@ -508,3 +529,5 @@ class MyAuthentication extends javax.mail.Authenticator {
 		return pa;
 	}
 }
+
+

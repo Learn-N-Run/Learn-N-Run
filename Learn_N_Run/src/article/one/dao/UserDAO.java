@@ -22,7 +22,7 @@ public interface UserDAO {
 	String getEmail(String id);
 	// 유저 부분.
 
-	void addUser(UserDTO dto);
+	int addUser(UserDTO dto);
 
 	/*
 	 * 유저 추가 sql = "INSERT into user(~~,user_group_no) VALUES(?,1); 1번 일반유저 2번 크리에이터
