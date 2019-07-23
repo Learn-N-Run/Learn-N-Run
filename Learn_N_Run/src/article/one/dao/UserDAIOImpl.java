@@ -4,13 +4,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
+import javax.mail.Address;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dto.BuyerDTO;
+import dto.ClassDTO;
 import dto.CouponDTO;
 import dto.JjimDTO;
 import dto.MessageDTO;
@@ -167,10 +175,41 @@ public class UserDAIOImpl implements UserDAO{
 		
 	}
 
+	//이벤트 페이지 이메일 보내기
 	@Override
 	public void sendMail(String receiver, String code_check) {
-		// TODO Auto-generated method stub
-		
+		Properties p = System.getProperties();
+		p.put("mail.smtp.host", "smtp.gmail.com");
+		p.put("mail.smtp.port", "465");
+		p.put("mail.smtp.auth", "true");
+		p.put("mail.smtp.socketFactory.port", "465");
+		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		p.put("mail.smtp.socketFactory.fallback", "false");
+		javax.mail.Authenticator auth = new MyAuthentication();
+
+		Session session = Session.getDefaultInstance(p, auth);
+		MimeMessage msg = new MimeMessage(session);
+
+		try {
+			msg.setSentDate(new Date());
+			Address from = new InternetAddress("Learn&Run");
+			msg.setFrom(from);
+
+			InternetAddress to = new InternetAddress(receiver);
+			msg.setRecipient(Message.RecipientType.TO, to);
+
+			msg.setSubject("Learn&Run 인증번호 입니다.", "UTF-8");
+
+			msg.setText("인증번호 :" + code_check, "UTF-8");
+			msg.setHeader("content-Type", "text/html");
+
+			javax.mail.Transport.send(msg);
+			System.out.println("이메일 보냄!");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override
@@ -299,14 +338,51 @@ public class UserDAIOImpl implements UserDAO{
 
 	@Override
 	public CouponDTO myCouponInfo(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		CouponDTO dto = null;
+		try {
+			sql = "SELECT * from coupon where user_id=?";
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			dto = new CouponDTO();
+			if(rs.next()) {
+			 	dto.setSale1(rs.getInt("sale1"));
+			 	dto.setSale2(rs.getInt("sale2"));
+			 	dto.setSale3(rs.getInt("sale3"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return dto;
 	}
 
 	@Override
-	public int buyClass(int classNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public ClassDTO buyClass(int classNo) {
+		sql = "select * from class where no=?";
+		ClassDTO dto = null;
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			rs = pstmt.executeQuery();
+			dto = new ClassDTO();
+			if(rs.next()) {
+				dto.setCover_img(rs.getString("cover_img"));
+				dto.setTitle(rs.getString("title"));
+				dto.setMaterial_img(rs.getString("material_img"));
+				dto.setMaterial_content(rs.getString("material_content"));
+				dto.setTuition(rs.getInt("tuition"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		
+		return dto;
 	}
 
 	@Override
@@ -327,11 +403,71 @@ public class UserDAIOImpl implements UserDAO{
 		return null;
 	}
 	
+	//1번쿠폰 받기
+	@Override
+	public int getCoupon1(String id) {
+		int register = 1;
+		sql = "select sale1 from coupon where sale1=0 AND user_id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+					sql = "update coupon set sale1=1 where user_id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+			}else {
+				register = 0;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return register;
+	}
+	
+//	sql = "update coupon set sale1=1 where user_id=?";
+//	pstmt = con.prepareStatement(sql);
+//	pstmt.setString(1, id);
+//	pstmt.executeUpdate();
+	
 	//3번 쿠폰 받기. 
 	@Override
-	public int getCoupon3(CouponDTO dto, String id) {
-		
-		return 0;
+	public int getCoupon3(String id) {
+		int register = 1;
+		sql = "select sale1 from coupon where sale3=0 AND user_id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				sql = "select * from user where user_group_no=2 AND id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					sql = "update coupon set sale3=1 where user_id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+				}else {
+					register = -1;
+				}
+			}else {
+				register = 0;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return register;
 	}
 	
 	//이벤트 페이지 유저 이메일 정보 뿌려주기.
@@ -355,4 +491,20 @@ public class UserDAIOImpl implements UserDAO{
 		return email;
 	}
 	
+}
+
+//메일 보내기 위한 g메일 아이디 비밀번호 저장.
+class MyAuthentication extends javax.mail.Authenticator {
+	javax.mail.PasswordAuthentication pa;
+
+	public MyAuthentication() {
+		String id = "seunghak173";
+		String pw = "gkrtmd12";
+
+		pa = new javax.mail.PasswordAuthentication(id, pw);
+	}
+
+	public javax.mail.PasswordAuthentication getPasswordAuthentication() {
+		return pa;
+	}
 }

@@ -1,6 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:choose>
+	<c:when test="${coupon1Register == 1}">
+		<script>
+			window.alert("축하합니다! 쿠폰함에서 쿠폰을 확인하세요!")
+		</script>
+	</c:when>
+	<c:when test="${coupon1Register == 0 }">
+		<script>
+			window.alert("이미 쿠폰을 받으셨습니다! 본 쿠폰은 한계정당 1회만 받을 수 있습니다.")
+		</script>
+	</c:when>
+</c:choose>
+
+<c:choose>
+	<c:when test="${coupon3Register == 1}">
+		<script>
+			window.alert("축하합니다! 쿠폰함에서 쿠폰을 확인하세요!")
+		</script>
+	</c:when>
+	<c:when test="${coupon3Register == 0 }">
+		<script>
+			window.alert("이미 쿠폰을 받으셨습니다! 본 쿠폰은 한계정당 1회만 받을 수 있습니다.")
+		</script>
+	</c:when>
+	<c:when test="${coupon3Register == -1 }">
+		<script>
+			window.alert("크리에이터 지원후 쿠폰을 받으실수 있습니다!")
+		</script>
+	</c:when>
+</c:choose>
+<%!public int getRandom(){
+	int random = 0;
+	random = (int) Math.floor((Math.random() * (99999 - 10000 + 1))) + 10000;
+	return random;
+} %>
 <%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
 <%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html><html><head>
@@ -15,18 +50,37 @@
 <!--외부참조 + CDN END -->
 <script type="text/javascript">
 	$(function () {
-		$(".btn_Email").click()
-	
-		$(".btn_Email2").click(function() {
+		//이메일 인증 보내기
+		$("#emailCheck_h").click(function() {
+			alert("이메일 발송시까지 1~3분 소요될수 있습니다.");
 			$.ajax({
-				type:'POST',
-				url : "coupon3.do",
+				url : "coupon1.do",
+				type : "post",
+				data : {
+					emailReceiver_h : $("#emailReceiver_h").val(),
+					code_check : $("#code_check").val()
+				},
+				dataType : "text",
 				success : function(data) {
+					alert("이메일 을 보내드렸습니다,\n 인증번호를 입력후 쿠폰받기를 눌러주십시오")
 					
-				},error:function(request,status,error){
-			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		       }
+				},error : function() {
+					alert("이메일을 확인하십시오")
+				}
 			});
+		});
+			
+		$("#receive_coupon1_h").click(function() {
+			alert($("#code_check").val() + $(".EmailNumber_h").val() )
+			if( $("#code_check").val() == $(".EmailNumber_h").val() ){
+				location.href="coupon1_register_h.do";
+			}else{
+				alert("인증번호를 확인하세요!");
+			}
+		});
+		
+		$(".btn_Email2").click(function() {
+			location.href="coupon3.do";
 		});	
 	});
 	
@@ -182,11 +236,11 @@
 			</div>
 			<div class="event_wrap1">
 				<div class="rightEmail">
-					<input type="text" class="input_Email" name="email" value="${requestScope.user_email }" readonly="readonly">
-					<button type="button" class="btn_Email">인증 요청</button>
-
-					<input type="text" class="input_Email" name="rightNum">
-					<button type="button" class="btn_Email">쿠폰 받기</button>
+					<input type="text" class="input_Email" id="emailReceiver_h" name="email" value="${requestScope.user_email }" readonly="readonly">
+					<button type="button" class="btn_Email" id="emailCheck_h">인증 요청</button>
+					 <input type="hidden" readonly="readonly" name="code_check" id="code_check" value="<%=getRandom()%>" />
+					<input type="text" class="input_Email EmailNumber_h" name="rightNum">
+					<button type="button" id = "receive_coupon1_h" class="btn_Email">쿠폰 받기</button>
 				</div>
 				<div class="share_event">
 					<button type="button">twitter 공유하기</button>

@@ -14,11 +14,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
 <script type="text/javascript">
+
 	$(function() {
-		$("#event_h").click(function() {
-			
+		$("#buyClass_h").click(function() {
+			location.href="buyClassInfo.do?classno=2";
 		});
 	});
+	
 </script>
 <title></title>
 <style>
@@ -37,6 +39,8 @@
 		<jsp:include page="header.jsp"/>
 			<div id="center">
 				<a href="event.do">이벤트 페이지로 이동</a>
+				<a href="category.jsp">카테고리페이지로 이동</a>
+				<button type="button" id="buyClass_h">구매하기</button>
 			</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>

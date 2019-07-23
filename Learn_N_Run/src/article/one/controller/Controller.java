@@ -8,13 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import article.one.command.Buy_getClassInfoService;
 import article.one.command.DeleteMessageService;
+import article.one.command.InsertbuyClassService;
 import article.one.command.LoginCheckService;
 import article.one.command.SelectDetailMessageService;
 import article.one.command.SelectMessageService;
 import article.one.command.SendMessageService;
+import article.one.command.coupon1EmailSendService;
+import article.one.command.coupon1RegisterService;
 import article.one.command.coupon3Service;
 import article.one.command.getEmailService;
+import article.one.command.selectCouponCountService;
+import article.one.command.selectTuitionService;
 
 // TODO 태흥: ↓web.xml이 아닌 서블릿내에서 매핑작업을 해주시면 됩니다.
 @WebServlet("*.do")
@@ -70,6 +76,33 @@ public class Controller extends HttpServlet {
 		}else if (command.equals("/article1/coupon3.do")) {
 			coupon3Service forward = new coupon3Service();
 			forward.excute(request, response);
+			path="event.jsp";
+		}else if (command.equals("/article1/coupon1.do")) {
+			coupon1EmailSendService forward = new coupon1EmailSendService();
+			forward.excute(request, response);
+			
+		}else if (command.equals("/article1/coupon1_register_h.do")) {
+			coupon1RegisterService forward = new coupon1RegisterService();
+			forward.excute(request, response);
+			path="event.jsp";
+		}else if (command.equals("/article1/selectCouponCount.do")) {
+			selectCouponCountService forward = new selectCouponCountService();
+			forward.excute(request, response);
+			
+		}else if (command.equals("/article1/buyClassInfo.do")) {
+			Buy_getClassInfoService forward = new Buy_getClassInfoService();
+			forward.excute(request, response);
+			path="paymentInfo.jsp";
+		}else if (command.equals("/article1/payment.do")) {
+			selectTuitionService forward = new selectTuitionService();
+			forward.excute(request, response);
+			path="payment.jsp";
+		}else if (command.equals("/article1/buyersubmit.do")) {
+			InsertbuyClassService forward = new InsertbuyClassService();
+			forward.excute(request, response);
+			path="";
+		}else if (command.equals("여기에넣으세요")) {
+			
 			path="";
 		}else if (command.equals("여기에넣으세요")) {
 			
@@ -78,6 +111,12 @@ public class Controller extends HttpServlet {
 			
 			path="";
 		}
+		
+		
+		
+		
+		
+		
 		if(path != null) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		/*▲포워딩주소설정*/

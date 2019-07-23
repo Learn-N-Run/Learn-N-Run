@@ -1,5 +1,18 @@
 mysql 
-
 insert into user_group(no,name) values(1,'회원'),(2,'크리에이터'),(3,'관리자') ;
+
+insert into category(no,name) values(1,'요리');
+insert into category(no,name) values(2,'카메라');
+insert into category(no,name) values(3,'공예');
+insert into category(no,name) values(4,'코딩');
+insert into category(no,name) values(5,'음악');
+insert into category(no,name) values(6,'켈리그래피');
+insert into category(no,name) values(7,'운동');
+insert into category(no,name) values(8,'그림');
+
+회원가입시 
+insert into coupon(user_id) values(?);
+
+
 
 먼저 넣어주기!!

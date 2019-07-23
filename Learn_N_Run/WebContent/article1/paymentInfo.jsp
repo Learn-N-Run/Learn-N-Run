@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
 <%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
+<c:set var="classNo" value="${param.classno }"></c:set>
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
@@ -13,7 +14,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
-
+<script type="text/javascript">
+	alert(${classNo});
+</script>
 <title></title>
 <style>
 	#wrap{
@@ -153,9 +156,10 @@
 }
 
 .section_1_h{
-	display : inline-block;
-	width: 50%;
-	float: left;
+    display: inline-block;
+    width: 50%;
+    float: left;
+    height: 210px;
 }
 
 .section_2_h{
@@ -208,13 +212,13 @@
 					<h4>구매 목록</h4>
 					<div class="section_h">
 						<div class="section_1_h">
-							<img src="img/aaa.jpg">
+							<img src="img/${requestScope.cover_img }">
 						</div>
 						<div class="section_2_h">
 							<span>1. [온라인 수강권]</span>
 						</div>
 						<div class="section_2_h">
-							<p>내가 보고 느끼는 그 장면 그대로, 여행스케치의 모든 것 (20주 수강권)</p>
+							<p>${requestScope.title }</p>
 						</div>
 					</div>
 					
@@ -223,13 +227,13 @@
 				<section class="deliver_1_h">
 					<div class="section_h">
 						<div class="section_1_h">
-							<img src="img/aaa.jpg">
+							<img src="img/${requestScope.material_img }">
 						</div>
 						<div class="section_2_h">
 							<span>2. [준비물]</span>
 						</div>
 						<div class="section_2_h">
-							<p>내가 보고 느끼는 그 장면 그대로, 여행스케치의 모든 것 (20주 수강권)</p>
+							<p>${requestScope.material_content }</p>
 						</div>
 					</div>
 				</section>
@@ -238,7 +242,7 @@
 						<tbody>
 							<tr class="table_1_h">
 								<th align="right">총 금액 : </th>
-								<td align="left"> 100,000원</td>
+								<td align="left"> ${tuition}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -254,7 +258,7 @@
 				</div>
 				
 				<div class="last_pay">
-					<button type="button"><a href="payment.jsp">다음으로</a></button>
+					<button type="button"><a href="payment.do?classno=${classNo}">다음으로</a></button>
 				</div>
 			</div>
 		</div>

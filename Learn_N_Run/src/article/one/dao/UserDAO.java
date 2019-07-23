@@ -7,6 +7,7 @@ package article.one.dao;
 import java.util.List;
 
 import dto.BuyerDTO;
+import dto.ClassDTO;
 import dto.CouponDTO;
 import dto.JjimDTO;
 import dto.MessageDTO;
@@ -14,7 +15,9 @@ import dto.UserDTO;
 
 public interface UserDAO {
 
-	int getCoupon3(CouponDTO dto, String id);
+	int getCoupon1(String id);
+	
+	int getCoupon3(String id);
 	
 	String getEmail(String id);
 	// 유저 부분.
@@ -121,7 +124,7 @@ public interface UserDAO {
 	 */
 
 	// 클래스 결제 페이지
-	int buyClass(int classNo);
+	ClassDTO buyClass(int classNo);
 	/*
 	 * 결제 신청 눌렀을때.. sql = "SELECT tuition FROM class where no = ?"
 	 * 
