@@ -9,23 +9,25 @@
 	#wrap div{
 		background-size: contain;
 	}
-	
-	#myCarousel{
-		
-		
+	#TH_eventCarousel>div>img{
+		max-height: 400px;
+		width: auto;
+		margin: 0px auto;
+	}
+	/* Popularly TOP 5 */
+	#TH_top5{
+		vertical-align: middle;
+		overflow: hidden;
+	}
+	#TH_top5>div{
+		width: 200px;
+		height: 200px;
+	}
+	#TH_top5>span>img{
+		width: 200px;
+		height: 200px;
 	}
 	
-	/*이미지슬라이드  영역 세로 크기*/
-	.sec01{
-	height: 350px;
-	}
-	
-	/*top5  영역 세로 크기*/
-	.sec02{
-	height: 300px;
-	}
-	
-	/* top5  영역에 div태그 크기와 간격*/
 	.sec02>div{
 	
 	float: left; 
@@ -131,9 +133,7 @@
 /*반응형 디자인*/	
 @media (max-width: 724px) {
 	
-	.sec02{
-	height : 800px;
-	}
+
 	.sec02>div{
 	
 	width: 42%; 
@@ -141,17 +141,12 @@
 	
 	}
 	
-	.sec03{
-		height: 1000px;
-	}
 	.sec03>div{
 	width: 30%; 
 	margin: 10%; 
 	
 	}
 }
-/********************▲여기까지 창현씨의 노고 *******************/
-
 
 
 

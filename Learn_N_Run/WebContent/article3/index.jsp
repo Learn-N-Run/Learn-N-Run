@@ -17,94 +17,57 @@
 <title></title>
 </head>
 <body>
-	<div id = "wrap"> <!-- 전체 페이지 감싸는 div 태그 -->
-		
-		<!-- header 부분 -->
-		<jsp:include page="../1_Include/header.jsp"></jsp:include>
-	
-	
-		<!--이미지 슬라이드(캐러셀) 섹션 영역 -->
-		<section class = "sec01">
-	
-		<div id ="myCarousel" class = "carousel slide" data-ride = "carousel">
+	<div id = "wrap">
+		<%-- header--%>
+		<c:import url="/1_Include/header.jsp"></c:import>
+		<%--이벤트 영역 (캐러셀 - 이미지슬라이드):이미지는 하드코딩으로 연결해주기로 함--%>
+		<div id ="TH_event" class = "carousel slide" data-ride = "carousel">
 			<ol class ="carousel-indicators">
-				<li data-target = "#myCarousel" data-slide-to = "0" class="active"></li>
-				<li data-target = "#myCarousel" data-slide-to = "1"></li>
-				<li data-target = "#myCarousel" data-slide-to = "2"></li>
+				<li data-target = "#TH_event" data-slide-to = "0" class="active"></li>
+				<li data-target = "#TH_event" data-slide-to = "1"></li>
+				<li data-target = "#TH_event" data-slide-to = "2"></li>
 			</ol>
-			<div class ="carousel-inner">
+			<div id="TH_eventCarousel" class ="carousel-inner">
 				<div class="item active">
-					<img style = "width: 100%; height: 350px;" src="img/uh.jpg">
+					<img src="img/침영어 (0).jpg">
 				</div>
 				<div class= "item">
-					<img style = "width: 100%; height: 350px;" src="img/popcorn.gif">
+					<img src="img/침영어 (1).jpg">
 				</div>
 				<div class= "item">
-					<img style = "width: 100%; height: 350px;" src="img/gg.jpg">
+					<img src="img/침영어 (2).jpg">
 				</div>
 			</div>
-			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			<a class="left carousel-control" href="#TH_event" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 			</a>
-			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+			<a class="right carousel-control" href="#TH_event" data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</a>
 		</div>
-		</section>
-		<!--이미지 슬라이드 섹션 영역 끝 -->
 		
-		<br><br>
+		<%-- top5 영역 --%>
+<%-- resultset값 뿌릴 때 a태그 href도 같이 지정해주시기바랍니다. --%>
+		<div id="TH_top5">
+			<h3>Popularly TOP 5</h3>
+			
+			<span>
+				<img src="./img/aaa.jpg">	
+			</span>
+			<span>
+				<img src="./img/aaa.jpg">
+			</span>
+			
+			
+			
+			
+		</div>
+		<%-- top5 영역  끝--%>
 		
-		<!-- top5 영역 -->
-		<section class = "sec2">
-		<h3>Popularly TOP5</h3>
-		</section>
-		<section class = "sec02">
-			<div  id = "one">
-			<a href = "#" style="text-decoration: none;">
-				<div style="width: 100%; height: 150px; overflow : hidden;"><img alt="" src="img/ccc.jpg" width="100%" height="100%"></div>
-				<div style="width: 100%; height: 20px;"><h6>카테고리 * 닉넴</h6></div>
-				<div id = "one_div">TITLE1234567891234567891234567891297979879846151116</div>
-			</a>
-			</div>
-			<div  id = "one">
-			<a href = "#" style="text-decoration: none;">
-				<div style="width: 100%; height: 150px; overflow : hidden;"><img alt="" src="img/ccc.jpg" width="100%" height="100%"></div>
-				<div style="width: 100%; height: 20px;"><h6>카테고리 * 닉넴</h6></div>
-				<div id = "one_div">TITLE123456789123456789123456789123456789128997979879846151116</div>
-			</a>
-			</div>
-			<div  id = "one">
-			<a href = "#" style="text-decoration: none;">
-				<div style="width: 100%; height: 150px; overflow : hidden;"><img alt="" src="img/ccc.jpg" width="100%" height="100%"></div>
-				<div style="width: 100%; height: 20px;"><h6>카테고리 * 닉넴</h6></div>
-				<div id = "one_div">TITLE12345678912345678918997979879846151116</div>
-			</a>
-			</div>
-			<div  id = "one">
-			<a href = "#" style="text-decoration: none;">
-				<div style="width: 100%; height: 150px; overflow : hidden;"><img alt="" src="img/ccc.jpg" width="100%" height="100%"></div>
-				<div style="width: 100%; height: 20px;"><h6>카테고리 * 닉넴</h6></div>
-				<div id = "one_div">TITLE12345678912345678912345678912345678912345678997979879846151116123465789456313254879</div>
-			</a>
-			</div>
-			<div  id = "one">
-			<a href = "#" style="text-decoration: none;">
-				<div style="width: 100%; height: 150px; overflow : hidden;"><img alt="" src="img/ccc.jpg" width="100%" height="100%"></div>
-				<div style="width: 100%; height: 20px;"><h6>카테고리 * 닉넴</h6></div>
-				<div id = "one_div">TITLE</div>
-			</a>
-			</div>
-		</section>
-		<!-- top5 영역  끝-->
 		
-		<br><br><br>
-		
-		<!-- 카테고리 아이콘 영역 -->
-		<section class = "sec3">
+		<%-- 카테고리 아이콘 영역 --%>
+		<div id="TH_Category">
 		<h3>Category</h3>
-		</section>
-		<section class = "sec03"> 
 			<div id = "categ">
 				<a style="text-decoration: none; width: 100%;  height: 120px;" href="#" ><img alt="" src="img/activity.png" width="100%" height="100px">
 																  <div style="width: 100%; height: 20px;">운동</div></a>
@@ -144,17 +107,15 @@
 																  <div style="width: 100%; height: 20px;">요리</div></a>
 				
 			</div>
+		</div>			
 			
 			
 			
 			
-			
-		</section>
 			<!-- 카테고리 아이콘 영역  끝-->
 			
 			<!-- 푸터 영역 -->
-		<jsp:include page="../1_Include/footer.jsp"></jsp:include>
-		
+		<c:import url="/1_Include/footer.jsp"></c:import>
 	</div>
 </body>
 </html>

@@ -28,6 +28,7 @@
 	position: absolute;
 	font-size: 20px;
 	font-weight: bold;
+	right: 3vw;
 }
 #inc_menuList>ul>li{
  	margin-left: 10px;
@@ -245,65 +246,69 @@
 </head>
 <body>
 	<header id="inc_header">
-		<div id="inc_mainlogo" class="col-xs-3" align="center">
-			<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
-				<img src="img/large.png">
-			</a>
-		</div>
-		<div class="inc_floating col-xs-9" align="left">
-			<div class="col-xs-6">
-				<form>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="카테고리 + 제목">
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-default" style="background-color: white;">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							</button>
-						</span>
-					</div>
-				</form>
+		<div class="row">
+			<div id="inc_mainlogo" class="col-xs-3" align="center">
+				<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
+					<img src="img/large.png">
+				</a>
 			</div>
-			<div class="col-xs-6" style="text-align: right;">
-				<div id="inc_menuList" class="visible-lg-block">
-					<ul class="list-inline">
-						<!-- 세션영역에서 유저빈의 유무 판별 --> 
-						<c:choose>
-							<c:when test="${null ne sessionScope.user }">
-								<li>
-									<a href="#"
-									 style="text-decoration: none; color: black;">
-										로그아웃
-									</a>
-								</li>
-								<li>
-									<a href="#"
-									 style="text-decoration: none; color: black;">
-										 마이페이지
-									</a>
-								</li>
-							</c:when>
-							<c:when test="${null eq sessionScope.user }">
-								<li>
-									<a href="#"
-									 style="text-decoration: none; color: black;">
-										로그인
-									</a>
-								</li>
-								<li>
-									<a href="#"
-									 style="text-decoration: none; color: black;">
-										회원가입
-									</a>
-								</li>
-							</c:when>
-						</c:choose>
-					</ul>
+			<div class="inc_floating col-xs-9" align="left">
+				<div class="row">
+					<div class="col-xs-6">
+						<form action="" method="GET">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="카테고리 + 제목">
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-default" style="background-color: white;">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+									</button>
+								</span>
+							</div>
+						</form>
+					</div>
+					<div class="col-xs-6" align="right">
+						<button id="inc_hamburger">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+						<div id="inc_menuList" class="visible-lg-block">
+							<ul class="list-inline">
+								<!-- 세션영역에서 유저빈의 유무 판별 --> 
+								<c:choose>
+									<c:when test="${null ne sessionScope.user }">
+										<li>
+											<a href="#"
+											 style="text-decoration: none; color: black;">
+												로그아웃
+											</a>
+										</li>
+										<li>
+											<a href="#"
+											 style="text-decoration: none; color: black;">
+												 마이페이지
+											</a>
+										</li>
+									</c:when>
+									<c:when test="${null eq sessionScope.user }">
+										<li>
+											<a href="#"
+											 style="text-decoration: none; color: black;">
+												로그인
+											</a>
+										</li>
+										<li>
+											<a href="#"
+											 style="text-decoration: none; color: black;">
+												회원가입
+											</a>
+										</li>
+									</c:when>
+								</c:choose>
+							</ul>
+						</div>
+					</div>
 				</div>
-				<button id="inc_hamburger" data-toggle="collapse" data-target="#inc_menuList" aria-expanded="false" aria-controls="#inc_menuList">
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
 			</div>
 		</div>
 	</header>

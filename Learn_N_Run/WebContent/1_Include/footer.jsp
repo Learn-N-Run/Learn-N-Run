@@ -17,40 +17,88 @@
 <title></title>
 </head>
 <body>
-<div id = "wrap">
-<footer style="background-color: #000000; color: #ffffff; text-align: center;">
-		<div class = "container">
-			<div class = "row">
-				<h4>Project : Learn & Run</h4>
-				<div class="col-xs-4">
-					● 사업자 등록번호 <BR> 
-				    214-98754-9874
+	<div id = "wrap">
+		<footer style="padding: 1em; background-color: black; color: rgba(255,255,255,0.9); text-align: center;">
+			<div class="row" >
+				<div class="col-lg-6" style="border-top: 1px solid rgba(255,255,255,0.05)">
+					<h3>
+						Project Learn & Run
+					</h3>
+					<div>
+						<label>Address</label>
+							부산광역시 부산진구 동천로 109 삼한골든게이트빌딩 7층<br>
+						<label>Call</label>
+							051-7777-7777<br>
+						<label>Fax</label>
+							051-7777-7778<br>
+					</div>
 				</div>
-				<div class="col-xs-4">
-					● 부산 본점<br>
-					부산시 부산진구 동전로 역삼동 역삼빌딩 2층 21호
-				</div>
-				<div class="col-xs-4">
-					대표전화 : 051-1234-5678<br>
-					팩스번호 : 051-1234-5678
-				</div>
-				<h5>Copyright 2019</h5>
-				
-				<div>
-					<h4>아이티윌부산 Iot반 3조</h4>
-					<ul class="list-inline">
-						<li>성시현</li>
-						<li>서창현</li>
-						<li>장영진</li>
-						<li>이승학</li>
-						<li>신형석</li>
-						<li>고태흥</li>
-						<li>나중에 고치자</li>
-					</ul>
+				<div class="col-lg-6" style="border-top: 1px solid rgba(255,255,255,0.05)">
+					<div class="row">
+						<h3>
+							프로젝트 참여자
+						</h3>
+						<div class="col-xs-4">
+							<label>구현1팀</label><BR>
+							<ul class="list-inline">
+								<li>
+									<a href="#"
+										style="text-decoration: none; color: rgba(255,255,255,0.9)">
+									신형석
+									</a>
+								</li>
+								<li>
+									<a href="#"
+										style="text-decoration: none; color: rgba(255,255,255,0.9)">
+									이승학
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xs-4">
+							<label>구현2팀</label><BR>
+							<ul class="list-inline">
+								<li>
+									<a href="#"
+										style="text-decoration: none; color: rgba(255,255,255,0.9)">
+									성시현
+									</a>
+								</li>
+								<li>
+									<a href="#"
+										style="text-decoration: none; color: rgba(255,255,255,0.9)">
+									서창현
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xs-4">
+							<label>구현3팀</label><BR>
+							<ul class="list-inline">
+								<li>
+									<a href="#"
+										style="text-decoration: none; color: rgba(255,255,255,0.9)">
+									장영진
+									</a>
+								</li>
+								<li>
+									<a href="#"
+										style="text-decoration: none; color: rgba(255,255,255,0.9)">
+									고태흥
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
-</div>
+			<div class="row" style="border-top: 1px solid rgba(255,255,255,0.05)">
+				<h5>
+					본 페이지는 정식으로 서비스되지 않는 페이지입니다.<BR>
+					해당 컨텐츠는 원저작자의 동의없이 마구썼음
+				</h5>
+			</div>
+		</footer>
+	</div>
 </body>
 </html>
