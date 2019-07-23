@@ -36,7 +36,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="/1_Include/header.jsp"/>
 			<div id="center">
 				<a href="event.do">이벤트 페이지로 이동</a>
 				<a href="category.jsp">카테고리페이지로 이동</a>

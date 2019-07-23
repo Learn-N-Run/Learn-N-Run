@@ -228,7 +228,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="/1_Include/header.jsp"/>
 			<div id="center">
 				<div class="event_allWrap">
 			<div class="event_title">

@@ -3,6 +3,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
 <%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
+<c:set var="result" value="${requestScope.result }"/>
+<c:if test="${result==0 }">
+	<script>alert("비밀번호가 틀립니다.")</script>
+</c:if>
+<c:if test="${result==-1 }">
+	<script>alert("아이디가 틀립니다.")</script>
+</c:if>
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
@@ -17,6 +24,7 @@
 <script type="text/javascript">
 $(function(){
 	
+	var messageNo;
 	$(".login-window").click(function() {
 		
 		var loginBox = $(this).attr('href');
@@ -37,13 +45,12 @@ $(function(){
 		return false;
 	});
 	
-	$('a.close, #mask').live('click', function() { 
+	$('div').on('click','a.close_h, #mask' ,function() { 
 	  $('#mask , .login-popup').fadeOut(300 , function() {
 		$('#mask').remove();  
 	}); 
 	return false;
-	});
-});//로그인
+});
 	
 	/*받은 쪽지함에서 쪽지 작성을 눌렀을때 */
 	$(".message_send_h").click(function(){
@@ -64,11 +71,6 @@ $(function(){
 		$(".container2_h").fadeOut("fast");
 	});
 
-	/*받은 쪽지함에서 컬럼한개를 눌렀을때 상세페이지 로딩*/
-	$("#detail_content").click(function(){
-		$(".message_main").fadeOut("fast");
-		$(".container2_h").fadeIn("fast");
-	});
 
 	/*나가기 버튼을 눌렸을때, mask 없앰*/
 	$(".outMessage_h").click(function(){
@@ -78,34 +80,110 @@ $(function(){
 	/*답장 버튼을 눌렀을때*/
 	$(".send_Message_h").click(function(){
 		var receiver_id = $("#receiver_id").val();
-		$("#real_receiver_id").val(receiver_id);
 		$(".container2_h").fadeOut("fast");
 		$(".container1_h").fadeIn("fast");
 	});
 
+	/*쪽지함을 눌렀을때*/
 	$("#message_info_h").click(function() {
-		alert("클릭함");
 		$.ajax({
 			type:'POST',
 			url : "selectMessage.do",
 			success : function(data,textStatus,jqXHR) {
-				alert(data);
+				$(".mask_h").fadeIn("fast")
+				var jsonInfo = JSON.parse(data);
+				alert(data)
+				var messageInfo = "";
+					
+				for(var i in jsonInfo.message){
+					messageInfo += "<tr id='detail_content' data-value="+jsonInfo.message[i].messageNo+"><td>"+jsonInfo.message[i].send_id+"</td>"
+					/* messageInfo += "<input type='hidden' id='messageNo' name='messageNo' value='"+jsonInfo.message[i].messageNo+"'>" */
+					messageInfo += "<td>"+jsonInfo.message[i].content+"</td>"
+					messageInfo += "<td>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>"
+					messageInfo += "<td>"+jsonInfo.message[i].read_yn+"</td></tr>"
+				}
+				$(".table_h_h").html(messageInfo);
 			},error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
           });
 	});
+
+	/*받은 쪽지함에서 컬럼한개를 눌렀을때 상세페이지 로딩*/
+	$(document).on("click","#detail_content",function(){
+		var hi= $(this).attr("data-value");
+		alert(hi)
+		$.ajax({
+			type: "POST",
+			url : "selectDetailMessage.do",
+			data : {"messageNo" : hi},
+			success : function(data,textStatus,jqXHR) {
+				$(".message_main").fadeOut("fast");
+				$(".container2_h").fadeIn("fast");
+				var jsonIn = JSON.parse(data);
+				alert(jsonIn.send_id);
+				$("#receiver_id").val(jsonIn.send_id).html("<span>"+jsonIn.send_time+"</span");
+				
+				$(".textsize").text(jsonIn.content);
+			},error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
+			});
+	});
+	
+	/*쪽지작성이후 보내기를 눌렀을때*/
+	$(document).on("click","#sendMessage_h",function(){
+		$.ajax({
+		type: "POST",
+		url : "insertMessage.do",
+		data : {"receiver_id" : $("#real_receiver_id").val(), "content" : $(".textsize").val() },
+		success : function(data,textStatus,jqXHR) {
+			alert(data);
+			if(data==1){
+				alert("받는이 아이디를 확인하세요")
+			}else{
+				alert("발송 성공")
+				$("container1_h").fadeOut("fast");
+				$(".message_main").fadeIn("fast");	
+			}
+			
+		},error:function(request,status,error){
+	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	       }
+		});
+	});
+	
+	/*쪽지 삭제를 눌렀을때*/
+	$(document).on("click","#deleteMessage_h", function() {
+		var hi= $("#detail_content").attr("data-value");
+		var result = confirm("해당 메세지를 삭제하시겠습니까?")
+		if(result){
+			$.ajax({
+				type:"POST",
+				url : "deleteMessage.do",
+				data : {"messageNo" : hi},
+				success : function(data) {
+					$(".message_main").fadeIn("fast");
+					$(".mask_h").fadeOut("fast");
+					alert("삭제가 완료 되었습니다.")
+				},error: function(request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+			});	
+			
+		}else{alert("삭제안해")}
+		
+	})
 });
 </script>
 
-<link href="header.css" rel="stylesheet">
+<link href="../2_css/header.css" rel="stylesheet">
 	<!-- header에들어가는 모든 css모음. -->
 
 
 <title></title>
 </head>
 <body>
-	<jsp:include page="loginModal.jsp"></jsp:include>
 	<header id="inc_header">
 		<div class="col-xs-2" align="center">
 			<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
@@ -129,8 +207,7 @@ $(function(){
 				<div id="inc_menuList" class="visible-lg-block">
 					<ul class="list-inline">
 						<!-- 세션영역에서 유저빈의 유무 판별 --> 
-						<c:choose>
-							<c:when test="${null ne sessionScope.user }">
+							<c:if test="${sessionScope.id != null }">
 								<li>
 									<a href="javascript:;" id="message_info_h"
 									 style="text-decoration: none; color: black;">
@@ -149,8 +226,8 @@ $(function(){
 										 마이페이지
 									</a>
 								</li>
-							</c:when>
-							<c:when test="${null eq sessionScope.user }">
+							</c:if>
+							<c:if test="${sessionScope.id == null }">
 								<li>
 									<a href="#login-box" class="login-window"
 									 style="text-decoration: none; color: black;">
@@ -163,8 +240,7 @@ $(function(){
 										회원가입
 									</a>
 								</li>
-							</c:when>
-						</c:choose>
+							</c:if>
 					</ul>
 				</div>
 				<button id="inc_hamburger" data-toggle="collapse" data-target="#inc_menuList" aria-expanded="false" aria-controls="#inc_menuList">
@@ -192,12 +268,13 @@ $(function(){
 		}});
 	</script>
 	
-	<script src="channelio.js"></script>
+	<script src="../2_js/channelio.js"></script>
 	<!-- channelioAPI 불러옴 -->
 	
-
     <div id="login-box" class="login-popup">
+    	
 		<form class="form_h" action="login.do" method="post">
+			<a class="close_h">EXIT</a>
 	        <svg id="ryan" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
 	            <path d="M0,150 C0,65 120,65 120,150" fill="#e0a243" stroke="#000" stroke-width="2.5" />
 	            <g class="ears">
@@ -222,12 +299,95 @@ $(function(){
 	        </svg>
 	        <input class="H_inputText" id="H_login_id" name="userid" type="text" placeholder="email">
 	        <input class="H_inputText" id="H_login_pass" name="userpass" type="password" placeholder="Password">
-	        <input type="submit" class="H_submit" value="로그인하기">
-	        <a href="#" class="H_join">회원가입</a>
-	        <script src="ryan.js"></script>
+	        <input type="submit" class="H_submit" value="Let's log in!">
+	        <a href="#" class="H_join">Join us!</a>
+	        <script src="../2_js/ryan.js"></script>
 	    </form>
    </div>
 	<!-- 로그인 팝업 -->	
+	
+	<!--start of 받은 쪽지함-->
+	<div class="mask_h">
+		<div class="message_main">
+			<div class="message_top">
+				<span>&nbsp;받은 쪽지함</span>
+				<button type="button" class="outMessage_h hover_button_h">나가기</button>
+			</div>
+			<div class="message_content">
+				<br>
+				<!-- <button id="message_send_h">메세지 보내기</button> -->
+				<div class="table_h">
+					<table>
+						<thead>
+							<tr>
+								<td width="15%">보낸 사람</td>
+								<td width="60%">제 목</td>
+								<td width="15%">받은 시간</td>
+								<td width="10%">읽음 유무</td>
+							</tr>
+						</thead>
+						<tbody class="table_h_h">
+						</tbody>
+					</table>
+				</div>
+				<span>[1]</span>
+			</div>
+			<div align="right" class="bottom_button">
+				<button type="button" class="message_send_h hover_button_h">쪽지 쓰기</button>
+			</div>
+		</div>
+		<!--end of 받은 쪽지함-->
+
+		<!--start of 쪽지 쓰기-->
+			<div class="container1_h">
+				<div class="message_top">
+					<span>&nbsp;쪽지 쓰기</span>
+					<button type="button" class="outMessage_h hover_button_h" >나가기</button>
+				</div>
+					<div class="message_content">
+							<div class="message_send_top">
+							<span>받는 사람</span> :
+								<input type="text" id="real_receiver_id" name="receiver_id" placeholder="받는사람 ID">
+							</div>
+							<div class="message_send_content">
+								<textarea class="textsize" name="content"></textarea>
+							</div>
+					</div>
+					<div class="bottom_button">
+						<button type="button" id="sendMessage_h" class="send_Message_h hover_button_h">보내기</button>&nbsp;
+						<button type="button" class="reset_h hover_button_h" >돌아가기</button>
+					</div>
+			</div>
+	
+		<!--end of 쪽지 보내기 -->
+
+		<!--start of 쪽지 상세보기 -->
+		<div class="container2_h">
+			<div class="message_top">
+				<span>&nbsp;받은 쪽지</span>
+				<button type="button"class="outMessage_h hover_button_h">나가기</button>
+			</div>
+			<div class="message_content">
+					<div class="message_send_top">
+					<span>받는 사람</span> :
+						<input type="text" value="${sessionScope.id }" readonly="readonly">
+					</div>
+					<div class="message_send_top">
+					<span>보낸 사람</span> :
+						<input type="text" id="receiver_id" readonly="readonly">
+					</div>
+					<div class="message_send_content">
+						<textarea class="textsize" name="content" readonly></textarea>
+					</div>
+			</div>
+			<div class="bottom_button">
+				<button type="button" id="deleteMessage_h" class="message_delete_h hover_button_h">삭제하기</button>
+				<button class="send_Message_h hover_button_h">답장하기</button>&nbsp;
+				<button type="button" class ="reset1_h hover_button_h">돌아가기</button>
+			</div>
+		</div>
+	</div>
+	<!--end of 쪽지보내기 -->
 
 </body>
 </html>
