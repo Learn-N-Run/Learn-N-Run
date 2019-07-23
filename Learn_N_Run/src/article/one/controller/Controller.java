@@ -19,6 +19,7 @@ import article.one.command.SendMessageService;
 import article.one.command.coupon1EmailSendService;
 import article.one.command.coupon1RegisterService;
 import article.one.command.coupon3Service;
+import article.one.command.delUserService;
 import article.one.command.getEmailService;
 import article.one.command.selectCouponCountService;
 import article.one.command.selectTuitionService;
@@ -106,9 +107,10 @@ public class Controller extends HttpServlet {
 			JoinRegisterService forward = new JoinRegisterService();
 			forward.excute(request, response);
 			
-		}else if (command.equals("여기에넣으세요")) {
+		}else if (command.equals("/article1/signout.do")) {
+			delUserService forward = new delUserService();
+			forward.excute(request, response);
 			
-			path="";
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";

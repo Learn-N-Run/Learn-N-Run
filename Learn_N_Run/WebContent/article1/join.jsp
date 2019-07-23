@@ -103,7 +103,7 @@ function register(){
 		<h1 style="text-align:center; margin-top:30px;"> 회원가입 </h1>
 			<form class="required_field" action="join.do" method="post" onsubmit="return register()">
 		<div class="mem_form_group">
-			<label for="name">이름</label><br>
+			<label for="name">이름(2-5자)</label><br>
 			<input type="text" class="mem_reg_name" id="name" name="name" placeholder="이름을 입력해주세요."><br>
 			<span style="color: red;" id="nameErr"></span>
 		</div>

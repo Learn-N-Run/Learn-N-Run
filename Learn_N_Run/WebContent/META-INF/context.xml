@@ -6,7 +6,7 @@
 	type="javax.sql.DataSource"
 	driverClassName="com.mysql.cj.jdbc.Driver"
 	url="jdbc:mysql://127.0.0.1:3306/learnrun?serverTimezone=UTC"
-	username="learnrun"
+	username="root"
 	password="1234"	
 	useSSL="false"
 	serverTimezone="UTC"
