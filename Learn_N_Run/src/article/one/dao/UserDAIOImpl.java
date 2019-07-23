@@ -73,7 +73,7 @@ public class UserDAIOImpl implements UserDAO{
 
 		try {
 			con = getConnection();
-			sql = "INSERT INTO member(name, id, pass, email, user_group_no, joinDate) VALUES(?,?,?,?,1,now())";
+			sql = "INSERT INTO user(name, id, pass, email, user_group_no, joinDate) VALUES(?,?,?,?,1,now())";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getName());
@@ -88,7 +88,6 @@ public class UserDAIOImpl implements UserDAO{
 		} finally {
 			freeResource();
 		}
-
 		return result;
 	}
 		

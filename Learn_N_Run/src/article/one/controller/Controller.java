@@ -105,7 +105,7 @@ public class Controller extends HttpServlet {
 		}else if (command.equals("/article1/join.do")) {
 			JoinRegisterService forward = new JoinRegisterService();
 			forward.excute(request, response);
-			path="join.jsp";
+			
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";

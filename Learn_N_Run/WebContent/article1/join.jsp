@@ -38,7 +38,7 @@ $(function(){
 		}
 	});
 
-	$("#email").blur(function(){
+/* 	$("#email").blur(function(){
 		var email = $(this).val();
 		if(email ==''){
 			$("#emailErr").text("필수 입력 사항입니다.");
@@ -48,7 +48,7 @@ $(function(){
 				$("#emailErr").html("이메일 형식이 맞지 않습니다.");
 			}else{ $("#emailErr").text(''); }
 		}
-	});
+	}); */
 }); 
 
 
@@ -101,7 +101,7 @@ function register(){
 
 	<div class="required_fieldin">
 		<h1 style="text-align:center; margin-top:30px;"> 회원가입 </h1>
-			<form class="required_field" action="${contextPath }/me/join.me" method="post" onsubmit="return register()">
+			<form class="required_field" action="join.do" method="post" onsubmit="return register()">
 		<div class="mem_form_group">
 			<label for="name">이름</label><br>
 			<input type="text" class="mem_reg_name" id="name" name="name" placeholder="이름을 입력해주세요."><br>
