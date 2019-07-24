@@ -1,10 +1,13 @@
 package article.one.command;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import article.one.dao.UserDAIOImpl;
 
 public class delUserService implements Service{
 
@@ -14,7 +17,21 @@ public class delUserService implements Service{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pwd");
 		
+		UserDAIOImpl dao = new UserDAIOImpl();
+		int result = dao.delUser(id, pass);
+		
+		PrintWriter out = response.getWriter();
+		
+		out.println("<script>");
+		out.println("var signout;");
+		out.println("signout=confirm('정말 탈퇴를 하시겠습니까?')");
+		out.print("</script>");
+
+		System.out.println(" 탈퇴완료 ");
+		out.close();
 	}
 	
 }

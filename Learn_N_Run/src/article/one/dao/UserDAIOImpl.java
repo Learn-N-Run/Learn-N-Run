@@ -97,16 +97,16 @@ public class UserDAIOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
-	public int delUser(UserDTO dto) {
+	public int delUser(String id, String pass) {
 		int result = 0;
 		try {
 			con = getConnection();
 			sql = "DELETE FROM user WHERE id=? and pass=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getId());
-			pstmt.setString(2, dto.getPass());
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
 			result = pstmt.executeUpdate();
 			System.out.println("delUser return:" + result);
 			
@@ -117,7 +117,7 @@ public class UserDAIOImpl implements UserDAO{
 		}
 		return result;	
 	}
-
+	//아이디 중복검사 메소드
 	@Override
 	public int idCheck(String id) {
 		int result = 1;

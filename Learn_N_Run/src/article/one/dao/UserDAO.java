@@ -34,7 +34,7 @@ public interface UserDAO {
 	 * "SELECT pass from user where pass=?" sql =
 	 * "UPDATE user SET pass=?, WHERE pass=?"
 	 */
-	int delUser(UserDTO dto);
+	int delUser(String id, String pass);
 
 	/*
 	 * 유저 삭제 비밀번호 값 확인, id컬럼 삭제. sql = "SELECT pass from user where id=?" DELETE

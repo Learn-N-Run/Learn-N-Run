@@ -16,7 +16,7 @@
 
 <%
 HttpSession session2 = request.getSession();
-session2.setAttribute("id", "예시, 나중 삭제");
+session2.setAttribute("id", "삭제해야될 세션아이디 영역");
 String id = (String)session.getAttribute("id");
 %>
 
@@ -37,7 +37,7 @@ function pwdCheckFunction() {
 			<form class="required_field" action="delUserService.do" method="post" onsubmit="return register()">
 		<div class="mem_form_group">
 			<label for="id">아이디</label><br>
-			<input type="text" class="mem_out_id" id="id" name="id" value="${id }" readonly><br>
+			<input style="background-color: gray" type="text" class="mem_out_id" id="id" name="id" value="${id }" readonly><br>
 		</div>
 		<div class="mem_form_group">
 			<label for="pwd">비밀번호를 입력하세요.</label><br>
