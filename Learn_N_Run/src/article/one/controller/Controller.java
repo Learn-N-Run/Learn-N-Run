@@ -115,6 +115,10 @@ public class Controller extends HttpServlet {
 		}else if (command.equals("/article1/idCheckService.do")) {
 			idCheckService forward = new idCheckService();
 			forward.excute(request, response);
+		}else if (command.equals("/article1/delUser.do")) {
+			delUserService forward = new delUserService();
+			forward.excute(request, response);
+			path="mainEx.jsp";
 		}
 		
 		

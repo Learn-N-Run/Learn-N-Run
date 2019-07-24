@@ -99,29 +99,43 @@ public class UserDAIOImpl implements UserDAO{
 	}
 
 	@Override
-	public void delUser(UserDTO dto) {
-		
-		
+	public int delUser(UserDTO dto) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql = "DELETE FROM user WHERE id=? and pass=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPass());
+			result = pstmt.executeUpdate();
+			System.out.println("delUser return:" + result);
+			
+		} catch (Exception e) {
+			System.out.println("delUser 오류: " + e);
+		} finally {
+			freeResource();
+		}
+		return result;	
 	}
 
 	@Override
 	public int idCheck(String id) {
-        int result = 1;
-        try {
-            con = getConnection();
-            sql = "select * from user where id = ?";
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, id);
-            rs = pstmt.executeQuery();
-            
-            if(rs.next()) result = 0;
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            freeResource();
-        }
-        return result;
+		int result = 1;
+		try {
+			con = getConnection();
+			sql = "select * from user where id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result = 0;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return result;
 	}
 
 	//로그인 시 아이디체크 메소드
@@ -424,6 +438,7 @@ public class UserDAIOImpl implements UserDAO{
 	
 	//class 구매(쿠폰있음)
 	@Override
+<<<<<<< HEAD
 	public void addBuy(BuyerDTO bean, CouponDTO cdto, String id, int classNo) {
 		sql = "insert into receiver_info (name,number,address1,address2,address3,delievery_msg) values (?,?,?,?,?,?)";
 		try {
@@ -507,6 +522,22 @@ public class UserDAIOImpl implements UserDAO{
 		}finally {
 			freeResource();	
 		}
+=======
+	public CouponDTO CouponClass(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public void addBuy(BuyerDTO bean, CouponDTO dto, String id, int classNo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addBuy(BuyerDTO bean, String id, int classNo) {
+		// TODO Auto-generated method stub
+>>>>>>> f927b3df0dd04cb1129653f70125279a6a7e2a60
 		
 	}
 

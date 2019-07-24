@@ -12,7 +12,7 @@ body {
 
 .required_fieldin {
 	border:2px solid gray;
-	height:400px;
+	height:500px;
 	width:500px;
 	border-radius: 10px;
 	margin: 100px auto 0;
@@ -33,6 +33,13 @@ body {
 }
 
 #pwd {
+	border:1px solid black;
+	height: 30px;
+    width: 400px;
+    text-align: left;
+}
+
+#pwdCkd {
 	border:1px solid black;
 	height: 30px;
     width: 400px;

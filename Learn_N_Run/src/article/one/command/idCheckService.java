@@ -15,6 +15,7 @@ public class idCheckService implements Service{
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		
 		String id = request.getParameter("id");
 		System.out.println("중복검사 할 id : " + id);
 		
