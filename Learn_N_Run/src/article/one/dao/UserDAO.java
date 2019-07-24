@@ -143,6 +143,8 @@ public interface UserDAO {
 	 * 
 	 * session영역에저장.
 	 */
+	
+	void addBuy(BuyerDTO bean,CouponDTO dto, String id, int classNo);
 
 	// 찜목록 페이지
 	JjimDTO getJjim(String id);

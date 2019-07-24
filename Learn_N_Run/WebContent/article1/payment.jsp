@@ -345,7 +345,7 @@
 				</div>
 
 				<div class="content_wrap_h">
-					<form action="buyersubmit.do" method="post">
+					<form action="buyersubmit.do?classNo=${classNo }" method="post">
 						<!-- 배송 정보 입력창 부분 -->
 						<section class="deliver_h">
 							<h4>배송 정보</h4>
@@ -368,7 +368,7 @@
 							<div class="section_h">
 								<p>배송 시 남기실 말</p>
 								<p class="ex_h">예) 물건을 경비실에 맡겨주세요, 빠른배송 부탁드리겠습니다</p>
-								<textarea rows="3" cols="80%"></textarea>
+								<textarea rows="3" cols="80%" name="content"></textarea>
 							</div>
 						</section>
 	
