@@ -245,6 +245,7 @@ public class UserDAIOImpl implements UserDAO{
 
 	}
 
+	//안읽은 쿠폰 갯수 확인.
 	@Override
 	public int countReadMessage(String id) {
 		// TODO Auto-generated method stub
@@ -369,6 +370,7 @@ public class UserDAIOImpl implements UserDAO{
 		}
 	}
 
+	//나의 쿠폰 정보 확인 메소드
 	@Override
 	public CouponDTO myCouponInfo(String id) {
 		CouponDTO dto = null;
@@ -392,6 +394,7 @@ public class UserDAIOImpl implements UserDAO{
 		return dto;
 	}
 
+	//클래스 구매버튼 눌렀을때, 클래스 정보 확인 메소드
 	@Override
 	public ClassDTO buyClass(int classNo) {
 		sql = "select * from class where no=?";
@@ -418,16 +421,60 @@ public class UserDAIOImpl implements UserDAO{
 		return dto;
 	}
 
+	
+	//class 구매(쿠폰있음)
 	@Override
-	public CouponDTO CouponClass(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void addBuy(BuyerDTO bean, CouponDTO dto, String id, int classNo) {
+	public void addBuy(BuyerDTO bean, CouponDTO cdto, String id, int classNo) {
+		sql = "insert into receiver_info (name,number,address1,address2,address3,delievery_msg) values (?,?,?,?,?,?)";
+		try {
+			con = getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bean.getReceiver().getName());
+			pstmt.setInt(2, bean.getReceiver().getNumber());
+			pstmt.setString(3, bean.getReceiver().getAddress1());
+			pstmt.setString(4, bean.getReceiver().getAddress2());
+			pstmt.setString(5, bean.getReceiver().getAddress3());
+			pstmt.setString(6, bean.getReceiver().getDelievery_msg());
+			int result = pstmt.executeUpdate();
+			if(result == 1) {
+				sql = "insert into buyer(user_id,receiver_info_no,last_tuition,order_date,class_no) "
+						+ "values(?,(select last_insert_id() from receiver_info),?,now(),?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				System.out.println(id);
+				pstmt.setInt(2, bean.getLast_tuition());
+				System.out.println(bean.getLast_tuition());
+				pstmt.setInt(3, classNo);
+				System.out.println(classNo);
+				int result2 = pstmt.executeUpdate();
+				if(result2 == 1) {
+					if(cdto.getSale1()==1) {
+						sql = "update into coupon(sale1) values(0)";
+					}else if(cdto.getSale2()==1) {
+						sql = "update into coupon(sale2) values(0)";
+					}else if(cdto.getSale3()==1) {
+						sql = "update into coupon(sale3) values(0)";
+					}
+					pstmt = con.prepareStatement(sql);
+					pstmt.executeUpdate();
+				}else {
+					con.rollback();
+				}
+			}else {
+				con.rollback();
+			}
+			con.commit();
+			con.setAutoCommit(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();	
+		}
 		
-		
 	}
+	
+	//class 구매(쿠폰없음)
 	@Override
 	public void addBuy(BuyerDTO bean, String id, int classNo) {
 		sql = "insert into receiver_info (name,number,address1,address2,address3,delievery_msg) values (?,?,?,?,?,?)";
@@ -447,7 +494,8 @@ public class UserDAIOImpl implements UserDAO{
 						+ "values(?,(select last_insert_id() from receiver_info),?,now(),?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
-				pstmt.setInt(2, classNo);
+				pstmt.setInt(2, bean.getLast_tuition());
+				pstmt.setInt(3, classNo);
 				pstmt.executeUpdate();
 			}else {
 				con.rollback();
@@ -462,12 +510,6 @@ public class UserDAIOImpl implements UserDAO{
 		
 	}
 
-	@Override
-	public JjimDTO getJjim(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	//1번쿠폰 받기
 	@Override
 	public int getCoupon1(String id) {

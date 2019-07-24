@@ -392,7 +392,7 @@
 										</tr>
 										<tr>
 											<th>최종 가격</th>
-											<td class="last_tuition"></td>
+											<td class="last_tuition"><input type="text" name="last_tuition">원</td>
 										</tr>
 									</tbody>
 								</table>

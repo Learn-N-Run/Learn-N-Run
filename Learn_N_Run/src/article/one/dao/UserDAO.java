@@ -130,12 +130,6 @@ public interface UserDAO {
 	 * 
 	 */
 
-	CouponDTO CouponClass(String id);
-	/*
-	 * 쿠폰 적용 눌렀을때.. sql = "SELECT * FROM coupon WHERE user_id=?"; 없으면 없다고 띄우고 있으면
-	 * 사용할수있게함.
-	 */
-
 	void addBuy(BuyerDTO bean, String id, int classNo);
 	/*
 	 * 
@@ -145,11 +139,5 @@ public interface UserDAO {
 	 */
 	
 	void addBuy(BuyerDTO bean,CouponDTO dto, String id, int classNo);
-
-	// 찜목록 페이지
-	JjimDTO getJjim(String id);
-	/*
-	 * 내 찜목록 눌렀을때... SELECT cover_img, title,
-	 */
 
 }
