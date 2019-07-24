@@ -1,52 +1,94 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--í˜ì´ì§€ì¸ì½”ë”© --%><%request.setCharacterEncoding("UTF-8"); %>
+<%--í”„ë¡œì íŠ¸ê²½ë¡œì„ ì–¸--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width">
+<!--ì™¸ë¶€ì°¸ì¡°(script.js, style.css) START LINE -->
+<link rel="stylesheet" href="./css/style.css">
+<script src="./js/script.js"></script>
+<!--JQUERY(1EA), BOOTSTRAP(2EA) CDN START LINE-->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!--ì™¸ë¶€ì°¸ì¡° + CDN END -->
 <title>Insert title here</title>
 </head>
 <body>
-		<%--´ñ±Û ÀüÃ¼ divÅÂ±× --%>
-	<div>			
-		<%--»ó´Ü Ä¿¹Â´ÏÆ¼ ¹× ±Û ÀÛ¼º divÅÂ±× --%>
+
+	<style>
+	div{
+		width:100%;
+	}	
+	
+	.COco{
+		text-align:left;
+		display: block;
+		clear:both;
+		
+	}
+	.WWrite{
+		background-color: rgb(27, 28, 29);
+		color: white;
+		float:right;
+		width:auto;
+		margin:0px;
+		box-sizing:border-box;
+		text-decoration: none;
+		clear:both;
+		
+	}
+	
+	</style>
+
+<div id="wrap">
+			<%-- header--%>
+		<c:import url="/1_Include/header.jsp"></c:import>
+		<%--ëŒ“ê¸€ ì „ì²´ divíƒœê·¸ --%>
+	<div >			
+		<%--ìƒë‹¨ ì»¤ë®¤ë‹ˆí‹° ë° ê¸€ ì‘ì„± divíƒœê·¸ --%>
 		<div>		
-			<h3>
-			Ä¿¹Â´ÏÆ¼
+			<h3 class="COco">
+			ì»¤ë®¤ë‹ˆí‹°
 				<small>
-					*°³ÀÇ ±Û !
+					*ê°œì˜ ê¸€ !
 				</small>
+				<a href="classNewWrite.jsp" class="WWrite">ê¸€ ì‘ì„±í•˜ê¸°</a>
 			</h3>  
-			<a href="classNewWrite.jsp" >±Û ÀÛ¼ºÇÏ±â</a>
+			
 		</div>
-				<%--ÀÌ¸§ ¹× ÀÛ¼ºÀÏ --%>
-		<div>
-			<h3>À¯Àú ÀÌ¸§ !</h3>
-			<h4>ÀÛ¼ºÀÏ !</h4>
+				<%--ì´ë¦„ ë° ì‘ì„±ì¼ --%>
+		<div style="clear:both";>
+			<h3>ìœ ì € ì´ë¦„ !</h3>
+			<h4>ì‘ì„±ì¼ !</h4>
 		</div>
-		<%-- ±Û³»¿ë --%>	
+		<%-- ê¸€ë‚´ìš© --%>	
 		<div>		
 			content !!!!!!!!!!!!!!!!!!!!!!
 		</div>
-		<%--´ë´ñ±Û ÀüÃ¼ divÅÂ±× --%>
+		<%-- í´ë˜ìŠ¤ ëŒ€ëŒ“ê¸€ ì „ì²´ divíƒœê·¸ --%>
 		<div>
-			<%--´ë´ñ±Û ? ÀÛ¼ºÀÚ ¿Í ³¯Â¥ ! --%>
+			<%--í´ë˜ìŠ¤ ëŒ€ëŒ“ê¸€ ? ì‘ì„±ì ì™€ ë‚ ì§œ ! --%>
 			<div>
-				<h4>À¯Àú ÀÌ¸§ °ú ÀÛ¼ºÀÏ !!!!</h4>
+				<h4>ìœ ì € ì´ë¦„ ê³¼ ì‘ì„±ì¼ !!!!</h4>
 			</div>
-			<%--´ë´ñ±Û ³»¿ë¤·!!!!!!!! --%>
+			<%--í´ë˜ìŠ¤ ëŒ€ëŒ“ê¸€ ë‚´ìš©ã…‡!!!!!!!! --%>
 			<div>
 				<p>
-					´ë´ñ±Û ³»¿ëÀÔ´Ï´Ù¾Æ!!!
+					ëŒ€ëŒ“ê¸€ ë‚´ìš©ì…ë‹ˆë‹¤ì•„!!!
 				</p>
 			</div>
 		</div>
-		<%--´ñ±Û ÀÔ·Â textarea¿Í ´ñ±ÛÀü¼Û¹öÆ°! --%>
-		<div>
-			<textarea rows="10" cols="100" placeholder="´ñ±ÛÀ» ÀÔ·Â ÇÏ¼¼¿À !"></textarea>
-			<button type="submit">È÷¿ê</button>
-		</div>
+		<%--í´ë˜ìŠ¤ëŒ€ëŒ“ê¸€ ì…ë ¥ textareaì™€ ëŒ“ê¸€ì „ì†¡ë²„íŠ¼! --%>
+		<form action="classReply.do">
+			<input type="text" placeholder="ëŒ€ëŒ“ê¸€ì„ ì…ë ¥ í•˜ì„¸ì˜¤ !">
+			<button type="submit">ë²„ íŠ¼ !</button>
+		</form>
 	</div>
-
+	<!-- í‘¸í„° ì˜ì—­ -->
+		<c:import url="/1_Include/footer.jsp"></c:import>
+</div>
 </body>
 </html>
