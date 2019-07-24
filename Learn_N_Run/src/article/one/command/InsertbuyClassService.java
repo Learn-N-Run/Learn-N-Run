@@ -18,7 +18,7 @@ public class InsertbuyClassService implements Service {
 		request.getParameter("address1");
 		request.getParameter("address2");
 		request.getParameter("address3");
-		request.getParameter("address4");
+		request.getParameter("content");
 		
 	}
 }

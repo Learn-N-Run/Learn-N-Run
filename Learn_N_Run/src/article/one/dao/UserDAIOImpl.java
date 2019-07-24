@@ -102,13 +102,26 @@ public class UserDAIOImpl implements UserDAO{
 	public void delUser(UserDTO dto) {
 		
 		
-		
 	}
 
 	@Override
 	public int idCheck(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+        int result = 1;
+        try {
+            con = getConnection();
+            sql = "select * from user where id = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) result = 0;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            freeResource();
+        }
+        return result;
 	}
 
 	//로그인 시 아이디체크 메소드

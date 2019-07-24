@@ -199,11 +199,11 @@
 					</tr>
 					<tr>
 						<th class="coupon2"></th>
-						<td class="coupon2_h">2개</td>
+						<td class="coupon2_h"></td>
 					</tr>
 					<tr>
 						<th class="coupon3"></th>
-						<td class="coupon3_h">2개</td>
+						<td class="coupon3_h"></td>
 					</tr>
 				</table>
 				<a href="javascript:;"><div class="coupon_bottom_h">쿠폰 받으러 가기!</div></a>
