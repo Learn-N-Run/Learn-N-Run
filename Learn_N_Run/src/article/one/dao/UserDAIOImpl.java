@@ -438,7 +438,6 @@ public class UserDAIOImpl implements UserDAO{
 	
 	//class 구매(쿠폰있음)
 	@Override
-<<<<<<< HEAD
 	public void addBuy(BuyerDTO bean, CouponDTO cdto, String id, int classNo) {
 		sql = "insert into receiver_info (name,number,address1,address2,address3,delievery_msg) values (?,?,?,?,?,?)";
 		try {
@@ -520,27 +519,10 @@ public class UserDAIOImpl implements UserDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			freeResource();	
+			freeResource();
 		}
-=======
-	public CouponDTO CouponClass(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public void addBuy(BuyerDTO bean, CouponDTO dto, String id, int classNo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addBuy(BuyerDTO bean, String id, int classNo) {
-		// TODO Auto-generated method stub
->>>>>>> f927b3df0dd04cb1129653f70125279a6a7e2a60
-		
-	}
-
+				
+}
 	//1번쿠폰 받기
 	@Override
 	public int getCoupon1(String id) {
@@ -567,11 +549,6 @@ public class UserDAIOImpl implements UserDAO{
 		}
 		return register;
 	}
-	
-//	sql = "update coupon set sale1=1 where user_id=?";
-//	pstmt = con.prepareStatement(sql);
-//	pstmt.setString(1, id);
-//	pstmt.executeUpdate();
 	
 	//3번 쿠폰 받기. 
 	@Override

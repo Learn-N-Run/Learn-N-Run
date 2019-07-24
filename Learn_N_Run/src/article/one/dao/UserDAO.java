@@ -117,12 +117,6 @@ public interface UserDAO {
 
 //-------------------------------------------------------------------쪽지주고받기, 
 
-	// 쿠폰함 페이지
-	CouponDTO myCouponInfo(String id);
-	/*
-	 * 내 쿠폰함 눌렀을때... sql = "SELECT * FROM coupon WHERE user_id=?";
-	 */
-
 	// 클래스 결제 페이지
 	ClassDTO buyClass(int classNo);
 	/*
@@ -139,5 +133,7 @@ public interface UserDAO {
 	 */
 	
 	void addBuy(BuyerDTO bean,CouponDTO dto, String id, int classNo);
+
+	CouponDTO myCouponInfo(String id);
 
 }
