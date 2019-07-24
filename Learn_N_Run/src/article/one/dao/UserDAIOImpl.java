@@ -99,29 +99,43 @@ public class UserDAIOImpl implements UserDAO{
 	}
 
 	@Override
-	public void delUser(UserDTO dto) {
-		
-		
+	public int delUser(UserDTO dto) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql = "DELETE FROM user WHERE id=? and pass=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPass());
+			result = pstmt.executeUpdate();
+			System.out.println("delUser return:" + result);
+			
+		} catch (Exception e) {
+			System.out.println("delUser 오류: " + e);
+		} finally {
+			freeResource();
+		}
+		return result;	
 	}
 
 	@Override
 	public int idCheck(String id) {
-        int result = 1;
-        try {
-            con = getConnection();
-            sql = "select * from user where id = ?";
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, id);
-            rs = pstmt.executeQuery();
-            
-            if(rs.next()) result = 0;
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            freeResource();
-        }
-        return result;
+		int result = 1;
+		try {
+			con = getConnection();
+			sql = "select * from user where id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result = 0;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return result;
 	}
 
 	//로그인 시 아이디체크 메소드
@@ -423,42 +437,16 @@ public class UserDAIOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
 	public void addBuy(BuyerDTO bean, CouponDTO dto, String id, int classNo) {
-		
+		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void addBuy(BuyerDTO bean, String id, int classNo) {
-		sql = "insert into receiver_info (name,number,address1,address2,address3,delievery_msg) values (?,?,?,?,?,?)";
-		try {
-			con = getConnection();
-			con.setAutoCommit(false);
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bean.getReceiver().getName());
-			pstmt.setInt(2, bean.getReceiver().getNumber());
-			pstmt.setString(3, bean.getReceiver().getAddress1());
-			pstmt.setString(4, bean.getReceiver().getAddress2());
-			pstmt.setString(5, bean.getReceiver().getAddress3());
-			pstmt.setString(6, bean.getReceiver().getDelievery_msg());
-			int result = pstmt.executeUpdate();
-			if(result == 1) {
-				sql = "insert into buyer(user_id,receiver_info_no,last_tuition,order_date,classno) "
-						+ "values(?,(select last_insert_id() from receiver_info),?,now(),?)";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, id);
-				pstmt.setInt(2, classNo);
-				pstmt.executeUpdate();
-			}else {
-				con.rollback();
-			}
-			con.commit();
-			con.setAutoCommit(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			freeResource();	
-		}
+		// TODO Auto-generated method stub
 		
 	}
 
