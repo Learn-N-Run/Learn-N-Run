@@ -21,6 +21,7 @@ import article.one.command.coupon1RegisterService;
 import article.one.command.coupon3Service;
 import article.one.command.delUserService;
 import article.one.command.getEmailService;
+import article.one.command.idCheckService;
 import article.one.command.selectCouponCountService;
 import article.one.command.selectTuitionService;
 
@@ -111,9 +112,9 @@ public class Controller extends HttpServlet {
 			delUserService forward = new delUserService();
 			forward.excute(request, response);
 			
-		}else if (command.equals("여기에넣으세요")) {
-			
-			path="";
+		}else if (command.equals("/article1/idCheckService.do")) {
+			idCheckService forward = new idCheckService();
+			forward.excute(request, response);
 		}
 		
 		

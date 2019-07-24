@@ -13,7 +13,8 @@
 
 <script type="text/javascript">
 $(function(){
-	
+
+//이름 유효성
 	$("#name").blur(function(){
 		var name = $(this).val();
 		if(name ==''){
@@ -21,11 +22,12 @@ $(function(){
 		}else{
 			var reg = /^[가-힣]{2,5}$/;
 			if(!reg.test(name)){
-				$("#nameErr").text("잘 못된 이름입니다.");
+				$("#nameErr").text("이름을 확인해 주세요.");
 			}else{ $("#nameErr").text(''); }
 		}
 	});
 	
+//아이디 유효성
 	$("#id").blur(function(){
 		var id = $(this).val();
 		if(id ==''){
@@ -33,25 +35,56 @@ $(function(){
 		}else{
 			var reg = RegExp(/^[a-zA-Z0-9]{4,12}$/);
 			if(!reg.test(id)){
-				$("#idErr").text("아이디 형식이 맞지 않습니다.");
+				$("#idErr").text("올바른 아이디를 입력하세요.");
 			}else{ $("#idErr").text(''); }
 		}
 	});
-
-/* 	$("#email").blur(function(){
+	
+//비밀번호 유효성
+	$("#pwd").blur(function(){
+		var pwd = $(this).val();
+		if(pwd == ''){
+			$('#pwdErr').text("필수 입력 사항입니다.");
+		}else{
+			var reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}/;
+			if(!reg.test(pwd)){
+				$("#pwdErr").text("비밀번호 형식이 바르지 않습니다.");
+			}else{ $("#pwdErr").text('');}
+		}
+	});
+	
+//이메일 유효성
+ 	$("#email").blur(function(){
 		var email = $(this).val();
 		if(email ==''){
 			$("#emailErr").text("필수 입력 사항입니다.");
 		}else{
-			var reg = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-			if(!reg.test(id)){
-				$("#emailErr").html("이메일 형식이 맞지 않습니다.");
+			var reg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			if(!reg.test(email)){
+				$("#emailErr").text("이메일 형식이 맞지 않습니다.");
 			}else{ $("#emailErr").text(''); }
 		}
-	}); */
+	});
 }); 
 
+//아이디 중복 체크
+function idCheckFunction() {
+	var id = $('#id').val();
+	$.ajax({
+		type: 'post',
+		url: 'idCheckService.do',
+		data: {id: id},
+		success : function(result){
+			if(result == 1){
+				alert('사용 가능한 아이디 입니다.');
+				}else{
+				alert('사용할 수 없는 아이디입니다.');
+				}
+			}
+	});
+}
 
+//비밀번호 확인
 function pwdCheckFunction() {
 			var pwd = $('#pwd').val();
 			var pwdCkd = $('#pwdCkd').val();
@@ -62,6 +95,7 @@ function pwdCheckFunction() {
 			}
 		}
 		
+//회원가입 onsubmit
 function register(){
 	var result = 1;
 	var name = $("#name");
@@ -103,18 +137,19 @@ function register(){
 		<h1 style="text-align:center; margin-top:30px;"> 회원가입 </h1>
 			<form class="required_field" action="join.do" method="post" onsubmit="return register()">
 		<div class="mem_form_group">
-			<label for="name">이름(2-5자)</label><br>
+			<label for="name">이름</label><br>
 			<input type="text" class="mem_reg_name" id="name" name="name" placeholder="이름을 입력해주세요."><br>
 			<span style="color: red;" id="nameErr"></span>
 		</div>
 		<div class="mem_form_group">
-			<label for="id">아이디</label><br>
+			<label for="id">아이디</label><button class="idCheckbtn" onclick="idCheckFunction();" type="button">중복체크</button></td> 
 			<input type="text" class="mem_reg_id" id="id" name="id" placeholder="아이디를 입력해주세요."><br>
 			<span style="color: red;" id="idErr"></span>
 		</div>
 		<div class="mem_form_group">
-			<label for="pwd">비밀번호 (8자 이상)</label><br>
-			<input onkeyup="pwdCheckFunction();" type="password" class="mem_reg_pwd" id="pwd" name="pwd" placeholder="********">
+			<label for="pwd">비밀번호 (영문,숫자,특수문자 혼합 8자 이상)</label><br>
+			<input onkeyup="pwdCheckFunction();" type="password" class="mem_reg_pwd" id="pwd" name="pwd" placeholder="********"><br>
+			<span style="color: red;" id="pwdErr"></span>
 		</div>
 		<div class="mem_form_group">
 			<label for="pwdCkd">비밀번호 확인</label>
