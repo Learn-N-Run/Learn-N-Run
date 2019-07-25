@@ -10,7 +10,8 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <servlet>
+
+	<servlet>
         <servlet-name>spring</servlet-name>
         <servlet-class>
             org.springframework.web.servlet.DispatcherServlet
@@ -22,7 +23,7 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
   
-  
+
 <!--   <filter> -->
 <!--     <filter-name>encodingFilter</filter-name> -->
 <!--     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> -->

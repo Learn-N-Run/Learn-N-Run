@@ -15,36 +15,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
 <title></title>
-<style type="text/css">
-#wrap {
-	margin: 0 auto;
-	width: 1280px;
-}
-
-.introduce {
-	height: 600px;
-	background: url("img/ccc.jpg");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-}
-
-@media ( max-width : 1124px) {
-	.introduce {
-		background-size: 100% 100%;
-	}
-}
-
-@media ( max-width : 724px) {
-	.introduce {
-		background-size: 100% 100%;
-	}
-}
-</style>
 </head>
 <body>
 	<div id="wrap">
 		<jsp:include page="../1_Include/header.jsp"></jsp:include>
-		<section class="introduce"></section>
+		
 		<jsp:include page="../1_Include/footer.jsp"></jsp:include>
 	</div>
 </body>

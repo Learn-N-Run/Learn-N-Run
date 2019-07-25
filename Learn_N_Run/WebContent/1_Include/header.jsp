@@ -18,10 +18,13 @@
 #inc_header{
 	height: 100px;
 	position: relative;
-	vertical-align: middle;
-	max-width: 1200px;
 	width: 100vw;
 	border-bottom: 1px double rgba(0,0,0,0.2);
+	background: rgba(0,0,0,1);
+	
+}
+#inc_header *{
+	color: white;	
 }
 #inc_menuList{
 	content: "";
@@ -38,12 +41,17 @@
  	vertical-align: middle;
  	transition: all 0.5s
 }
+#inc_menuList>ul>li>a{
+	text-decoration: none;
+}
 #inc_menuList>ul>li:HOVER{
 	font-size:30px;
 }
 #inc_mainlogo{
 	animation-duration: 2s;
 	animation-name: visible_incmainlogo;
+	padding: 0px;
+	margin: 0px;
 }
 @keyframes visible_incmainlogo{
 	0% {
@@ -56,7 +64,7 @@
 }
 
 .inc_floating{
-	position: relative;
+	position: absolute;
 	top: 30px;
 }
 
@@ -212,6 +220,7 @@
 			transform: translate(-50%, 200%);
 		}
 	}
+
 	@media(max-width:1200px){
 		#inc_hamburger{
 			display: inline;
@@ -230,14 +239,19 @@
  			animation-name: slide_for_left;
  			background-color: rgba(255,255,255,0.8);
 		}
-		
+		#inc_menuList>ul>li>a{
+			color: rgba(0,0,0,0.5);
+			
+		}		
 	}
 		@keyframes slide_for_left{
 			0%{
 				background-color: rgba(255,255,255,0);
+				border-left: 0px;
 			}
 			100%{
 				background-color: rgba(255,255,255,0.8);
+				border-left: 1px solid rgba(0,0,0,0.3);
 			}
 		}
 	
@@ -246,67 +260,61 @@
 </head>
 <body>
 	<header id="inc_header">
-		<div class="row">
-			<div id="inc_mainlogo" class="col-xs-3" align="center">
-				<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
-					<img src="img/large.png">
-				</a>
-			</div>
-			<div class="inc_floating col-xs-9" align="left">
-				<div class="row">
-					<div class="col-xs-6">
-						<form action="" method="GET">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="카테고리 + 제목">
-								<span class="input-group-btn">
-									<button type="submit" class="btn btn-default" style="background-color: white;">
-										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-									</button>
-								</span>
+		<div id="inc_mainlogo" class="col-xs-3" align="center">
+			<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
+				<img src="${contextpath}/3_img/large.png">
+			</a>
+		</div>
+		<div class="col-xs-9">
+			<div class="inc_floating" align="left">
+				<div class="col-xs-6">
+					<form action="" method="GET">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="카테고리 + 제목" style="color: gray;" >
+							<div class="input-group-btn">
+								<button type="submit" class="btn btn-default">
+									<span class="glyphicon glyphicon-search" style="color: black; font-size: 15px;"></span>
+								</button>
 							</div>
-						</form>
-					</div>
-					<div class="col-xs-6" align="right">
-						<button id="inc_hamburger">
-							<span></span>
-							<span></span>
-							<span></span>
-						</button>
-						<div id="inc_menuList" class="visible-lg-block">
-							<ul class="list-inline">
-								<!-- 세션영역에서 유저빈의 유무 판별 --> 
-								<c:choose>
-									<c:when test="${null ne sessionScope.user }">
-										<li>
-											<a href="#"
-											 style="text-decoration: none; color: black;">
-												로그아웃
-											</a>
-										</li>
-										<li>
-											<a href="#"
-											 style="text-decoration: none; color: black;">
-												 마이페이지
-											</a>
-										</li>
-									</c:when>
-									<c:when test="${null eq sessionScope.user }">
-										<li>
-											<a href="#"
-											 style="text-decoration: none; color: black;">
-												로그인
-											</a>
-										</li>
-										<li>
-											<a href="#"
-											 style="text-decoration: none; color: black;">
-												회원가입
-											</a>
-										</li>
-									</c:when>
-								</c:choose>
-							</ul>
 						</div>
+					</form>
+				</div>
+				<div class="col-xs-6">
+					<button id="inc_hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<div id="inc_menuList" class="visible-lg-block">
+						<ul class="list-inline">
+							<!-- 세션영역에서 유저빈의 유무 판별 --> 
+							<c:choose>
+								<c:when test="${null ne sessionScope.user }">
+									<li>
+										<a href="#">
+											로그아웃
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											 마이페이지
+										</a>
+									</li>
+								</c:when>
+								<c:when test="${null eq sessionScope.user }">
+									<li>
+										<a href="#">
+											로그인
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											회원가입
+										</a>
+									</li>
+								</c:when>
+							</c:choose>
+						</ul>
 					</div>
 				</div>
 			</div>
