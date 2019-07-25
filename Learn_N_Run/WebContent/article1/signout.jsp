@@ -32,6 +32,7 @@ function pwdCheckFunction() {
 			}
 		}
 </script>
+
 	<div class="required_fieldin">
 		<h1 style="text-align:center; margin-top:30px;"> 회원탈퇴 </h1>
 			<form class="required_field" action="delUserService.do" method="post" onsubmit="return register()">

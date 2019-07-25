@@ -23,15 +23,7 @@ public class delUserService implements Service{
 		UserDAIOImpl dao = new UserDAIOImpl();
 		int result = dao.delUser(id, pass);
 		
-		PrintWriter out = response.getWriter();
 		
-		out.println("<script>");
-		out.println("var signout;");
-		out.println("signout=confirm('정말 탈퇴를 하시겠습니까?')");
-		out.print("</script>");
-
-		System.out.println(" 탈퇴완료 ");
-		out.close();
 	}
 	
 }

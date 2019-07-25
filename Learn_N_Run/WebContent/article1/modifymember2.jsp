@@ -40,7 +40,7 @@
             </div>
             <div class="col-5 m-auto">
                <label for="phone"><span class="text-danger">*</span> 휴대폰번호</label>
-               <input type="text" class="form-control" id="phone" name="phone">
+               <input type="text" class="form-control" id="number" name="number">
             </div>
          </div>
          <div class="row mb-4">
