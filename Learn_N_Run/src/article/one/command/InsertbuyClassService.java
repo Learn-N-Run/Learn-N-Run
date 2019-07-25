@@ -44,7 +44,7 @@ public class InsertbuyClassService implements Service {
 		
 		UserDAIOImpl dao = null;
 		
-		if(request.getParameter("couponNo")==null) {
+		if(request.getParameter("couponNo").equals("")) {
 			dao = new UserDAIOImpl();
 			dao.addBuy(bdto, id, classNo);
 		}else {

@@ -39,6 +39,13 @@
 			$(".coupon_modal_h").fadeOut();
 		});
 	});
+	
+	  function popup(){
+          var url = "popup.html";
+          var name = "popup test";
+          var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+          window.open(url, name, option);
+      }
 
 	function coupon1_submit1() {
 		if(${requestScope.sale1} == 0 ){
@@ -394,6 +401,7 @@
 											<th>최종 가격</th>
 											<td class="last_tuition"><input type="text" name="last_tuition">원</td>
 										</tr>
+										<a href="javascript:popup()" target="_blank">결제 정보</a>
 									</tbody>
 								</table>
 							</div>

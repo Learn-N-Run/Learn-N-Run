@@ -453,7 +453,7 @@ public class UserDAIOImpl implements UserDAO{
 			int result = pstmt.executeUpdate();
 			if(result == 1) {
 				sql = "insert into buyer(user_id,receiver_info_no,last_tuition,order_date,class_no) "
-						+ "values(?,(select last_insert_id() from receiver_info),?,now(),?)";
+						+ "values(?,(select no from receiver_info order by no desc limit 1),?,now(),?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				System.out.println(id);
@@ -464,11 +464,11 @@ public class UserDAIOImpl implements UserDAO{
 				int result2 = pstmt.executeUpdate();
 				if(result2 == 1) {
 					if(cdto.getSale1()==1) {
-						sql = "update into coupon(sale1) values(0)";
+						sql = "update coupon set sale1 = 0";
 					}else if(cdto.getSale2()==1) {
-						sql = "update into coupon(sale2) values(0)";
+						sql = "update coupon set sale2 = 0";
 					}else if(cdto.getSale3()==1) {
-						sql = "update into coupon(sale3) values(0)";
+						sql = "update coupon set sale3 = 0";
 					}
 					pstmt = con.prepareStatement(sql);
 					pstmt.executeUpdate();
@@ -504,8 +504,8 @@ public class UserDAIOImpl implements UserDAO{
 			pstmt.setString(6, bean.getReceiver().getDelievery_msg());
 			int result = pstmt.executeUpdate();
 			if(result == 1) {
-				sql = "insert into buyer(user_id,receiver_info_no,last_tuition,order_date,classno) "
-						+ "values(?,(select last_insert_id() from receiver_info),?,now(),?)";
+				sql = "insert into buyer(user_id,receiver_info_no,last_tuition,order_date,class_no) "
+						+ "values(?,(select no from receiver_info order by no desc limit 1),?,now(),?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				pstmt.setInt(2, bean.getLast_tuition());
