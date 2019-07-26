@@ -33,9 +33,9 @@ public class Controller extends HttpServlet {
 		String path = null;
 		/*▲포워딩할 경로 String으로 저장*/
 		
-		if (command.equals("/article3/classReply.do")) {
+		if (command.equals("/article3/CommunityReply.do")) {
 
-			path="";
+			path="CommunityReply.jsp";
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";

@@ -82,7 +82,7 @@
 			</div>
 		</div>
 		<%--클래스대댓글 입력 textarea와 댓글전송버튼! --%>
-		<form action="classReply.do">
+		<form action="CommunityReply.do">
 			<input type="text" placeholder="대댓글을 입력 하세오 !">
 			<button type="submit">버 튼 !</button>
 		</form>
