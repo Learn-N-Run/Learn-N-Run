@@ -17,10 +17,10 @@
 <title></title>
 </head>
 <body>
-	<div id="wrap">
-		<jsp:include page="../1_Include/header.jsp"></jsp:include>
+	<jsp:include page="../1_Include/header.jsp"></jsp:include>
+		<div id="wrap">
 		
-		<jsp:include page="../1_Include/footer.jsp"></jsp:include>
-	</div>
+		</div>
+	<jsp:include page="../1_Include/footer.jsp"></jsp:include>
 </body>
 </html>
