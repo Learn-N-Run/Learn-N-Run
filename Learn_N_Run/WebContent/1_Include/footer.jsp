@@ -62,15 +62,48 @@
 	}
 	#inc_githubfooter:HOVER{cursor: pointer;}
 	#inc_githubfooter{
+		max-width: 24px;
+		max-height: 24px;
 		position: fixed;
 		right: 1vw;
 		bottom: 25vh;
 		z-index: 1000;
+		border: 1px solid rgba(0,0,0,0);		
+		border-radius: 100%;
+		transition: all 1.5s;
+		animation-name: circle-mark;
+		animation-duration:1s;
+		animation-iteration-count: infinite;
 	}
+	@keyframes circle-mark{
+		0%{
+			border-top-color: black;
+		}
+		25%{
+			border-right-color: black;
+		}
+		50%{
+			border-bottom-color: black;
+		}
+		75%{
+			border-left-color: black;
+		}
+		100%{
+			border-left-color: rgba(0,0,0,0.5);
+		}
+	}
+	@media (max-width:1200px){
+		#inc_githubfooter{
+			max-width: 64px;
+			max-height: 64px; 
+		}
+	}
+	
 </style>
 <title></title>
 </head>
 <body>
+
 <%-- footer github logo --%>
 <img id="inc_githubfooter"
 	src="${contextpath}/3_img/GitHub-Mark.png"
