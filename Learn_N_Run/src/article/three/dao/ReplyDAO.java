@@ -2,9 +2,6 @@ package article.three.dao;
 
 import java.util.List;
 
-import dto.BuyerDTO;
-import dto.ClassDTO;
-import dto.CurriculumDTO;
 import dto.ReplyDTO;
 
 public interface ReplyDAO {

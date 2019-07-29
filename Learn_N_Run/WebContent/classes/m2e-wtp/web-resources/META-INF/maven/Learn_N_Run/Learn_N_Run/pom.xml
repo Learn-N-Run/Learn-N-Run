@@ -83,6 +83,12 @@
 			<version>${egovframework.rte.version}</version>
 		</dependency>
 
+        <dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>servlet-api</artifactId>
+		    <scope>provided</scope>
+		    <version>2.5</version>
+        </dependency>
 
         <dependency>
 		    <groupId>javax.servlet</groupId>
@@ -110,6 +116,18 @@
         
         <!-- mysql이나 oracle DB 사용시 아래 설정 추가  
         <dependency>
+            <groupId>com.googlecode.log4jdbc</groupId>
+            <artifactId>log4jdbc</artifactId>
+            <version>1.2</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
@@ -120,12 +138,20 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.31</version>
         </dependency>
+
+        <dependency>
+            <groupId>ojdbc</groupId>
+            <artifactId>ojdbc</artifactId>
+            <version>14</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc-14.jar</systemPath>
+        </dependency>
         -->
 	</dependencies>
 
 	<build>
         <defaultGoal>install</defaultGoal>
-        <directory>${basedir}/target</directory>
+        <directory>src</directory>
         <finalName>${artifactId}-${version}</finalName>
         <pluginManagement>
             <plugins>
@@ -134,7 +160,7 @@
 	                <artifactId>tomcat7-maven-plugin</artifactId>
 	                <version>2.2</version>
 	                <configuration>
-	                    <port>8180</port>
+	                    <port>80</port>
 	                    <path>/</path>
 	                    <systemProperties>
 	                        <JAVA_OPTS>-Xms256m -Xmx768m -XX:MaxPermSize=256m</JAVA_OPTS>
