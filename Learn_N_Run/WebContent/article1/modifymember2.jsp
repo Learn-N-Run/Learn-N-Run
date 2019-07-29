@@ -54,7 +54,7 @@
             </div>
          </div>
          <div class="text-center mt-5">
-            <button class="btn btn-outline-success">회원 수정</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-outline-info">회원 수정</button>&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="reset" value="다시 입력" class="btn btn-outline-secondary">
          </div>
       </div>

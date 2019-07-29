@@ -26,6 +26,7 @@ body {
 }
 
 #id {
+	border-radius:3px;
 	border:1px solid black;
 	height: 30px;
     width: 400px;
@@ -33,14 +34,16 @@ body {
 }
 
 #pwd {
-	border:1px solid black;
+	border-radius:3px;
+	border:1px solid gray;
 	height: 30px;
     width: 400px;
     text-align: left;
 }
 
 #pwdCkd {
-	border:1px solid black;
+	border-radius:3px;
+	border:1px solid gray;
 	height: 30px;
     width: 400px;
     text-align: left;

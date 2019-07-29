@@ -94,7 +94,7 @@ public class UserDAIOImpl implements UserDAO{
 
 	@Override
 	public int updateUser(UserDTO dto, String pass) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 	

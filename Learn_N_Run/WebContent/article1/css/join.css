@@ -26,35 +26,40 @@ body {
 }
 
 #name {
-	border:1px solid black;
+	border-radius: 3px;
+	border:1px solid gray;
 	height: 30px;
     width: 400px;
     text-align: left;
 }
 
 #id {
-	border:1px solid black;
+	border-radius: 3px;
+	border:1px solid gray;
 	height: 30px;
     width: 400px;
     text-align: left;
 }
 
 #pwd {
-	border:1px solid black;
+	border-radius: 3px;
+	border:1px solid gray;
 	height: 30px;
     width: 400px;
     text-align: left;
 }
 
 #pwdCkd {
-	border:1px solid black;
+	border-radius: 3px;
+	border:1px solid gray;
 	height: 30px;
     width: 400px;
     text-align: left;
 }
 
 #email {
-	border:1px solid black;
+	border-radius: 3px;
+	border:1px solid gray;
 	height: 30px;
     width: 400px;
     text-align: left;

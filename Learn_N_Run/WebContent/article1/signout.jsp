@@ -21,20 +21,29 @@ String id = (String)session.getAttribute("id");
 %>
 
 <script>
-//비밀번호 확인
-function pwdCheckFunction() {
-			var pwd = $('#pwd').val();
-			var pwdCkd = $('#pwdCkd').val();
-			if(pwd != pwdCkd) {
-				$('#pwdCheckMessage').html('비밀번호를 확인해주세요.');
-			}else{
-				$('#pwdCheckMessage').html('');
-			}
-		}
+
+function signout(){
+	var result = 1;
+	var pwd = $("#pwd");
+	
+	if(pwd.val() == ''){
+		$("#pwdErr").text("필수 입력 사항입니다.");
+		result = 0;
+	}
+	if(result == 0 ){
+		alert("비밀번호를 입력해 주세요.");
+		return false;
+	}
+	if($("#pwdErr").text() != ''){
+		alert("오류 사항을 확인 후 다시 입력해주세요.");
+		return false;
+	}
+}
 </script>
 
 	<div class="required_fieldin">
 		<h1 style="text-align:center; margin-top:30px;"> 회원탈퇴 </h1>
+		<h5>비밀번호를 입력하여야 회원탈퇴가 진행됩니다.</h5>
 			<form class="required_field" action="delUserService.do" method="post" onsubmit="return register()">
 		<div class="mem_form_group">
 			<label for="id">아이디</label><br>
@@ -48,7 +57,7 @@ function pwdCheckFunction() {
 			<label for="pwdCkd">비밀번호를 한번 더 입력하세요.</label><br>
 			<input type="password" onkeyup="pwdCheckFunction();" class="mem_out_pwdCkd" id="pwdCkd" name="pwdCkd" placeholder="********">
 		</div>
-		<span style="color: red;" id="pwdCheckMessage"></span>
+		<span style="color: red;" id="pwdErr"></span>
 		<div>
 			<input type="submit" id="out_submit" value="탈퇴하기">
 		</div>
