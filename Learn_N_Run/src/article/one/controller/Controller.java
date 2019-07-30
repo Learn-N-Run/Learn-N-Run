@@ -75,6 +75,7 @@ public class Controller extends HttpServlet {
 			forward.excute(request, response);
 			path="selectMessage.do";
 		}else if (command.equals("/article1/event.do")) {
+			System.out.println("event");
 			getEmailService forward = new getEmailService();
 			forward.excute(request, response);
 			path="event.jsp";
@@ -124,7 +125,8 @@ public class Controller extends HttpServlet {
 		}else if (command.equals("/article1/modifymember1.do")) {
 			modify1Service forward = new modify1Service();
 			forward.excute(request, response);
-		}else if (command.equals("/article1/getMyclassInfo.do")) {
+		}else if (command.equals("/article1/getMyClassInfo.do")) {
+			System.out.println("getMy");
 			getMyClassService forward = new getMyClassService();
 			forward.excute(request, response);
 			path = "classInfo.jsp";

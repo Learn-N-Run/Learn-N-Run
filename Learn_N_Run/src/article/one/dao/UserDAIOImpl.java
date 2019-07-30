@@ -613,8 +613,10 @@ public class UserDAIOImpl implements UserDAO{
 				+ "cate.name FROM class c "
 				+ "JOIN buyer b ON (c.no=b.class_no) "
 				+ "JOIN user u ON (u.id=b.user_id) "
-				+ "JOIN category cate ON(c.category_no=cate.no) where u.id='?'";
+				+ "JOIN category cate ON(c.category_no=cate.no) where u.id=?";
 			try {
+		con = getConnection();
+		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1,id);
 		rs = pstmt.executeQuery();
 		if(rs != null){

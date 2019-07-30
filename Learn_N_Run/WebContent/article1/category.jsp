@@ -179,10 +179,10 @@
 							<a href="javascript:;"><li>내정보</li></a>
 							<a href="javascript:;"><li>회원탈퇴</li></a>
 							<a href="javascript:;"><li>로그아웃</li></a>
-							<a href="javascript:;"><li>내 수강목록</li></a>
+							<a href="getMyClassInfo.do"><li>내 수강목록</li></a>
 							<a href="javascript:;"><li>찜목록</li></a>
 							<a href="javascript:;" id="coupon_h"><li>쿠폰함</li></a>
-							<a href="javascript:;"><li>내 클래스</li></a>
+							<a href="javascript:;" ><li>내 클래스</li></a>
 							<a href="javascript:;"><li>찜목록</li></a>						
 						</ul>
 					</div>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
 <%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
@@ -257,97 +258,46 @@
 				</ul>
 			</div>
 
+			
 			<div class="myContent_h">
 				<div class="title_h">
 					<p>내 수강 정보</p>
 				</div>
-				<div class="myClass_content_h">
-					<div class="myClass_img">
-						<img src="img/aaa.jpg">
-					</div>
-					<div class="myClass_title_category">
-						<div class="myClass_title">
-							<span>[수강명]</span> <br> <br> 와라라라라와라라라라와라라라라
-							와라라라라와라라라라와라라라라 와라라라라와라라라라와라라라라 와라라라라와라라라라와라라라라
-						</div>
-						<div class="myClass_category">
-							<span>[카테고리명]</span><br> <br>요리
-						</div>
-					</div>
-					<div class="myClass_buyTime">
-						<p>
-							<span>[수강 신청일]</span><br>2017.2.13
-						</p>
-					</div>
-					<div class="myClass_expiration">
-						<p>
-							<span>[수강 만료일]</span><br>2019.2.13
-						</p>
-					</div>
-					<div style="clear: both;"></div>
-				</div>
+				<c:if test="${requestScope.MyClassList == null }">
+					<h1>구매한 수강정보가 없습니다.</h1>
+				</c:if>
 				
-				
-				
-				
-				
-				<div class="myClass_content_h">
-					<div class="myClass_img">
-						<img src="img/aaa.jpg">
-					</div>
-					<div class="myClass_title_category">
-						<div class="myClass_title">
-							<span>[수강명]</span> <br> <br> 와라라라라와라라라라와라라라라
-							와라라라라와라라라라와라라라라 와라라라라와라라라라와라라라라 와라라라라와라라라라와라라라라
+				<c:if test="${requestScope.MyclassList != null }">
+					<c:forEach var="list" items="${requestScope.MyclassList }">
+						<div class="myClass_content_h">
+							<div class="myClass_img">
+								<img src="img/aaa.jpg">
+							</div>
+							<div class="myClass_title_category">
+								<div class="myClass_title">
+									<span>[수강명]</span> <br> <br> ${list.cover_img }
+								</div>
+								<div class="myClass_category">
+									<span>[카테고리명]</span><br> <br>${list.name }
+								</div>
+							</div>
+							<div class="myClass_buyTime">
+								<p>
+									<span>[수강 신청일]</span><br>
+								</p>
+							</div>
+							<div class="myClass_expiration">${list.expiration }
+								<p>
+									<span>[수강 만료일]</span><br>${list.expiration}
+								</p>
+							</div>
+							<div style="clear: both;"></div>
 						</div>
-						<div class="myClass_category">
-							<span>[카테고리명]</span><br> <br>요리
-						</div>
-					</div>
-					<div class="myClass_buyTime">
-						<p>
-							<span>[수강 신청일]</span><br>2017.2.13
-						</p>
-					</div>
-					<div class="myClass_expiration">
-						<p>
-							<span>[수강 만료일]</span><br>2019.2.13
-						</p>
-					</div>
-					<div style="clear: both;"></div>
-
-
-				</div>
+					</c:forEach>
+				</c:if>
 				
-				<div class="myClass_content_h">
-					<div class="myClass_img">
-						<img src="img/aaa.jpg">
-					</div>
-					<div class="myClass_title_category">
-						<div class="myClass_title">
-							<span>[수강명]</span> <br> <br> 와라라라라와라라라라와라라라라
-							와라라라라와라라라라와라라라라 와라라라라와라라라라와라라라라 와라라라라와라라라라와라라라라
-						</div>
-						<div class="myClass_category">
-							<span>[카테고리명]</span><br> <br>요리
-						</div>
-					</div>
-					<div class="myClass_buyTime">
-						<p>
-							<span>[수강 신청일]</span><br>2017.2.13
-						</p>
-					</div>
-					<div class="myClass_expiration">
-						<p>
-							<span>[수강 만료일]</span><br>2019.2.13
-						</p>
-					</div>
-					<div style="clear: both;"></div>
-
-
-				</div>
 			</div>
-			</div>
+		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
