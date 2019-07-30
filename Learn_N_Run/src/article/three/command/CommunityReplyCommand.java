@@ -18,7 +18,7 @@ public class CommunityReplyCommand implements Service {
 		String contents = request.getParameter("comentContent");
 		
 		CommunityReplyDAOImpl dao = new CommunityReplyDAOImpl();
-		dao.Methoddsfsd(name, pwd, contents);
+		dao.(name, pwd, contents);
 		
 	}
 	

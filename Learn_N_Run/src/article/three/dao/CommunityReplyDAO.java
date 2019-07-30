@@ -4,7 +4,7 @@ import java.util.List;
 
 import dto.ReplyDTO;
 
-public interface ReplyDAO {
+public interface CommunityReplyDAO {
 
 
 	List<ReplyDTO> getClassInfoReply(ReplyDTO dto);

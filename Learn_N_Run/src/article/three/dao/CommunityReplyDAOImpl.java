@@ -1,14 +1,48 @@
 package article.three.dao;
 
-<<<<<<< HEAD:Learn_N_Run/src/article/three/dao/CommunityReplyDAOImpl.java
 import java.lang.reflect.Method;
+import java.util.List;
 
-	public class CommunityReplyDAOImpl {
-=======
-	public class CommunityReplyDAO {
->>>>>>> 4d44fdfa23b6fa67e14ff963915ed7bc4f188892:Learn_N_Run/src/article/three/dao/CommunityReplyDAO.java
+import dto.ReplyDTO;
 
-		public void Methoddsfsd(String name, String pwd, String content) {
-			
-		}
+public class CommunityReplyDAOImpl implements CommunityReplyDAO
+
+	@Override
+	public List<ReplyDTO> getClassInfoReply(ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addClassReply(ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int delClassReply(ReplyDTO dto, String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void addCommunityReply(ReplyDTO dto, String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int delCommunityReply(ReplyDTO dto, String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<ReplyDTO> getVideoReply(ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
 }
