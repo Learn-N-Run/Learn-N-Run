@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//@WebServlet("/*.do")
+@WebServlet("/*.do")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,11 @@ public class Controller extends HttpServlet {
 		/*▲포워딩할 경로 String으로 저장*/
 		
 		if (command.equals("/article3/CommunityReply.do")) {
-
+			try {
+				
+			} catch (Exception e) {
+				
+			}
 			path="CommunityReply.jsp";
 		}else if (command.equals("여기에넣으세요")) {
 			

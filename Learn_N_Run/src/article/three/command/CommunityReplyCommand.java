@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import article.three.dao.CommunityReplyDAO;
+import article.three.dao.CommunityReplyDAOImpl;
 
 public class CommunityReplyCommand implements Service {
 
@@ -17,7 +17,7 @@ public class CommunityReplyCommand implements Service {
 		String pwd = request.getParameter("userpwd");
 		String contents = request.getParameter("comentContent");
 		
-		CommunityReplyDAO dao = new CommunityReplyDAO();
+		CommunityReplyDAOImpl dao = new CommunityReplyDAOImpl();
 		dao.Methoddsfsd(name, pwd, contents);
 		
 	}
