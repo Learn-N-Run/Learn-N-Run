@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 @WebServlet("/*.do")
+=======
+//@WebServlet("/*.po")
+>>>>>>> 4d44fdfa23b6fa67e14ff963915ed7bc4f188892
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
