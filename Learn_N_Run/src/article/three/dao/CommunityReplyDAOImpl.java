@@ -1,11 +1,10 @@
 package article.three.dao;
 
-import java.lang.reflect.Method;
 import java.util.List;
 
 import dto.ReplyDTO;
 
-public class CommunityReplyDAOImpl implements CommunityReplyDAO
+public class CommunityReplyDAOImpl implements CommunityReplyDAO{
 
 	@Override
 	public List<ReplyDTO> getClassInfoReply(ReplyDTO dto) {
