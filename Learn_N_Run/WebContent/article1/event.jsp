@@ -82,6 +82,35 @@
 		$(".btn_Email2").click(function() {
 			location.href="coupon3.do";
 		});	
+		
+		
+		$("button[data-toggle='sns_share']").click(function(e) {
+			e.preventDefault();
+			
+			var _this = $(this);
+			var sns_type = _this.attr('data-service');
+			var href = "http://localhost:8180/Learn_N_Run/article1/event.jsp";
+			var title = _this.attr('data-title');
+			var loc = "";
+			var img = $("meta[name='og:image']").attr('content');
+			
+			if( ! sns_type || !href || !title) return;
+			
+			if( sns_type == 'facebook' ) {
+				loc = '//www.facebook.com/sharer/sharer.php?u='+href+'&t='+title;
+			}
+			else if ( sns_type == 'twitter' ) {
+				loc = '//twitter.com/home?status='+encodeURIComponent(title)+' '+href;
+			}else if ( sns_type == 'naver' ) {
+				loc = "http://share.naver.com/web/shareView.nhn?url="+encodeURIComponent(href)+"&title="+encodeURIComponent(title);
+			}
+			else {
+				return false;
+			}
+			
+			window.open(loc);
+			return false;
+		})
 	});
 	
 	
@@ -243,9 +272,9 @@
 					<button type="button" id = "receive_coupon1_h" class="btn_Email">쿠폰 받기</button>
 				</div>
 				<div class="share_event">
-					<button type="button">twitter 공유하기</button>
-					<button type="button">FaceBook 공유하기</button>
-					<button type="button">Naver Blog 공유하기</button>
+					<button type="button" data-toggle="sns_share"  data-service="twitter" data-title="Learn&Run 오픈이벤트">twitter 공유하기</button>
+					<button type="button" data-toggle="sns_share"  data-service="facebook" data-title="Learn&Run 오픈이벤트">FaceBook 공유하기</button>
+					<button type="button" data-toggle="sns_share"  data-service="naver" data-title="Learn&Run 오픈이벤트">Naver Blog 공유하기</button>
 				</div>
 			</div>
 		</div>

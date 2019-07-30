@@ -2,9 +2,139 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Learn&Run 결제창</title>
+<script>
+
+</script>
+<style type="text/css">
+.popupwrap {
+	max-width: 500px;
+	height: 300px;
+	padding  : 10px 10px 10px 10px;
+}
+
+.popheader {
+	width: 100%;
+	height: 50px;
+	background-color: lightblue;
+	color: white;
+	margin-bottom: 3px;
+}
+
+.popheader span {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+
+.poplogo {
+	width: 100px;
+	height: 30px;
+	margin-top: 10px;
+}
+
+.bank_table_h{
+	width: 100%;
+	border: 1px;
+}
+
+.bank_h{
+    padding: 2px 2px 2px 2px;
+    width: 140px;
+    text-align: center;
+    color: darkslategrey;
+    font-size: 15px;
+    border-bottom: 0.3px solid lightgray;
+    border-right: 0.3px solid lightgray;
+    background-color: whitesmoke;
+    font-weight: 500;
+}
+
+.bank_table_h input[type="text"],.bank_table_h input[type="password"]{
+	width: 100px;
+    font-size: 15px;
+    text-align: center;
+    height: 25px;
+}
+
+.bank_table_h input[type="date"]{
+	width: 150px;
+	height: 30px;
+}
+
+.bank_table_h select {
+	width: 100px;
+	height: 30px;
+}
+
+.popbtn1_h{
+
+    width: 150px;
+    height: 30px;
+}
+
+.popbtn2_h{
+    width: 150px;
+    height: 30px;
+
+}
+
+.popbtnwrap_h{
+	margin-top: 5px;
+    text-align: center;
+}
+
+</style>
 </head>
 <body>
-	<div></div>
+	<div class="popupwrap">
+		<div class="popheader">
+			<img src="img/small.png" class="poplogo"> <span>바로 결제창</span>
+		</div>
+		<table class="bank_table_h">
+			<tr>
+				<td class="bank_h">예금주 명</td>
+				<td><input type="text" required="required"></td>
+			</tr>
+			<tr>
+				<td class="bank_h">은행</td>
+				<td>
+					<select required="required">
+						<option>부산은행</option>
+						<option>우리은행</option>
+						<option>기업은행</option>
+						<option>농협</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="bank_h">계좌번호</td>
+				<td>
+					<input type="text" required="required" id="account_number"> - <input type="password" required="required"> - <input type="text" required="required">
+				</td>
+			</tr>
+			<tr>
+				<td class="bank_h">유효기간</td>
+				<td>
+					<input type="date" required="required" width="150px">
+				</td>
+			</tr>
+			<tr>
+				<td class="bank_h">할부</td>
+				<td>
+					<select required="required">
+						<option>일시불</option>
+						<option>3개월</option>
+						<option>6개월</option>
+						<option>12개월</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<div class="popbtnwrap_h">
+			<button type="button" class="popbtn1_h">결제 요청</button>  <button type="button" class="popbtn2_h">돌아가기</button>
+		</div>
+	</div>
+
 </body>
 </html>

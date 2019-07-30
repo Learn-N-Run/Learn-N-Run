@@ -18,6 +18,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dto.BuyerDTO;
+import dto.CategoryDTO;
 import dto.ClassDTO;
 import dto.CouponDTO;
 import dto.JjimDTO;
@@ -604,6 +605,41 @@ public class UserDAIOImpl implements UserDAO{
 			freeResource();
 		}
 		return email;
+	}
+
+	public List getMyclassInfo(String id) {
+		ArrayList list = new ArrayList();	
+		sql = "SELECT c.cover_img,c.title, c.title, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration, "
+				+ "cate.name FROM class c "
+				+ "JOIN buyer b ON (c.no=b.class_no) "
+				+ "JOIN user u ON (u.id=b.user_id) "
+				+ "JOIN category cate ON(c.category_no=cate.no) where u.id='?'";
+			try {
+		pstmt.setString(1,id);
+		rs = pstmt.executeQuery();
+		if(rs != null){
+			while(rs.next()){
+				ClassDTO cdto = new ClassDTO();
+				BuyerDTO bdto = new BuyerDTO();
+				CategoryDTO catedto = new CategoryDTO();
+				cdto.setCover_img(rs.getString("c.cover_img"));	
+				cdto.setTitle(rs.getString("c.title"));
+				bdto.setOrder_date(rs.getTimestamp("expiration"));
+				catedto.setName(rs.getString("cate.name"));
+				list.add(cdto);
+				list.add(bdto);
+				list.add(catedto);	
+			}
+		}else{
+			return null;
+		}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				freeResource();
+			}
+		
+		return list;
 	}
 	
 }

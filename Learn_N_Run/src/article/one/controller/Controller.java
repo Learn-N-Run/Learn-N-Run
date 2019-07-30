@@ -21,6 +21,7 @@ import article.one.command.coupon1RegisterService;
 import article.one.command.coupon3Service;
 import article.one.command.delUserService;
 import article.one.command.getEmailService;
+import article.one.command.getMyClassService;
 import article.one.command.idCheckService;
 import article.one.command.modify1Service;
 import article.one.command.selectCouponCountService;
@@ -123,7 +124,12 @@ public class Controller extends HttpServlet {
 		}else if (command.equals("/article1/modifymember1.do")) {
 			modify1Service forward = new modify1Service();
 			forward.excute(request, response);
+		}else if (command.equals("/article1/getMyclassInfo.do")) {
+			getMyClassService forward = new getMyClassService();
+			forward.excute(request, response);
+			path = "classInfo.jsp";
 		}
+
 		
 		
 		

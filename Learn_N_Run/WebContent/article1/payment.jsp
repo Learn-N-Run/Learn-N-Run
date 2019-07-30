@@ -40,10 +40,34 @@
 		});
 	});
 	
+	function submit1() {
+		if($("#receiver_name_h").val() == null){
+			alert("받으시는 분 성함을 써주세요.")
+			return false;
+		}else if($("#receiver_number_h").val() == null){
+		
+			return false;
+		}else if($("#address1").val()==null){
+			alert("우편번호를 입력해 주세요.")
+			return false;
+		}else if(opener.$("#account_number").val()==null){
+			alert("결제 카드 정보를 입력하세요.")
+			return false;
+		}else{
+			var result = confirm('정말 구매하시겠습니까?'); 
+			if(result) {  
+				$("#buy_class_submit_h").submit();
+			} else {
+				return false;
+			}
+
+		}
+	}
+	
 	  function popup(){
           var url = "popup.html";
           var name = "popup test";
-          var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+          var option = "width = 500, height = 400, top = 100, left = 200, location = no"
           window.open(url, name, option);
       }
 
@@ -352,21 +376,21 @@
 				</div>
 
 				<div class="content_wrap_h">
-					<form action="buyersubmit.do?classNo=${classNo }" method="post">
+					<form action="buyersubmit.do?classNo=${classNo }" method="post" id="buy_class_submit_h" onsubmit="return submit1()">
 						<!-- 배송 정보 입력창 부분 -->
 						<section class="deliver_h">
 							<h4>배송 정보</h4>
 							<div class="section_h">
 								<p>받으시는 분</p>
-								<input type="text" name="receiver_name_h" width="100%">
+								<input type="text" name="receiver_name_h" id="receiver_name_h" width="100%">
 							</div>
 							<div class="section_h">
 								<p>받으시는 분 번호</p>
-								<input type="text" name="receiver_number_h" width="100%">
+								<input type="text" name="receiver_number_h" id="receiver_numer_h" width="100%">
 							</div>
 							<div class="section_h">
 								<p>배송 주소</p>
-								<input type="text" id="sample6_postcode" name="address1" placeholder="우편번호">
+								<input type="text" id="sample6_postcode" name="address1" id="receiver_name_h" placeholder="우편번호">
 								<input type="button" id="postCode_h" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 								<input type="text" id="sample6_address" name="address2" placeholder="주소"><br> 
 								<input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소">
@@ -401,9 +425,16 @@
 											<th>최종 가격</th>
 											<td class="last_tuition"><input type="text" name="last_tuition">원</td>
 										</tr>
-										<a href="javascript:popup()" target="_blank">결제 정보</a>
+										<tr>
+											<th></th>
+											<td class="last_tuition">
+												<a href="javascript:popup()" target="_blank">결제 카드 정보 입력</a>
+												<input type="hidden" name="checkpopup">
+											</td>
+										</tr>
 									</tbody>
 								</table>
+								
 							</div>
 						</section>
 						<div class="last_pay">
