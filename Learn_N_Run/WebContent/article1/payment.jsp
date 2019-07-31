@@ -40,26 +40,30 @@
 		});
 	});
 	
-	function submit1() {
-		if($("#receiver_name_h").val() == null){
+	function registerReceiver() {
+		if($("#receiver_name_h").val() == ''){
 			alert("받으시는 분 성함을 써주세요.")
 			return false;
-		}else if($("#receiver_number_h").val() == null){
-		
+		}else if($("#receiver_number_h").val() == ''){
+			alert("받는 분 전화번호를 입력해 주세요.")
 			return false;
-		}else if($("#address1").val()==null){
+			if(typeof($("#receiver_number_h").val()) === "string"){
+				alert("-를 빼고 입력해 주세요.")
+				return false;
+			}
+			
+		}else if($("#address1").val()==''){
 			alert("우편번호를 입력해 주세요.")
 			return false;
-		}else if(opener.$("#account_number").val()==null){
+		}else if(opener.$("#account_number").val()==''){
 			alert("결제 카드 정보를 입력하세요.")
 			return false;
 		}else{
 			var result = confirm('정말 구매하시겠습니까?'); 
-			if(result) {  
-				$("#buy_class_submit_h").submit();
-			} else {
-				return false;
-			}
+				if(result) {  
+					return true;
+				} else {
+					return false;
 
 		}
 	}
@@ -376,7 +380,7 @@
 				</div>
 
 				<div class="content_wrap_h">
-					<form action="buyersubmit.do?classNo=${classNo }" method="post" id="buy_class_submit_h" onsubmit="return submit1()">
+					<form action="buyersubmit.do?classNo=${classNo }" method="post" id="buy_class_submit_h" onsubmit="return registerReceiver()">
 						<!-- 배송 정보 입력창 부분 -->
 						<section class="deliver_h">
 							<h4>배송 정보</h4>
@@ -386,11 +390,11 @@
 							</div>
 							<div class="section_h">
 								<p>받으시는 분 번호</p>
-								<input type="text" name="receiver_number_h" id="receiver_numer_h" width="100%">
+								<input type="text" name="receiver_number_h" id="receiver_number_h" width="100%">
 							</div>
 							<div class="section_h">
 								<p>배송 주소</p>
-								<input type="text" id="sample6_postcode" name="address1" id="receiver_name_h" placeholder="우편번호">
+								<input type="text" id="sample6_postcode" name="address1" id="address1" placeholder="우편번호">
 								<input type="button" id="postCode_h" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 								<input type="text" id="sample6_address" name="address2" placeholder="주소"><br> 
 								<input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소">

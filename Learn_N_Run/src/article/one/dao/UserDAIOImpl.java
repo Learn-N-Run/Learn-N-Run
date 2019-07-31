@@ -94,34 +94,25 @@ public class UserDAIOImpl implements UserDAO{
 		
 
 	@Override
-	public int updateUser(UserDTO dto, String pass) {
-		int result = 0; // 0: 실패, 1: 성공
+	public void updateUser(UserDTO dto) {
+		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=?, ";	
+		
 		try {
-			con=getConnection();
-			sql = "SELECT from user WHERE id=? and pass=?";
+			con = getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, pass);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				if(pass.equals(rs.getString(pass))) {
-					try {
-						sql = "UPDATE INTO user(?)";
-					} catch (Exception e) {
-						System.out.println();
-					}
-				}
-					
-			}
+			pstmt.setString(1, dto.getPass());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getCreator_url());
+			pstmt.setString(4, dto.getProfile_img());
+			pstmt.setString(5, dto.getNickname());
+			pstmt.setInt(6, dto.getNumber());
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("updateUser오류: " + e);
 		} finally {
 			freeResource();
 		}
 		
-		
-		
-		return result;
 	}
 	
 	@Override
@@ -667,6 +658,51 @@ public class UserDAIOImpl implements UserDAO{
 			}
 		
 		return list;
+	}
+
+	public int getUserGroup(String userid) {
+		int Group =0;
+		String sql ="SELECT user_group_no FROM user where id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				Group = rs.getInt("user_group_no");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return Group;
+	}
+
+	public UserDTO getUserInfo(String id) {
+		String sql ="SELECT * FROM user where id=?";
+		UserDTO dto = new UserDTO();
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setId(rs.getString("id"));
+				dto.setCreator_url(rs.getString("creator_url"));
+				dto.setEmail(rs.getString("email"));
+				dto.setName(rs.getString("name"));
+				dto.setPass(rs.getString("pass"));
+				dto.setProfile_img(rs.getString("profile_img"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setNumber(rs.getInt("number"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return dto;
 	}
 	
 }

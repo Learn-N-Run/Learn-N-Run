@@ -137,38 +137,38 @@ function register(){
 	<div class="required_fieldin">
 		<h1 style="text-align:center; margin-top:30px;"> 회원가입 </h1>
 			<form class="required_field" action="join.do" method="post" onsubmit="return register()">
-		<div class="mem_form_group">
-            <label for="name">이름</label><br>
-			<input type="text" class="mem_reg_name" id="name" name="name" placeholder="이름을 입력해주세요."><br>
-			<span style="color: red;" id="nameErr"></span>
-		</div>
-		<div class="mem_form_group">
-            <label for="id">아이디</label><button class="idCheckbtn" onclick="idCheckFunction();" type="button">중복체크</button></td> 
-			<input type="text" class="mem_reg_id" id="id" name="id" placeholder="아이디를 입력해주세요."><br>
-			<span style="color: red;" id="idErr"></span>
-		</div>
-		<div class="mem_form_group">
-            <label for="pwd">비밀번호 (영문,숫자,특수문자 혼합 8자 이상)</label><br>
-            <input onkeyup="pwdCheckFunction();" type="password" class="mem_reg_pwd" id="pwd" name="pwd" placeholder="********"><br>
-            <span style="color: red;" id="pwdErr"></span>
-		</div>
-		<div class="mem_form_group">
-			<label for="pwdCkd">비밀번호 확인</label>
-			<input onkeyup="pwdCheckFunction();" type="password" class="mem_reg_pwdCkd" id="pwdCkd" name="pwdCkd" placeholder="********"><br>
-			<span style="color: red;" id="pwdCheckMessage"></span>
-		</div>
-		<div class="mem_form_group">
-			<label for="email">이메일</label><br>
-			<input type="email" class="mem_reg_email" id="email" name="email" placeholder="example@mail.com"><br>
-			<span style="color: red;" id="emailErr"></span>
-		</div>
-	
-		<div>
-			<input type="submit" id="mem_submit" value="가입하기">
-		</div>
-		<div>
-			<input type="submit" id="btn_login" value="로그인">
-		</div>
+				<div class="mem_form_group">
+		            <label for="name">이름</label><br>
+					<input type="text" class="mem_reg_name" id="name" name="name" placeholder="이름을 입력해주세요."><br>
+					<span style="color: red;" id="nameErr"></span>
+				</div>
+				<div class="mem_form_group">
+		            <label for="id">아이디</label><button class="idCheckbtn" onclick="idCheckFunction();" type="button">중복체크</button></td> 
+					<input type="text" class="mem_reg_id" id="id" name="id" placeholder="아이디를 입력해주세요."><br>
+					<span style="color: red;" id="idErr"></span>
+				</div>
+				<div class="mem_form_group">
+		            <label for="pwd">비밀번호 (영문,숫자,특수문자 혼합 8자 이상)</label><br>
+		            <input onkeyup="pwdCheckFunction();" type="password" class="mem_reg_pwd" id="pwd" name="pwd" placeholder="********"><br>
+		            <span style="color: red;" id="pwdErr"></span>
+				</div>
+				<div class="mem_form_group">
+					<label for="pwdCkd">비밀번호 확인</label>
+					<input onkeyup="pwdCheckFunction();" type="password" class="mem_reg_pwdCkd" id="pwdCkd" name="pwdCkd" placeholder="********"><br>
+					<span style="color: red;" id="pwdCheckMessage"></span>
+				</div>
+				<div class="mem_form_group">
+					<label for="email">이메일</label><br>
+					<input type="email" class="mem_reg_email" id="email" name="email" placeholder="example@mail.com"><br>
+					<span style="color: red;" id="emailErr"></span>
+				</div>
+			
+				<div>
+					<input type="submit" id="mem_submit" value="가입하기">
+				</div>
+				<div>
+					<input type="submit" id="btn_login" value="로그인">
+				</div>
 		</form>
 	</div>
 

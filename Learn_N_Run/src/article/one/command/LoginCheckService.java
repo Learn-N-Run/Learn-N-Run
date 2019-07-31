@@ -22,10 +22,11 @@ public class LoginCheckService implements Service{
 		System.out.println(userid + userpass);
 		UserDAIOImpl dao = new UserDAIOImpl();
 		int result = dao.userCheck(userid, userpass);
-		
+		int group =	dao.getUserGroup(userid);
 		if(result==1) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", userid);
+			session.setAttribute("Group", group);
 		}else{
 			request.setAttribute("result", result);
 		}

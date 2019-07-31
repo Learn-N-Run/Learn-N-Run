@@ -22,6 +22,7 @@ import article.one.command.coupon3Service;
 import article.one.command.delUserService;
 import article.one.command.getEmailService;
 import article.one.command.getMyClassService;
+import article.one.command.getUserInfoService;
 import article.one.command.idCheckService;
 import article.one.command.modify1Service;
 import article.one.command.selectCouponCountService;
@@ -125,11 +126,16 @@ public class Controller extends HttpServlet {
 		}else if (command.equals("/article1/modifymember1.do")) {
 			modify1Service forward = new modify1Service();
 			forward.excute(request, response);
+			path="getUserInfo.do";
 		}else if (command.equals("/article1/getMyClassInfo.do")) {
 			System.out.println("getMy");
 			getMyClassService forward = new getMyClassService();
 			forward.excute(request, response);
 			path = "classInfo.jsp";
+		}else if (command.equals("/article1/getUserInfo.do")) {
+			getUserInfoService forward = new getUserInfoService();
+			forward.excute(request, response);
+			path = "modifymember2.jsp";
 		}
 
 		
