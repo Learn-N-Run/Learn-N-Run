@@ -1,12 +1,15 @@
 package article.three.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-//@RequestMapping("/test")
-//@Controller
+
+@Controller("thcontroller")
 public class TH_Controller{
 
-//	@RequestMapping("/success")
+	@RequestMapping(value = "/success.do",method = RequestMethod.GET )
 	public ModelAndView testdsfsd() {
 		
 		ModelAndView mav = new ModelAndView();
