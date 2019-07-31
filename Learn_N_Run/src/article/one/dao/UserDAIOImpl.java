@@ -95,8 +95,33 @@ public class UserDAIOImpl implements UserDAO{
 
 	@Override
 	public int updateUser(UserDTO dto, String pass) {
+		int result = 0; // 0: 실패, 1: 성공
+		try {
+			con=getConnection();
+			sql = "SELECT from user WHERE id=? and pass=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pass);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(pass.equals(rs.getString(pass))) {
+					try {
+						sql = "UPDATE INTO user(?)";
+					} catch (Exception e) {
+						System.out.println();
+					}
+				}
+					
+			}
+		} catch (Exception e) {
+			System.out.println("updateUser오류: " + e);
+		} finally {
+			freeResource();
+		}
 		
-		return 0;
+		
+		
+		return result;
 	}
 	
 	@Override

@@ -45,7 +45,7 @@ function pwdCheckFunction() {
 
 	<div class="conatiner">
 		<div class="mt-5 p-5 rounded" style="background-color: #f5f6f7;">
-			<form>
+			<form action="modify1.do" method="post">
 			<h2 class="text-center">일반 회원정보 수정</h2>
 			<p class="text-center mb-5 text-muted"><span class="text-danger">*</span>는 필수 입력 사항입니다.</p>
 			<div class="row mb-4">
