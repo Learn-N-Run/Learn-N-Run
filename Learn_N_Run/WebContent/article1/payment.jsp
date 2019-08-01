@@ -38,8 +38,15 @@
 			$("#couponNo").val('').css("display","none");
 			$(".coupon_modal_h").fadeOut();
 		});
+		
 	});
 	
+  	function popup(){
+         var url = "popup.html";
+         var name = "popup test";
+         var option = "width = 500, height = 400, top = 100, left = 200, location = no"
+         window.open(url, name, option);
+     }
 	function registerReceiver() {
 		if($("#receiver_name_h").val() == ''){
 			alert("받으시는 분 성함을 써주세요.")
@@ -47,16 +54,11 @@
 		}else if($("#receiver_number_h").val() == ''){
 			alert("받는 분 전화번호를 입력해 주세요.")
 			return false;
-			if(typeof($("#receiver_number_h").val()) === "string"){
-				alert("-를 빼고 입력해 주세요.")
-				return false;
-			}
-			
-		}else if($("#address1").val()==''){
+		}else if($("#sample6_postcode").val()==''){
 			alert("우편번호를 입력해 주세요.")
 			return false;
-		}else if(opener.$("#account_number").val()==''){
-			alert("결제 카드 정보를 입력하세요.")
+		}else if($(opener.document).find('#account_number').val() == ''){
+			alert("계좌 정보를 입력해주세요.")
 			return false;
 		}else{
 			var result = confirm('정말 구매하시겠습니까?'); 
@@ -65,15 +67,10 @@
 				} else {
 					return false;
 
+			}
 		}
 	}
 	
-	  function popup(){
-          var url = "popup.html";
-          var name = "popup test";
-          var option = "width = 500, height = 400, top = 100, left = 200, location = no"
-          window.open(url, name, option);
-      }
 
 	function coupon1_submit1() {
 		if(${requestScope.sale1} == 0 ){
@@ -394,7 +391,7 @@
 							</div>
 							<div class="section_h">
 								<p>배송 주소</p>
-								<input type="text" id="sample6_postcode" name="address1" id="address1" placeholder="우편번호">
+								<input type="text" id="sample6_postcode" name="address1" class="address1" placeholder="우편번호">
 								<input type="button" id="postCode_h" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 								<input type="text" id="sample6_address" name="address2" placeholder="주소"><br> 
 								<input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소">
