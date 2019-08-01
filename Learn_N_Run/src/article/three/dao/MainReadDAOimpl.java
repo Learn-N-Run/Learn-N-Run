@@ -2,12 +2,16 @@ package article.three.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import dto.BuyerDTO;
 import dto.ClassDTO;
 import dto.CurriculumDTO;
 
 public class MainReadDAOimpl implements MainReadDAO {
 
+	private SqlSession sqlSession;
+	
 	@Override
 	public List<BuyerDTO> top5Info(BuyerDTO bean) {
 		return null;
