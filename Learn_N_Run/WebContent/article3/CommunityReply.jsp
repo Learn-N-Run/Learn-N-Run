@@ -60,14 +60,24 @@
 			
 		</div>
 				<%--이름 및 작성일 --%>
-		<div style="clear:both";>
-			<h3>유저 이름 !</h3>
-			<h4>작성일 !</h4>
-		</div>
+		
 		<%-- 글내용 --%>	
-		<div>		
-			content !!!!!!!!!!!!!!!!!!!!!!
-		</div>
+				
+		
+			<c:forEach var="r" items="${requestScope.r}">
+			
+			<p>${r.reply_id}
+			${r.date}
+		
+				<h4>${r.content}</h4>
+				</p>
+		<form action="CommunityReply.po" >
+			<input type="text" name="reply" placeholder="대댓글을 입력 하세오 !">
+			<button type="submit">버 튼 !</button>
+		</form>	
+		
+			</c:forEach>
+		
 		<%-- 클래스 대댓글 전체 div태그 --%>
 		<div>
 			<%--클래스 대댓글 ? 작성자 와 날짜 ! --%>
@@ -81,11 +91,8 @@
 				</p>
 			</div>
 		</div>
-		<%--클래스대댓글 입력 textarea와 댓글전송버튼! --%>
-		<form action="CommunityReply.do" name="ComuRe">
-			<input type="text" placeholder="대댓글을 입력 하세오 !">
-			<button type="submit">버 튼 !</button>
-		</form>
+		
+		
 	</div>
 	<!-- 푸터 영역 -->
 		<c:import url="/1_Include/footer.jsp"></c:import>
