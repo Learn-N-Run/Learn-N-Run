@@ -2,10 +2,10 @@ package article.two.dao;
 
 import java.util.List;
 
-import dto.BuyerDTO;
-import dto.CategoryDTO;
-import dto.ClassDTO;
-import dto.CurriculumDTO;
+import lombok.dto.BuyerDTO;
+import lombok.dto.CategoryDTO;
+import lombok.dto.ClassDTO;
+import lombok.dto.CurriculumDTO;
 
 public interface ClassDAO {
 

@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import dto.BuyerDTO;
-import dto.ClassDTO;
-import dto.CurriculumDTO;
+import lombok.dto.BuyerDTO;
+import lombok.dto.ClassDTO;
+import lombok.dto.CurriculumDTO;
 
 public class MainReadDAOimpl implements MainReadDAO {
 

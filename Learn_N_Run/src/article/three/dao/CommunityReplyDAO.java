@@ -2,7 +2,7 @@ package article.three.dao;
 
 import java.util.List;
 
-import dto.ReplyDTO;
+import lombok.dto.ReplyDTO;
 
 public interface CommunityReplyDAO {
 

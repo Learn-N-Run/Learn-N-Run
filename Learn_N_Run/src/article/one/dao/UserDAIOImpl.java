@@ -2,11 +2,11 @@ package article.one.dao;
 
 import java.util.List;
 
-import dto.BuyerDTO;
-import dto.CouponDTO;
-import dto.JjimDTO;
-import dto.MessageDTO;
-import dto.UserDTO;
+import lombok.dto.BuyerDTO;
+import lombok.dto.CouponDTO;
+import lombok.dto.JjimDTO;
+import lombok.dto.MessageDTO;
+import lombok.dto.UserDTO;
 
 public class UserDAIOImpl implements UserDAO{
 
