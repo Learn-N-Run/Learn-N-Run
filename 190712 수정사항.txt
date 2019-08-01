@@ -1,7 +1,7 @@
-¡Ø 1Â÷ ¹èÆ÷ (¹èÆ÷¿µ¿ª : ÀüºÎ)
- 1. dao, controller Å¬·¡½º ÆÄÀÏ ÀÌ¸§ ¿¡·¯ ¼öÁ¤
- 2. °¡ÀÌµå Á¦ÀÛ ¿Ï·á
-   - GIT ±âÃÊ ¿î¿ë¹æ¹ý
- 3. CDN ¼Ò½ºÄÚµå ¿¡·¯ ¼öÁ¤(ºÎÆ®½ºÆ®·¦+jquery)
- 4. ¡Ø 2Â÷ ¹èÆ÷ ¿¹Á¤ »çÇ×
-   - header.jsp, footer.jsp ¼öÁ¤ ¹èÆ÷ ¿¹Á¤
+ï»¿â€» 1ì°¨ ë°°í¬ (ë°°í¬ì˜ì—­ : ì „ë¶€)
+ 1. dao, controller í´ëž˜ìŠ¤ íŒŒì¼ ì´ë¦„ ì—ëŸ¬ ìˆ˜ì •
+ 2. ê°€ì´ë“œ ì œìž‘ ì™„ë£Œ
+   - GIT ê¸°ì´ˆ ìš´ìš©ë°©ë²•
+ 3. CDN ì†ŒìŠ¤ì½”ë“œ ì—ëŸ¬ ìˆ˜ì •(ë¶€íŠ¸ìŠ¤íŠ¸ëž©+jquery)
+ 4. â€» 2ì°¨ ë°°í¬ ì˜ˆì • ì‚¬í•­
+   - header.jsp, footer.jsp ìˆ˜ì • ë°°í¬ ì˜ˆì •

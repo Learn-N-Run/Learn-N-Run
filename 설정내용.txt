@@ -1,41 +1,41 @@
-1. ¶óÀÌºê·¯¸® ¼³Á¤
-(https://mvnrepository.com/ ¡ç¸ÞÀÌºì·¹ÆÄÁöÅä¸®ÁÖ¼Ò)
- - jstl: ÅÂ±×¶óÀÌºê·¯¸® (4EA)
- - mysql connector: mysql 8¹öÀü ¶óÀÌºê·¯¸® (1EA)
- - tomcat DBCP : ÅèÄ¹ Ä¿³Ø¼ÇÇ® ¶óÀÌºê·¯¸®(1EA)
- - ÆÄÀÏ ¾÷·Îµå ¶óÀÌºê·¯¸®
- - imgscalr-lib-4.2.jar : ¾÷·Îµå ÀÌ¹ÌÁö ÀÚµ¿ ½æ³×ÀÏ »ý¼º ¶óÀÌºê·¯¸®
- - mail-1.5.0-b01.jar : ¸ÞÀÏº¸³»±â ¶óÀÌºê·¯¸® (1EA)
+ï»¿1. ë¼ì´ë¸ŒëŸ¬ë¦¬ ì„¤ì •
+(https://mvnrepository.com/ â†ë©”ì´ë¸ë ˆíŒŒì§€í† ë¦¬ì£¼ì†Œ)
+ - jstl: íƒœê·¸ë¼ì´ë¸ŒëŸ¬ë¦¬ (4EA)
+ - mysql connector: mysql 8ë²„ì „ ë¼ì´ë¸ŒëŸ¬ë¦¬ (1EA)
+ - tomcat DBCP : í†°ìº£ ì»¤ë„¥ì…˜í’€ ë¼ì´ë¸ŒëŸ¬ë¦¬(1EA)
+ - íŒŒì¼ ì—…ë¡œë“œ ë¼ì´ë¸ŒëŸ¬ë¦¬
+ - imgscalr-lib-4.2.jar : ì—…ë¡œë“œ ì´ë¯¸ì§€ ìžë™ ì¸ë„¤ì¼ ìƒì„± ë¼ì´ë¸ŒëŸ¬ë¦¬
+ - mail-1.5.0-b01.jar : ë©”ì¼ë³´ë‚´ê¸° ë¼ì´ë¸ŒëŸ¬ë¦¬ (1EA)
 
 (https://xens.tistory.com/m/entry/JAVAJSP-%ED%8C%8C%EC%9D%BC%EC%97%85%EB%A1%9C%EB%93%9C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%EC%8B%9C-cosjar%EB%A5%BC-%EC%93%B8%EA%B9%8C-Apache-Commons-Upload%EB%A5%BC-%EC%93%B8%EA%B9%8C)
-   cos : fileupload¶óÀÌºê·¯¸® (1EA)
-   commons-fileupload-1.4.jar : fileupload¶óÀÌºê·¯¸® (1EA)
+   cos : fileuploadë¼ì´ë¸ŒëŸ¬ë¦¬ (1EA)
+   commons-fileupload-1.4.jar : fileuploadë¼ì´ë¸ŒëŸ¬ë¦¬ (1EA)
 
 
 
-2. context.xml¼³Á¤
- - 8¹öÀü¿¡ ¸ÂÃç driverClassNameº¯°æ
+2. context.xmlì„¤ì •
+ - 8ë²„ì „ì— ë§žì¶° driverClassNameë³€ê²½
  - useSSL: false
- - ¼­¹ö Å¸ÀÓÁ¸ ¼³Á¤°ª:UTC
+ - ì„œë²„ íƒ€ìž„ì¡´ ì„¤ì •ê°’:UTC
 
-3. web.xml¼³Á¤
- - ¾÷·Îµå ÆÄÀÏ ÆÄÀÏ ÀÎÄÚµùÃ³¸®
+3. web.xmlì„¤ì •
+ - ì—…ë¡œë“œ íŒŒì¼ íŒŒì¼ ì¸ì½”ë”©ì²˜ë¦¬
 
-4. ÇÁ·ÎÁ§Æ® ¿Ï·á ÈÄ ÆÄÀÏ º´ÇÕÀ» À§ÇØ
-  ±¸ÇöÆÀ(articleÆú´õ) º°·Î ºÐ·ùÇÏ¿© µð·ºÅä¸® ±¸Á¶ ÅëÀÏ
- - cssÆú´õ (style.css)
- - jsÆú´õ (script.js)
- - imgÆú´õ
+4. í”„ë¡œì íŠ¸ ì™„ë£Œ í›„ íŒŒì¼ ë³‘í•©ì„ ìœ„í•´
+  êµ¬í˜„íŒ€(articleí´ë”) ë³„ë¡œ ë¶„ë¥˜í•˜ì—¬ ë””ë ‰í† ë¦¬ êµ¬ì¡° í†µì¼
+ - cssí´ë” (style.css)
+ - jsí´ë” (script.js)
+ - imgí´ë”
  - inc(header.jsp, footer.jsp)
-  Çì´õ¿Í ÇªÅÍ´Â ´ëºÎºÐÀÇ ÆäÀÌÁö¿¡ µé¾î°¡¹Ç·Î
-  ÂÉ°³Áö ¾ÊÀ½
- - ÁÖÀÇ»çÇ×
-  ¿ÜºÎÆÄÀÏ ÂüÁ¶ µð·ºÅä¸®¸¦ Àý´ë°æ·Î·Î ÁöÁ¤ÇÒ ½Ã
-  ³ªÁß¿¡ º´ÇÕÇÏ¸é not found°¡ ¶å´Ï´Ù.
-  ¿ÜºÎÆÄÀÏ °æ·Î(css,js,imgÆú´õ)´Â »ó´ë°æ·Î·Î ÁöÁ¤ºÎÅ¹µå¸®°Ú½À´Ï´Ù¤Ð¤Ð
+  í—¤ë”ì™€ í‘¸í„°ëŠ” ëŒ€ë¶€ë¶„ì˜ íŽ˜ì´ì§€ì— ë“¤ì–´ê°€ë¯€ë¡œ
+  ìª¼ê°œì§€ ì•ŠìŒ
+ - ì£¼ì˜ì‚¬í•­
+  ì™¸ë¶€íŒŒì¼ ì°¸ì¡° ë””ë ‰í† ë¦¬ë¥¼ ì ˆëŒ€ê²½ë¡œë¡œ ì§€ì •í•  ì‹œ
+  ë‚˜ì¤‘ì— ë³‘í•©í•˜ë©´ not foundê°€ ëœ¹ë‹ˆë‹¤.
+  ì™¸ë¶€íŒŒì¼ ê²½ë¡œ(css,js,imgí´ë”)ëŠ” ìƒëŒ€ê²½ë¡œë¡œ ì§€ì •ë¶€íƒë“œë¦¬ê² ìŠµë‹ˆë‹¤ã… ã… 
   
-4. Ä¿¸Çµå(+Ä¿¸Çµå ÀÎÅÍÆäÀÌ½º) ¼³Á¤
-5. ÇÁ·ÐÆ®ÄÁÆ®·Ñ·¯ ¼³Á¤
-6. DAO ÀÎÅÍÆäÀÌ½º ¼³Á¤(ÆÀ³» ±¸ÇöÆÀº° ±¸ºÐ)
+4. ì»¤ë§¨ë“œ(+ì»¤ë§¨ë“œ ì¸í„°íŽ˜ì´ìŠ¤) ì„¤ì •
+5. í”„ë¡ íŠ¸ì»¨íŠ¸ë¡¤ëŸ¬ ì„¤ì •
+6. DAO ì¸í„°íŽ˜ì´ìŠ¤ ì„¤ì •(íŒ€ë‚´ êµ¬í˜„íŒ€ë³„ êµ¬ë¶„)
 
 
