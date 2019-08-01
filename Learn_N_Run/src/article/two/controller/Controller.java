@@ -8,8 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// TODO 태흥: ↓web.xml이 아닌 서블릿내에서 매핑작업을 해주시면 됩니다.
-/*@WebServlet("/*.do")*/
+import article.two.command.ActionForward;
+import article.two.command.AddClassService;
+import article.two.command.AddCurriService;
+import article.two.command.ClassInfoService;
+import article.two.command.JjimRegisterService;
+import article.two.command.Service;
+import article.two.command.UpdateClassService;
+
+// 구현2팀은 "*.me"로 매핑작업을 해주시면 됩니다.
+@WebServlet("*.me")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -23,6 +31,7 @@ public class Controller extends HttpServlet {
 		doHandler(request, response); }
 	
 	protected void doHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 /* 한글처리 */request.setCharacterEncoding("UTF-8");
 /* 한글처리 */response.setContentType("text/html;charset=UTF-8");
 
@@ -33,22 +42,32 @@ public class Controller extends HttpServlet {
 		
 		String path = null;
 		/*▲포워딩할 경로 String으로 저장*/
-		
-		if (command.equals("여기에 넣으세요")) {
+		Service forward = null;
+		ActionForward action = null;
+		if (command.equals("/article2/crt_classList.me")) {
+			//AddClassService 객체 생성
+			forward = new AddClassService();
+			action =forward.excute(request, response);
 			
-			path="";
-		}else if (command.equals("여기에넣으세요")) {
 			
-			path="";
-		}else if (command.equals("여기에넣으세요")) {
+		}else if (command.equals("/article2/crt_addCurri.me")) {
+			//AddCurriService 객체 생성
 			
-			path="";
-		}else if (command.equals("여기에넣으세요")) {
+			path="crt_upload.jsp";
+		}else if (command.equals("/article2/classInfo.me")) {
+			forward = new ClassInfoService();
 			
-			path="";
-		}else if (command.equals("여기에넣으세요")) {
+			action = forward.excute(request, response);
 			
-			path="";
+		}else if (command.equals("/article2/updateClass.me")) {
+			forward = new UpdateClassService();
+			action = forward.excute(request, response);
+			
+		}else if (command.equals("/article2/jjimRegister.me")) {
+			forward = new JjimRegisterService();
+			
+			action = forward.excute(request, response);
+			
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";
@@ -62,10 +81,18 @@ public class Controller extends HttpServlet {
 			
 			path="";
 		}
+		if(action!= null){
+			if(action.isRedirect()){
+				response.sendRedirect(action.getPath());
+			}else{
+				RequestDispatcher dispatcher = request.getRequestDispatcher(action.getPath());
+				/*▲포워딩주소설정*/
+				dispatcher.forward(request, response);
+				/*▲설정된주소로 request와 response 전달하여 포워딩*/		
+				
+			}
+		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-		/*▲포워딩주소설정*/
-		dispatcher.forward(request, response);
-		/*▲설정된주소로 res+req 전달하여 포워딩*/		
+		
 	}
 }

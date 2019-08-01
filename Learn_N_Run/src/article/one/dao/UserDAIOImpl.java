@@ -1,6 +1,14 @@
 package article.one.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 import dto.BuyerDTO;
 import dto.CouponDTO;
@@ -10,6 +18,46 @@ import dto.UserDTO;
 
 public class UserDAIOImpl implements UserDAO{
 
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	DataSource ds = null;
+	String sql="";
+	
+	/*connection객체 얻기 메소드*/
+	private Connection getConnection() throws Exception{
+		Connection con = null;
+		
+		Context init = new InitialContext();
+		DataSource ds = (DataSource)init.lookup("java:comp/env/jdbc/learnrun");
+		con = ds.getConnection();
+		return con;
+	}
+	
+	/*자원해제 메소드*/
+	public void freeResource() {
+
+		if (con != null)
+			try {
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		if (rs != null)
+			try {
+				rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		if (pstmt != null)
+			try {
+				pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	
 	@Override
 	public void addUser(UserDTO dto) {
 		// TODO Auto-generated method stub
@@ -36,8 +84,30 @@ public class UserDAIOImpl implements UserDAO{
 
 	@Override
 	public int userCheck(String id, String pass) {
-		// TODO Auto-generated method stub
-		return 0;
+			int check = 0;
+			try {
+				con = getConnection();
+				sql = "select* from user where id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					if (pass.equals(rs.getString("pass"))) {
+						check = 1;
+					} else { 
+						check = 0; 
+					}
+				} else { 
+					check = -1;
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				freeResource();
+			}
+			return check;
 	}
 
 	@Override
@@ -83,14 +153,73 @@ public class UserDAIOImpl implements UserDAO{
 	}
 
 	@Override
-	public List<MessageDTO> getMessage(MessageDTO bean, String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MessageDTO> getMessage(MessageDTO dto,String id) {
+		ArrayList<MessageDTO> list = new ArrayList<MessageDTO>();
+		try {
+			con = getConnection();
+			sql = "select* from message where receiver_id=? order by send_time";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			UserDTO udto = new UserDTO();
+			
+			while (rs.next()) {
+				dto = new MessageDTO();
+				dto.setNo(rs.getInt("no"));
+				udto.setId(rs.getString("send_id"));
+				dto.setSend_user(udto);
+				dto.setContent(rs.getString("content"));
+				dto.setSend_time(rs.getTimestamp("send_time"));
+				dto.setRead_yn(rs.getInt("read_yn"));
+				System.out.println(dto);
+				list.add(dto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (con != null)
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+		return list;
 	}
 
 	@Override
 	public MessageDTO getMessageInfo(int MessageNo) {
-		// TODO Auto-generated method stub
+		try {
+			con = getConnection();
+			sql = "select * from message where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, MessageNo);
+			rs = pstmt.executeQuery();
+			
+			UserDTO dto = new UserDTO();
+			if(rs.next()) {
+				rs.getString("send_id");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
 		return null;
 	}
 

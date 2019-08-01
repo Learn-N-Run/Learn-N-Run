@@ -89,7 +89,7 @@ public interface UserDAO {
 	int countReadMessage(String id);
 	/*
 	 * 들고와서, return해주기. sql =
-	 * "SELECT COUNT(read_yn) FROM message WHERE read_yn = 0;";
+	 * "SELECT COUNT(read_yn) FROM message WHERE read_yn = 0; & receiver_id=?";
 	 */
 
 	List<MessageDTO> getMessage(MessageDTO bean, String id);
@@ -109,7 +109,7 @@ public interface UserDAO {
 	 * sql="DELETE FROM message where no=?;"
 	 */
 
-//-------------------------------------------------------------------쪽지주고받기, 동영상 강의부분에 댓글부분.
+//-------------------------------------------------------------------쪽지주고받기, 
 
 	// 쿠폰함 페이지
 	CouponDTO myCouponInfo(String id);
