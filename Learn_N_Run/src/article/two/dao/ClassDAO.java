@@ -1,22 +1,24 @@
-package artcle.two.dao;
+package article.two.dao;
 
 import java.util.List;
+import java.util.Vector;
 
 import dto.BuyerDTO;
 import dto.CategoryDTO;
 import dto.ClassDTO;
 import dto.CurriculumDTO;
+import dto.JjimDTO;
 
 public interface ClassDAO {
 
 	// 클래스 생성부분.
-	void addClass(String id, ClassDTO dto);
+	void addClass(String id);
 
 	/*
 	 * Class생성 클릭시 Class정보를 추가시킴. sql = "INSERT INTO class (cre_id) VALUES (?);
 	 */
-	void updateClass(ClassDTO dto);
-
+	void updateClass(ClassDTO cdto, String id);
+	
 	/*
 	 * Class생성 페이지에서 다음단계를 누르면 curriculum update시키고, 커리큘럼No값 insert까지 시키기. sql =
 	 * "UPDATE class
@@ -80,12 +82,15 @@ public interface ClassDAO {
 	 */
 
 	// 클래스 상세보기 페이지
-	ClassDTO classInfo(ClassDTO dto);
+	ClassDTO classInfo(int no);
 	/*
 	 * 메인 content영역 + 우측 nav바 영역 여기서 내페이지도 수강신청 가능한지 회의해보기.아니면 select 한번 더해야함. sql =
-	 * "SELECT c.cover_img, c.detail_info, c.material_image,
-	 * c.material_content,u.url,u.nickname FROM class c JOIN user u ON c.cre_id =
-	 * u.id";
+	 * SELECT c.cover_img, ct.name, c.detail_category, c.material_img, c.tuition, c.material_content, c.content, u.creator_url, u.nickname 
+	 * FROM  class c JOIN user u 
+	 * ON c.cre_id = u.id
+	 * join category ct
+	 * on c.category_no = ct.no
+	 * WHERE c.no = ?;
 	 */
 
 	List<CategoryDTO> categoryInfo(CategoryDTO dto);
@@ -99,4 +104,6 @@ public interface ClassDAO {
 	 * 내 수강료
 	 * 
 	 */
+
+	Vector<JjimDTO> jjimRegiter(String userid, int classno);
 }

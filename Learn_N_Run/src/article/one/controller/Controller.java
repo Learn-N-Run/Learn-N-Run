@@ -8,11 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import article.one.command.LoginCheckService;
+import article.one.command.SelectDetailMessageService;
+import article.one.command.SelectMessageService;
+
 // TODO 태흥: ↓web.xml이 아닌 서블릿내에서 매핑작업을 해주시면 됩니다.
-/*@WebServlet("/*.do")*/
+@WebServlet("*.do")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	public void init() throws ServletException {System.out.println("connection start");}
 	@Override
@@ -34,15 +38,18 @@ public class Controller extends HttpServlet {
 		String path = null;
 		/*▲포워딩할 경로 String으로 저장*/
 		
-		if (command.equals("여기에 넣으세요")) {
+		if (command.equals("/article1/login.do")) {
+			LoginCheckService forward = new LoginCheckService();
+			forward.excute(request, response);
+			path="header.jsp";
+		}else if (command.equals("/article1/selectMessage.do")) {
+			SelectMessageService forward = new SelectMessageService();
+			forward.excute(request, response);
 			
-			path="";
-		}else if (command.equals("여기에넣으세요")) {
+		}else if (command.equals("/article1/selectDetailMessage.do")) {
+			SelectDetailMessageService forward = new SelectDetailMessageService();
+			forward.excute(request, response);
 			
-			path="";
-		}else if (command.equals("여기에넣으세요")) {
-			
-			path="";
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";
@@ -62,10 +69,11 @@ public class Controller extends HttpServlet {
 			
 			path="";
 		}
-		
+		if(path != null) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		/*▲포워딩주소설정*/
 		dispatcher.forward(request, response);
+		}
 		/*▲설정된주소로 res+req 전달하여 포워딩*/		
 	}
 }

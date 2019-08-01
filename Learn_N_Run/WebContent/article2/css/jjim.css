@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+#wrap{
+	width: 100%;
+	}
+	
+	/*왼쪽 bar*/
+#sec05{
+	height: 1820px;
+	float: left;
+	margin-top: 0;
+	margin-left: 0;
+	background-color: #f7f7f7;
+	width: 15%;
+	border-right: 1px solid #dedede;
+}
+#side_bar label{
+	margin-bottom: 30px;
+	margin-top: 40px;
+	font-size: 22px;
+	margin-left: 30px;
+}
+#side_bar li{
+	width: 100%;
+	font-size: 16px;
+	line-height: 35px;
+	border-bottom: 1px solid #dedede;
+}
+#side_bar li:hover{
+	background-color: #9fcfff;	
+}
+#side_bar li a{
+	color: black;
+}
+#side_bar li a:hover{
+	text-decoration: none;
+	color: black;
+}
+	
+	
+	
+	
+	#table_c tr:nth-of-type(1)
+	{ 
+		background-color: pink;
+		color : #ffffff;
+	}
+	#table_c tr>th{
+		width: 300px;
+	}
+	#table_c{
+	 border-spacing: 5px;  
+	 border-collapse: separate;
+	 margin : 15px; 
+	}
+	
+	#iag_c>a>div>img{
+		 transition: all 0.3s ease-in 0s;
+	}
+	#iag_c>a>div{
+		width: 300px;
+		height: 200px;
+		overflow: hidden;
+	}
+	#iag_c>a>div:hover>img{
+		transform: scale(1.1) translateZ(0px);
+	}
