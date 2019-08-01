@@ -137,7 +137,7 @@ public class Controller extends HttpServlet {
 		}else if (command.equals("/article1/getUserInfo.do")) {
 			getUserInfoService forward = new getUserInfoService();
 			forward.excute(request, response);
-			path = "modifymember2.jsp";
+			path = "modifymember1.jsp";
 		}else if (command.equals("/article1/logout.do")) {
 			LogoutService forward = new LogoutService();
 			forward.excute(request, response);

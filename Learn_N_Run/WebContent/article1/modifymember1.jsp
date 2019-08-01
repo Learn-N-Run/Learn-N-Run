@@ -164,10 +164,23 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 		width: 100%;
 		height: 100%;
 	}
+	#wrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+.content_h {
+	max-width: 800px;
+	margin: 0 auto;
+	height: 1050px;
+	border: 0.3px solid gray;
+}
 </style>
 </head>
 <body style="background-color: #f5f6f7;">
-   <div class="conatiner">
+	<div id="wrap">
+		<jsp:include page="/1_Include/header.jsp" />
+		<div id="center">
+   <div class=".content_h">
       <h2 class="text-center">회원정보 수정</h2>
       <p class="text-center mb-5 text-muted"><span class="text-danger">*</span>는 필수 입력 사항입니다.</p>
       	<c:if test="${sessionScope.Group == 2 }">
@@ -294,5 +307,9 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
       </form>
       </c:if>
    </div>
+   </div>
+   <jsp:include page="footer.jsp"></jsp:include>
+   </div>
+   <jsp:include page="cateEx.jsp"></jsp:include>
 </body>
 </html>
