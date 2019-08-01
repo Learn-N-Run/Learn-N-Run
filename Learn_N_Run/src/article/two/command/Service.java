@@ -9,5 +9,5 @@ import javax.servlet.http.HttpServletResponse;
 public interface Service {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException ;
+			throws ServletException, IOException;
 }
