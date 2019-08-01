@@ -9,6 +9,7 @@ import dto.ClassDTO;
 import dto.CurriculumDTO;
 import dto.JjimDTO;
 
+
 public interface ClassDAO {
 
 	// 클래스 생성부분.

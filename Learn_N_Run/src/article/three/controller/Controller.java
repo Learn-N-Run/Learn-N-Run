@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// TODO 태흥: ↓web.xml이 아닌 서블릿내에서 매핑작업을 해주시면 됩니다.
-/*@WebServlet("*.po")*/
+@WebServlet("/*.po")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,9 +33,13 @@ public class Controller extends HttpServlet {
 		String path = null;
 		/*▲포워딩할 경로 String으로 저장*/
 		
-		if (command.equals("여기에 넣으세요")) {
-			
-			path="";
+		if (command.equals("/article3/CommunityReply.do")) {
+			try {
+				
+			} catch (Exception e) {
+				
+			}
+			path="CommunityReply.jsp";
 		}else if (command.equals("여기에넣으세요")) {
 			
 			path="";

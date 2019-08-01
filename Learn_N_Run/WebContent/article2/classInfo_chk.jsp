@@ -17,10 +17,8 @@
 <title>클래스 상세보기 확인</title>
 </head>
 <body>
+
 	<button onclick="location.href = 'classInfo.me?no=20'">클래스 확인</button>
-
-
-
 
 
 </body>

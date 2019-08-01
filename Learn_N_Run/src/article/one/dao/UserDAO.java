@@ -12,6 +12,7 @@ import dto.CouponDTO;
 import dto.MessageDTO;
 import dto.UserDTO;
 
+
 public interface UserDAO {
 
 	int getCoupon1(String id);

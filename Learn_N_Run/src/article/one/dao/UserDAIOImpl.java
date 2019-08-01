@@ -13,7 +13,6 @@ import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -22,7 +21,6 @@ import dto.BuyerDTO;
 import dto.CategoryDTO;
 import dto.ClassDTO;
 import dto.CouponDTO;
-import dto.JjimDTO;
 import dto.MessageDTO;
 import dto.UserDTO;
 
