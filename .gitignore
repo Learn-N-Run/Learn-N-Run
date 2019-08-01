@@ -1,6 +1,13 @@
-﻿.metadata/
+.metadata/
 Servers/
 Documents/배포목록/개발 툴/
 Proj/
 Learn_N_Run/target/
 /.metadata/
+DW-mybatis/
+MVC1(FM)/
+MVC2/
+ex-pattern/
+ex-pattern2/
+Learn_N_Run/.classpath
+Learn_N_Run/.settings/org.eclipse.wst.common.project.facet.core.xml

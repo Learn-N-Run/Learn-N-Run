@@ -4,41 +4,9 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	<display-name>Learn_N_Run</display-name>
-
-<!--
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
- 	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-	          /WEB-INF/config/action-mybatis.xml
-	  	</param-value>
-	</context-param> -->
-
-	<filter>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
-	<servlet>
-		<servlet-name>action</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>action</servlet-name>
-		<url-pattern>*.po</url-pattern>
-	</servlet-mapping>
-	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>article3/index.jsp</welcome-file>
+		<welcome-file>article3/index.html</welcome-file>
+	</welcome-file-list>
 </web-app>
