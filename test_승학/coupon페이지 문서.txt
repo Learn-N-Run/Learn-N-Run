@@ -1,0 +1,107 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/index.css">
+<!-- 부트 스트랩 제외한 index.jsp만의 css -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function couponOpen() {
+			
+		}
+	</script>
+	<style type="text/css">
+		.content_h{
+			background-color: rgb(0,0,0,0.4);
+			height: 1200px;
+		}
+		
+		.category_h{
+			position : fixed;
+			width : 15%;
+			background-color: lightblue;
+		}
+		
+		.category_h ul{
+			margin: 0; padding: 0; list-style: none;
+		}
+		.category_h ul li{
+			background-color:black;
+			padding: 10px 5px; border-bottom: 1px solid #DDD;
+			border-radius: 5px 5px 5px 5px;
+		}
+		
+		.category_h ul li:HOVER{
+			background-color : gray;
+			color: black;
+		}
+		
+		.category_h ul li:ACTIVE{
+			background-color : gray;
+			color: black;
+		} 
+		
+		.category_h ul a{
+			font-size : 17px;
+			font-weight : 500;
+			color: white; text-decoration: none;
+		}
+		
+		
+		.myContent_h{
+		    width: 83%;
+		    height: 100%;
+		    background-color: aqua;
+		    margin-left: 17%;
+		}
+		
+		.category_section_h{
+			width: 20%;
+			height: 100%;
+		}
+		
+		#wrap{
+			clear: both;
+		}
+		
+		.mask_h{
+			display: none;
+			
+		}
+	</style>
+</head>
+<body>
+	<!-- 전체 페이지 감싸는 div 태그 -->
+	<div id="wrap">
+		<!-- header 부분 -->
+		<jsp:include page="header.jsp"></jsp:include>
+			<div class="content_h">
+					<div class="category_h">
+						<ul>
+							<a href="#"><li>내정보</li></a>
+							<a href="#"><li>회원탈퇴</li></a>
+							<a href="#"><li>로그아웃</li></a>
+							<a href="#"><li>내 수강목록</li></a>
+							<a href="#"><li>찜목록</li></a>
+							<a href="#" onclick="couponOpen()"><li>쿠폰함</li></a>
+							<a href="#"><li>내 클래스</li></a>
+							<a href="#"><li>찜목록</li></a>						
+						</ul>
+					</div>
+				<div class="myContent_h">
+				</div>
+			</div>
+			
+			
+		
+		<!-- footer 부분 -->
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
+	
+	<div class="mask_h">
+	</div>
+</body>
+</html>

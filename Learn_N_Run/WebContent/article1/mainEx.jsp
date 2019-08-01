@@ -14,6 +14,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
+<script type="text/javascript">
+
+	$(function() {
+		$("#buyClass_h").click(function() {
+			location.href="buyClassInfo.do?classno=2";
+		});
+	});
+	
+</script>
 <title></title>
 <style>
 	#wrap{
@@ -28,11 +37,16 @@
 </head>
 <body>
 	<div id="wrap">
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="/1_Include/header.jsp"/>
 			<div id="center">
-			
+				<a href="event.do">이벤트 페이지로 이동</a>
+				<a href="category.jsp">카테고리페이지로 이동</a>
+				<a href="getMyClassInfo.do">내 수강목록 페이지 이동</a>
+				<button type="button" id="buyClass_h">구매하기</button>
+				<a href="getUserInfo.do">내 정보 수정페이지로 이동</a>
 			</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
+		
 </body>
 </html>

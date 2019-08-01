@@ -7,31 +7,36 @@ package article.one.dao;
 import java.util.List;
 
 import dto.BuyerDTO;
+import dto.ClassDTO;
 import dto.CouponDTO;
-import dto.JjimDTO;
 import dto.MessageDTO;
 import dto.UserDTO;
 
 public interface UserDAO {
 
+	int getCoupon1(String id);
+	
+	int getCoupon3(String id);
+	
+	String getEmail(String id);
 	// 유저 부분.
 
-	void addUser(UserDTO dto);
+	int addUser(UserDTO dto);
 
 	/*
 	 * 유저 추가 sql = "INSERT into user(~~,user_group_no) VALUES(?,1); 1번 일반유저 2번 크리에이터
 	 */
-	int updateUser(UserDTO dto, String pass);
+	void updateUser(UserDTO dto);
 
 	/*
 	 * 유저 개인정보 수정, pass값 select해서 확인후, update시킴 ResultSet값 인트형으로 받아서, 유효성검사. sql =
 	 * "SELECT pass from user where pass=?" sql =
 	 * "UPDATE user SET pass=?, WHERE pass=?"
 	 */
-	void delUser(UserDTO dto);
+	int delUser(String id, String pass);
 
 	/*
-	 * 유저 삭제 비밀번호 값 확인, id컬럼 삭제. sql = "SELECT pass from user where pass=?" DELETE
+	 * 유저 삭제 비밀번호 값 확인, id컬럼 삭제. sql = "SELECT pass from user where id=?" DELETE
 	 * FROM user id=?"
 	 */
 	int idCheck(String id);
@@ -67,6 +72,7 @@ public interface UserDAO {
 	 * request.getSession(); session.setAttribute("idGroup");
 	 */
 	int updateCreator(UserDTO bean);
+
 	/*
 	 * 크리에이터 등급 올리기, url,nickname,profileimg, 본인인증 email확인후. User에 업데이트시,
 	 * UserGroup(번호 번경). sql = "UPDATE user SET url=?, nickname=?,profile_img=?
@@ -74,7 +80,7 @@ public interface UserDAO {
 	 */
 
 	// 내 쪽지함
-	void sendMessage(MessageDTO dto, String id);
+	int sendMessage(MessageDTO dto, String id);
 	/*
 	 * Message보내기. MessageBean객체를 넘김 sql = "INSERT INTO message
 	 * (send_id,receiver_id,content,send_time,read_yn); "VALUES (id,?,?,sysdate,0);
@@ -111,23 +117,11 @@ public interface UserDAO {
 
 //-------------------------------------------------------------------쪽지주고받기, 
 
-	// 쿠폰함 페이지
-	CouponDTO myCouponInfo(String id);
-	/*
-	 * 내 쿠폰함 눌렀을때... sql = "SELECT * FROM coupon WHERE user_id=?";
-	 */
-
 	// 클래스 결제 페이지
-	int buyClass(int classNo);
+	ClassDTO buyClass(int classNo);
 	/*
 	 * 결제 신청 눌렀을때.. sql = "SELECT tuition FROM class where no = ?"
 	 * 
-	 */
-
-	CouponDTO CouponClass(String id);
-	/*
-	 * 쿠폰 적용 눌렀을때.. sql = "SELECT * FROM coupon WHERE user_id=?"; 없으면 없다고 띄우고 있으면
-	 * 사용할수있게함.
 	 */
 
 	void addBuy(BuyerDTO bean, String id, int classNo);
@@ -137,11 +131,9 @@ public interface UserDAO {
 	 * 
 	 * session영역에저장.
 	 */
+	
+	void addBuy(BuyerDTO bean,CouponDTO dto, String id, int classNo);
 
-	// 찜목록 페이지
-	JjimDTO getJjim(String id);
-	/*
-	 * 내 찜목록 눌렀을때... SELECT cover_img, title,
-	 */
+	CouponDTO myCouponInfo(String id);
 
 }

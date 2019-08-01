@@ -22,7 +22,7 @@ public class SelectMessageService implements Service {
 	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 
@@ -47,6 +47,8 @@ public class SelectMessageService implements Service {
 		String jsonInfo = totalObject.toJSONString();
 		System.out.println(totalObject.toJSONString());
 		out.print(jsonInfo);
+		out.flush();
+		out.close();
 		
 		/*
 	 	{

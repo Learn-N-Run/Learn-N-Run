@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Nanum Gothic', sans-serif; 
+}
+
+body {
+	background-color: #efefef;
+}
+
+.required_fieldin {
+	border:2px solid gray;
+	height:750px;
+	width:500px;
+	border-radius: 10px;
+	margin: 100px auto 0;
+	background-color: white;
+}
+
+.required_field {
+	background-color: white;
+	margin-left:45px;
+	margin-top:40px;
+}
+
+#name {
+	border-radius: 3px;
+	border:1px solid gray;
+	height: 30px;
+    width: 400px;
+    text-align: left;
+}
+
+#id {
+	border-radius: 3px;
+	border:1px solid gray;
+	height: 30px;
+    width: 400px;
+    text-align: left;
+}
+
+#pwd {
+	border-radius: 3px;
+	border:1px solid gray;
+	height: 30px;
+    width: 400px;
+    text-align: left;
+}
+
+#pwdCkd {
+	border-radius: 3px;
+	border:1px solid gray;
+	height: 30px;
+    width: 400px;
+    text-align: left;
+}
+
+#email {
+	border-radius: 3px;
+	border:1px solid gray;
+	height: 30px;
+    width: 400px;
+    text-align: left;
+}
+
+#mem_submit {
+	margin-top:30px;
+	width: 400px;
+	height:40px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    font-weight: 200;
+}
+
+.mem_form_group{
+	padding-bottom: 30px;
+}
+
+#mem_submit:hover {
+	background-color: gray;
+}
+
+#btn_login {
+	border:1px solid gray;
+	margin-top:30px;
+	width: 400px;
+	height:40px;
+    color: black;
+    font-size: 15px;
+    font-weight: 200;
+}

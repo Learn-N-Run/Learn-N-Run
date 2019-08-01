@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import article.two.command.ActionForward;
 import article.two.command.AddClassService;
-import article.two.command.AddCurriService;
 import article.two.command.ClassInfoService;
 import article.two.command.JjimRegisterService;
 import article.two.command.Service;
 import article.two.command.UpdateClassService;
 
-// 구현2팀은 "*.me"로 매핑작업을 해주시면 됩니다.
+
 @WebServlet("*.me")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -8,13 +8,13 @@ public class Receiver_InfoDTO {
 	private String address2;
 	private String address3;
 	private String delievery_msg;
-	private BuyerDTO buyer;
+	
 
 	public Receiver_InfoDTO() {
 	}
 
 	public Receiver_InfoDTO(int no, String name, int number, String address1, String address2, String address3,
-			String delievery_msg, BuyerDTO buyer) {
+			String delievery_msg) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -23,7 +23,6 @@ public class Receiver_InfoDTO {
 		this.address2 = address2;
 		this.address3 = address3;
 		this.delievery_msg = delievery_msg;
-		this.buyer = buyer;
 	}
 
 	public int getNo() {
@@ -82,12 +81,5 @@ public class Receiver_InfoDTO {
 		this.delievery_msg = delievery_msg;
 	}
 
-	public BuyerDTO getBuyer() {
-		return buyer;
-	}
-
-	public void setBuyer(BuyerDTO buyer) {
-		this.buyer = buyer;
-	}
 
 }
