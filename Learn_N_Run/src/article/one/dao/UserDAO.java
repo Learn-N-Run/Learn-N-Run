@@ -73,6 +73,7 @@ public interface UserDAO {
 	 * request.getSession(); session.setAttribute("idGroup");
 	 */
 	int updateCreator(UserDTO bean);
+
 	/*
 	 * 크리에이터 등급 올리기, url,nickname,profileimg, 본인인증 email확인후. User에 업데이트시,
 	 * UserGroup(번호 번경). sql = "UPDATE user SET url=?, nickname=?,profile_img=?

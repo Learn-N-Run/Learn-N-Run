@@ -18,10 +18,8 @@ public class modify1Service implements Service{
 		response.setContentType("text/html; charset=UTF-8");
 		
 		UserDTO dto = new UserDTO();
-		dto.setCreator_url(request.getParameter(""));
-		dto.setEmail(request.getParameter(""));
-		dto.setPass(request.getParameter(""));
-		//등등등
+		dto.setEmail(request.getParameter("email"));
+		dto.setPass(request.getParameter("newpwd"));
 		
 		UserDAIOImpl dao = new UserDAIOImpl();
 		dao.updateUser(dto);

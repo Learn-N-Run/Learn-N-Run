@@ -37,42 +37,6 @@
 	
 }
 
-.category_h {
-	position: fixed;
-	width: 9%;
-	background-color: lightblue;
-}
-
-.category_h ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.category_h ul li {
-	background-color: black;
-	padding: 10px 5px;
-	border-bottom: 1px solid #DDD;
-	border-radius: 5px 5px 5px 5px;
-}
-
-.category_h ul li:HOVER {
-	background-color: gray;
-	color: black;
-}
-
-.category_h ul li:ACTIVE {
-	background-color: gray;
-	color: black;
-}
-
-.category_h ul a {
-	font-size: 17px;
-	font-weight: 500;
-	color: white;
-	text-decoration: none;
-}
-
 .myContent_h {
 	width: 83%;
 	margin-left: 17%;
@@ -242,60 +206,49 @@
 </style>
 </head>
 <body>
+	<jsp:include page="cateEx.jsp"></jsp:include>
 	<div id="wrap">
+
 		<jsp:include page="/1_Include/header.jsp"/>
 			<div id="center">
-				<div class="category_h">
-				<ul>
-					<a href="javascript:;"><li>내정보</li></a>
-					<a href="javascript:;"><li>회원탈퇴</li></a>
-					<a href="javascript:;"><li>로그아웃</li></a>
-					<a href="javascript:;"><li>내 수강목록</li></a>
-					<a href="javascript:;"><li>찜목록</li></a>
-					<a href="javascript:;" id="coupon_h"><li>쿠폰함</li></a>
-					<a href="javascript:;"><li>내 클래스</li></a>
-					<a href="javascript:;"><li>찜목록</li></a>
-				</ul>
-			</div>
-
-			
-			<div class="myContent_h">
-				<div class="title_h">
-					<p>내 수강 정보</p>
-				</div>
-				<c:if test="${requestScope.MyClassList == null }">
-					<h1>구매한 수강정보가 없습니다.</h1>
-				</c:if>
-				
-				<c:if test="${requestScope.MyclassList != null }">
-					<c:forEach var="list" items="${requestScope.MyclassList }">
-						<div class="myClass_content_h">
-							<div class="myClass_img">
-								<img src="img/aaa.jpg">
-							</div>
-							<div class="myClass_title_category">
-								<div class="myClass_title">
-									<span>[수강명]</span> <br> <br> ${list.cover_img }
+				<!-- id="coupon_h" -->
+				<div class="myContent_h">
+					<div class="title_h">
+						<p>내 수강 정보</p>
+					</div>
+					<c:if test="${requestScope.MyClassList == null }">
+						<h1>구매한 수강정보가 없습니다.</h1>
+					</c:if>
+					
+					<c:if test="${requestScope.MyclassList != null }">
+						<c:forEach var="list" items="${requestScope.MyclassList }">
+							<div class="myClass_content_h">
+								<div class="myClass_img">
+									<img src="img/${list.cover_img }">
 								</div>
-								<div class="myClass_category">
-									<span>[카테고리명]</span><br> <br>${list.name }
+								<div class="myClass_title_category">
+									<div class="myClass_title">
+										<span>[수강명]</span> <br> <br> ${list.title }
+									</div>
+									<div class="myClass_category">
+										<span>[카테고리명]</span><br> <br>${list.category.name }
+									</div>
 								</div>
+								<div class="myClass_buyTime">
+									<p>
+										<span>[수강 신청일]</span><br>
+									</p>
+								</div>
+								<div class="myClass_expiration">${list.order_date }
+									<p>
+										<span>[수강 만료일]</span><br>${list.expiration}
+									</p>
+								</div>
+								<div style="clear: both;"></div>
 							</div>
-							<div class="myClass_buyTime">
-								<p>
-									<span>[수강 신청일]</span><br>
-								</p>
-							</div>
-							<div class="myClass_expiration">${list.expiration }
-								<p>
-									<span>[수강 만료일]</span><br>${list.expiration}
-								</p>
-							</div>
-							<div style="clear: both;"></div>
-						</div>
-					</c:forEach>
-				</c:if>
-				
+						</c:forEach>
+					</c:if>
+					
 			</div>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>

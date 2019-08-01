@@ -625,7 +625,7 @@ public class UserDAIOImpl implements UserDAO{
 
 	public List getMyclassInfo(String id) {
 		ArrayList list = new ArrayList();	
-		sql = "SELECT c.cover_img,c.title, c.title, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration, "
+		sql = "SELECT c.cover_img,c.title, c.title,b.order_date, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration, "
 				+ "cate.name FROM class c "
 				+ "JOIN buyer b ON (c.no=b.class_no) "
 				+ "JOIN user u ON (u.id=b.user_id) "
@@ -639,10 +639,12 @@ public class UserDAIOImpl implements UserDAO{
 			while(rs.next()){
 				ClassDTO cdto = new ClassDTO();
 				BuyerDTO bdto = new BuyerDTO();
+				BuyerDTO bdto1 = new BuyerDTO();
 				CategoryDTO catedto = new CategoryDTO();
 				cdto.setCover_img(rs.getString("c.cover_img"));	
 				cdto.setTitle(rs.getString("c.title"));
 				bdto.setOrder_date(rs.getTimestamp("expiration"));
+				bdto1.setOrder_date(rs.getTimestamp("b.order_date"));
 				catedto.setName(rs.getString("cate.name"));
 				list.add(cdto);
 				list.add(bdto);

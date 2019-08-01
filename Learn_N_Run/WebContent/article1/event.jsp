@@ -123,7 +123,6 @@
 	}
 	#center{
 		height: 4000px;
-		background-color: lightgray;
 	}
 	
 	

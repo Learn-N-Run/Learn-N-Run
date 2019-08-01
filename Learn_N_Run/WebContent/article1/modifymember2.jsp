@@ -12,28 +12,7 @@
 	}
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
-	function registerPass() {
-		if($("#pwd").val() != ${requestScope.user.pass}){
-			alert("현재 비밀번호와 일치하지 않습니다.")
-			return false;
-		}
-		if($("#newPwd").val() != $("#inewPwdCheck")){
-			alert("새로운 비밀번호가 서로 일치하지 않습니다.")
-			return false;
-		}
-		else{
-			var result = confirm("정말 변경하시겠습니까?")
-			if(result){
-				return true;
-			}else{
-				return false;
-			}
-		}
-	}
 
-
-</script>
 </head>
 <body>
 <div class="container">
@@ -51,7 +30,7 @@
       		</div>
       		<div class="col-5 m-auto">
                <label for="id">닉네임</label>
-               <input type="text" class="form-control" id="id" name="id" readonly value="${requestScope.user.nickname }">
+               <input type="text" class="form-control" id="id" name="id" value="${requestScope.user.nickname }">
             </div>
       	</div>
          <div class="row mb-4">

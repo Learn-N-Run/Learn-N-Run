@@ -13,6 +13,7 @@ import article.one.command.DeleteMessageService;
 import article.one.command.InsertbuyClassService;
 import article.one.command.JoinRegisterService;
 import article.one.command.LoginCheckService;
+import article.one.command.LogoutService;
 import article.one.command.SelectDetailMessageService;
 import article.one.command.SelectMessageService;
 import article.one.command.SendMessageService;
@@ -25,6 +26,7 @@ import article.one.command.getMyClassService;
 import article.one.command.getUserInfoService;
 import article.one.command.idCheckService;
 import article.one.command.modify1Service;
+import article.one.command.modify2Service;
 import article.one.command.selectCouponCountService;
 import article.one.command.selectTuitionService;
 
@@ -136,14 +138,15 @@ public class Controller extends HttpServlet {
 			getUserInfoService forward = new getUserInfoService();
 			forward.excute(request, response);
 			path = "modifymember2.jsp";
+		}else if (command.equals("/article1/logout.do")) {
+			LogoutService forward = new LogoutService();
+			forward.excute(request, response);
+			path = "mainEx.jsp";
+		}else if (command.equals("/article1/modifymember2.do")) {
+			modify2Service forward = new modify2Service();
+			forward.excute(request, response);
+			path="getUserInfo.do";
 		}
-
-		
-		
-		
-		
-		
-		
 		if(path != null) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		/*▲포워딩주소설정*/

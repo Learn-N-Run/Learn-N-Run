@@ -51,7 +51,7 @@ public class InsertbuyClassService implements Service {
 			CouponDTO cdto = new CouponDTO();
 			int couponNo = Integer.parseInt(request.getParameter("couponNo"));
 			if(couponNo==5000) {
-				cdto.setSale1(1);;
+				cdto.setSale1(1);
 			}else if(couponNo==7000) {
 				cdto.setSale2(1);
 			}else if(couponNo==10000) {

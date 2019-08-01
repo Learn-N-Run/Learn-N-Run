@@ -192,6 +192,8 @@ $(function(){
 			   $pager.appendTo($table);
 			   $table.trigger('repaginate');
 		});
+		
+		
 	}
 
 	/*받은 쪽지함에서 컬럼한개를 눌렀을때 상세페이지 로딩*/
@@ -259,6 +261,16 @@ $(function(){
 		}else{alert("삭제안해")}
 		
 	});
+	
+	$(document).on("click","#logout_h", function() {
+		var result = confirm("정말 로그아웃하시겠습니까?");
+		if(result){
+			location.href="logout.do";	
+		}else{
+			return false;
+		}
+		
+	});
 });
 </script>
 
@@ -300,13 +312,13 @@ $(function(){
 									</a>
 								</li>
 								<li>
-									<a href="#"
+									<a href="javascript:;" id="logout_h"
 									 style="text-decoration: none; color: black;">
 										로그아웃
 									</a>
 								</li>
 								<li>
-									<a href="#"
+									<a href="getUserInfo.do"
 									 style="text-decoration: none; color: black;">
 										 마이페이지
 									</a>
