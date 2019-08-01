@@ -1,0 +1,52 @@
+병합전 기초정리
+
+IDE : Eclipse Jee 2019-06
+JDK : jdk1.8.0_212
+WAS : 아파치 톰캣 8.5
+Project : dynamic web project
+CM : github사이트와 sourcetree소프트웨어를 활용한
+	git으로만 관리
+특이사항 : JSP model2 pattern (command + front controll pattern)
+	+ Spring framework (no maven management, only add lib)
+
+- 기타 메모 -
+
+- 20190801 현재 병합하기로 한 날 기준
+
+구현1팀, 구현2팀 템플릿 레이아웃 외 기능 정상 구현완료
+구현3팀: Spring을 무작정 도입하려다보니 버전별 호환성에 난항을 겪어
+	현재 헤더 풋터 기본 페이지외 
+	기능 구현을 못함
+	TODO :	1. 개발환경별 라이브러리 버전 체크
+	`	2. 기능 구현
+		3. 필수 조건 : 현재 프로젝트 형식에서 벗어나지 않는 범주 내에서 기능을 구현할 것
+
+- repository merge - 
+
+- 병합 전 해결해야 할 사항
+1. 구현3팀의 미구현된 기능들 정상구현 완료
+2. 구혐1팀, 구현2팀의 사용 라이브러리 체크
+4. 구현팀별 repository commit내역 관리를 위해
+   구현팀별 한명씩에게 notifications 변경
+	(전)
+	yume7168@naver.com(구현3팀)
+	
+	(후)
+	las2706@naver.com - 이승학 (구현1팀)
+	sihyun5250@naver.com - 성시현(조장) (구현2팀)
+	구현3팀은 수시로 확인할 수 있기 때문에 필요없음
+
+	위 관리메일은 고태흥이 임의로 정했기때문에 추후 변경 될 수 있음
+
+- 병합 후 확인사항
+1. 기능 정상 구현이 가능한지
+2. 페이지별 포워딩확인
+3. 개별이 아닌 통합test DB 생성 및 배포
+(4). 컨트롤러 uri (현) *.do, *.po, *.fo 값에서 하나(*.do)로 통합하여 변경
+	(컨트롤러는 스프링을 이용한 controlloer클래스 파일이 아닌
+	일반 자바서블릿파일로 나중에 다같이 상의해야 할 사항)
+
+
+
+
+
