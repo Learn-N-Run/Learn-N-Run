@@ -31,68 +31,32 @@
 		color: rgba(255,255,255,0.9);
 		
 	}
-	#inc_mark_github:HOVER{cursor: pointer;}
-	#inc_mark_github{
+	.inc_git_anchor{transition: all 0.5; color: white;}
+	.inc_git_anchor:HOVER{cursor: pointer; color: tomato;}
+	#inc_href_people{
 		font-size: 24px;
-		animation-duration: 1s;
-		animation-iteration-count: infinite;
-		animation-name: click-me;
-		display: inline;
 	}
-	#inc_mark_nav{
+	#inc_href_prjoect{
 		position:fixed;
 		right:1vw;
-		animation-duration: 1s;
-		animation-iteration-count: infinite;
-		animation-name: click-me;
 	}
-	@keyframes click-me{
-		0%{
-			opacity : 1;
-		}
-		50%{
-			opacity : 0.5;
-		}
-		100%{
-			opacity : 1;
-		}
-	}
-	#inc_githubfooter:HOVER{cursor: pointer;}
+ 	#inc_githubfooter:HOVER{background: tomato;}
 	#inc_githubfooter{
-		max-width: 24px;
-		max-height: 24px;
+		background: rgba(0,0,0,0.9);
+		max-width: 62px;
+		max-height: 62px;
 		position: fixed;
 		right: 1vw;
 		bottom: 25vh;
 		z-index: 1000;
-		border: 1px solid rgba(0,0,0,0);		
+  		border: 1px solid rgba(0,0,0,0);		 
 		border-radius: 100%;
-		transition: all 1.5s;
-		animation-name: circle-mark;
-		animation-duration:1s;
-		animation-iteration-count: infinite;
-	}
-	@keyframes circle-mark{
-		0%{
-			border-top-color: black;
-		}
-		25%{
-			border-right-color: black;
-		}
-		50%{
-			border-bottom-color: black;
-		}
-		75%{
-			border-left-color: black;
-		}
-		100%{
-			border-left-color: rgba(0,0,0,0.5);
-		}
+		transition: all 0.5s;
 	}
 	@media (max-width:1200px){
 		#inc_githubfooter{
-			max-width: 64px;
-			max-height: 64px; 
+			max-width: 62px;
+			max-height: 62px;
 		}
 	}
 	
@@ -101,11 +65,14 @@
 </head>
 <body>
 
-<%-- footer github logo --%>
-<img id="inc_githubfooter"
-	src="${contextpath}/3_img/GitHub-Mark.png"
-	onclick="togglefooter()">
+<%-- aside.jsp include --%>
+<c:import url="${contextpath}/1_Include/inc_aside.jsp"></c:import>
 
+<%-- footer github logo --%>
+	<a href="javascript:togglefooter()">
+		<img id="inc_githubfooter"
+			 src="${contextpath}/3_img/GitHub-Mark-Light-64px.png">
+	</a>
 <%-- footer contents --%>
 	<footer id="inc_footer" data-position="fixed">
 		<div class="row" >
@@ -135,14 +102,12 @@
 			<div class="col-lg-6">
 				<div class="row">
 					<div style="height: 30px;">
-						<h3 id="inc_mark_github"
-							onclick="window.open('https://github.com/Learn-N-Run/Learn-Run')">
-							프로젝트 참여자
-							<span id="inc_mark_nav">
-								<span class="glyphicon glyphicon-arrow-left"></span>
-								Click On it!
+							<span id="inc_href_people" class="inc_git_anchor" onclick="window.open('https://github.com/orgs/Learn-N-Run/people')">
+								프로젝트 참여자
 							</span>
-						</h3>
+							<span id="inc_href_prjoect" class="inc_git_anchor" onclick="window.open('https://github.com/Learn-N-Run/Learn-Run')">
+								(GitHub 페이지로 이동)
+							</span>
 					</div>
 					<div class="col-xs-4">
 						<label>구현1팀</label><BR>
@@ -192,29 +157,24 @@
 				</div>
 			</div>
 		</div>
-		<div id="inc_bottom" class="row">
+		<div id="inc_bottom" class="row" align="center">
 			<h5>
 				본 페이지의 해당 컨텐츠는 정식으로 서비스되지 않는 페이지입니다.
 			</h5>
 		</div>
 	</footer>
 	
-	<script type="text/javascript">
-	function togglefooter() {
-		var footer = $('#inc_footer');
-		var githubfooter = $('#inc_githubfooter') 
-		if (footer.css('display') === 'none') {
-			footer.toggle(500);
-		}else{
-			footer.toggle(500);
-		}
-	};
-	
-	
-				
-			
-	
+<script type="text/javascript">
+function togglefooter() {
+	$('#inc_footer').toggle(500)
+};
+$(document).ready(function() {
+setTimeout(function() {
+	$('.textLauncherIcon').attr('style','position: fixed !important');
+	$('.textLauncherIcon').css('bottom','17vh');
+	$('.textLauncherIcon').css('right','1vw');
+	}, 1000);
+});//내가졌다...
 </script>
-	
 </body>
 </html>

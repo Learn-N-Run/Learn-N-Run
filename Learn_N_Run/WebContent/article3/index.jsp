@@ -21,7 +21,7 @@
 </head>
 <body>
 <%-- header--%>
-<c:import url="/1_Include/header.jsp"></c:import>
+<c:import url="${contextpath}/1_Include/header.jsp"></c:import>
 
 	<div id="wrap">
 <%--이벤트 영역 (캐러셀 - 이미지슬라이드):이미지는 하드코딩으로 연결해주기로 함--%>
@@ -70,7 +70,7 @@
 	</div><%-- end wrap --%>
 
 <%-- footer.jsp--%>
-<c:import url="/1_Include/footer.jsp"></c:import>
+<c:import url="${contextpath}/1_Include/footer.jsp"></c:import>
 
 </body>
 </html>

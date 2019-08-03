@@ -171,8 +171,8 @@
 </style>
 </head>
 <body>
+<jsp:include page="${contextpath}/1_Include/header.jsp"/>
 	<div id="wrap">
-		<jsp:include page="/1_Include/header.jsp"/>
 			<div id="center">
 				<div class="category_h">
 						<ul>
@@ -187,26 +187,26 @@
 						</ul>
 					</div>
 			</div>
-		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
+<jsp:include page="${contextpath}/1_Include/footer.jsp"></jsp:include>
 	
 	<div class="coupon_modal_h">
-				<div class="coupon_title_h">내 쿠폰 보유 현황</div>
-				<table>
-					<tr>
-						<th class="coupon1"></th>
-						<td class="coupon1_h"></td>
-					</tr>
-					<tr>
-						<th class="coupon2"></th>
-						<td class="coupon2_h"></td>
-					</tr>
-					<tr>
-						<th class="coupon3"></th>
-						<td class="coupon3_h"></td>
-					</tr>
-				</table>
-				<a href="javascript:;"><div class="coupon_bottom_h">쿠폰 받으러 가기!</div></a>
-			</div>
+		<div class="coupon_title_h">내 쿠폰 보유 현황</div>
+		<table>
+			<tr>
+				<th class="coupon1"></th>
+				<td class="coupon1_h"></td>
+			</tr>
+			<tr>
+				<th class="coupon2"></th>
+				<td class="coupon2_h"></td>
+			</tr>
+			<tr>
+				<th class="coupon3"></th>
+				<td class="coupon3_h"></td>
+			</tr>
+		</table>
+		<a href="javascript:;"><div class="coupon_bottom_h">쿠폰 받으러 가기!</div></a>
+	</div>
 </body>
 </html>

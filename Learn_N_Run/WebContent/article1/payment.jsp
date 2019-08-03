@@ -367,8 +367,8 @@
 </style>
 </head>
 <body>
+<jsp:include page="${contextpath}/1_Include/header.jsp" />
 	<div id="wrap">
-		<jsp:include page="/1_Include/header.jsp" />
 		<div id="center">
 			<div class="content_h">
 				<!-- content 제목 부분 -->
@@ -445,8 +445,8 @@
 				</div>
 			</div>
 		</div>
-		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
+<jsp:include page="${contextpath}/1_Include/footer.jsp"></jsp:include>
 
 	<div class="coupon_modal_h">
 		<div class="coupon_title_h">내 쿠폰 보유 현황</div>

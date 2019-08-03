@@ -20,19 +20,14 @@
 	<title>Learn & Run</title>
 </head>
 <body>
-
-	<style>
-	div{
-		width:100%;
-	}	
-	
-	.COco{
+<style>
+	.CO_co{
 		text-align:left;
 		display: block;
 		clear:both;
 		
 	}
-	.WWrite{
+	.WW_rite{
 		background-color: rgb(27, 28, 29);
 		color: white;
 		float:right;
@@ -41,24 +36,23 @@
 		box-sizing:border-box;
 		text-decoration: none;
 		clear:both;
-		
 	}
-	
-	</style>
+</style>
+
+<%-- header--%>
+<c:import url="${contextpath}/1_Include/header.jsp"></c:import>
 
 <div id="wrap">
-			<%-- header--%>
-		<c:import url="/1_Include/header.jsp"></c:import>
 		<%--댓글 전체 div태그 --%>
 	<div >			
 		<%--상단 커뮤니티 및 글 작성 div태그 --%>
 		<div>		
-			<h3 class="COco">
+			<h3 class="CO_co">
 			커뮤니티
 				<small>
 					*개의 글 !
 				</small>
-				<a href="classNewWrite.jsp" class="WWrite">글 작성하기</a>
+				<a href="classNeWW_rite.jsp" class="WW_rite">글 작성하기</a>
 			</h3>  
 			
 		</div>
@@ -77,7 +71,7 @@
 		<form action="CommunityReply.po" >
 			<input type="text" name="reply" placeholder="대댓글을 입력 하세오 !">
 			<button type="submit">버 튼 !</button>
-		</form>	
+		</form>
 		
 			</c:forEach>
 		
@@ -97,8 +91,10 @@
 		
 		
 	</div>
-	<!-- 푸터 영역 -->
-		<c:import url="/1_Include/footer.jsp"></c:import>
 </div>
+
+<!-- 푸터 영역 -->
+<c:import url="${contextpath}/1_Include/footer.jsp"></c:import>
+
 </body>
 </html>

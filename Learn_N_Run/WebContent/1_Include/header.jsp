@@ -6,8 +6,6 @@
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
-<!-- <link rel="stylesheet" href="./css/style.css"> -->
-<!-- <script src="./js/script.js"></script> -->
 <!--JQUERY(1EA), BOOTSTRAP(2EA) CDN START LINE-->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -21,7 +19,6 @@
 	width: 100vw;
 	border-bottom: 1px double rgba(0,0,0,0.2);
 	background: rgba(0,0,0,1);
-	
 }
 #inc_header *{
 	color: white;	
@@ -39,13 +36,13 @@
  	margin-top: 10px;
  	margin-bottom: 10px;
  	vertical-align: middle;
- 	transition: all 0.5s
 }
 #inc_menuList>ul>li>a{
 	text-decoration: none;
+	transition: all 0.5s
 }
-#inc_menuList>ul>li:HOVER{
-	font-size:30px;
+#inc_menuList>ul>li>a:HOVER{
+	color: #ff6347;
 }
 #inc_mainlogo{
 	animation-duration: 2s;
@@ -247,11 +244,9 @@
 		@keyframes slide_for_left{
 			0%{
 				background-color: rgba(255,255,255,0);
-				border-left: 0px;
 			}
 			100%{
 				background-color: rgba(255,255,255,0.8);
-				border-left: 1px solid rgba(0,0,0,0.3);
 			}
 		}
 	
@@ -288,32 +283,35 @@
 					<div id="inc_menuList" class="visible-lg-block">
 						<ul class="list-inline">
 							<!-- 세션영역에서 유저빈의 유무 판별 --> 
-							<c:choose>
-								<c:when test="${null ne sessionScope.user }">
-									<li>
-										<a href="#">
-											로그아웃
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											 마이페이지
-										</a>
-									</li>
-								</c:when>
-								<c:when test="${null eq sessionScope.user }">
-									<li>
-										<a href="#">
-											로그인
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											회원가입
-										</a>
-									</li>
-								</c:when>
-							</c:choose>
+							<c:if test="${sessionScope.id != null }">
+								<li>
+									<a href="javascript:;" id="message_info_h">
+										쪽지함
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" id="logout_h">
+										로그아웃
+									</a>
+								</li>
+								<li>
+									<a href="getUserInfo.do">
+										 마이페이지
+									</a>
+								</li>
+							</c:if>
+							<c:if test="${sessionScope.id == null }">
+								<li>
+									<a href="#login-box" class="login-window">
+										로그인
+									</a>
+								</li>
+								<li>
+									<a href="${contextpath}/article1/join.jsp">
+										회원가입
+									</a>
+								</li>
+							</c:if>
 						</ul>
 					</div>
 				</div>

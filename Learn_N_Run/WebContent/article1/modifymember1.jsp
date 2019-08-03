@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
 <!-- jquery 사용 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
@@ -177,8 +176,8 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 </style>
 </head>
 <body style="background-color: #f5f6f7;">
+<jsp:include page="${contextpath}/1_Include/header.jsp" />
 	<div id="wrap">
-		<jsp:include page="/1_Include/header.jsp" />
 		<div id="center">
    <div class=".content_h">
       <h2 class="text-center">회원정보 수정</h2>
@@ -308,8 +307,8 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
       </c:if>
    </div>
    </div>
-   <jsp:include page="footer.jsp"></jsp:include>
    </div>
-   <jsp:include page="cateEx.jsp"></jsp:include>
+<jsp:include page="cateEx.jsp"></jsp:include>
+<jsp:include page="${contextpath}/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>

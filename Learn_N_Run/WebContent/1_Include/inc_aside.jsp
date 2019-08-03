@@ -3,24 +3,25 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
 <%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
-<c:set var="result" value="${requestScope.result }"/>
-<c:if test="${result==0 }">
-	<script>alert("비밀번호가 틀립니다.")</script>
-</c:if>
-<c:if test="${result==-1 }">
-	<script>alert("아이디가 틀립니다.")</script>
-</c:if>
-<!DOCTYPE html><html><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width">
-<!--외부참조(script.js, style.css) START LINE -->
-<!-- <link rel="stylesheet" href="./css/style.css"> -->
-<!-- <script src="./js/script.js"></script> -->
-<!--JQUERY(1EA), BOOTSTRAP(2EA) CDN START LINE-->
+<!DOCTYPE html>
+<html>
+<head>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<!--외부참조 + CDN END -->
+<script src="${contextpath}/2_js/channelio.js"></script>
+<link href="${contextpath}/2_css/aside.css" rel="stylesheet">
+
+<!-- result값 조건별 alert -->
+	<c:set var="result" value="${requestScope.result }"/>
+	<c:if test="${result==0 }">
+		<script>alert("비밀번호가 틀립니다.")</script>
+	</c:if>
+	<c:if test="${result==-1 }">
+		<script>alert("아이디가 틀립니다.")</script>
+	</c:if>
+
 <script type="text/javascript">
 $(function(){
 	
@@ -98,9 +99,9 @@ $(function(){
 				for(var i in jsonInfo.message){
 					messageInfo += "<tr id='detail_content' data-value="+jsonInfo.message[i].messageNo+"><td>"+jsonInfo.message[i].send_id+"</td>"
 					/* messageInfo += "<input type='hidden' id='messageNo' name='messageNo' value='"+jsonInfo.message[i].messageNo+"'>" */
-					messageInfo += "<td>"+jsonInfo.message[i].content+"</td>"
-					messageInfo += "<td>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>"
-					messageInfo += "<td>"+jsonInfo.message[i].read_yn+"</td></tr>"
+					messageInfo += "<td>"+jsonInfo.message[i].content+"</td>";
+					messageInfo += "<td>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>";
+					messageInfo += "<td>"+jsonInfo.message[i].read_yn+"</td></tr>";
 				}
 				$(".table_h_h").html(messageInfo);
 				page();
@@ -274,102 +275,11 @@ $(function(){
 });
 </script>
 
-<link href="../2_css/header.css" rel="stylesheet">
-	<!-- header에들어가는 모든 css모음. -->
-
-
-<title></title>
 </head>
 <body>
-	<header id="inc_header">
-		<div class="col-xs-2" align="center">
-			<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
-				<img src="img/large.png">
-			</a>
-		</div>
-		<div class="inc_floating col-xs-10" align="left">
-			<div class="col-xs-8">
-				<form>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="카테고리 + 제목">
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-default" style="background-color: white;">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							</button>
-						</span>
-					</div>
-				</form>
-			</div>
-			<div class="col-xs-4">
-				<div id="inc_menuList" class="visible-lg-block">
-					<ul class="list-inline">
-						<!-- 세션영역에서 유저빈의 유무 판별 --> 
-							<c:if test="${sessionScope.id != null }">
-								<li>
-									<a href="javascript:;" id="message_info_h"
-									 style="text-decoration: none; color: black;">
-										쪽지함
-									</a>
-								</li>
-								<li>
-									<a href="javascript:;" id="logout_h"
-									 style="text-decoration: none; color: black;">
-										로그아웃
-									</a>
-								</li>
-								<li>
-									<a href="getUserInfo.do"
-									 style="text-decoration: none; color: black;">
-										 마이페이지
-									</a>
-								</li>
-							</c:if>
-							<c:if test="${sessionScope.id == null }">
-								<li>
-									<a href="#login-box" class="login-window"
-									 style="text-decoration: none; color: black;">
-										로그인
-									</a>
-								</li>
-								<li>
-									<a href="#"
-									 style="text-decoration: none; color: black;">
-										회원가입
-									</a>
-								</li>
-							</c:if>
-					</ul>
-				</div>
-				<button id="inc_hamburger" data-toggle="collapse" data-target="#inc_menuList" aria-expanded="false" aria-controls="#inc_menuList">
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
-			</div>
-		</div>
-	</header>
-	<!-- end of header -->
 	
-	<!-- 햄버거 메뉴 -->
-	<script type="text/javascript">
-	var inc_menuList = document.querySelector('#inc_menuList');
-	var inc_menu_ul = document.querySelector('#inc_menuList>ul');
-	
-	document.getElementById('inc_hamburger').addEventListener('click', function() {
-		if (this.className == 'on'){
-			this.classList.remove('on');
-			inc_menuList.classList.add('visible-lg-block');
-		}else{
-			this.classList.add('on');
-			inc_menuList.classList.remove('visible-lg-block');
-		}});
-	</script>
-	
-	<script src="../2_js/channelio.js"></script>
-	<!-- channelioAPI 불러옴 -->
-	
+<!-- TODO: login-box -->
     <div id="login-box" class="login-popup">
-    	
 		<form class="form_h" action="login.do" method="post">
 			<a class="close_h">EXIT</a>
 	        <svg id="ryan" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
@@ -398,12 +308,11 @@ $(function(){
 	        <input class="H_inputText" id="H_login_pass" name="userpass" type="password" placeholder="Password">
 	        <input type="submit" class="H_submit" value="Let's log in!">
 	        <a href="#" class="H_join">Join us!</a>
-	        <script src="../2_js/ryan.js"></script>
 	    </form>
    </div>
-	<!-- 로그인 팝업 -->	
+<!-- 로그인 팝업 -->	
 	
-	<!--start of 받은 쪽지함-->
+<!-- TODO: 받은 쪽지함 -->
 	<div class="mask_h">
 		<div class="message_main">
 			<div class="message_top">
@@ -486,5 +395,6 @@ $(function(){
 	</div>
 	<!--end of 쪽지보내기 -->
 
+<script src="${contextpath}/2_js/ryan.js"></script>
 </body>
 </html>

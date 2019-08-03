@@ -1,18 +1,18 @@
-<%@page import="java.util.Date"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Vector"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.Enumeration"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.io.File"%>
+<%@page import="java.text.*"%>
+<%@page import="java.util.*"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.io.File" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
+<%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
 <title>Insert title here</title>
 </head>
 <body>
@@ -25,6 +25,10 @@
    // 1) 파일 업로드.      
       //cos.jar파일로 MultipartRequest 클래스 생성: 파일 업로드 담당하는 클래스
       //1. 업로드할 파일의 경로 지정
+      
+/* 추천: 맨 위에 선언해놓은 ${contextpath}로 프로젝트경로 지정하시면 다른 PC마다 경로 재설정하실 필요가 없고 
+ *		"\\"보다 File.separator로 해주시면 좋아요
+ */       
       String path = "D:\\workspace_jsp\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Learn_N_Run\\article2\\upload";
       //2. 업로드하는 파일의 최대 크기를 제한(100MB)
       int maxSize = 1024*1024*100;
@@ -37,7 +41,7 @@
       
       
 	  	//서버에서 실제로 업로드된 파일의 "이름"을 저장할 컬렉션 객체 생성
-	  	ArrayList saveFiles = null;
+	  	List saveFiles = null;
 	  	
 	  	//클라이언트가 업로드된 파일의 원본이름 하나하나씩 담을 컬렉션 객체 생성
 	  

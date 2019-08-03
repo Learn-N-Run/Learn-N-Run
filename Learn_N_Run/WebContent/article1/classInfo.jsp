@@ -206,10 +206,9 @@
 </style>
 </head>
 <body>
-	<jsp:include page="cateEx.jsp"></jsp:include>
+<jsp:include page="cateEx.jsp"></jsp:include>
+<jsp:include page="${contextpath }/1_Include/header.jsp"/>
 	<div id="wrap">
-
-		<jsp:include page="/1_Include/header.jsp"/>
 			<div id="center">
 				<!-- id="coupon_h" -->
 				<div class="myContent_h">
@@ -251,7 +250,7 @@
 					
 			</div>
 		</div>
-		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
+<jsp:include page="${contextpath}/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>
