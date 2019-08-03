@@ -66,7 +66,7 @@
 <body>
 
 <%-- aside.jsp include --%>
-<c:import url="${contextpath}/1_Include/inc_aside.jsp"></c:import>
+<c:import url="/1_Include/inc_aside.jsp"></c:import>
 
 <%-- footer github logo --%>
 	<a href="javascript:togglefooter()">

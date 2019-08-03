@@ -255,7 +255,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="${contextpath}/1_Include/header.jsp"/>
+<jsp:include page="/1_Include/header.jsp"/>
 	<div id="wrap">
 			<div id="center">
 				<div class="event_allWrap">
@@ -296,6 +296,6 @@
 		</div>
 		</div>
 	</div>
-<jsp:include page="${contextpath}/1_Include/footer.jsp"></jsp:include>
+<jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>

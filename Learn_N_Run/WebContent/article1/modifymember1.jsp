@@ -23,7 +23,7 @@ $(function(){
          $.ajax({
             type: "post",
             async: false,
-            url: "${contextPath}/me/pwdCheck.me", //비밀번호 체크하는 것 만들어야함
+            url: "/me/pwdCheck.me", //비밀번호 체크하는 것 만들어야함
             data: {pwd : pwd},
             success: function(data){
                if(data == 0){
@@ -176,7 +176,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 </style>
 </head>
 <body style="background-color: #f5f6f7;">
-<jsp:include page="${contextpath}/1_Include/header.jsp" />
+<jsp:include page="/1_Include/header.jsp" />
 	<div id="wrap">
 		<div id="center">
    <div class=".content_h">
@@ -309,6 +309,6 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
    </div>
    </div>
 <jsp:include page="cateEx.jsp"></jsp:include>
-<jsp:include page="${contextpath}/1_Include/footer.jsp"></jsp:include>
+<jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>

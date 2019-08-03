@@ -40,7 +40,7 @@
 </style>
 
 <%-- header--%>
-<c:import url="${contextpath}/1_Include/header.jsp"></c:import>
+<c:import url="/1_Include/header.jsp"></c:import>
 
 <div id="wrap">
 		<%--댓글 전체 div태그 --%>
@@ -94,7 +94,7 @@
 </div>
 
 <!-- 푸터 영역 -->
-<c:import url="${contextpath}/1_Include/footer.jsp"></c:import>
+<c:import url="/1_Include/footer.jsp"></c:import>
 
 </body>
 </html>
