@@ -50,8 +50,8 @@ public class JoinRegisterService implements Service{
 					PrintWriter out = response.getWriter();
 					out.println("<script>");
 					out.println("alert('회원가입 완료');");
-					out.println("location.href='main.jsp';");
-					out.println("</script>");
+                    out.println("location.href='mainEx.jsp';");
+                    out.println("</script>");
 					
 					System.out.println(" 회원 가입 완료 ");
 					out.close();

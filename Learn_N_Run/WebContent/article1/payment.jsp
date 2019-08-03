@@ -1,27 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%--페이지인코딩 --%>
-<%request.setCharacterEncoding("UTF-8"); %>
-<%--프로젝트경로선언--%>
-<c:set var="contextpath" value="${pageContext.request.contextPath}" />
+<%--페이지인코딩 --%> <%request.setCharacterEncoding("UTF-8"); %>
+<%--프로젝트경로선언--%> <c:set var="contextpath" value="${pageContext.request.contextPath}" />
 <c:set var="classNo" value="${param.classno }"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
-<script src="./js/script.js"></script>
+	<script src="./js/script.js"></script>
 <!--JQUERY(1EA), BOOTSTRAP(2EA) CDN START LINE-->
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!--외부참조 + CDN END -->
 <script>
 	$(function() {
@@ -31,9 +26,10 @@
 		});
 		
 		var sale = $("#couponNo").val();
-		var result = 10000-sale;
-		alert(result);
-		
+        var result = ${requestScope.tuition}-sale;
+        $("#last_tuition").val(${requestScope.tuition});
+        
+        
 		$("#remove_coupon_submit").click(function() {
 			$("#couponNo").val('').css("display","none");
 			$(".coupon_modal_h").fadeOut();
@@ -44,7 +40,7 @@
   	function popup(){
          var url = "popup.html";
          var name = "popup test";
-         var option = "width = 500, height = 400, top = 100, left = 200, location = no"
+         var option = "width = 500, height = 300, top = 100, left = 200, location = no"
          window.open(url, name, option);
      }
 	function registerReceiver() {
@@ -57,9 +53,9 @@
 		}else if($("#sample6_postcode").val()==''){
 			alert("우편번호를 입력해 주세요.")
 			return false;
-		}else if($(opener.document).find('#account_number').val() == ''){
-			alert("계좌 정보를 입력해주세요.")
-			return false;
+        }else if($("#checkpopup").val() == ''){
+            alert("계좌 정보를 입력해주세요.");
+            return false;
 		}else{
 			var result = confirm('정말 구매하시겠습니까?'); 
 				if(result) {  
@@ -77,16 +73,22 @@
 			alert("보유하신 쿠폰이 없습니다.");
 		}else{
 			$("input[name=couponNo]").val(5000);
+            var coupon = $("input[name=couponNo]").val()
+            Number(coupon);
 			$(".coupon_modal_h").css("display","none");
-		}
+            $("#last_tuition").val(${requestScope.tuition}-coupon);
+        }
 	}
 	
 	function coupon1_submit2() {
 		if(${requestScope.sale2}==0){
 			alert("보유하신 쿠폰이 없습니다.");
 		}else{
-			$("input[name=couponNo]").val(7000);
-			$(".coupon_modal_h").css("display","none");
+            var coupon = $("input[name=couponNo]").val(7000);
+            var coupon = $("input[name=couponNo]").val()
+            Number(coupon);
+            $(".coupon_modal_h").css("display","none");
+            $("#last_tuition").val(${requestScope.tuition}-coupon);
 		   	}
 		}
 	
@@ -94,8 +96,11 @@
 		if(${requestScope.sale3}==0){
 			alert("보유하신 쿠폰이 없습니다.");
 		}else{
-			$("input[name=couponNo]").val(10000);
-			$(".coupon_modal_h").css("display","none");
+            var coupon = $("input[name=couponNo]").val(10000);
+            var coupon = $("input[name=couponNo]").val()
+            Number(coupon);
+            $(".coupon_modal_h").css("display","none");
+            $("#last_tuition").val(${requestScope.tuition}-coupon);
 		}
 			}
 	
@@ -418,19 +423,19 @@
 											<td class="coupon_submit">
 												<button type="button" id="coupon_submit_h">적용</button>
 												<button type="button" id="remove_coupon_submit">미적용</button>
-												<input type="text" id="couponNo" name="couponNo">
+												<input type="text" id="couponNo" name="couponNo" readonly="readonly">
 											</td>
 	
 										</tr>
 										<tr>
 											<th>최종 가격</th>
-											<td class="last_tuition"><input type="text" name="last_tuition">원</td>
+                                            <td class="last_tuition"><input type="text" id="last_tuition" name="last_tuition" readonly="readonly">원</td>
 										</tr>
 										<tr>
 											<th></th>
 											<td class="last_tuition">
 												<a href="javascript:popup()" target="_blank">결제 카드 정보 입력</a>
-												<input type="hidden" name="checkpopup">
+                                                <input type="hidden" name="checkpopup" id="checkpopup">
 											</td>
 										</tr>
 									</tbody>

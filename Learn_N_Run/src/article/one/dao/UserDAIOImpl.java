@@ -83,6 +83,15 @@ public class UserDAIOImpl implements UserDAO{
 					
 			result = pstmt.executeUpdate();
 
+            if(result == 1) {
+                sql = "INSERT INTO COUPON(user_id,sale1,sale2,sale3) values(?,0,0,0)";
+                
+                pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, dto.getName());
+                
+                pstmt.executeUpdate();
+            }
+            
 		} catch (Exception e) {
 			System.out.println("addUser()에서 오류: " + e);
 		} finally {
@@ -480,13 +489,14 @@ public class UserDAIOImpl implements UserDAO{
 				int result2 = pstmt.executeUpdate();
 				if(result2 == 1) {
 					if(cdto.getSale1()==1) {
-						sql = "update coupon set sale1 = 0";
-					}else if(cdto.getSale2()==1) {
-						sql = "update coupon set sale2 = 0";
+                        sql = "update coupon set sale1 = 0 where user_id=?";
+                    }else if(cdto.getSale2()==1) {
+                        sql = "update coupon set sale2 = 0 where user_id=?";
 					}else if(cdto.getSale3()==1) {
-						sql = "update coupon set sale3 = 0";
+                        sql = "update coupon set sale3 = 0 where user_id=?";
 					}
 					pstmt = con.prepareStatement(sql);
+                    pstmt.setString(1, id);
 					pstmt.executeUpdate();
 				}else {
 					con.rollback();
@@ -624,8 +634,8 @@ public class UserDAIOImpl implements UserDAO{
 
 	public List getMyclassInfo(String id) {
 		ArrayList list = new ArrayList();	
-		sql = "SELECT c.cover_img,c.title, c.title,b.order_date, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration, "
-				+ "cate.name FROM class c "
+        sql = "SELECT c.cover_img,c.title, c.title,b.order_date, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration_date, "
+        		+ "cate.name FROM class c "
 				+ "JOIN buyer b ON (c.no=b.class_no) "
 				+ "JOIN user u ON (u.id=b.user_id) "
 				+ "JOIN category cate ON(c.category_no=cate.no) where u.id=?";
@@ -642,12 +652,13 @@ public class UserDAIOImpl implements UserDAO{
 				CategoryDTO catedto = new CategoryDTO();
 				cdto.setCover_img(rs.getString("c.cover_img"));	
 				cdto.setTitle(rs.getString("c.title"));
-				bdto.setOrder_date(rs.getTimestamp("expiration"));
-				bdto1.setOrder_date(rs.getTimestamp("b.order_date"));
+                bdto.setExpiration_date(rs.getTimestamp("expiration_date"));
+                bdto.setOrder_date(rs.getTimestamp("b.order_date"));
 				catedto.setName(rs.getString("cate.name"));
-				list.add(cdto);
-				list.add(bdto);
-				list.add(catedto);	
+                cdto.setCategory(catedto);
+                cdto.setBuyer(bdto);
+                
+                list.add(cdto);
 			}
 		}else{
 			return null;

@@ -215,13 +215,12 @@
 					<div class="title_h">
 						<p>내 수강 정보</p>
 					</div>
-					<c:if test="${requestScope.MyClassList == null }">
-						<h1>구매한 수강정보가 없습니다.</h1>
-					</c:if>
-					
-					<c:if test="${requestScope.MyclassList != null }">
-						<c:forEach var="list" items="${requestScope.MyclassList }">
-							<div class="myClass_content_h">
+                    <c:choose>
+                        <c:when test="${requestScope.MyclassList == '[]' }">
+                            <h1>구매한 수강정보가 없습니다.</h1>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach var="list" items="${requestScope.MyclassList }">							<div class="myClass_content_h">
 								<div class="myClass_img">
 									<img src="img/${list.cover_img }">
 								</div>
@@ -238,16 +237,16 @@
 										<span>[수강 신청일]</span><br>
 									</p>
 								</div>
-								<div class="myClass_expiration">${list.order_date }
-									<p>
-										<span>[수강 만료일]</span><br>${list.expiration}
+                                <div class="myClass_expiration">${list.buyer.order_date }
+                                	<p>
+                                        <span>[수강 만료일]</span><br>${list.buyer.expiration_date}
 									</p>
 								</div>
 								<div style="clear: both;"></div>
 							</div>
 						</c:forEach>
-					</c:if>
-					
+                        </c:otherwise>
+                    </c:choose>
 			</div>
 		</div>
 	</div>

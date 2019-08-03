@@ -7,20 +7,20 @@ public class BuyerDTO {
 	private UserDTO user;
 	private int last_tuition;
 	private Timestamp order_date;
-	private ClassDTO classinfo;
+	private Timestamp expiration_date;
 	private Receiver_InfoDTO receiver;
 
 	public BuyerDTO() {
 	}
 
-	public BuyerDTO(int no, UserDTO user, int last_tuition, Timestamp order_date, ClassDTO classinfo,
+	public BuyerDTO(int no, UserDTO user, int last_tuition, Timestamp order_date, Timestamp expiration_date,
 			Receiver_InfoDTO receiver) {
 		super();
 		this.no = no;
 		this.user = user;
 		this.last_tuition = last_tuition;
 		this.order_date = order_date;
-		this.classinfo = classinfo;
+		this.expiration_date = expiration_date;
 		this.receiver = receiver;
 	}
 
@@ -56,12 +56,12 @@ public class BuyerDTO {
 		this.order_date = order_date;
 	}
 
-	public ClassDTO getClassinfo() {
-		return classinfo;
+	public Timestamp getExpiration_date() {
+		return expiration_date;
 	}
 
-	public void setClassinfo(ClassDTO classinfo) {
-		this.classinfo = classinfo;
+	public void setExpiration_date(Timestamp expiration_date) {
+		this.expiration_date = expiration_date;
 	}
 
 	public Receiver_InfoDTO getReceiver() {

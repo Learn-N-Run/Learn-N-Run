@@ -12,12 +12,14 @@ public class ClassDTO {
 	private int expiration;
 	private int tuition;
 	private CategoryDTO category;
+	private BuyerDTO buyer;
 
 	public ClassDTO() {
 	}
 
 	public ClassDTO(int no, UserDTO creator, String cover_img, String title, String detail_category, String content,
-			String material_img, String material_content, int expiration, int tuition, CategoryDTO category) {
+			String material_img, String material_content, int expiration, int tuition, CategoryDTO category,
+			BuyerDTO buyer) {
 		super();
 		this.no = no;
 		this.creator = creator;
@@ -30,6 +32,7 @@ public class ClassDTO {
 		this.expiration = expiration;
 		this.tuition = tuition;
 		this.category = category;
+		this.buyer = buyer;
 	}
 
 	public int getNo() {
@@ -118,6 +121,14 @@ public class ClassDTO {
 
 	public void setCategory(CategoryDTO category) {
 		this.category = category;
+	}
+
+	public BuyerDTO getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(BuyerDTO buyer) {
+		this.buyer = buyer;
 	}
 
 }
