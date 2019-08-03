@@ -297,7 +297,7 @@ public class UserDAIOImpl implements UserDAO{
 		ArrayList<MessageDTO> list = new ArrayList<MessageDTO>();
 		try {
 			con = getConnection();
-			sql = "select* from message where receiver_id=? order by send_time";
+			sql = "select* from message where receiver_id=? order by send_time desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();

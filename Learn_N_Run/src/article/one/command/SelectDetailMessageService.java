@@ -25,7 +25,6 @@ public class SelectDetailMessageService implements Service{
 		System.out.println(request.getParameter("messageNo"));
 		int messageNo =Integer.parseInt(request.getParameter("messageNo"));
 		
-		System.out.println(messageNo);
 		MessageDTO dto = dao.getMessageInfo(messageNo);
 		JSONObject json = new JSONObject();
 		json.put("send_id", dto.getSend_user().getId());
