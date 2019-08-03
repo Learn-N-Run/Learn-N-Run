@@ -26,9 +26,6 @@
       //cos.jar파일로 MultipartRequest 클래스 생성: 파일 업로드 담당하는 클래스
       //1. 업로드할 파일의 경로 지정
       
-/* 추천: 맨 위에 선언해놓은 ${contextpath}로 프로젝트경로 지정하시면 다른 PC마다 경로 재설정하실 필요가 없고 
- *		"\\"보다 File.separator로 해주시면 좋아요
- */       
       String path = "D:\\workspace_jsp\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Learn_N_Run\\article2\\upload";
       //2. 업로드하는 파일의 최대 크기를 제한(100MB)
       int maxSize = 1024*1024*100;

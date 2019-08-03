@@ -72,7 +72,7 @@
   </div>
   <div class="div_h" id="about"><a href="#" class="p_h">내 클래스</a>
   </div>
-  <div class="div_h" id="about"><a href="${contextpath }/article1/signout.jsp" class="p_h">회원탈퇴</a>
+  <div class="div_h" id="about"><a href="/article1/signout.jsp" class="p_h">회원탈퇴</a>
   </div>
   <div class="div_h" id="about"><a href="logout.do" class="p_h">크리에이터 지원</a>
   </div>

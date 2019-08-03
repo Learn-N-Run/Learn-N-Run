@@ -15,7 +15,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
 <script type="text/javascript">
-
 	$(function() {
 		$("#buyClass_h").click(function() {
 			location.href="buyClassInfo.do?classno=2";
@@ -35,7 +34,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="${contextpath}/1_Include/header.jsp"/>
+<jsp:include page="/1_Include/header.jsp"/>
 	<div id="wrap">
 			<div id="center">
 				<a href="event.do">이벤트 페이지로 이동</a>
@@ -44,7 +43,7 @@
 				<a href="getUserInfo.do">내 정보 수정페이지로 이동</a>
 			</div>
 	</div>
-<jsp:include page="${contextpath}/1_Include/footer.jsp"></jsp:include>
+<jsp:include page="/1_Include/footer.jsp"></jsp:include>
 		
 </body>
 </html>
