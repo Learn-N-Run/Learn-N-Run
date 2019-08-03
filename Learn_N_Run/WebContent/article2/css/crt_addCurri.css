@@ -3,6 +3,8 @@
 /*전체를 감싸는 wrap*/
 #wrap{
 	width: 100%;
+/* 	width: 1200px; */
+	
 }	
 /*왼쪽 bar*/
 #sec05{
