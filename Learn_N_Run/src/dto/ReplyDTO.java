@@ -10,12 +10,21 @@ public class ReplyDTO {
 	private String reply_id;
 	private ClassDTO classinfo;
 	private CurriculumDTO curriculum;
+	private UserDTO userid;
 
 	public ReplyDTO() {
 	}
 
+	public UserDTO getUserid() {
+		return userid;
+	}
+
+	public void setUserid(UserDTO userid) {
+		this.userid = userid;
+	}
+
 	public ReplyDTO(int no, String content, Timestamp date, int group, String reply_id, ClassDTO classinfo,
-			CurriculumDTO curriculum) {
+			CurriculumDTO curriculum, UserDTO userid) {
 		super();
 		this.no = no;
 		this.content = content;
@@ -24,6 +33,7 @@ public class ReplyDTO {
 		this.reply_id = reply_id;
 		this.classinfo = classinfo;
 		this.curriculum = curriculum;
+		this.userid = userid;
 	}
 
 	public int getNo() {

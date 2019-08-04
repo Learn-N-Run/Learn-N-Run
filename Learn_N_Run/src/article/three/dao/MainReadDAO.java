@@ -19,7 +19,7 @@ public interface MainReadDAO {
 
 	/* 카테고리 검색 */
 	List<CategoryDTO> getMainCategory();
-	
+	/* SELECT * FROM CATEGORY */
 	
 	// 카테고리별로 들어갔을때..
 	List<ClassDTO> getCategoryClass(ClassDTO bean);
@@ -27,13 +27,14 @@ public interface MainReadDAO {
 	 * sql = "SELECT c.cover_img,cr.name,c.title FROM class c JOIN category ct WHERE
 	 * cr.name=?"
 	 */
-
+	
 	List<ReplyDTO> getClassInfoReply(ReplyDTO dto);
 	/*
 	 * 메인 content 영역 하위 클래스 답글 영역 sql = "SELECT * FROM reply WHERE classNo=? AND
 	 * group =1 ORDER BY date;"
 	 */
-
+	
+	
 	List<ReplyDTO> getVideoReply(ReplyDTO dto);
 	/*
 	 * 동영상 시청부분 클래스 댓글 눌렀을때. 또는 그냥 보여줄때. sql = "SELECT * FROM reply WHERE classNo=?

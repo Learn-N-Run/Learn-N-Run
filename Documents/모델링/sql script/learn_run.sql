@@ -1,29 +1,154 @@
-/*데이터베이스 생성*/
-CREATE database learnrun;
+show databases;
+use learnrun;
+show tables;
 
-/*유저 생성+권한 설정*/
-CREATE USER 'learnrun'@'localhost' IDENTIFIED BY '1234'; /*유저 생성 id = learnrun, pwd = 1234*/
-grant all privileges on learnrun.* to 'learnrun'@'localhost'; /*learnrun유저에게 learnrun데이터베이스의 모든 테이블의 권한 부여*/
-flush privileges;	/*마무으리*/
-/********************************************************************************************************/
-
-
-show databases;		/*데이터베이스 조회*/
-use learnrun;		/*데이터베이스 사용*/
-show tables;		/*테이블 조회*/
-
-desc bank;
-desc bank_name;
-desc buyer;
+select * from user;
+SELECT * FROM user_group;
+SELECT * FROM class;
+SELECT * FROM buyer;
+select * from category;
+select * from user_group;
+select * from user;
+select * from reply;
 desc category;
-desc class;
-desc coupon;
-desc curriculum;
-desc jjim;
-desc message;
-desc receiver_info;
 desc reply;
-desc subject;
-desc user;
-desc user_group;
+
+ALTER TABLE category ADD column image varchar(300) not null;
+
+ALTER TABLE reply add `user_id` VARCHAR(20) NULL;
+	
+ALTER TABLE reply ADD CONSTRAINT fk_reply_user1 FOREIGN KEY(`user_id`)
+REFERENCES `learnrun`.`user` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+
+insert into user(id,pass,name,user_group_no,email) values('admin','admin',',hak',1,'hak@naver.com');
+insert into user(id,pass,name,user_group_no,email) values('admin1','admin',',hak',2,'hak@naver.com');
+insert into category(no,name) values(1,'요리');
+insert into category(no,name) values(2,'카메라');
+insert into category(no,name) values(3,'공예');
+insert into category(no,name) values(4,'코딩');
+insert into category(no,name) values(5,'음악');
+insert into category(no,name) values(6,'켈리그래피');
+insert into category(no,name) values(7,'운동');
+insert into category(no,name) values(8,'그림');
+
+insert into user_group(no,name) values(1,'회원'),(2,'크리에이터'),(3,'관리자') ;
+
+
+
+-- ---------------------INSERT record list-------------------------
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- -----------------------------------------------------
+-- Data for table `learnrun`.`user_group`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `learnrun`;
+INSERT INTO `learnrun`.`user_group` (`no`, `name`) VALUES (01, '크리에이터');
+INSERT INTO `learnrun`.`user_group` (`no`, `name`) VALUES (02, '일반회원');
+
+COMMIT;
+
+		SELECT c.cover_img, c.category_no, c.title, count(b.class_no) AS 'count'
+		FROM class c join buyer b
+		GROUP BY c.cover_img, c.category_no, c.title 
+		ORDER BY count DESC LIMIT 5;		
+
+desc class;
+
+c.no,
+c.cre_id,
+c.cover_img,
+c.title,
+c.detail_category,
+c.content,
+c.material_img,
+c.material_content,
+c.expiration,
+c.tuition,
+c.category_no
+d.count;
+
+SELECT class_no, COUNT(*) 'classpop' FROM buyer
+				group by class_no
+				ORDER BY classpop DESC LIMIT 5;
+
+		SELECT c.no, d.classpop, c.cre_id, c.cover_img, c.title, c.detail_category,
+				c.content, c.material_img, c.material_content, c.expiration, c.tuition, c.category_no
+		FROM class c
+        join (SELECT class_no, COUNT(*) 'classpop' FROM buyer
+				group by class_no
+				ORDER BY classpop DESC LIMIT 5) d
+		ON d.class_no = c.no
+		GROUP BY c.no;
+        
+        
+-- -----------------------------------------------------
+-- Data for table `learnrun`.`user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `learnrun`;
+INSERT INTO `learnrun`.`user` (`id`, `pass`, `name`, `email`, `creator_url`, `profile_img`, `nickname`, `number`, `joinDate`, `user_group_no`) VALUES ('creatertest01', '1234', '크리에이터', 'create@test.com', 'test.com', '이미지없음', '크리', 01011111111, '2019-01-02', 01);
+INSERT INTO `learnrun`.`user` (`id`, `pass`, `name`, `email`, `creator_url`, `profile_img`, `nickname`, `number`, `joinDate`, `user_group_no`) VALUES ('user2', '1234', '곤잘레스', 'crea23te@test.com', 'tes4t.com', '이미지없음', '크리3', 01011111111, '2019-01-02', 02);
+INSERT INTO `learnrun`.`user` (`id`, `pass`, `name`, `email`, `creator_url`, `profile_img`, `nickname`, `number`, `joinDate`, `user_group_no`) VALUES ('user1', '1234', '알렉산더', 'cre234ate@test.com', 't434est.com', '이미지없음', '크2리', 01011111111, '2019-01-02', 02);
+INSERT INTO `learnrun`.`user` (`id`, `pass`, `name`, `email`, `creator_url`, `profile_img`, `nickname`, `number`, `joinDate`, `user_group_no`) VALUES ('user3', '1234', '뽀삐', '2a3te@test.com', 'tes2t.com', '이미지없음', '1크리', 01011111111, '2019-01-02', 02);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `learnrun`.`category`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `learnrun`;
+INSERT INTO `learnrun`.`category` (`no`, `name`) VALUES (101, '원예');
+INSERT INTO `learnrun`.`category` (`no`, `name`) VALUES (102, '목공');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `learnrun`.`class`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `learnrun`;
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (1, 'creatertest01', '이미지없음', '여기가 타이틀', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 101);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (2, 'creatertest01', '이미지없음', '여기가 타이틀', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 102);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (3, 'creatertest01', '이미지없음', '여기가 타이틀', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 102);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (4, 'creatertest01', '이미지없음', '4번클래스', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 102);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (5, 'creatertest01', '이미지없음', '5번클래스', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 102);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (6, 'creatertest01', '이미지없음', '6버클래스', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 102);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (7, 'creatertest01', '이미지없음', '7번클래스', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 102);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (8, 'creatertest01', '이미지없음', '8래스', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 101);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (9, 'creatertest01', '이미지없음', '7번클9래스', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 101);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (10, 'creatertest01', '이미지없음', '7번10클래스', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 101);
+INSERT INTO `learnrun`.`class` (`no`, `cre_id`, `cover_img`, `title`, `detail_category`, `content`, `material_img`, `material_content`, `expiration`, `tuition`, `category_no`) VALUES (11, 'creatertest01', '이미지없음', '7번11클래스', '디테일카테고리', '콘텐츠부분', '이미지가 또있네?', '이미지콘텐츠?', 111111, 22222222, 101);
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `learnrun`.`jjim`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `learnrun`;
+INSERT INTO `learnrun`.`jjim` (`no`, `user_id`, `class_no`) VALUES (1, 'creatertest01', 1);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `learnrun`.`buyer`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `learnrun`;
+INSERT INTO `learnrun`.`buyer` (`no`, `user_id`, `last_tuition`, `order_date`, `class_no`) VALUES (01,'user3', '1234', '2019-01-02', 1);
+INSERT INTO `learnrun`.`buyer` (`no`, `user_id`, `last_tuition`, `order_date`, `class_no`) VALUES (02,'user2', '1234', '2019-01-02', 1);
+INSERT INTO `learnrun`.`buyer` (`no`, `user_id`, `last_tuition`, `order_date`, `class_no`) VALUES (03,'user1', '1234', '2019-01-02', 1);
+INSERT INTO `learnrun`.`buyer` (`no`, `user_id`, `last_tuition`, `order_date`, `class_no`) VALUES (04,'user3', '1234', '2019-01-02', 2);
+INSERT INTO `learnrun`.`buyer` (`no`, `user_id`, `last_tuition`, `order_date`, `class_no`) VALUES (05,'user2', '1234', '2019-01-02', 2);
+INSERT INTO `learnrun`.`buyer` (`no`, `user_id`, `last_tuition`, `order_date`, `class_no`) VALUES (06,'user1', '1234', '2019-01-02', 1);
+INSERT INTO `learnrun`.`buyer` (`no`, `user_id`, `last_tuition`, `order_date`, `class_no`) VALUES (07,'user3', '1234', '2019-01-02', 7);
+
+COMMIT;
 
