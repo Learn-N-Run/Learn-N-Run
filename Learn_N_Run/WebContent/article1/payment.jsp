@@ -450,7 +450,6 @@
 		</div>
 	</div>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>
-
 	<div class="coupon_modal_h">
 		<div class="coupon_title_h">내 쿠폰 보유 현황</div>
 		<table>

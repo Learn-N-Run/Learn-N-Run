@@ -51,12 +51,7 @@ public interface UserDAO {
 	 * (로그인 시)사용자 아이디,비밀번호 확인. sql = "SELECT* FROM user where id=?" return String id
 	 * session.setAttribute("id");
 	 */
-	int emailCheck(String email);
 
-	/*
-	 * 유저 이메일 중복검사 확인. sql = "SELECT* FROM user where email=?"
-	 * 
-	 */
 	UserDTO UserInfo(String id);
 
 	/*

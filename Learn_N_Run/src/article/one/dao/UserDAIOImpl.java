@@ -65,8 +65,7 @@ public class UserDAIOImpl implements UserDAO{
 			}
 	}
 	
-
-	
+	/*회원가입*/
 	@Override
 	public int addUser(UserDTO dto) {
 		int result = 0; // 0: 실패, 1: 성공
@@ -100,7 +99,7 @@ public class UserDAIOImpl implements UserDAO{
 		return result;
 	}
 		
-
+	/*회원수정*/
 	@Override
 	public void updateUser(UserDTO dto) {
 		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=?, ";	
@@ -123,6 +122,7 @@ public class UserDAIOImpl implements UserDAO{
 		
 	}
 	
+	/*회원탈퇴*/
 	@Override
 	public int delUser(String id, String pass) {
 		int result = 0;
@@ -142,7 +142,8 @@ public class UserDAIOImpl implements UserDAO{
 		}
 		return result;	
 	}
-	//아이디 중복검사 메소드
+	
+	/*아이디 유효성*/
 	@Override
 	public int idCheck(String id) {
 		int result = 1;
@@ -163,7 +164,7 @@ public class UserDAIOImpl implements UserDAO{
 		return result;
 	}
 
-	//로그인 시 아이디체크 메소드
+	//로그인 시 아이디,비밀번호
 	@Override
 	public int userCheck(String id, String pass) {
 			int check = 0;
@@ -190,12 +191,6 @@ public class UserDAIOImpl implements UserDAO{
 				freeResource();
 			}
 			return check;
-	}
-
-	@Override
-	public int emailCheck(String email) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
@@ -628,6 +623,7 @@ public class UserDAIOImpl implements UserDAO{
 		return email;
 	}
 
+	//내가 구매한 클래스 정보 확인
 	public List getMyclassInfo(String id) {
 		ArrayList list = new ArrayList();	
         sql = "SELECT c.cover_img,c.title, c.title,b.order_date, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration_date, "
@@ -668,6 +664,7 @@ public class UserDAIOImpl implements UserDAO{
 		return list;
 	}
 
+	//유저 그룹 값 가져고기
 	public int getUserGroup(String userid) {
 		int Group =0;
 		String sql ="SELECT user_group_no FROM user where id=?";
@@ -687,6 +684,7 @@ public class UserDAIOImpl implements UserDAO{
 		return Group;
 	}
 
+	//유저 정보 가져오기, 유저수정시
 	public UserDTO getUserInfo(String id) {
 		String sql ="SELECT * FROM user where id=?";
 		UserDTO dto = new UserDTO();
