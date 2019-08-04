@@ -13,10 +13,12 @@ public class SPController {
 
 	
 	private SqlSession sqlsession;
-	private MainReadDAO readDAO;
+	MainReadDAO readDAO;
 	
 	@RequestMapping(value = "/index")
 	public String indexview(Model model){
+		
+		
 		
 		return "index";
 	}

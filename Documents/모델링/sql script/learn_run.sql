@@ -22,16 +22,28 @@ DELETE FROM user;
 		ON d.class_no = c.no
 		GROUP BY c.no;
 
-SELECT * FROM user;
-SELECT count(*) 'topinterest'
-FROM jjim;
 
-SELECT * FROM class join category join buyer;
-SELECT count(*) 'topClass' FROM class cl join category ca join buyer buy
-ON cl.category_no=ca.no 
+
+SELECT * FROM jjim;
+SELECT * FROM buyer;
+SELECT * FROM class;
+SELECT * FROM category;
+
+-- buyer count TopClassDTO ---
+SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
+		count(*) 'TopRankCount' FROM class cl join category ca join buyer buy
+ON cl.category_no=ca.no
 	AND cl.no = buy.class_no
-GROUP BY cl.no;
+GROUP BY cl.no LIMIT 5;
 
+-- jjim count InterestedClassDTO ---
+SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
+		count(*) 'interestCount' FROM class cl join category ca join jjim jj
+ON cl.category_no=ca.no
+	AND cl.no = jj.class_no
+WHERE ca.name = '요리'
+GROUP BY cl.no
+LIMIT 5;
 
 ALTER TABLE category ADD column image varchar(300) not null;
 

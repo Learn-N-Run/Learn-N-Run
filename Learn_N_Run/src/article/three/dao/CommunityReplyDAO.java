@@ -1,8 +1,10 @@
 package article.three.dao;
 
+import java.util.List;
+
 import dto.ReplyDTO;
 
-public interface ReplyDAO {
+public interface CommunityReplyDAO {
 
 
 	// 클래스 댓글
@@ -36,5 +38,10 @@ public interface ReplyDAO {
 	 * rs.getString("c.id"); if(id == c.id || id == p.user_id ){
 	 * "DELETE FROM reply where no=?";}
 	 */
-
+	
+	List<ReplyDTO> getClassInfoReply(ReplyDTO dto);
+	/*
+	 * 메인 content 영역 하위 클래스 답글 영역 sql = "SELECT * FROM reply WHERE classNo=? AND
+	 * group =1 ORDER BY date;"
+	 */
 }

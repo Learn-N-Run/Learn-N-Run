@@ -10,12 +10,8 @@ import dto.ReplyDTO;
 public interface MainReadDAO {
 
 	// 메인페이지 TOP5 페이지
-	List<ClassDTO> top5Info();
-	/*
-	 * sql = "SELECT c.cover_img, c.category, c.title, count(b.class_no) AS 'count'
-	 * FROM class c inner join buyer b GROUP BY c.cover_img,c.category,c.title ORDER
-	 * BY count LIMIT 5;"
-	 */
+	List<ClassDTO> interestedTop5Info();
+	List<ClassDTO> popularTop5Info();
 
 	/* 카테고리 검색 */
 	List<CategoryDTO> getMainCategory();
@@ -28,12 +24,6 @@ public interface MainReadDAO {
 	/*
 	 * sql = "SELECT c.cover_img,cr.name,c.title FROM class c JOIN category ct WHERE
 	 * cr.name=?"
-	 */
-	
-	List<ReplyDTO> getClassInfoReply(ReplyDTO dto);
-	/*
-	 * 메인 content 영역 하위 클래스 답글 영역 sql = "SELECT * FROM reply WHERE classNo=? AND
-	 * group =1 ORDER BY date;"
 	 */
 	
 	
