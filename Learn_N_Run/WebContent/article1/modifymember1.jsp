@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>learnRun 회원정보수정</title>
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <!-- jquery 사용 -->
@@ -23,8 +23,8 @@ $(function(){
          $.ajax({
             type: "post",
             async: false,
-            url: "/me/pwdCheck.me", //비밀번호 체크하는 것 만들어야함
-            data: {pwd : pwd},
+            url: "pwdCheck.do",
+            data: {id : ${session.id}, pwd : pwd},
             success: function(data){
                if(data == 0){
                   $("#pwdErr").text("비밀번호가 틀립니다.");

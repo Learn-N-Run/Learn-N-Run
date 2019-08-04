@@ -42,14 +42,14 @@ public class JoinRegisterService implements Service{
 					out.println("history.back();");
 					out.print("</script>");
 
-					System.out.println(" 회원 가입 오류 ");
+					System.out.println(" 회원가입 확인해주세요 ");
 					out.close();
 					
 				}else {
 					
 					PrintWriter out = response.getWriter();
 					out.println("<script>");
-					out.println("alert('회원가입 완료');");
+					out.println("alert('회원가입 되었습니다.');");
                     out.println("location.href='mainEx.jsp';");
                     out.println("</script>");
 					

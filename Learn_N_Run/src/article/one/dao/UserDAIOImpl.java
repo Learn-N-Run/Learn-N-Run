@@ -1,5 +1,6 @@
 package article.one.dao;
 
+import java.awt.print.Printable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -122,6 +123,32 @@ public class UserDAIOImpl implements UserDAO{
 		
 	}
 	
+	/*비밀번호 체크(회원탈퇴, 수정)*/
+	public int pwdCheck(String id, String pass) {
+		int result =0;
+		
+		try {
+			con = getConnection();
+			sql = "Select * from user where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(pass.equals(rs.getString("pass")))
+					result = 1;
+				else
+					result = -1;
+			}
+		} catch (Exception e) {
+			System.out.println("pwdCheck오류 : " + result);
+		} finally {
+			freeResource();
+		}
+		return result;
+		}
+
+	
 	/*회원탈퇴*/
 	@Override
 	public int delUser(String id, String pass) {
@@ -204,11 +231,29 @@ public class UserDAIOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	//크리에이터 신청 처리
 	@Override
-	public int updateCreator(UserDTO bean) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int AddCreator(UserDTO bean) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql="UPDATE user SET email=?, creator_url=?, profile_img=?, nickname=?, number=? user_group=2";
+			pstmt = con.prepareStatement(sql);
+			UserDTO dto = new UserDTO();
+			pstmt.setString(1, dto.getEmail());
+			pstmt.setString(2, dto.getCreator_url());
+			pstmt.setString(3, dto.getProfile_img());
+			pstmt.setString(4, dto.getNickname());
+			pstmt.setInt(5, dto.getNumber());
+			pstmt.executeUpdate();
+						
+		} catch (Exception e) {
+			System.out.println("AddCreator() " + result);
+		} finally {
+			freeResource();
+		}
+		return result;
 	}
 
 	//메세지 보내기

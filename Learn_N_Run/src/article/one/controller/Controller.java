@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import article.one.command.AddCreatorService;
 import article.one.command.Buy_getClassInfoService;
 import article.one.command.DeleteMessageService;
 import article.one.command.InsertbuyClassService;
@@ -27,6 +28,7 @@ import article.one.command.getUserInfoService;
 import article.one.command.idCheckService;
 import article.one.command.modify1Service;
 import article.one.command.modify2Service;
+import article.one.command.pwdCheck;
 import article.one.command.selectCouponCountService;
 import article.one.command.selectTuitionService;
 
@@ -142,6 +144,12 @@ public class Controller extends HttpServlet {
 			modify2Service forward = new modify2Service();
 			forward.excute(request, response);
 			path="getUserInfo.do";
+		}else if (command.equals("/article1/pwdCheck.do")) {
+			pwdCheck forward = new pwdCheck();
+			forward.excute(request, response);
+		}else if (command.equals("/article1/AddCreatorService.do")) {
+		AddCreatorService forward = new AddCreatorService();
+		forward.excute(request, response);
 		}
 		if(path != null) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);

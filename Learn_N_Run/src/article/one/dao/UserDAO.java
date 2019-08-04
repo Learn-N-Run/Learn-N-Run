@@ -45,6 +45,13 @@ public interface UserDAO {
 	/*
 	 * (회원가입 시)유저 아이디 중복검사 확인. //sql = "SELECT* FROM user where id=?"
 	 */
+	
+	int pwdCheck(String id, String pass);
+	
+	/*
+	 * (정보수정, 회원탈퇴) 비밀번호 확인
+	 */
+	
 	int userCheck(String id, String pass);
 
 	/*
@@ -67,7 +74,7 @@ public interface UserDAO {
 	 * requset.getsession.setAttribute("idGroup"); Session session =
 	 * request.getSession(); session.setAttribute("idGroup");
 	 */
-	int updateCreator(UserDTO bean);
+	int AddCreator(UserDTO bean);
 
 	/*
 	 * 크리에이터 등급 올리기, url,nickname,profileimg, 본인인증 email확인후. User에 업데이트시,

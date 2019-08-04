@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Sign Up</title>
+<title>learnRun 회원가입</title>
 <link href="css/join.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
@@ -125,7 +125,7 @@ function register(){
 		alert("필수 사항을 기입해주세요.");
 		return false;
 	}
-	if($("#idErr").text()!=''||$("#pwdErr").text()!=''||$("#emailErr").text()!=''){
+	if($("#idErr").text()!=''||$("#pwdErr").text()!=''||$("#emailErr").text()!=''$("#nameErr").text()!=''||){
 		alert("오류 사항을 확인 후 다시 입력해주세요.");
 		return false;
 	} 
