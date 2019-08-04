@@ -287,7 +287,6 @@ $(function(){
 		}else{
 			return false;
 		}
-		
 	});
 });
 </script>
@@ -344,7 +343,7 @@ $(function(){
 						<thead>
 							<tr>
 								<td width="15%">보낸 사람</td>
-								<td width="60%">제 목</td>
+								<td width="60%">내 용</td>
 								<td width="15%">받은 시간</td>
 							</tr>
 						</thead>

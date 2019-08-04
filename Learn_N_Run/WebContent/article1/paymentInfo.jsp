@@ -158,7 +158,7 @@
 }
 
 .section_2_h{
-
+	margin-top: 30px;
     margin-bottom: 10px;
     display: inline-block;
     float: left;
@@ -167,7 +167,7 @@
 
 .section_2_h span{
 	padding-left: 25px;
-	font-size: 17px;
+	font-size: 20px;
 }
 
 .section_2_h p{
@@ -176,7 +176,7 @@
 }
 
 .table_1_h th{
-	width: 78%;
+	width: 76%;
     height: 70px;
     text-align: right;
     font-size: 33px;

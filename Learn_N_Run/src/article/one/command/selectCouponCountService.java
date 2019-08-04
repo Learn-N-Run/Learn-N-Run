@@ -26,9 +26,6 @@ public class selectCouponCountService implements Service{
 		UserDAIOImpl dao = new UserDAIOImpl();
 		CouponDTO dto = dao.myCouponInfo(id);
 
-		System.out.println(dto.getSale1());
-		System.out.println(dto.getSale2());
-		System.out.println(dto.getSale3());
 		
 		JSONObject obj = new JSONObject();
 		obj.put("sale1", dto.getSale1());

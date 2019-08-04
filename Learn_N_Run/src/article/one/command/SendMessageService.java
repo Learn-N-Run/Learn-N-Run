@@ -21,11 +21,8 @@ public class SendMessageService implements Service {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		String send_id = (String) session.getAttribute("id");
-		System.out.println("보내는 이"+send_id);
 		String receiver_id = request.getParameter("receiver_id");
-		System.out.println("받는 이"+receiver_id);
 		String content = request.getParameter("content");
-		System.out.println("내용"+content);
 		
 		MessageDTO dto = new MessageDTO();
 		UserDTO receiver_dto = new UserDTO();

@@ -71,7 +71,6 @@
 		});
 			
 		$("#receive_coupon1_h").click(function() {
-			alert($("#code_check").val() + $(".EmailNumber_h").val() )
 			if( $("#code_check").val() == $(".EmailNumber_h").val() ){
 				location.href="coupon1_register_h.do";
 			}else{

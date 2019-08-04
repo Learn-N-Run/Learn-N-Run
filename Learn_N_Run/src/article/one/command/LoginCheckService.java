@@ -19,7 +19,6 @@ public class LoginCheckService implements Service{
 		
 		String userid = request.getParameter("userid");
 		String userpass = request.getParameter("userpass");
-		System.out.println(userid + userpass);
 		UserDAIOImpl dao = new UserDAIOImpl();
 		int result = dao.userCheck(userid, userpass);
 		int group =	dao.getUserGroup(userid);

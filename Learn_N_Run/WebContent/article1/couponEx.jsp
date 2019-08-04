@@ -13,9 +13,9 @@ $(function() {
 			type:"post",
 			success : function(data) {
 				var jsonInfo = JSON.parse(data);
-				$(".coupon1_h").text(jsonInfo.sale1);
-				$(".coupon2_h").text(jsonInfo.sale2);
-				$(".coupon3_h").text(jsonInfo.sale3);
+				$(".coupon1_h").text(jsonInfo.sale1+'개');
+				$(".coupon2_h").text(jsonInfo.sale2+'개');
+				$(".coupon3_h").text(jsonInfo.sale3+'개');
 			}
 		});
 	});	
@@ -33,10 +33,10 @@ $(function() {
 		    left: 0;
 		    top: 0;
 		    width: 300px;
-   			height: 350px;
+   			height: 400px;
 		    -webkit-border-radius: 3px;
 		    -webkit-box-shadow: 0px 0px 20px #999;
-		    left: 30%;
+		    left: 15%;
 		    top: 11%;
 		}
 		
@@ -53,8 +53,9 @@ $(function() {
 		}
 		
 		.coupon_modal_h table{
-			border : 0.3px solid lightgray;
-			width: 100%;
+			    width: 100%;
+			    border-spacing: 10px;
+			    border-collapse: separate;
 		}
 		
 		.coupon_modal_h tr{
@@ -102,7 +103,7 @@ $(function() {
 <body>
 	<div class="coupon_modal_h">
 		<div class="coupon_title_h">내 쿠폰 보유 현황</div>
-		<table>
+		<table class ="coupon_cate_h">
 			<tr>
 				<th class="coupon1"></th>
 				<td class="coupon1_h"></td>
@@ -116,7 +117,7 @@ $(function() {
 				<td class="coupon3_h"></td>
 			</tr>
 		</table>
-		<a href="javascript:;"><div class="coupon_bottom_h">쿠폰 받으러 가기!</div></a>
+		<a href="event.do"><div class="coupon_bottom_h">쿠폰 받으러 가기!</div></a>
 	</div>
 </body>
 </html>

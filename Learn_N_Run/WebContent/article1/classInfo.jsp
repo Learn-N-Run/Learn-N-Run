@@ -38,8 +38,7 @@
 }
 
 .myContent_h {
-	width: 83%;
-	margin-left: 17%;
+	width: 100%;
 }
 
 .category_section_h {
@@ -78,50 +77,6 @@
 	color: white;
 	line-height: 40px;
 }
-
-.coupon_modal_h table {
-	border: 0.3px solid lightgray;
-	width: 100%;
-}
-
-.coupon_modal_h tr {
-	padding: 5px 5px 5px 10px;
-}
-
-.coupon_modal_h th {
-	width: 80%;
-	height: 90px;
-	background-color: black;
-}
-
-.coupon_modal_h td {
-	font-size: 20px;
-	font-weight: 700;
-	text-align: center;
-}
-
-.coupon_bottom_h {
-	line-height: 40px;
-	text-align: center;
-	font-size: 20px;
-	font-weight: 700;
-}
-
-.coupon1 {
-	background: url("img/5000coupon.png");
-	background-size: 100% 100%;
-}
-
-.coupon2 {
-	background: url("img/7000coupon.png");
-	background-size: 100% 100%;
-}
-
-.coupon3 {
-	background: url("img/10000coupon.png");
-	background-size: 100% 100%;
-}
-
 .title_h {
 	height: 100px;
 	padding: 30px 20px 10px 30px;
@@ -134,7 +89,7 @@
 }
 
 .myClass_content_h {
-	padding: 20px 20px 20px 20px;
+	padding: 20px 20px 0 20px;
 	font-size: 18px;
 }
 
@@ -203,10 +158,52 @@
 .myClass_expiration p {
 	margin-top: 50%;
 }
+
+.myContent_h table{
+	margin-top: 30px;
+	width: 100%;
+}
+.myContent_h table thead{
+	background: rgb(129,131,131);
+	background: linear-gradient(0deg, rgba(129,131,131,1) 0%, rgba(0,0,0,1) 100%);
+	font-size: 18px;
+	color: white;
+}
+.myContent_h table thead th{
+    text-align: center;
+    height: 50px;
+}
+
+.myContent_h tbody td{
+    padding: 10px 10px 10px 10px;
+    border-bottom: 0.3px solid gray;
+    text-align: center;
+}
+
+.class_qwfqwf_h{
+    width: 30%;
+    float: left;
+    height: 150px;
+    line-height: 120px;
+    margin-left: 30px;
+}
+
+.class_qwfqwf_h img{
+	
+	width: 100%;
+	height: 100%;
+}
+
+.class_qwf_h{
+    float: left;
+    padding: 10px 10px 10px 10px;
+    line-height: 120px;
+}
+
 </style>
 </head>
 <body>
-<jsp:include page="cateEx.jsp"></jsp:include>
+<jsp:include page="fincate.jsp"></jsp:include>
 <jsp:include page="/1_Include/header.jsp"/>
 	<div id="wrap">
 			<div id="center">
@@ -215,12 +212,46 @@
 					<div class="title_h">
 						<p>내 수강 정보</p>
 					</div>
-                    <c:choose>
+					<table>
+						<thead>
+							<tr>
+								<th width="60%">클래스 정보</th>
+								<th width="10%">카테고리</th>
+								<th width="15%">수강 신청일</th>
+								<th width="15%">수강 만료일</th>
+							</tr>
+						</thead>
+						<tbody>
+						 <c:choose>
+                        	<c:when test="${requestScope.MyclassList == '[]' }">
+                        		<tr><td colspan="4" style="font-size: 30px; text-align: center ">구매한 수강정보가 없습니다.</td></tr>
+                        	</c:when>
+                     		<c:otherwise>
+                          	<c:forEach var="list" items="${requestScope.MyclassList }">				
+								<tr>
+									<td>
+										<div class="class_qwfqwf_h"><img src='img/${list.cover_img }'></div>
+										<div class="class_qwf_h">${list.title }</div>
+									</td>
+									<td>${list.category.name }</td>
+									<fmt:formatDate var="order_date" value="${list.buyer.order_date}" pattern="yyyy-MM-dd" /> 
+									<td>${order_date }</td>
+									<fmt:formatDate var="expiration_date" value="${list.buyer.expiration_date}" pattern="yyyy-MM-dd" />         
+									<td>${expiration_date }</td>
+								</tr>
+							</c:forEach>
+                        </c:otherwise>
+	                    </c:choose>
+						</tbody>
+					</table>
+                  <%--   <c:choose>
                         <c:when test="${requestScope.MyclassList == '[]' }">
+                        	<br>
                             <h1>구매한 수강정보가 없습니다.</h1>
                         </c:when>
                         <c:otherwise>
-                            <c:forEach var="list" items="${requestScope.MyclassList }">							<div class="myClass_content_h">
+                            <c:forEach var="list" items="${requestScope.MyclassList }">							
+                            <div class="myClass_content_h">
 								<div class="myClass_img">
 									<img src="img/${list.cover_img }">
 								</div>
@@ -235,18 +266,22 @@
 								<div class="myClass_buyTime">
 									<p>
 										<span>[수강 신청일]</span><br>
+										<fmt:formatDate var="order_date" value="${list.buyer.order_date}" pattern="yyyy-MM-dd" /> 
+										${order_date }
 									</p>
 								</div>
-                                <div class="myClass_expiration">${list.buyer.order_date }
+                                <div class="myClass_expiration">
                                 	<p>
-                                        <span>[수강 만료일]</span><br>${list.buyer.expiration_date}
+                                        <span>[수강 만료일]</span><br>
+                                        <fmt:formatDate var="expiration_date" value="${list.buyer.expiration_date}" pattern="yyyy-MM-dd" /> 
+                                        ${expiration_date }
 									</p>
 								</div>
 								<div style="clear: both;"></div>
 							</div>
 						</c:forEach>
                         </c:otherwise>
-                    </c:choose>
+                    </c:choose> --%>
 			</div>
 		</div>
 	</div>

@@ -38,7 +38,6 @@
 	<div id="wrap">
 			<div id="center">
 				<a href="event.do">이벤트 페이지로 이동</a>
-				<a href="getMyClassInfo.do">내 수강목록 페이지 이동</a>
 				<button type="button" id="buyClass_h">구매하기</button>
 				<a href="getUserInfo.do">내 정보 수정페이지로 이동</a>
 			</div>

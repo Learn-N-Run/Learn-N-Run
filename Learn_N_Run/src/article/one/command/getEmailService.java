@@ -16,7 +16,6 @@ public class getEmailService implements Service {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		System.out.println(id);
 		
 		UserDAIOImpl dao = new UserDAIOImpl();
 		String email = dao.getEmail(id);

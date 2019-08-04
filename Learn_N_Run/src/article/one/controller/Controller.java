@@ -68,7 +68,6 @@ public class Controller extends HttpServlet {
 			forward.excute(request, response);
 			
 		}else if (command.equals("/article1/insertMessage.do")) {
-			System.out.println("insertMessage 불러냄");
 			SendMessageService forward = new SendMessageService();
 			forward.excute(request, response);
 			
@@ -77,7 +76,6 @@ public class Controller extends HttpServlet {
 			forward.excute(request, response);
 			path="selectMessage.do";
 		}else if (command.equals("/article1/event.do")) {
-			System.out.println("event");
 			getEmailService forward = new getEmailService();
 			forward.excute(request, response);
 			path="event.jsp";
@@ -129,7 +127,6 @@ public class Controller extends HttpServlet {
 			forward.excute(request, response);
 			path="getUserInfo.do";
 		}else if (command.equals("/article1/getMyClassInfo.do")) {
-			System.out.println("getMy");
 			getMyClassService forward = new getMyClassService();
 			forward.excute(request, response);
 			path = "classInfo.jsp";

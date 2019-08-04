@@ -32,7 +32,8 @@ public class SelectDetailMessageService implements Service{
 		json.put("read_yn", dto.getRead_yn());
 		json.put("send_time", dto.getSend_time().toString().replaceAll(":", ".").replaceAll("-", "."));
 		PrintWriter out = response.getWriter();
-		System.out.println(json.toJSONString());
 		out.println(json.toJSONString());
+		out.flush();
+		out.close();
 	}
 }

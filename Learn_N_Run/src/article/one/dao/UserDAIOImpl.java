@@ -312,7 +312,6 @@ public class UserDAIOImpl implements UserDAO{
 				dto.setContent(rs.getString("content"));
 				dto.setSend_time(rs.getTimestamp("send_time"));
 				dto.setRead_yn(rs.getInt("read_yn"));
-				System.out.println(dto);
 				list.add(dto);
 			}
 
@@ -481,11 +480,8 @@ public class UserDAIOImpl implements UserDAO{
 						+ "values(?,(select no from receiver_info order by no desc limit 1),?,now(),?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
-				System.out.println(id);
 				pstmt.setInt(2, bean.getLast_tuition());
-				System.out.println(bean.getLast_tuition());
 				pstmt.setInt(3, classNo);
-				System.out.println(classNo);
 				int result2 = pstmt.executeUpdate();
 				if(result2 == 1) {
 					if(cdto.getSale1()==1) {
