@@ -2,9 +2,10 @@ package article.three.dao;
 
 import java.util.List;
 
-import lombok.dto.ClassDTO;
-import lombok.dto.CurriculumDTO;
-import lombok.dto.ReplyDTO;
+import dto.CategoryDTO;
+import dto.ClassDTO;
+import dto.CurriculumDTO;
+import dto.ReplyDTO;
 
 public interface MainReadDAO {
 
@@ -16,6 +17,10 @@ public interface MainReadDAO {
 	 * BY count LIMIT 5;"
 	 */
 
+	/* 카테고리 검색 */
+	List<CategoryDTO> getMainCategory();
+	
+	
 	// 카테고리별로 들어갔을때..
 	List<ClassDTO> getCategoryClass(ClassDTO bean);
 	/*

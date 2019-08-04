@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import article.three.dao.MainReadDAOimpl;
+import article.three.dao.MainReadDAO;
 
 @Component
 public class MainReadCommand implements Service{
@@ -18,11 +18,11 @@ public class MainReadCommand implements Service{
 	@Autowired
 	private SqlSession sqlsession;
 	@Autowired
-	private MainReadDAOimpl readDAO;
+	private MainReadDAO readDAO;
 	
 	@Override
 	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

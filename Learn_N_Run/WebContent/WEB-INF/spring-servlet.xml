@@ -28,7 +28,7 @@
 	2. 패키지스캔(article.three.*경로)
 	 
  -->
- 	
+
 	<context:component-scan base-package="article.three.*"/>
 
 <!--1. accepted dispathcer servlet --> 
