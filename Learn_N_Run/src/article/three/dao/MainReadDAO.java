@@ -19,6 +19,7 @@ public interface MainReadDAO {
 	List<CategoryDTO> getMainCategory();
 	
 	
+	
 	// 카테고리별로 들어갔을때..
 	List<ClassDTO> getCategoryClass(ClassDTO bean);
 	/*

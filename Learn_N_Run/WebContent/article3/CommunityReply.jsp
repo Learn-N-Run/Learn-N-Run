@@ -50,9 +50,9 @@ out.println("aassdd");
    
    </style>
 
+<%-- header--%>
+<c:import url="/1_Include/header.jsp"></c:import>
 <div id="wrap">
-         <%-- header--%>
-      <c:import url="/1_Include/header.jsp"></c:import>
       <%--댓글 전체 div태그 --%>
    <div >         
       <%--상단 커뮤니티 및 글 작성 div태그 --%>
@@ -102,7 +102,7 @@ out.println("aassdd");
       
    </div>
    <!-- 푸터 영역 -->
-      <c:import url="/1_Include/footer.jsp"></c:import>
 </div>
+<c:import url="/1_Include/footer.jsp"></c:import>
 </body>
 </html>

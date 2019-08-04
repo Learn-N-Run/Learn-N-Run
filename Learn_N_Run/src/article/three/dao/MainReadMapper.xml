@@ -6,31 +6,35 @@
 	<select id="TopClassSelect" resultType="PopularClassDTO">
 		<![CDATA[
 			SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
-				count(*) 'TopRankCount'
+				count(*) 'topRankCount'
 			FROM class cl JOIN category ca JOIN buyer buy
 			ON cl.category_no=ca.no
 				AND cl.no = buy.class_no
+			WHERE ca.name LIKE #{categoryName}
 			GROUP BY cl.no
-			LIMIT 5
+			LIMIT 5;
 		]]>
 	</select>
 	
 	<select id="InterestedClassSelect" resultType="InterestedClassDTO">
 		<![CDATA[
 			SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
-				count(*) 'interestCount' 
+				count(*) 'interestedCount' 
 			FROM class cl JOIN category ca JOIN jjim jj
 			ON cl.category_no=ca.no
 				AND cl.no = jj.class_no
+			WHERE ca.name LIKE #{categoryName}
 			GROUP BY cl.no
-			LIMIT 5
+			LIMIT 5;		
 		]]>
 	</select>
+
 	<select id="CategoryClassSelect" resultType="CategoryDTO">
 		<![CDATA[
 			SELECT * FROM category
+			WHERE name LIKE #{categoryName}
 		]]>
 	</select>
-	
+
 		
 </mapper>

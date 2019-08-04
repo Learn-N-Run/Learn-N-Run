@@ -18,39 +18,100 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
+<style type="text/css">
+	.swiper-container {
+		width: 100%;
+		height: 100%;
+		min-height: 300px;
+		}
+	.swiper-slide {
+		text-align: center;
+		font-size: 18px;
+		background: rgba(255,255,255,0);
+		/* Center slide text vertically */
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		}
+	.inter-button{
+		position: absolute;
+		top: 50%;
+		width: 27px;
+		height: 44px;
+		margin-top: -22px;
+		z-index: 10;
+		cursor: pointer;
+		background-size: 27px 44px;
+		background-position: center;
+		background-repeat: no-repeat;
+		}
+	#inter-button-next{
+		right: 10px;
+		left: auto;
+		}
+	#inter-button-prev{
+		left: 10px;
+		right: auto;
+		}
+</style>
 </head>
 <body>
 
-	<div id="TH_top5">
-		<h3>Interested Class Top5</h3>
-		<ul class="nav nav-tabs" role="tablist" id="InterestedClass5">
-			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-			<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-			<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-		</ul>
+	<h3>
+		<font color="tomato">Interested class</font>
+	</h3>
 
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="home">
-			
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+
+<c:forEach items="${listMap.interList}" var="inter">
+			<div class="swiper-slide" onclick="alert('classNo=${inter.classNo}')">
+				${inter.title}<BR>
+				${inter.interestedCount}
 			</div>
-			<div role="tabpanel" class="tab-pane" id="profile">
-			
-			</div>
-			<div role="tabpanel" class="tab-pane" id="messages">
-			
-			</div>
-			<div role="tabpanel" class="tab-pane" id="settings">
-			
-			</div>
+</c:forEach>
+
+		</div>
+		<div class="swiper-pagination"></div>
+		<div id="inter-button-next" class="inter-button">
+			<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" fill="tomato">
+				<path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"/>
+			</svg>
+		</div>
+		<div id="inter-button-prev" class="inter-button">
+			<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" fill="tomato">
+				<path d="M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z"/>
+			</svg>
 		</div>
 	</div>
 
-<script>
-  $(function () {
-    $('#InterestedClass5 a:first').tab('show')
-  })
-</script>			
 
+	<script>
+	var swiper = new Swiper('.swiper-container', {
+		slidesPerView: 3,
+		spaceBetween: 30,
+		slidesPerGroup: 3,
+		loop: true,
+		loopFillGroupWithBlank: true,
+		pagination: {
+		  el: '.swiper-pagination',
+		  clickable: true,
+			},
+		navigation: {
+		  nextEl: '#inter-button-next',
+		  prevEl: '#inter-button-prev',
+			},
+		});
+	</script>
+			
 </body>
 </html>

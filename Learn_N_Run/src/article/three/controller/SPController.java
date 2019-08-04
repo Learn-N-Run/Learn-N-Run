@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import article.three.dao.MainReadDAO;
 import dto.CategoryDTO;
+import dto.ClassDTO;
 import dto.InterestedClassDTO;
 import dto.PopularClassDTO;
 
@@ -42,31 +43,57 @@ public class SPController {
 		classinfo.put("categoryList", categoryList);
 		
 		model.addAttribute("listMap", classinfo);
+
+		ClassDTO testdto = new ClassDTO();
+		testdto.setNo(1);
 		
-		return "index2";
+		return "index";
 	}
 	
 	public List<PopularClassDTO> BuyerTopClassSelect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
-		List<PopularClassDTO> popList
-		= sqlsession.selectList("article.three.dao.MainReadDAO.TopClassSelect");
+		List<PopularClassDTO> popList;
+		String cateName = request.getParameter("popCateName");
+		
+		if (cateName == null) {
+			popList = sqlsession.selectList("article.three.dao.MainReadDAO.TopClassSelect","%");
+		}else {
+			popList = sqlsession.selectList("article.three.dao.MainReadDAO.TopClassSelect",cateName);
+		}
 		
 		return popList;
 	}
 	
 	public List<InterestedClassDTO> jjimTopClassSelect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 	
-		List<InterestedClassDTO> interList
-			= sqlsession.selectList("article.three.dao.MainReadDAO.InterestedClassSelect");
+		List<InterestedClassDTO> interList;
+		String cateName = request.getParameter("interCateName");
+		
+		if (cateName == null) {
+			interList = sqlsession.selectList("article.three.dao.MainReadDAO.InterestedClassSelect","%");
+		}else {
+			interList = sqlsession.selectList("article.three.dao.MainReadDAO.InterestedClassSelect",cateName);
+		}
+		
 		return interList;
 	}
 	
 	public List<CategoryDTO> cateSelect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 	
-		List<CategoryDTO> categoryList
-		= sqlsession.selectList("article.three.dao.MainReadDAO.CategoryClassSelect");
+		List<CategoryDTO> categoryList;
+		String cateName = request.getParameter("categoryName");
+		
+		if (cateName == null) {
+			categoryList = sqlsession.selectList("article.three.dao.MainReadDAO.CategoryClassSelect","%");
+		}else {
+			categoryList = sqlsession.selectList("article.three.dao.MainReadDAO.CategoryClassSelect",cateName);
+		}
+		
 		return categoryList;
 	}
 
+		
+	
+	
 	
 }

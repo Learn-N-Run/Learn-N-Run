@@ -20,34 +20,35 @@
 	<title></title>
 </head>
 <body>
-	
-		<h3>Event</h3>
-		<div id ="TH_event" class ="carousel slide" data-ride ="carousel">
-			<ol class ="carousel-indicators">
-				<li data-target = "#TH_event" data-slide-to = "0" class="active"></li>
-				<li data-target = "#TH_event" data-slide-to = "1"></li>
-				<li data-target = "#TH_event" data-slide-to = "2"></li>
-			</ol>
-			<div id="TH_eventCarousel" class ="carousel-inner">
-				<div class="item active">
-					<img src="${contextpath}/article3/img/침영어 (0).jpg">
-				</div>
-				<div class= "item">
-					<img src="${contextpath}/article3/img/침영어 (1).jpg">
-				</div>
-				<div class= "item">
-					<img src="${contextpath}/article3/img/침영어 (2).jpg">
-				</div>
+	<div id="wrap">
+		<h3>
+			<font color="tomato">Event</font>
+		</h3>
+	</div>
+	<div id ="TH_event" class ="carousel slide" data-ride ="carousel">
+		<ol class ="carousel-indicators">
+			<li data-target = "#TH_event" data-slide-to = "0" class="active"></li>
+			<li data-target = "#TH_event" data-slide-to = "1"></li>
+			<li data-target = "#TH_event" data-slide-to = "2"></li>
+		</ol>
+		<div id="TH_eventCarousel" class ="carousel-inner">
+			<div class="item active">
+				<img src="${contextpath}/article3/img/침영어 (0).jpg">
 			</div>
-			<a class="left carousel-control" href="#TH_event" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a class="right carousel-control" href="#TH_event" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
+			<div class= "item">
+				<img src="${contextpath}/article3/img/침영어 (1).jpg">
+			</div>
+			<div class= "item">
+				<img src="${contextpath}/article3/img/침영어 (2).jpg">
+			</div>
 		</div>
-	
-	
+		<a class="left carousel-control" href="#TH_event" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#TH_event" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
 	
 </body>
 </html>

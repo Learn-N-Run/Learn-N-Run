@@ -22,18 +22,17 @@
 <body>
 
 	<div id="TH_Category">
-		<h3>Class Category</h3>
-		<%-- 
-		<c:forEach items="${listMap.CategoryDTO}" var="dto">
-			${dto.name }
-		
-		</c:forEach>
-		 --%>
-		100px 12개
-		100px 4개
-		<c:forEach items="${listMap.categoryList}" var="cate">
-			${cate.name }
-		</c:forEach>
+		<h3>
+			<font color="tomato">Class Category</font>
+		</h3>
+<div class="row">
+<c:forEach items="${listMap.categoryList}" var="category">
+			<div class="col-lg-1 col-xs-3">
+			<img src="${contextpath}/${category.image}">
+			${category.name }
+			</div>
+</c:forEach>
+</div>
 	</div>
 
 </body>

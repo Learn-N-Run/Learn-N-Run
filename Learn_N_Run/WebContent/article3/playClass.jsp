@@ -19,25 +19,24 @@
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
 </head>
-<body>
+<body style="overflow-x:hidden; overflow-y:auto;"> 
 
 <%-- header--%>
 <c:import url="/1_Include/header.jsp"></c:import>
 	
-	<div id="wrap">
-
-<%-- eventCarousel --%>
-		<c:import url="/article3/inc_main/eventCarousel.jsp"></c:import>
-<%-- popularTop5 --%>
-		<c:import url="/article3/inc_main/popularTop5.jsp"></c:import>	
-<%-- interestedTop5 --%>
-		<c:import url="/article3/inc_main/interestedTop5.jsp"></c:import>
-<%-- category --%>
-		<c:import url="/article3/inc_main/category.jsp"></c:import>
-
-<%-- end wrap --%>
+	<div id="class_player" style="border: 1px solid;">
+		<iframe >
+		</iframe>
 	</div>
-
+	
+<iframe width="100%" height="100%"
+		src="${contextpath}/article3/class_play/Player.jsp"
+		frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen>
+</iframe>
+	
+	
+	
 <%-- footer.jsp--%>
 <c:import url="/1_Include/footer.jsp"></c:import>
 

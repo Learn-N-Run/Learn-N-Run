@@ -169,7 +169,6 @@ function togglefooter() {
 	$('#inc_footer').toggle(500)
 };
 $(document).ready(function() {
-debugger;
 setTimeout(function() {
 	$('.textLauncherIcon').attr('style','position: fixed !important');
 	$('.textLauncherIcon').css('bottom','17vh');

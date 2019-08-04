@@ -12,6 +12,6 @@ public class InterestedClassDTO {
 	private String title;
 	private String categoryNo;// primary key for category Table
 	private String categoryName;
-	private int interestCount;// count buyer(jjim table result)
+	private int interestedCount;// count buyer(jjim table result)
 	
 }

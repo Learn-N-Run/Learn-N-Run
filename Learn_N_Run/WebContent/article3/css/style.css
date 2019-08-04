@@ -5,26 +5,10 @@
 		margin: 0 auto;
 		max-width: 1200px;
 		width: 100vw;
-	}
-	#wrap div{
-		background-size: contain;
+		
 	}
 	#TH_eventCarousel>div>img{
 		max-height: 400px;
 		width: auto;
 		margin: 0px auto;
 	}
-	/* Popularly TOP 5 */
-	#TH_top5{
-		vertical-align: middle;
-		overflow: hidden;
-	}
-	#TH_top5>div{
-		width: 200px;
-		height: 200px;
-	}
-	#TH_top5>span>img{
-		width: 200px;
-		height: 200px;
-	}
-	

@@ -11,7 +11,7 @@ select * from user_group;
 select * from user;
 select * from receiver_info;
 desc receiver_info;
-desc reply;
+desc category;
 DELETE FROM user;
 		SELECT c.no, d.topclasscount, c.cre_id, c.cover_img, c.title, c.detail_category,
 				c.content, c.material_img, c.material_content, c.expiration, c.tuition, c.category_no
@@ -22,6 +22,7 @@ DELETE FROM user;
 		ON d.class_no = c.no
 		GROUP BY c.no;
 
+			SELECT * FROM category;
 
 
 SELECT * FROM jjim;
@@ -29,11 +30,12 @@ SELECT * FROM buyer;
 SELECT * FROM class;
 SELECT * FROM category;
 
+
 -- buyer count TopClassDTO ---
 SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
 		count(*) 'TopRankCount' FROM class cl join category ca join buyer buy
 ON cl.category_no=ca.no
-	AND cl.no = buy.class_no
+-- AND cl.no = buy.class_no
 GROUP BY cl.no LIMIT 5;
 
 -- jjim count InterestedClassDTO ---

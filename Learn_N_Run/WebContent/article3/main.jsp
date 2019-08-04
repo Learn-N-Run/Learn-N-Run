@@ -20,10 +20,8 @@
 	<title>Learn & Run</title>
 </head>
 <body>
-	<jsp:include page="../1_Include/header.jsp"></jsp:include>
-		<div id="wrap">
-		
-		</div>
-	<jsp:include page="../1_Include/footer.jsp"></jsp:include>
+	
+	<c:redirect url="/view/index.kr"/>
+	
 </body>
 </html>
