@@ -1,7 +1,7 @@
 package article.three.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +27,7 @@ public class CommunityReplyCommand implements Service {
       ClassDTO dto = new ClassDTO();
       dto.setNo(1);
       
-      ArrayList<ReplyDTO> r = dao.getClassInfoReply(dto);
+      List<ReplyDTO> r = dao.getClassInfoReply(dto);
 
       
       request.setAttribute("r", r);
