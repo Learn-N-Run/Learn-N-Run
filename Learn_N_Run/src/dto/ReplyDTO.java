@@ -2,94 +2,90 @@ package dto;
 
 import java.sql.Timestamp;
 
+/**
+ * @author bearr
+ *
+ */
 public class ReplyDTO {
-	private int no;
-	private String content;
-	private Timestamp date;
-	private int group;
-	private String reply_id;
-	private ClassDTO classinfo;
-	private CurriculumDTO curriculum;
-	private UserDTO userid;
+   private int no;
+   private String content;
+   private Timestamp date;
+   private int group;
+   private String reply_id;
+   private int class_no;
+   private int curriculum_no;
 
-	public ReplyDTO() {
-	}
+   public ReplyDTO() {
+   }
 
-	public UserDTO getUserid() {
-		return userid;
-	}
+   public ReplyDTO(int no, String content, Timestamp date, int group, String reply_id, ClassDTO classinfo,
+         CurriculumDTO curriculum) {
+      super();
+      this.no = no;
+      this.content = content;
+      this.date = date;
+      this.group = group;
+      this.reply_id = reply_id;
+      this.class_no = class_no;
+      this.curriculum_no = curriculum_no;
+   }
 
-	public void setUserid(UserDTO userid) {
-		this.userid = userid;
-	}
+   public int getNo() {
+      return no;
+   }
 
-	public ReplyDTO(int no, String content, Timestamp date, int group, String reply_id, ClassDTO classinfo,
-			CurriculumDTO curriculum, UserDTO userid) {
-		super();
-		this.no = no;
-		this.content = content;
-		this.date = date;
-		this.group = group;
-		this.reply_id = reply_id;
-		this.classinfo = classinfo;
-		this.curriculum = curriculum;
-		this.userid = userid;
-	}
+   public void setNo(int no) {
+      this.no = no;
+   }
 
-	public int getNo() {
-		return no;
-	}
+   public String getContent() {
+      return content;
+   }
 
-	public void setNo(int no) {
-		this.no = no;
-	}
+   public void setContent(String content) {
+      this.content = content;
+   }
 
-	public String getContent() {
-		return content;
-	}
+   public Timestamp getDate() {
+      return date;
+   }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+   public void setDate(Timestamp date) {
+      this.date = date;
+   }
 
-	public Timestamp getDate() {
-		return date;
-	}
+   public int getGroup() {
+      return group;
+   }
 
-	public void setDate(Timestamp date) {
-		this.date = date;
-	}
+   public void setGroup(int group) {
+      this.group = group;
+   }
 
-	public int getGroup() {
-		return group;
-	}
+   public String getReply_id() {
+      return reply_id;
+   }
 
-	public void setGroup(int group) {
-		this.group = group;
-	}
+   public void setReply_id(String reply_id) {
+      this.reply_id = reply_id;
+   }
 
-	public String getReply_id() {
-		return reply_id;
-	}
+   public int getClass_no() {
+      return class_no;
+   }
 
-	public void setReply_id(String reply_id) {
-		this.reply_id = reply_id;
-	}
+   public void setClass_no(int class_no) {
+      this.class_no = class_no;
+   }
 
-	public ClassDTO getClassinfo() {
-		return classinfo;
-	}
+   public int getCurriculum_no() {
+      return curriculum_no;
+   }
 
-	public void setClassinfo(ClassDTO classinfo) {
-		this.classinfo = classinfo;
-	}
+   public void setCurriculum_no(int curriculum_no) {
+      this.curriculum_no = curriculum_no;
+   }
 
-	public CurriculumDTO getCurriculum() {
-		return curriculum;
-	}
 
-	public void setCurriculum(CurriculumDTO curriculum) {
-		this.curriculum = curriculum;
-	}
-
+   
 }
