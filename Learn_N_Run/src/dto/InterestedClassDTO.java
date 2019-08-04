@@ -1,11 +1,11 @@
 package dto;
 
-public class TopClassDTO {
+public class InterestedClassDTO {
 	private int classNo;
 	private UserDTO creator;
 	private String cover_img;
 	private String title;
 	private CategoryDTO category;
-	private int jjimCount;
+	private int interestCount;
 	
 }
