@@ -21,8 +21,20 @@
 </head>
 <body>
 
-
-
+	<div id="TH_Category">
+		<h3>Class Category</h3>
+		<%-- 
+		<c:forEach items="${listMap.CategoryDTO}" var="dto">
+			${dto.name }
+		
+		</c:forEach>
+		 --%>
+		100px 12개
+		100px 4개
+		<c:forEach items="${listMap.categoryList}" var="cate">
+			${cate.name }
+		</c:forEach>
+	</div>
 
 </body>
 </html>

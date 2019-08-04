@@ -1,11 +1,12 @@
 package dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data // getter+setter+tostring+hashcode
-@Builder // new TopClassDTO(X) → TopClassDTO.bulider.bulid();
-public class TopClassDTO {
+@AllArgsConstructor
+public class PopularClassDTO {
 	private int classNo;// primary key for class Table
 	private String creator;
 	private String coverImg;
@@ -14,4 +15,5 @@ public class TopClassDTO {
 	private String categoryName;
 	private int TopRankCount;// count buyer(join table result)
 
+	public PopularClassDTO (){}
 }

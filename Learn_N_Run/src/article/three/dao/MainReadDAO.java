@@ -5,19 +5,19 @@ import java.util.List;
 import dto.CategoryDTO;
 import dto.ClassDTO;
 import dto.CurriculumDTO;
+import dto.InterestedClassDTO;
+import dto.PopularClassDTO;
 import dto.ReplyDTO;
 
 public interface MainReadDAO {
 
-	// 메인페이지 TOP5 페이지
-	List<ClassDTO> interestedTop5Info();
-	List<ClassDTO> popularTop5Info();
-
-	/* 카테고리 검색 */
+	// 메인: 찜 top5 페이지
+	List<InterestedClassDTO> interestedTop5Info();
+	// 메인: 구매자 top5 페이지
+	List<PopularClassDTO> popularTop5Info();
+	// 메인: 카테고리
 	List<CategoryDTO> getMainCategory();
-	/* 
-	 * SELECT * FROM CATEGORY 
-	 */
+	
 	
 	// 카테고리별로 들어갔을때..
 	List<ClassDTO> getCategoryClass(ClassDTO bean);

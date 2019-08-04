@@ -17,37 +17,29 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
-	<title></title>
+	<title>Learn & Run</title>
 </head>
 <body>
+
+<%-- header--%>
+<c:import url="/1_Include/header.jsp"></c:import>
 	
-		<h3>Event</h3>
-		<div id ="TH_event" class ="carousel slide" data-ride ="carousel">
-			<ol class ="carousel-indicators">
-				<li data-target = "#TH_event" data-slide-to = "0" class="active"></li>
-				<li data-target = "#TH_event" data-slide-to = "1"></li>
-				<li data-target = "#TH_event" data-slide-to = "2"></li>
-			</ol>
-			<div id="TH_eventCarousel" class ="carousel-inner">
-				<div class="item active">
-					<img src="${contextpath}/article3/img/침영어 (0).jpg">
-				</div>
-				<div class= "item">
-					<img src="${contextpath}/article3/img/침영어 (1).jpg">
-				</div>
-				<div class= "item">
-					<img src="${contextpath}/article3/img/침영어 (2).jpg">
-				</div>
-			</div>
-			<a class="left carousel-control" href="#TH_event" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a class="right carousel-control" href="#TH_event" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
-		</div>
-	
-	
-	
+	<div id="wrap">
+
+<%-- eventCarousel --%>
+		<c:import url="/article3/inc_main/eventCarousel.jsp"></c:import>
+<%-- popularTop5 --%>
+		<c:import url="/article3/inc_main/popularTop5.jsp"></c:import>	
+<%-- interestedTop5 --%>
+		<c:import url="/article3/inc_main/interestedTop5.jsp"></c:import>
+<%-- category --%>
+		<c:import url="/article3/inc_main/category.jsp"></c:import>
+
+<%-- end wrap --%>
+	</div>
+
+<%-- footer.jsp--%>
+<c:import url="/1_Include/footer.jsp"></c:import>
+
 </body>
 </html>

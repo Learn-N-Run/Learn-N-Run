@@ -3,20 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="article.three.dao.MainReadDAO">
-	<select id="TopClassSelect" resultType="article.three.dto.TopClassDTO">
+	<select id="TopClassSelect" resultType="PopularClassDTO">
 		<![CDATA[
 			SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
 				count(*) 'TopRankCount'
 			FROM class cl JOIN category ca JOIN buyer buy
 			ON cl.category_no=ca.no
 				AND cl.no = buy.class_no
-			WHERE ca.name = #{}
 			GROUP BY cl.no
-			LIMIT 5;
+			LIMIT 5
 		]]>
 	</select>
 	
-	<select id="InterestedClassSelect" resultType="article.three.dto.InterestedClassDTO">
+	<select id="InterestedClassSelect" resultType="InterestedClassDTO">
 		<![CDATA[
 			SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
 				count(*) 'interestCount' 
@@ -24,8 +23,14 @@
 			ON cl.category_no=ca.no
 				AND cl.no = jj.class_no
 			GROUP BY cl.no
-			LIMIT 5;		
+			LIMIT 5
+		]]>
+	</select>
+	<select id="CategoryClassSelect" resultType="CategoryDTO">
+		<![CDATA[
+			SELECT * FROM category
 		]]>
 	</select>
 	
+		
 </mapper>

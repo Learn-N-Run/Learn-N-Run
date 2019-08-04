@@ -17,37 +17,39 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
-	<title></title>
+	<title>Learn & Run</title>
 </head>
 <body>
-	
-		<h3>Event</h3>
-		<div id ="TH_event" class ="carousel slide" data-ride ="carousel">
-			<ol class ="carousel-indicators">
-				<li data-target = "#TH_event" data-slide-to = "0" class="active"></li>
-				<li data-target = "#TH_event" data-slide-to = "1"></li>
-				<li data-target = "#TH_event" data-slide-to = "2"></li>
-			</ol>
-			<div id="TH_eventCarousel" class ="carousel-inner">
-				<div class="item active">
-					<img src="${contextpath}/article3/img/침영어 (0).jpg">
-				</div>
-				<div class= "item">
-					<img src="${contextpath}/article3/img/침영어 (1).jpg">
-				</div>
-				<div class= "item">
-					<img src="${contextpath}/article3/img/침영어 (2).jpg">
-				</div>
+
+	<div id="TH_top5">
+		<h3>Popular Class Top5</h3>
+		<ul class="nav nav-tabs" role="tablist" id="PopClass5">
+			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+			<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+			<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">
+			
 			</div>
-			<a class="left carousel-control" href="#TH_event" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a class="right carousel-control" href="#TH_event" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
+			<div role="tabpanel" class="tab-pane" id="profile">
+			
+			</div>
+			<div role="tabpanel" class="tab-pane" id="messages">
+			
+			</div>
+			<div role="tabpanel" class="tab-pane" id="settings">
+			
+			</div>
 		</div>
-	
-	
-	
+	</div>
+
+<script>
+  $(function () {
+    $('#PopClass5 a:first').tab('show')
+  })
+</script>
 </body>
 </html>
