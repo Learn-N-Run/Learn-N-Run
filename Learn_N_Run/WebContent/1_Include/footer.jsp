@@ -169,12 +169,13 @@ function togglefooter() {
 	$('#inc_footer').toggle(500)
 };
 $(document).ready(function() {
+debugger;
 setTimeout(function() {
 	$('.textLauncherIcon').attr('style','position: fixed !important');
 	$('.textLauncherIcon').css('bottom','17vh');
 	$('.textLauncherIcon').css('right','1vw');
 	}, 1000);
-});//내가졌다...
+});//내가졌다... + 아니 아직
 </script>
 </body>
 </html>

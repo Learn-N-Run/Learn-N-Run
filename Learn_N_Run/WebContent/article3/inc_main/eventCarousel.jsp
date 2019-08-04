@@ -17,12 +17,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
-	<title>Learn & Run</title>
+	<title></title>
 </head>
 <body>
-
-
-
-
+	
+	
+	
+	
 </body>
 </html>
