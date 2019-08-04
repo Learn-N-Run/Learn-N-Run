@@ -2,6 +2,7 @@ package article.three.dao;
 
 import java.util.List;
 
+import dto.ClassDTO;
 import dto.ReplyDTO;
 
 public interface CommunityReplyDAO {
@@ -39,7 +40,7 @@ public interface CommunityReplyDAO {
 	 * "DELETE FROM reply where no=?";}
 	 */
 	
-	List<ReplyDTO> getClassInfoReply(ReplyDTO dto);
+	List<ReplyDTO> getClassInfoReply(ClassDTO dto);
 	/*
 	 * 메인 content 영역 하위 클래스 답글 영역 sql = "SELECT * FROM reply WHERE classNo=? AND
 	 * group =1 ORDER BY date;"
