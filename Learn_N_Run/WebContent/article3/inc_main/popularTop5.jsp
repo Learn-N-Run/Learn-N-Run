@@ -18,41 +18,6 @@
 <!--외부참조 + CDN END -->
 
 <style type="text/css">
-	.swiper-container {
-		width: 100%;
-		height: 100%;
-		min-height: 300px;
-		}
-	.swiper-slide {
-		text-align: center;
-		font-size: 18px;
-		background: rgba(255,255,255,0);
-		/* Center slide text vertically */
-		display: -webkit-box;
-		display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-pack: center;
-		-ms-flex-pack: center;
-		-webkit-justify-content: center;
-		justify-content: center;
-		-webkit-box-align: center;
-		-ms-flex-align: center;
-		-webkit-align-items: center;
-		align-items: center;
-		}
-	.pop-button{
-		position: absolute;
-		top: 50%;
-		width: 27px;
-		height: 44px;
-		margin-top: -22px;
-		z-index: 10;
-		cursor: pointer;
-		background-size: 27px 44px;
-		background-position: center;
-		background-repeat: no-repeat;
-		}
 	#pop-button-next{
 		right: 10px;
 		left: auto;
@@ -76,7 +41,7 @@
 		<div class="swiper-wrapper">
 
 <c:forEach items="${listMap.popList}" var="pop">
-			<div class="swiper-slide" onclick="alert('classNo=${pop.classNo}')">
+			<div class="swiper-slide onclickContent" onclick="alert('classNo=${pop.classNo}')">
 				${pop.title}<BR>
 				${pop.topRankCount}
 			</div>

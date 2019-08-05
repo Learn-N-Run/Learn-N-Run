@@ -23,7 +23,7 @@
       var s = document.createElement('script');
       s.type = 'text/javascript';
       s.async = true;
-      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.src = '${contextpath}/2_js/channelio/ch-plugin-web.js';
       s.charset = 'UTF-8';
       var x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);

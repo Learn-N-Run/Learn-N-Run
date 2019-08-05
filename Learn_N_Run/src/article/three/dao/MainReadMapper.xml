@@ -29,12 +29,17 @@
 		]]>
 	</select>
 
-	<select id="CategoryClassSelect" resultType="CategoryDTO">
+	<select id="CategorySelect" resultType="CategoryDTO">
 		<![CDATA[
 			SELECT * FROM category
-			WHERE name LIKE #{categoryName}
 		]]>
 	</select>
-
-		
+	<select id="CategoryClassSelect" parameterType="String" resultType="ClassDTO">
+		<![CDATA[
+			SELECT cl.no 'no', cl.cre_id 'creator', cl.cover_img 'cover_img', cl.title 'title', cl.content 'content'
+			FROM class cl JOIN category ca
+			ON cl.category_no = ca.no
+			WHERE ca.name = #{cate};
+		]]>
+	</select>
 </mapper>

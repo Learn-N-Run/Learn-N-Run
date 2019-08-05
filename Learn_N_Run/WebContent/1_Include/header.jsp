@@ -256,7 +256,7 @@
 <body>
 	<header id="inc_header">
 		<div id="inc_mainlogo" class="col-xs-3" align="center">
-			<a href="${contextpath}/article3/index.jsp" style="width: 100px; height: 100px;">
+			<a href="${contextpath}/index.kr" style="width: 100px; height: 100px;">
 				<img src="${contextpath}/3_img/large.png">
 			</a>
 		</div>

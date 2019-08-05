@@ -17,15 +17,8 @@ public interface MainReadDAO {
 	List<PopularClassDTO> popularTop5Info();
 	// 메인: 카테고리
 	List<CategoryDTO> getMainCategory();
-	
-	
-	
-	// 카테고리별로 들어갔을때..
-	List<ClassDTO> getCategoryClass(ClassDTO bean);
-	/*
-	 * sql = "SELECT c.cover_img,cr.name,c.title FROM class c JOIN category ct WHERE
-	 * cr.name=?"
-	 */
+	// 카테고리별로 들어갔을때
+	List<ClassDTO> getCategoryClass(String categoryName);
 	
 	
 	List<ReplyDTO> getVideoReply(ReplyDTO dto);

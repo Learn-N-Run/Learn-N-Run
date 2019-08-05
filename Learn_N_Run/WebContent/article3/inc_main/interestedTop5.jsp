@@ -74,13 +74,13 @@
 		<div class="swiper-wrapper">
 
 <c:forEach items="${listMap.interList}" var="inter">
-			<div class="swiper-slide" onclick="alert('classNo=${inter.classNo}')">
+			<div class="swiper-slide onclickContent" onclick="alert('classNo=${inter.classNo}')">
 				${inter.title}<BR>
 				${inter.interestedCount}
 			</div>
 </c:forEach>
 
-		</div>
+	</div>
 		<div class="swiper-pagination"></div>
 		<div id="inter-button-next" class="inter-button">
 			<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" fill="tomato">

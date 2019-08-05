@@ -10,9 +10,15 @@ select * from category;
 select * from user_group;
 select * from user;
 select * from receiver_info;
-desc receiver_info;
+desc class;
 desc category;
-DELETE FROM user;
+
+
+SELECT cl.no 'no', cl.cre_id 'creator', cl.cover_img 'cover_img', cl.title 'title', cl.content 'content'
+FROM class cl JOIN category ca
+ON cl.category_no = ca.no
+WHERE ca.name = '공예';
+
 		SELECT c.no, d.topclasscount, c.cre_id, c.cover_img, c.title, c.detail_category,
 				c.content, c.material_img, c.material_content, c.expiration, c.tuition, c.category_no
 		FROM class c join (SELECT class_no, COUNT(*) 'topclasscount'

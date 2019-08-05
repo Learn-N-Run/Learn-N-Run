@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import article.three.dao.MainReadDAO;
 import dto.CategoryDTO;
@@ -20,14 +21,11 @@ import dto.InterestedClassDTO;
 import dto.PopularClassDTO;
 
 @Controller
-@RequestMapping(value = "/view")
 public class SPController {
 
 	@Autowired
 	private SqlSession sqlsession;
 	MainReadDAO readDAO;
-
-
 	
 	@RequestMapping(value = "/index")
 	public String indexview(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -43,11 +41,24 @@ public class SPController {
 		classinfo.put("categoryList", categoryList);
 		
 		model.addAttribute("listMap", classinfo);
-
-		ClassDTO testdto = new ClassDTO();
-		testdto.setNo(1);
 		
 		return "index";
+	}
+	
+	@RequestMapping(value = "/categoryinfo", method = RequestMethod.GET)
+	public String categoryView(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+		Map classinfo = new HashMap();
+
+		List<CategoryDTO> categoryList = cateSelect(request, response);
+		List<ClassDTO> cateClassList = cateClassView(request, response);
+		
+		classinfo.put("categoryList", categoryList);
+		classinfo.put("cateClassList", cateClassList);
+		
+		model.addAttribute("classinfo", classinfo);
+		
+		return "categoryClassView";
 	}
 	
 	public List<PopularClassDTO> BuyerTopClassSelect(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -81,19 +92,23 @@ public class SPController {
 	public List<CategoryDTO> cateSelect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 	
 		List<CategoryDTO> categoryList;
-		String cateName = request.getParameter("categoryName");
 		
-		if (cateName == null) {
-			categoryList = sqlsession.selectList("article.three.dao.MainReadDAO.CategoryClassSelect","%");
-		}else {
-			categoryList = sqlsession.selectList("article.three.dao.MainReadDAO.CategoryClassSelect",cateName);
-		}
+			categoryList = sqlsession.selectList("article.three.dao.MainReadDAO.CategorySelect");
 		
 		return categoryList;
 	}
+	
+	public List<ClassDTO> cateClassView(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
 		
+		String cateName = request.getParameter("category");
+		
+		List<ClassDTO> cateClass = sqlsession.selectList("article.three.dao.MainReadDAO.CategoryClassSelect",cateName);
+		
+		return cateClass;
+	}
 	
+
 	
 	
 }

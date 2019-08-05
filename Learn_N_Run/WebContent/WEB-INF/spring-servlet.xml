@@ -46,6 +46,10 @@
 				&amp;useLegacyDatetimeCode=false
 				&amp;useJDBCCompliantTimezoneShift=true
 				&amp;useUnicode=true
+				&amp;interactiveClient=true
+				&amp;autoReconnect=true
+				&amp;autoReconnectForPools=true
+				&amp;allowPublicKeyRetrieval=true
 				&amp;useSSL=false"
 		p:username="learnrun"
 		p:password="1234"/>

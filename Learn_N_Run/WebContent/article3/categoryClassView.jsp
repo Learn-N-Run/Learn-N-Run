@@ -19,9 +19,19 @@
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
 </head>
-<body>
+<body style="overflow-x:hidden; overflow-y:auto;"> 
+
+<%-- header--%>
+<c:import url="/1_Include/header.jsp"></c:import>
 	
-	<c:redirect url="/index.kr"/>
+	
+<c:import url="/article3/inc_main/category.jsp"></c:import>
+	
+	
+	
+	
+<%-- footer.jsp--%>
+<c:import url="/1_Include/footer.jsp"></c:import>
 	
 </body>
 </html>
