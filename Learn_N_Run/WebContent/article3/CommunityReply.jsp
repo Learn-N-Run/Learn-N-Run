@@ -50,9 +50,9 @@ out.println("aassdd");
    
    </style>
 
-<%-- header--%>
-<c:import url="/1_Include/header.jsp"></c:import>
 <div id="wrap">
+         <%-- header--%>
+      <c:import url="/1_Include/header.jsp"></c:import>
       <%--댓글 전체 div태그 --%>
    <div >         
       <%--상단 커뮤니티 및 글 작성 div태그 --%>
@@ -62,26 +62,30 @@ out.println("aassdd");
             <small>
                *개의 글 !
             </small>
-            <a href="classNewWrite.jsp" class="WWrite">글 작성하기</a>
+           
          </h3>  
          
       </div>
             <%--이름 및 작성일 --%>
       
-      <%-- 글내용 --%>   
-            
-      
+         <%-- 댓글입력 --%>
+             <form action="CommunityReplyUpdate.po" >
+         <input type="text" name="content" placeholder="댓글을 입력 하세오 !">
+         <button type="submit">버 튼 !</button>
+      </form>
+      <%-- 글내용 --%>
          <c:forEach var="r" items="${requestScope.r}">
          
          <p>${r.reply_id}
          ${r.date}
       
-            <h4>${r.content}</h4>
+            <h4>${r.content} </h4>
+           <form action="CommunityReplyDelete.po" >
+           <input type="hidden" name="replyno" value="${r.no}">
+         <button type="submit">삭제</button>
+      </form>
             </p>
-      <form action="CommunityReply.po" >
-         <input type="text" name="reply" placeholder="대댓글을 입력 하세오 !">
-         <button type="submit">버 튼 !</button>
-      </form>   
+        
       
          </c:forEach>
       
@@ -102,7 +106,7 @@ out.println("aassdd");
       
    </div>
    <!-- 푸터 영역 -->
+      <c:import url="/1_Include/footer.jsp"></c:import>
 </div>
-<c:import url="/1_Include/footer.jsp"></c:import>
 </body>
 </html>

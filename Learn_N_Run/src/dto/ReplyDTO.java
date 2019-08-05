@@ -2,10 +2,7 @@ package dto;
 
 import java.sql.Timestamp;
 
-/**
- * @author bearr
- *
- */
+
 public class ReplyDTO {
    private int no;
    private String content;
@@ -18,9 +15,9 @@ public class ReplyDTO {
    public ReplyDTO() {
    }
 
-   public ReplyDTO(int no, String content, Timestamp date, int group, String reply_id, ClassDTO classinfo,
-         CurriculumDTO curriculum) {
-      super();
+   public ReplyDTO(int no, String content, Timestamp date, int group, String reply_id, int class_no,
+         int curriculum_no) {
+     
       this.no = no;
       this.content = content;
       this.date = date;

@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import article.three.dao.CommunityReplyDAOImpl;
+import article.three.dao.ReplyDAOImpl;
 import dto.ClassDTO;
 import dto.ReplyDTO;
 
@@ -22,7 +22,7 @@ public class CommunityReplyCommand implements Service {
       
       String reply = request.getParameter("reply");
       
-      CommunityReplyDAOImpl dao = new CommunityReplyDAOImpl();
+      ReplyDAOImpl dao = new ReplyDAOImpl();
       
       ClassDTO dto = new ClassDTO();
       dto.setNo(1);

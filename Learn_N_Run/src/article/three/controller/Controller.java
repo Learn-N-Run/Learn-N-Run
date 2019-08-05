@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import article.three.command.CommunityReplyCommand;
-import article.three.dao.CommunityReplyDAOImpl;
+import article.three.command.DeleteCommunityReplyCommand;
+import article.three.command.AddCommunityReplyCommand;
 import dto.ClassDTO;
 import dto.ReplyDTO;
 
-@WebServlet("/Controller.po")
+@WebServlet("*.po")
 public class Controller extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
@@ -36,7 +37,6 @@ public class Controller extends HttpServlet {
       String conpath = request.getContextPath();
       String command = uri.substring(conpath.length());
       /*▲커맨드 추출*/
-      
       String path = null;
       /*▲포워딩할 경로 String으로 저장*/
       if (command.equals("/article3/CommunityReply.po")) {
@@ -44,12 +44,21 @@ public class Controller extends HttpServlet {
          forward.excute(request, response);
          
          path="CommunityReply.jsp";
-      }else if (command.equals("여기에넣으세요")) {
-         
-         path="";
-      }else if (command.equals("여기에넣으세요")) {
-         
-         path="";
+      }else if (command.equals("/article3/CommunityReplyUpdate.po")) {
+    	  AddCommunityReplyCommand forward1 = new AddCommunityReplyCommand();
+          forward1.excute(request, response);
+    	  
+    	  CommunityReplyCommand forward = new CommunityReplyCommand();
+          forward.excute(request, response);
+          
+         path="CommunityReply.jsp";
+      }else if (command.equals("/article3/CommunityReplyDelete.po")) {
+    	  DeleteCommunityReplyCommand forward2 = new DeleteCommunityReplyCommand();
+          forward2.excute(request, response);
+    	  
+    	  CommunityReplyCommand forward = new CommunityReplyCommand();
+          forward.excute(request, response);
+         path="CommunityReply.jsp";
       }else if (command.equals("여기에넣으세요")) {
          
          path="";
