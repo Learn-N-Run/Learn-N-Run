@@ -46,11 +46,6 @@ public interface UserDAO {
 	 * (회원가입 시)유저 아이디 중복검사 확인. //sql = "SELECT* FROM user where id=?"
 	 */
 	
-	int pwdCheck(String id, String pass);
-	
-	/*
-	 * (정보수정, 회원탈퇴) 비밀번호 확인
-	 */
 	
 	int userCheck(String id, String pass);
 

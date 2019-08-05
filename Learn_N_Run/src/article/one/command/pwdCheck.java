@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import article.one.dao.UserDAIOImpl;
 
@@ -17,28 +18,14 @@ public class pwdCheck implements Service{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String id = request.getParameter("id");
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
 		String pass = request.getParameter("pass");
 		
 		UserDAIOImpl dao = new UserDAIOImpl();
-		int result = dao.pwdCheck(id, pass);
+		int result = dao.userCheck(id, pass); //userCheck활용해서 정보수정, 탈퇴
 		
-		if (result == 0) {
-			
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert<'비밀번호를 확인해주세요.'>;");
-			out.println("</script>");
-			System.out.println("pwdCheck() 불일치 : " + result);
-			out.close();
-		}else {
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert<'변경할 비밀번호를 입력해주세요.'>;");
-			out.println("</script>");
-			System.out.println("pwdCheck() 일치 : " + result);
-			out.close();
-		}
+		response.getWriter().print(result);
 		
 		
 	}

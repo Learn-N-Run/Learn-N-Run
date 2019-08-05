@@ -24,7 +24,7 @@ $(function(){
             type: "post",
             async: false,
             url: "pwdCheck.do",
-            data: {id : ${session.id}, pwd : pwd},
+            data: {pwd : pwd},
             success: function(data){
                if(data == 0){
                   $("#pwdErr").text("비밀번호가 틀립니다.");

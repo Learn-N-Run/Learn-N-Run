@@ -14,27 +14,74 @@
 <!-- jquery 사용 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+$(function(){
+	
+	//닉네임 확인
+	$("#nickname").blur(function(){
+		var nickname = $(this).val();
+		if(nickname ==''){
+			$("#nicknameErr").text("필수 입력 사항입니다.");
+		}else{ 
+			$("#nicknameErr").text(''); }
+		});
+	
+	//url 확인
+	$("#url").blur(function(){
+		var urlname = $(this).val();
+		if(urlname ==''){
+			$("#urlErr").text("필수 입력 사항입니다.");
+		}else{ 
+			$("#urlErr").text(''); }
+		});
+	
+	//휴대폰 확인
+	$("#number").blur(function(){
+		var number = $(this).val();
+		if(number ==''){
+			$("#numberErr").text("필수 입력 사항입니다.");
+		}else{ 
+			var reg = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
+			if(!reg.test(number)){
+				$("#numberErr").text("올바른 핸드폰 번호를 입력해주세요.");
+			}else{ $("#numberErr").text(''); }
+		}
+	});
+	
+	//이메일 유효성
+	 $("#email").blur(function(){
+			var email = $(this).val();
+			if(email ==''){
+				$("#emailErr").text("필수 입력 사항입니다.");
+			}else{
+	            var reg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	            if(!reg.test(email)){
+	                $("#emailErr").text("이메일 형식이 맞지 않습니다.");
+				}else{ $("#emailErr").text(''); }
+			}
+		}); 
+});
+
 function Creatorregister(){
 	var result = 1;
-	var nickname = $("#name");
+	var nickname = $("#nickname");
 	var number = $("#number");
 	var email = $("#email");
 	var url = $("#url");
 			
 	if(nickname.val()==''){
-		$("#nicknameErr").text("필수 입력 사항입니다.");
+		$("#nicknameErr").text("닉네임을 입력하세요.");
 		result = 0;
 	}
 	if(number.val()==''){
-		$("#numberErr").text("필수 입력 사항입니다.");
+		$("#numberErr").text("전화번호를 입력하세요.");
 		result = 0;
 	}
 	if (email.val() == '') {
-		$("#emailErr").text("필수 입력 사항입니다.");
+		$("#emailErr").text("이메일을 입력하세요.");
 		result = 0;
 	} 
 	if (url.val() == '') {
-		$("#urlErr").text("필수 입력 사항입니다.");
+		$("#urlErr").text("url주소를 입력하세요.");
 		result = 0;
 	}
 
@@ -52,21 +99,16 @@ function Creatorregister(){
 <body>
 <div class="container">
    <div class="mt-5 p-5 rounded" style="background-color: #f5f6f7;"> <!-- 적용할 때는 mt-5 삭제해도됨 margin-top을 크기 5만큼 준다. p-5-> padding 전체를 크기 5만큼 준다라는 뜻 -->
-      <form action="AddCreatorService.do" method="post">
+      <form action="AddCreatorService.do" method="post" onsubmit="return Creatorregister()">
       <h2 class="text-center">크리에이터 신청</h2>
       <p class="text-center mb-3 text-muted"><span class="text-danger">*</span>는 필수 입력 사항입니다.</p>
       <div class="m-auto">
       	 <div class="row mb-4">
       		<div class="col-5 m-auto profile_img">
       			<label for="profile_img"><span class="text-danger">*</span>프로필 이미지</label>
-      			<div id="profile_img"><img src="WebContent/article1/img/profile_basic.png"></div>
+      			<div id="profile_img"><img src="${pageContext.request.contextPath}/article1/img/profile_basic.png"></div>
       			<button class="btn btn-outline-info">사진 변경</button>
       		</div>
-      		<div class="col-5 m-auto">
-               <label for="nickname"><span class="text-danger">*</span>닉네임</label>
-               <input type="text" class="form-control" id="nickname" name="nickname">
-               <span style="color: red;" id="nicknameErr"></span>
-            </div>
       	</div>
          <div class="row mb-4">
             <div class="col-5 m-auto">
@@ -75,7 +117,7 @@ function Creatorregister(){
             </div>
             <div class="col-5 m-auto">
                <label for="email"><span class="text-danger">*</span> 이메일</label>
-               <input type="text" class="form-control" id="email" name="email">
+               <input type="text" class="form-control" id="email" name="email" placeholder="example@mail.com">
                <span style="color: red;" id="emailErr"></span>
             </div>
          </div>
@@ -86,12 +128,16 @@ function Creatorregister(){
             </div>
             <div class="col-5 m-auto">
                <label for="phone"><span class="text-danger">*</span> 휴대폰번호</label>
-               <input type="text" class="form-control" id="number" name="number">
+               <input type="text" class="form-control" id="number" name="number" placeholder="010-0000-0000">
                <span style="color: red;" id="numberErr"></span>
             </div>
          </div>
          <div class="row mb-4">
-         	<div class="col-5 m-auto"></div>
+         	<div class="col-5 m-auto">
+               <label for="nickname"><span class="text-danger">*</span>닉네임</label>
+               <input type="text" class="form-control" id="nickname" name="nickname">
+               <span style="color: red;" id="nicknameErr"></span>
+            </div>
             <div class="col-5 m-auto">
                <label for="url"><span class="text-danger">*</span> URL</label>
                <input type="text" class="form-control" id="url" name="url">

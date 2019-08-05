@@ -123,32 +123,6 @@ public class UserDAIOImpl implements UserDAO{
 		
 	}
 	
-	/*비밀번호 체크(회원탈퇴, 수정)*/
-	public int pwdCheck(String id, String pass) {
-		int result =0;
-		
-		try {
-			con = getConnection();
-			sql = "Select * from user where id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				if(pass.equals(rs.getString("pass")))
-					result = 1;
-				else
-					result = -1;
-			}
-		} catch (Exception e) {
-			System.out.println("pwdCheck오류 : " + result);
-		} finally {
-			freeResource();
-		}
-		return result;
-		}
-
-	
 	/*회원탈퇴*/
 	@Override
 	public int delUser(String id, String pass) {
@@ -191,7 +165,7 @@ public class UserDAIOImpl implements UserDAO{
 		return result;
 	}
 
-	//로그인 시 아이디,비밀번호
+	//로그인 시 아이디,비밀번호,정보수정, 탈퇴
 	@Override
 	public int userCheck(String id, String pass) {
 			int check = 0;
