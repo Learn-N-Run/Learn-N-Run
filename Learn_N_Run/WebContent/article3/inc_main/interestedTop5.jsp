@@ -118,7 +118,7 @@
 </c:forEach>
 
 		</div>
-		<div class="swiper-scrollbar"></div>
+		<div class="swiper-pagination"></div>
 		<div id="inter-button-next" class="inter-button">
 			<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" fill="tomato">
 				<path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"/>
@@ -135,14 +135,14 @@
 	var swiper = new Swiper('.swiper-container', {
 		slidesPerView: 3,
 		spaceBetween: 30,
-		scrollbar: {
-		  el: '.swiper-scrollbar',
-		  hide: true,
-			},
+		pagination: {
+			el: '.swiper-pagination',
+			type: 'fraction',
+		},
 		navigation: {
-		  nextEl: '#inter-button-next',
-		  prevEl: '#inter-button-prev',
-			},
+			nextEl: '#inter-button-next',
+			prevEl: '#inter-button-prev',
+		},
 		});
 	</script>
 
