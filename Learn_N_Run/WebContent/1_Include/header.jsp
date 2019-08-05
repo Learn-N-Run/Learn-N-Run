@@ -17,11 +17,11 @@
 	height: 100px;
 	position: relative;
 	width: 100vw;
-	border-bottom: 1px double rgba(0,0,0,0.2);
-	background: rgba(0,0,0,1);
+	background: rgba(255,255,255,1);
+	border-bottom: 0.5px solid rgba(0,0,0,0.5);
 }
 #inc_header *{
-	color: white;	
+	color: rgba(0,0,0,0.5);
 }
 #inc_menuList{
 	content: "";
@@ -255,12 +255,12 @@
 </head>
 <body>
 	<header id="inc_header">
-		<div id="inc_mainlogo" class="col-xs-3" align="center">
-			<a href="${contextpath}/index.kr" style="width: 100px; height: 100px;">
-				<img src="${contextpath}/3_img/large.png">
+		<div id="inc_mainlogo" class="col-xs-2" align="center">
+			<a href="${contextpath}/index.kr" style="display:inline-block; padding: 10px; vertical-align: middle; width: 100px; height: 100px;">
+				<img src="${contextpath}/3_img/large.png" style="width:80px; height: 80px;">
 			</a>
 		</div>
-		<div class="col-xs-9">
+		<div class="col-xs-10">
 			<div class="inc_floating" align="left">
 				<div class="col-xs-6">
 					<form action="" method="GET">

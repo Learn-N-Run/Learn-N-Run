@@ -19,9 +19,10 @@
 		 color: rgba(255,255,255,0.9);
 		 text-align: center;
 		 width: 100vw;
- 		 position: fixed; 
+ 		 position: fixed;
 		 bottom: 0px;
  		 display: none;
+ 		 z-index: 100;
 	}
 	#inc_footer>div>div, inc_bottom{
 		border-top: 1px solid rgba(255,255,255,0.05);
@@ -29,7 +30,6 @@
 	.inc_TeamMemList>li>a{
 		text-decoration: none;
 		color: rgba(255,255,255,0.9);
-		
 	}
 	.inc_git_anchor{transition: all 0.5; color: white;}
 	.inc_git_anchor:HOVER{cursor: pointer; color: tomato;}
@@ -64,7 +64,7 @@
 <title></title>
 </head>
 <body>
-
+<div style="content: ''; height: 200px;"></div>
 <%-- aside.jsp include --%>
 <c:import url="/1_Include/inc_aside.jsp"></c:import>
 

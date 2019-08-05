@@ -20,57 +20,85 @@
 	<title>Learn & Run</title>
 </head>
 <body>
-	<div id="wrap">
-		<h3>
-			<font color="tomato">Category</font>
-		</h3>
-		<div id="TH_category" class="row">
-
-<c:forEach items="${listMap.categoryList}" var="category">
-			<div class="col-lg-1 col-xs-3 ">
-				<div class="TH_onclickContent"
-					onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
-					<img class="TH_cateimg" src="${contextpath}/${category.image}">
-					<p>${category.name}</p>
-				</div>
+	
+	<h3>
+		<font color="tomato">Category</font>
+	</h3>
+	<div id="TH_category" class="row">
+<!-- xptmxm -->
+<div class="col-lg-1 col-xs-3 ">
+			<div class="TH_onclickContent"
+				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+				<img class="TH_cateimg" src="${contextpath}/${category.image}">
+				<p>${category.name}</p>
 			</div>
+		</div><div class="col-lg-1 col-xs-3 ">
+			<div class="TH_onclickContent"
+				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+				<img class="TH_cateimg" src="${contextpath}/${category.image}">
+				<p>${category.name}</p>
+			</div>
+		</div><div class="col-lg-1 col-xs-3 ">
+			<div class="TH_onclickContent"
+				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+				<img class="TH_cateimg" src="${contextpath}/${category.image}">
+				<p>${category.name}</p>
+			</div>
+		</div><div class="col-lg-1 col-xs-3 ">
+			<div class="TH_onclickContent"
+				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+				<img class="TH_cateimg" src="${contextpath}/${category.image}">
+				<p>${category.name}</p>
+			</div>
+		</div><div class="col-lg-1 col-xs-3 ">
+			<div class="TH_onclickContent"
+				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+				<img class="TH_cateimg" src="${contextpath}/${category.image}">
+				<p>${category.name}</p>
+			</div>
+		</div><div class="col-lg-1 col-xs-3 ">
+			<div class="TH_onclickContent"
+				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+				<img class="TH_cateimg" src="${contextpath}/${category.image}">
+				<p>${category.name}</p>
+			</div>
+		</div><div class="col-lg-1 col-xs-3 ">
+			<div class="TH_onclickContent"
+				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+				<img class="TH_cateimg" src="${contextpath}/${category.image}">
+				<p>${category.name}</p>
+			</div>
+		</div>
+
+
+<!-- xptmxm -->
+<c:forEach items="${listMap.categoryList}" var="category">
+
+		<div class="col-lg-1 col-xs-3 ">
+			<div class="TH_onclickContent"
+				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+				<img class="TH_cateimg" src="${contextpath}/${category.image}">
+				<p>${category.name}</p>
+			</div>
+		</div>
+
 </c:forEach>
 
 <c:forEach items="${classinfo.categoryList}" var="categoryinfo">
-			<div class="col-lg-1 col-xs-3 ">
-				<div class="TH_onclickContent cateimg"
-					onclick="location.href = '${contextpath}/categoryinfo.kr?category=${categoryinfo.name}'">
-					<img class="TH_cateimg" src="${contextpath}/${categoryinfo.image}">
-					<div>
-						${categoryinfo.name}
-					</div>
+
+		<div class="col-lg-1 col-xs-3 ">
+			<div class="TH_onclickContent cateimg"
+				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${categoryinfo.name}'">
+				<img class="TH_cateimg" src="${contextpath}/${categoryinfo.image}">
+				<div>
+					${categoryinfo.name}
 				</div>
 			</div>
-</c:forEach>
-
 		</div>
 
-<c:if test="${classinfo.cateClassList ne null}">
-
-		<h3>
-			<font color="tomato">Class List</font>
-		</h3>
-</c:if>
-		<div id="category_class" class="row">
-			
-<c:forEach items="${classinfo.cateClassList}" var="classlist">
-			<div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div>
-			
 </c:forEach>
-			
-		</div>		
-	</div>
-	
 
+	</div>
 
 </body>
 </html>

@@ -24,12 +24,75 @@
 <%-- header--%>
 <c:import url="/1_Include/header.jsp"></c:import>
 	
-	
+	<div id="wrap">
+
+
 <c:import url="/article3/inc_main/category.jsp"></c:import>
-	
-	
-	
-	
+
+
+		<h3>
+			<font color="tomato">Class List</font>
+		</h3>
+		<div id="category_class" class="row">
+
+<!-- xptmxm -->
+<div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div>
+
+<!-- xptmxm -->			
+<c:forEach items="${classinfo.cateClassList}" var="classlist">
+
+			<div class="col-lg-3 col-xs-6 TH_onclickContent"
+				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+				${classlist.title}
+				<img src="${contextpath}/${classlist.cover_img}">
+			</div>
+			
+</c:forEach>
+			
+		</div>		
+
+
+	</div>
 <%-- footer.jsp--%>
 <c:import url="/1_Include/footer.jsp"></c:import>
 	
