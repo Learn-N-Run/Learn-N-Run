@@ -151,6 +151,8 @@ public class Controller extends HttpServlet {
 		AddCreatorService forward = new AddCreatorService();
 		forward.excute(request, response);
 		}
+		
+		
 		if(path != null) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		/*▲포워딩주소설정*/

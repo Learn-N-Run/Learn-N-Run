@@ -17,6 +17,7 @@ public class delUserService implements Service{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		//session id
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pwd");
 		

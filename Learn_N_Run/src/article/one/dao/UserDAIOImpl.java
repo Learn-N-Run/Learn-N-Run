@@ -99,11 +99,13 @@ public class UserDAIOImpl implements UserDAO{
 		}
 		return result;
 	}
-		
-	/*회원수정*/
+	/*회원수정1*/
+	
+	
+	/*회원수정2*/
 	@Override
 	public void updateUser(UserDTO dto) {
-		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=?, ";	
+		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=?, where id=?";	
 		
 		try {
 			con = getConnection();
@@ -114,6 +116,7 @@ public class UserDAIOImpl implements UserDAO{
 			pstmt.setString(4, dto.getProfile_img());
 			pstmt.setString(5, dto.getNickname());
 			pstmt.setInt(6, dto.getNumber());
+			pstmt.setString(7, dto.getId());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("updateUser오류: " + e);
