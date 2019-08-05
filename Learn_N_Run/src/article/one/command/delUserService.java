@@ -1,11 +1,11 @@
 package article.one.command;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import article.one.dao.UserDAIOImpl;
 
@@ -16,9 +16,9 @@ public class delUserService implements Service{
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
-		//session id
-		String id = request.getParameter("id");
+		HttpSession session = request.getSession();
+				
+		String id = (String)request.getAttribute("id");
 		String pass = request.getParameter("pwd");
 		
 		UserDAIOImpl dao = new UserDAIOImpl();

@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import article.one.dao.UserDAIOImpl;
 import dto.UserDTO;
@@ -26,10 +27,18 @@ public class AddCreatorService implements Service{
 		String url = request.getParameter("url");
 		String profile_img = request.getParameter("profile_img");
 		
-		UserDTO dto = new UserDTO();
+		UserDTO bean = new UserDTO();
+		bean.setId(id);
+		bean.setName(name);
+		bean.setNickname(nickname);
+		bean.setEmail(email);
+		bean.setNumber(number);
+		bean.setProfile_img(profile_img);
+		bean.setCreator_url(url);
+				
 		UserDAIOImpl dao = new UserDAIOImpl();
 				
-		int result = dao.AddCreator(dto);
+		int result = dao.AddCreator(bean);
 		
 		if (result == 0) {
 			PrintWriter out = response.getWriter();

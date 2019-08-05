@@ -28,6 +28,11 @@ public interface UserDAO {
 	 * 유저 추가 sql = "INSERT into user(~~,user_group_no) VALUES(?,1); 1번 일반유저 2번 크리에이터
 	 */
 	void updateUser(UserDTO dto);
+	/*
+	 *  일반회원 개인정보 수정
+	 */
+	
+	void updateCreator(UserDTO dto);
 
 	/*
 	 * 유저 개인정보 수정, pass값 select해서 확인후, update시킴 ResultSet값 인트형으로 받아서, 유효성검사. sql =

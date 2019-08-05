@@ -13,7 +13,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import article.one.dao.UserDAIOImpl;
 import dto.UserDTO;
 
-public class modify2Service implements Service{
+public class updateCreator implements Service{
 
 	@Override
 	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,6 +44,6 @@ public class modify2Service implements Service{
 		dto.setCreator_url(multi.getParameter("url"));
 		
 		UserDAIOImpl dao = new UserDAIOImpl();
-		dao.updateUser(dto);
+		dao.updateCreator(dto);
 	}
 }

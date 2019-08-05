@@ -183,7 +183,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
       <h2 class="text-center">회원정보 수정</h2>
       <p class="text-center mb-5 text-muted"><span class="text-danger">*</span>는 필수 입력 사항입니다.</p>
       	<c:if test="${sessionScope.Group == 2 }">
-		      <form action="modifymember1.do" method="post" enctype="multipart/form-data">
+		      <form action="updateCreator.do" method="post" enctype="multipart/form-data">
 		      <div class="m-auto">
 		      	<div class="row mb-4">
 	        		 <div class="col-4" style="text-align: right">프로필 이미지</div>
@@ -255,7 +255,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
        </c:if>
        
        <c:if test="${sessionScope.Group == 1 }">
-       	<form action="modifymember1.do" method="post" onsubmit="return modify()"> <!-- onsubmit을 이용해서 modify() return값이 true일때만 form 진행 -->
+       	<form action="updateUser.do" method="post" onsubmit="return modify()"> <!-- onsubmit을 이용해서 modify() return값이 true일때만 form 진행 -->
 	      <div class="row mb-4">
 	         <div class="col-4" style="text-align: right">이름</div>
 	         <div class="col-4"><input type="text" class="form-control" id="name" name="name" readonly value="${requestScope.user.name }"></div>

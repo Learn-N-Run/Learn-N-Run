@@ -26,8 +26,8 @@ import article.one.command.getEmailService;
 import article.one.command.getMyClassService;
 import article.one.command.getUserInfoService;
 import article.one.command.idCheckService;
-import article.one.command.modify1Service;
-import article.one.command.modify2Service;
+import article.one.command.updateUser;
+import article.one.command.updateCreator;
 import article.one.command.pwdCheck;
 import article.one.command.selectCouponCountService;
 import article.one.command.selectTuitionService;
@@ -124,8 +124,12 @@ public class Controller extends HttpServlet {
 			delUserService forward = new delUserService();
 			forward.excute(request, response);
 			path="mainEx.jsp";
-		}else if (command.equals("/article1/modifymember1.do")) {
-			modify1Service forward = new modify1Service();
+		}else if (command.equals("/article1/updateUser.do")) {
+			updateUser forward = new updateUser();
+			forward.excute(request, response);
+			path="getUserInfo.do";
+		}else if (command.equals("/article1/updateCreator.do")) {
+			updateCreator forward = new updateCreator();
 			forward.excute(request, response);
 			path="getUserInfo.do";
 		}else if (command.equals("/article1/getMyClassInfo.do")) {
@@ -140,10 +144,6 @@ public class Controller extends HttpServlet {
 			LogoutService forward = new LogoutService();
 			forward.excute(request, response);
 			path = "mainEx.jsp";
-		}else if (command.equals("/article1/modifymember2.do")) {
-			modify2Service forward = new modify2Service();
-			forward.excute(request, response);
-			path="getUserInfo.do";
 		}else if (command.equals("/article1/pwdCheck.do")) {
 			pwdCheck forward = new pwdCheck();
 			forward.excute(request, response);
