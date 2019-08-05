@@ -55,6 +55,7 @@
 		<h3>
 			<font color="tomato">Class List</font>
 		</h3>
+</c:if>
 		<div id="category_class" class="row">
 			
 <c:forEach items="${classinfo.cateClassList}" var="classlist">
@@ -69,7 +70,6 @@
 		</div>		
 	</div>
 	
-</c:if>
 
 
 </body>

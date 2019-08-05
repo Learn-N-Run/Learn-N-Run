@@ -2,6 +2,7 @@ show databases;
 use learnrun;
 show tables;
 
+
 select * from user;
 SELECT * FROM user_group;
 SELECT * FROM class;
@@ -12,7 +13,6 @@ select * from user;
 select * from receiver_info;
 desc class;
 desc category;
-
 
 SELECT cl.no 'no', cl.cre_id 'creator', cl.cover_img 'cover_img', cl.title 'title', cl.content 'content'
 FROM class cl JOIN category ca
@@ -52,13 +52,6 @@ ON cl.category_no=ca.no
 WHERE ca.name = '요리'
 GROUP BY cl.no
 LIMIT 5;
-
-ALTER TABLE category ADD column image varchar(300) not null;
-
-ALTER TABLE reply add `user_id` VARCHAR(20) NULL;
-	
-ALTER TABLE reply ADD CONSTRAINT fk_reply_user1 FOREIGN KEY(`user_id`)
-REFERENCES `learnrun`.`user` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 
 -- ---------------------INSERT record list-------------------------
