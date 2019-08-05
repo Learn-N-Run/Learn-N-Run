@@ -724,25 +724,23 @@ public class UserDAIOImpl implements UserDAO{
 	}
 	
 	//유저 이름 값 가져오기
-		public UserDTO getUserName(String userid) {
-			String name;
-			UserDTO dto = new UserDTO();
+		public String getUserName(String userid) {
+			String name = "";
 			String sql ="SELECT name FROM user where id=?";
 			try {
 				con = getConnection();
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, userid);
 				rs = pstmt.executeQuery();
-				if(rs.next()) 
-				{
-					dto.setName(rs.getString("name"));
+				if(rs.next()){
+					name = rs.getString("name");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				freeResource();
 			}
-			return dto;
+			return name;
 		}
 
 	//유저 정보 가져오기, 유저수정시

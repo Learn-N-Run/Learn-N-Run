@@ -136,10 +136,12 @@ public class Controller extends HttpServlet {
 			getMyClassService forward = new getMyClassService();
 			forward.excute(request, response);
 			path = "classInfo.jsp";
+			
 		}else if (command.equals("/article1/getUserInfo.do")) {
+			System.out.println("하이");
 			getUserInfoService forward = new getUserInfoService();
 			forward.excute(request, response);
-			path = "modifymember1.jsp";
+			path = "modifymember.jsp";
 		}else if (command.equals("/article1/logout.do")) {
 			LogoutService forward = new LogoutService();
 			forward.excute(request, response);
@@ -148,8 +150,8 @@ public class Controller extends HttpServlet {
 			pwdCheck forward = new pwdCheck();
 			forward.excute(request, response);
 		}else if (command.equals("/article1/AddCreatorService.do")) {
-		AddCreatorService forward = new AddCreatorService();
-		forward.excute(request, response);
+			AddCreatorService forward = new AddCreatorService();
+			forward.excute(request, response);
 		}
 		
 		

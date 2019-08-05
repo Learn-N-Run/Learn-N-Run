@@ -113,7 +113,7 @@ function Creatorregister(){
          <div class="row mb-4">
             <div class="col-5 m-auto">
                <label for="id">아이디</label>
-               <input type="text" class="form-control" id="id" name="id" readonly value="${SessionScope.user.id }">
+               <input type="text" class="form-control" id="id" name="id" readonly value="${sessionScope.id}">
             </div>
             <div class="col-5 m-auto">
                <label for="email"><span class="text-danger">*</span> 이메일</label>
@@ -124,7 +124,7 @@ function Creatorregister(){
          <div class="row mb-4">
              <div class="col-5 m-auto">
                <label for="name">이름</label>
-               <input type="text" class="form-control" id="name" name="name" readonly value="${SessionScope.user.name }">
+               <input type="text" class="form-control" id="name" name="name" readonly value="${sessionScope.name}">
             </div>
             <div class="col-5 m-auto">
                <label for="number"><span class="text-danger">*</span> 휴대폰번호</label>

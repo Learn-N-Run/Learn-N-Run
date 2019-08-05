@@ -76,7 +76,7 @@
 				<a href="javascript:;"><li>찜목록</li></a>
 				<a href="javascript:;" id="coupon_h"><li>쿠폰함</li></a>
 				<a href="javascript:;" ><li>내 클래스</li></a>
-				<a href="AddCreator.do"><li>크리에이터 지원</li></a>	
+				<a href="AddCreator.jsp"><li>크리에이터 지원</li></a>	
 			</ul>
 			<a id="menu_toggle" href="javascript:;" onclick="menu_toggle()"></a>			
 		</div>
