@@ -20,129 +20,90 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!--외부참조 + CDN END -->
 <style type="text/css">
-	#pop-button-next{
+	.swiper-container {
+		width: 100%;
+		height: 100%;
+		min-height: 300px;
+	}
+	.swiper-slide {
+		text-align: center;
+		font-size: 18px;
+		background: rgba(255,255,255,0);
+		/* Center slide text vertically */
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center; 
+	}
+	#TH_pop-button-next{
 		right: 10px;
 		left: auto;
 		}
-	#pop-button-prev{
+	#TH_pop-button-prev{
 		left: 10px;
 		right: auto;
 		}
 </style>
 	<title>Learn & Run</title>
 </head>
-<body>
+<body class="TH_widthOverHidden">
+
 	<h3>
 		<font color="tomato">Popular class</font>
 	</h3>
 
-	<div class="swiper-container">
+	<div id="TH_pop-swiper-container" class="swiper-container">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide onclickContent" onclick="alert('classNo=${pop.classNo}')">
-				<div class="col-xs-4">
-					<div class="thumbnail">
-						<img src=" "
-							 alt=" ">
-						<div class="caption">
-						<h6>${pop.title}</h6>
-						<p>${pop.interestedCount}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="swiper-slide onclickContent" onclick="alert('classNo=${pop.classNo}')">
-				<div class="col-xs-4">
-					<div class="thumbnail">
-						<img src=" "
-							 alt=" ">
-						<div class="caption">
-						<h6>${pop.title}</h6>
-						<p>${pop.interestedCount}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="swiper-slide onclickContent" onclick="alert('classNo=${pop.classNo}')">
-				<div class="col-xs-4">
-					<div class="thumbnail">
-						<img src=" "
-							 alt=" ">
-						<div class="caption">
-						<h6>${pop.title}</h6>
-						<p>${pop.interestedCount}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="swiper-slide onclickContent" onclick="alert('classNo=${pop.classNo}')">
-				<div class="col-xs-4">
-					<div class="thumbnail">
-						<img src=" "
-							 alt=" ">
-						<div class="caption">
-						<h6>${pop.title}</h6>
-						<p>${pop.interestedCount}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="swiper-slide onclickContent" onclick="alert('classNo=${pop.classNo}')">
-				<div class="col-xs-4">
-					<div class="thumbnail">
-						<img src=" "
-							 alt=" ">
-						<div class="caption">
-						<h6>${pop.title}</h6>
-						<p>${pop.interestedCount}</p>
-						</div>
-					</div>
-				</div>
-			</div>
 
 <c:forEach items="${listMap.popList}" var="pop">
-			<div class="swiper-slide onclickContent" onclick="alert('classNo=${pop.classNo}')">
-				<div class="col-xs-4">
-					<div class="thumbnail">
-						<img src=" "
-							 alt=" ">
-						<div class="caption">
-						<h6>${pop.title}</h6>
-						<p>${pop.interestedCount}</p>
-						</div>
+
+			<div class="swiper-slide TH_onclickContent" onclick="location.href='article2/classInfo.me?no=${pop.classNo}'">
+				<div class="thumbnail">
+					<img src=" "
+						 alt=" ">
+					<div class="caption">
+					<h6>${pop.title}</h6>
+					<p>${pop.topRankCount}</p>
 					</div>
 				</div>
 			</div>
 </c:forEach>
 
 		</div>
-    		<div class="swiper-pagination"></div>
-    		<div id="pop-button-next" class="pop-button">
-			<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" fill="tomato">
-				<path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"/>
-			</svg>
-		</div>
-		<div id="pop-button-prev" class="pop-button">
-			<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" fill="tomato">
-				<path d="M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z"/>
-			</svg>
-		</div>
+   		<div class="swiper-pagination"></div>
+		<a id="TH_pop-button-prev" class="left carousel-control" href="#TH_event" data-slide="prev" style="color: tomato !important; background-image: none !important;">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a id="TH_pop-button-next"  class="right carousel-control" href="#TH_event" data-slide="next" style="color: tomato !important; background-image: none !important;">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
 	</div>
-
-	<script>
-	<script>
-	var swiper = new Swiper('.swiper-container', {
-		slidesPerView: 3,
-		spaceBetween: 30,
-		pagination: {
-			el: '.swiper-pagination',
-			type: 'fraction',
-		},
+	
+<script>
+    var swiper = new Swiper('#TH_pop-swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        slidesPerGroup: 3,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
 		navigation: {
-			nextEl: '#pop-button-next',
-			prevEl: '#pop-button-prev',
+			nextEl: '#TH_pop-button-next',
+			prevEl: '#TH_pop-button-prev',
 			},
 		});
-	</script>
+</script>
 	
 </body>
 </html>

@@ -61,10 +61,10 @@
 <!-- datasource를 레퍼런스로 mybatis sessionfactory에 인젝션 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource"
-		p:configLocation="classpath:article/three/dao/MainReadConfig.xml"
-		p:mapperLocations="classpath:article/three/dao/MainReadMapper.xml"/>
+		p:configLocation="classpath:article/three/config/BatisConfig.xml"
+		p:mapperLocations="classpath:article/three/mapper/*.xml"/>
 
-<!-- sessionfactory를 레퍼런스로 mybatis 세션 템플릿에 인젝션 -->	
+<!-- sessionfactory를 레퍼런스로 mybatis 세션 템플릿에 인젝션 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
 	 c:sqlSessionFactory-ref="sqlSessionFactory"/>
 	

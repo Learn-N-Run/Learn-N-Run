@@ -19,7 +19,7 @@
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
 </head>
-<body style="overflow-x:hidden; overflow-y:auto;"> 
+<body> 
 
 <%-- header--%>
 <c:import url="/1_Include/header.jsp"></c:import>

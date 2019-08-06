@@ -20,9 +20,20 @@
 	<title>Learn & Run</title>
 </head>
 <body>
+	<h3>
+		<font color="tomato">커뮤니티</font>
+	</h3>
+	<div id="TH_community">
 
+<c:forEach items="${community}" var="community">
+		
+	<div >
 
+		<img class="TH_cateimg" src="">
+		<p></p>
+	</div>
 
-
+</c:forEach>
+	</div>
 </body>
 </html>

@@ -24,17 +24,13 @@
 <%-- header--%>
 <c:import url="/1_Include/header.jsp"></c:import>
 	
-	<div id="class_player" style="border: 1px solid;">
-		<iframe >
+	<div class="embed-responsive embed-responsive-16by9">
+		<iframe width="100%" height="100%"
+				src="${contextpath}/article3/class_play/Player.jsp"
+				frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen>
 		</iframe>
 	</div>
-	
-<iframe width="100%" height="100%"
-		src="${contextpath}/article3/class_play/Player.jsp"
-		frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-		allowfullscreen>
-</iframe>
-	
 	
 	
 <%-- footer.jsp--%>

@@ -7,5 +7,6 @@
 		<typeAlias type="dto.InterestedClassDTO"  alias="InterestedClassDTO" />
 		<typeAlias type="dto.CategoryDTO"  alias="CategoryDTO" />
 		<typeAlias type="dto.ClassDTO"  alias="ClassDTO" />
+		<typeAlias type="dto.ReplyDTO"  alias="ReplyDTO" />
 	</typeAliases>
 </configuration>

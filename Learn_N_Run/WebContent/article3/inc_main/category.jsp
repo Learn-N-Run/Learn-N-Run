@@ -25,56 +25,10 @@
 		<font color="tomato">Category</font>
 	</h3>
 	<div id="TH_category" class="row">
-<!-- xptmxm -->
-<div class="col-lg-1 col-xs-3 ">
-			<div class="TH_onclickContent"
-				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
-				<img class="TH_cateimg" src="${contextpath}/${category.image}">
-				<p>${category.name}</p>
-			</div>
-		</div><div class="col-lg-1 col-xs-3 ">
-			<div class="TH_onclickContent"
-				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
-				<img class="TH_cateimg" src="${contextpath}/${category.image}">
-				<p>${category.name}</p>
-			</div>
-		</div><div class="col-lg-1 col-xs-3 ">
-			<div class="TH_onclickContent"
-				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
-				<img class="TH_cateimg" src="${contextpath}/${category.image}">
-				<p>${category.name}</p>
-			</div>
-		</div><div class="col-lg-1 col-xs-3 ">
-			<div class="TH_onclickContent"
-				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
-				<img class="TH_cateimg" src="${contextpath}/${category.image}">
-				<p>${category.name}</p>
-			</div>
-		</div><div class="col-lg-1 col-xs-3 ">
-			<div class="TH_onclickContent"
-				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
-				<img class="TH_cateimg" src="${contextpath}/${category.image}">
-				<p>${category.name}</p>
-			</div>
-		</div><div class="col-lg-1 col-xs-3 ">
-			<div class="TH_onclickContent"
-				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
-				<img class="TH_cateimg" src="${contextpath}/${category.image}">
-				<p>${category.name}</p>
-			</div>
-		</div><div class="col-lg-1 col-xs-3 ">
-			<div class="TH_onclickContent"
-				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
-				<img class="TH_cateimg" src="${contextpath}/${category.image}">
-				<p>${category.name}</p>
-			</div>
-		</div>
 
-
-<!-- xptmxm -->
 <c:forEach items="${listMap.categoryList}" var="category">
 
-		<div class="col-lg-1 col-xs-3 ">
+		<div class="col-lg-1 col-xs-4">
 			<div class="TH_onclickContent"
 				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
 				<img class="TH_cateimg" src="${contextpath}/${category.image}">
@@ -99,6 +53,5 @@
 </c:forEach>
 
 	</div>
-
 </body>
 </html>

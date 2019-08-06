@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.logging.LogFactory;
+import org.slf4j.Logger;
+
 import article.one.command.Buy_getClassInfoService;
 import article.one.command.DeleteMessageService;
 import article.one.command.InsertbuyClassService;
@@ -46,19 +49,18 @@ public class Controller extends HttpServlet {
 	protected void doHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 /* 한글처리 */request.setCharacterEncoding("UTF-8");
 /* 한글처리 */response.setContentType("text/html;charset=UTF-8");
-
+		
 		String uri = request.getRequestURI();
 		String conpath = request.getContextPath();
 		String command = uri.substring(conpath.length());
 		/*▲커맨드 추출*/
-		
 		String path = null;
 		/*▲포워딩할 경로 String으로 저장*/
 		
-		if (command.equals("/article1/login.do")) {
+		if (command.equals("/login.do")) {
 			LoginCheckService forward = new LoginCheckService();
 			forward.excute(request, response);
-			path="mainEx.jsp";
+			path="article3/index.jsp";
 		}else if (command.equals("/article1/selectMessage.do")) {
 			SelectMessageService forward = new SelectMessageService();
 			forward.excute(request, response);
@@ -137,10 +139,10 @@ public class Controller extends HttpServlet {
 			getUserInfoService forward = new getUserInfoService();
 			forward.excute(request, response);
 			path = "modifymember1.jsp";
-		}else if (command.equals("/article1/logout.do")) {
+		}else if (command.equals("/logout.do")) {
 			LogoutService forward = new LogoutService();
 			forward.excute(request, response);
-			path = "mainEx.jsp";
+			path = "article3/index.jsp";
 		}else if (command.equals("/article1/modifymember2.do")) {
 			modify2Service forward = new modify2Service();
 			forward.excute(request, response);

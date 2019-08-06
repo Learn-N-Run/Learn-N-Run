@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- abstracted dao interface -->
+<mapper namespace="article.three.mapper.ReadDAO">
+	<resultMap type="java.util.HashMap" id="ClassReplyListBean">
+		<result property="id" column="id"/>
+		<result property="profile_img" column="profile_img"/>
+		<result property="nickname" column="nickname"/>
+		<result property="email" column="email"/>
+		<result property="no" column="no"/>
+		<result property="content" column="content"/>
+		<result property="date" column="date"/>
+		<result property="group" column="group"/>
+		<result property="reply_id" column="reply_id"/>
+		<result property="class_no" column="class_no"/>
+		<result property="curriculm_no" column="curriculm_no"/>
+	</resultMap>
+	
+	<resultMap type="java.util.HashMap" id="GroupUserBean">
+		<result property="id" column="id"/>
+		<result property="pass" column="pass"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="creator_url" column="creator_url"/>
+		<result property="profile_img" column="profile_img"/>
+		<result property="nickname" column="nickname"/>
+		<result property="number" column="number"/>
+		<result property="joinDate" column="joinDate"/>
+		<result property="usergroup" column="usergroup"/>
+	</resultMap>
+
+	
+	<select id="TopClassSelect" resultType="PopularClassDTO">
+		<![CDATA[
+			SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
+				count(*) 'topRankCount'
+			FROM class cl JOIN category ca JOIN buyer buy
+			ON cl.category_no=ca.no
+				AND cl.no = buy.class_no
+			WHERE ca.name LIKE #{categoryName}
+			GROUP BY cl.no
+			LIMIT 5;
+		]]>
+	</select>
+	
+	<select id="InterestedClassSelect" resultType="InterestedClassDTO">
+		<![CDATA[
+			SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
+				count(*) 'interestedCount' 
+			FROM class cl JOIN category ca JOIN jjim jj
+			ON cl.category_no=ca.no
+				AND cl.no = jj.class_no
+			WHERE ca.name LIKE #{categoryName}
+			GROUP BY cl.no
+			LIMIT 5;		
+		]]>
+	</select>
+
+	<select id="CategorySelect" resultType="CategoryDTO">
+		<![CDATA[
+			SELECT * FROM category
+		]]>
+	</select>
+	<select id="CategoryClassSelect" parameterType="String" resultType="ClassDTO">
+		<![CDATA[
+			SELECT cl.no 'no', cl.cre_id 'creator', cl.cover_img 'cover_img', cl.title 'title', cl.content 'content'
+			FROM class cl JOIN category ca
+			ON cl.category_no = ca.no
+			WHERE ca.name LIKE #{cate};
+		]]>
+	</select>
+	<select id="GroupUserSelect" resultMap="GroupUserBean">
+		<![CDATA[	
+			SELECT u.id 'id', u.pass 'pass', u.name 'name', u.email 'email', u.creator_url 'creator_url',
+					u.profile_img 'profile_img', u.nickname 'nickname', u.number 'number', u.joinDate 'joinDate', g.name 'usergroup' 
+			FROM user u JOIN user_group g
+			ON u.user_group_no = g.no
+		]]>	
+	</select>
+<!-- TODO:LIMIT 필요 -->
+	<select id="ClassReplyList" parameterType="int" resultMap="ClassReplyListBean">
+	<![CDATA[	
+			SELECT u.id 'id', u.email 'email', u.profile_img 'profile_img', u.nickname 'nickname',
+					g.name 'usergroup', r.no 'no', r.content 'content', r.date 'date',
+					r.group 'group', r.reply_id 'reply_id', r.class_no 'class_no',
+					r.curriculm_no 'curriculm_no'
+			FROM user u JOIN user_group g JOIN reply r
+			ON u.user_group_no = g.no 
+			AND u.id = r.user_id
+			WHERE r.class_no = #{class_no};
+		]]>
+	</select>
+
+<!-- 	
+	<select id="VideoReplySelect" parameterType="int" resultType="ReplyDTO">
+		<![CDATA[
+			SELECT * FROM reply
+			WHERE class_no like #{class_no}
+			AND reply.group like 0
+			ORDER BY date ASC;
+		]]>
+	</select>
+-->
+</mapper>

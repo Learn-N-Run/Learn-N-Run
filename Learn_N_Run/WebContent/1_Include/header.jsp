@@ -76,13 +76,16 @@
 		height: 50px;
 		transform: translate(-50%, -50%);
 		cursor: pointer;
-		background: rgba(0,0,0,0.7);
+		background: rgba(0,0,0,0.9);
 		border-radius: 50%;
 		border: none;
 		outline: none;
+		transition: all 0.5s;
 	}
-	
-	#inc_hamburger span {
+	#inc_hamburger:HOVER{
+		background-color: tomato;
+	}
+	#inc_hamburger>span {
 		position: absolute;
 		width: 30px;
 		height: 4px;
@@ -94,7 +97,7 @@
 		transition: all 0.3s linear;
 	}
 	
-	#inc_hamburger span::before {
+	#inc_hamburger>span::before {
 		content: "";
 		position: absolute;
 		width: 0;
@@ -105,17 +108,17 @@
 		transition: all 0.3s linear;
 	}
 	
-	#inc_hamburger span:nth-child(1) {
+	#inc_hamburger>span:nth-child(1) {
 		animation: span-first-off 0.5s ease-in-out;
 		animation-fill-mode: forwards;
 	}
 	
-	#inc_hamburger span:nth-child(2) {
+	#inc_hamburger>span:nth-child(2) {
 		animation: span-second-off 0.5s ease-in-out;
 		animation-fill-mode: forwards;
 	}
 	
-	#inc_hamburger span:nth-child(3) {
+	#inc_hamburger>span:nth-child(3) {
 		animation: span-third-off 0.5s ease-in-out;
 		animation-fill-mode: forwards;
 	}
@@ -262,7 +265,7 @@
 		</div>
 		<div class="col-xs-10">
 			<div class="inc_floating" align="left">
-				<div class="col-xs-6">
+				<div class="col-xs-7">
 					<form action="" method="GET">
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="카테고리 + 제목" style="color: gray;" >
@@ -274,7 +277,7 @@
 						</div>
 					</form>
 				</div>
-				<div class="col-xs-6">
+				<div class="col-xs-5">
 					<button id="inc_hamburger">
 						<span></span>
 						<span></span>
@@ -318,6 +321,14 @@
 			</div>
 		</div>
 	</header>
+
+<ol class="breadcrumb visible-lg-block">
+  <li><a href="/index.kr">Library</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active"><a>Data</a></li>
+</ol>
+<div style="content: ''; height: 10px;"></div>
+
 <!-- 햄버거메뉴 -->	
 <script type="text/javascript">
 	var inc_menuList = document.querySelector('#inc_menuList');

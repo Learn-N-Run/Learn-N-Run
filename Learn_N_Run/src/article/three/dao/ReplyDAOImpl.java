@@ -4,16 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import dto.CategoryDTO;
 import dto.ClassDTO;
-import dto.CurriculumDTO;
 import dto.ReplyDTO;
 
 public class ReplyDAOImpl implements ReplyDAO{

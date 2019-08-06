@@ -14,18 +14,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import article.three.dao.MainReadDAO;
+import article.three.mapper.ReadDAO;
 import dto.CategoryDTO;
 import dto.ClassDTO;
+import dto.CurriculumDTO;
 import dto.InterestedClassDTO;
 import dto.PopularClassDTO;
+import dto.ReplyDTO;
 
 @Controller
-public class SPController {
+public class SPController{
 
 	@Autowired
 	private SqlSession sqlsession;
-	MainReadDAO readDAO;
+	ReadDAO readDAO;
 	
 	@RequestMapping(value = "/index")
 	public String indexview(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -44,7 +46,7 @@ public class SPController {
 		
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/categoryinfo", method = RequestMethod.GET)
 	public String categoryView(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 
@@ -58,32 +60,43 @@ public class SPController {
 		
 		model.addAttribute("classinfo", classinfo);
 		
-		return "categoryClassView";
+		return "CategoryClassView";
 	}
+
+	@RequestMapping(value = "/community", method = RequestMethod.GET)
+	public String ClassReplyList(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 	
+		int classno = Integer.parseInt(request.getParameter("no"));
+		List<HashMap> replyList = sqlsession.selectList("article.three.mapper.ReadDAO.ClassReplyList",classno);
+		model.addAttribute("community", replyList);
+		
+		return "inc_reply/community";
+	}
+
+/* 커맨드 리스트(분류예정) */
 	public List<PopularClassDTO> BuyerTopClassSelect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		List<PopularClassDTO> popList;
 		String cateName = request.getParameter("popCateName");
 		
 		if (cateName == null) {
-			popList = sqlsession.selectList("article.three.dao.MainReadDAO.TopClassSelect","%");
+			popList = sqlsession.selectList("article.three.mapper.ReadDAO.TopClassSelect","%");
 		}else {
-			popList = sqlsession.selectList("article.three.dao.MainReadDAO.TopClassSelect",cateName);
+			popList = sqlsession.selectList("article.three.mapper.ReadDAO.TopClassSelect",cateName);
 		}
-		
+
 		return popList;
 	}
-	
+
 	public List<InterestedClassDTO> jjimTopClassSelect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 	
 		List<InterestedClassDTO> interList;
 		String cateName = request.getParameter("interCateName");
 		
 		if (cateName == null) {
-			interList = sqlsession.selectList("article.three.dao.MainReadDAO.InterestedClassSelect","%");
+			interList = sqlsession.selectList("article.three.mapper.ReadDAO.InterestedClassSelect","%");
 		}else {
-			interList = sqlsession.selectList("article.three.dao.MainReadDAO.InterestedClassSelect",cateName);
+			interList = sqlsession.selectList("article.three.mapper.ReadDAO.InterestedClassSelect",cateName);
 		}
 		
 		return interList;
@@ -93,7 +106,7 @@ public class SPController {
 	
 		List<CategoryDTO> categoryList;
 		
-			categoryList = sqlsession.selectList("article.three.dao.MainReadDAO.CategorySelect");
+			categoryList = sqlsession.selectList("article.three.mapper.ReadDAO.CategorySelect");
 		
 		return categoryList;
 	}
@@ -103,9 +116,28 @@ public class SPController {
 		
 		String cateName = request.getParameter("category");
 		
-		List<ClassDTO> cateClass = sqlsession.selectList("article.three.dao.MainReadDAO.CategoryClassSelect",cateName);
+		List<ClassDTO> cateClass = sqlsession.selectList("article.three.mapper.ReadDAO.CategoryClassSelect",cateName);
 		
 		return cateClass;
+	}
+
+	public List<ReplyDTO> getVideoReply(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+		int classno = Integer.parseInt(request.getParameter("no"));
+
+		List<ReplyDTO> classReplyDTOs = sqlsession.selectList("article.three.mapper.ReadDAO.VideoReplySelect",classno);
+		
+		return classReplyDTOs;
+	}
+
+	public List<CurriculumDTO> getCurriculum(CurriculumDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public CurriculumDTO getVideo(CurriculumDTO dto, int subjectNo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

@@ -26,73 +26,34 @@
 	
 	<div id="wrap">
 
-
 <c:import url="/article3/inc_main/category.jsp"></c:import>
-
 
 		<h3>
 			<font color="tomato">Class List</font>
+			<font color="tomato" style="font-weight:bold; font-size: 0.7em;">
+<c:if test="${param.category ne null}">
+				: ${param.category}
+</c:if>
+			</font>
 		</h3>
-		<div id="category_class" class="row">
+		<div id="TH_category_class" class="row">
 
-<!-- xptmxm -->
-<div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div><div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
-			</div>
-
-<!-- xptmxm -->			
 <c:forEach items="${classinfo.cateClassList}" var="classlist">
 
-			<div class="col-lg-3 col-xs-6 TH_onclickContent"
-				onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-				${classlist.title}
-				<img src="${contextpath}/${classlist.cover_img}">
+			<div class="col-lg-3 col-xs-6">
+				<div class="TH_onclickContent" 
+					onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
+					${classlist.title}
+					<img src="${contextpath}/${classlist.cover_img}">
+				</div>
 			</div>
-			
 </c:forEach>
 			
-		</div>		
+		</div>
 
 
 	</div>
+	
 <%-- footer.jsp--%>
 <c:import url="/1_Include/footer.jsp"></c:import>
 	

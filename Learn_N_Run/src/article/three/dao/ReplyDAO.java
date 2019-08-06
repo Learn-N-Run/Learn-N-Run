@@ -45,4 +45,5 @@ public interface ReplyDAO {
 	 * 메인 content 영역 하위 클래스 답글 영역 sql = "SELECT * FROM reply WHERE classNo=? AND
 	 * group =1 ORDER BY date;"
 	 */
+
 }

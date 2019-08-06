@@ -2,8 +2,20 @@ show databases;
 use learnrun;
 show tables;
 
+SET foreign_key_checks = 1;
+SET SQL_SAFE_UPDATES=1;
 
-select * from user;
+SELECT *
+FROM reply r LEFT JOIN reply t
+ON r.no = t.no;
+
+
+
+desc learnrun.reply;
+
+desc reply;
+select * from subject;
+select * from reply;
 SELECT * FROM user_group;
 SELECT * FROM class;
 SELECT * FROM buyer;
@@ -11,8 +23,48 @@ select * from category;
 select * from user_group;
 select * from user;
 select * from receiver_info;
+SELECT * FROM curriculum;
+
+
+INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('1', '1', 'creatertest01', '본문', '1');
+INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('2', '2', 'user1', '본문', '1');
+INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('3', '2', 'user2', '태클', '1');
+INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('4', '2', 'user3', '태클', '1');
+INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('5', '5', 'user1', '본문', '1');
+INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('6', '5', 'user1', '태클', '1');
+INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('7', '5', 'user1', '태클', '1');
+
+SELECT *
+FROM reply r LEFT JOIN reply t
+ON r.no = t.target_no
+ORDER BY r.no DESC;
+
+desc curriculum;
+
 desc class;
 desc category;
+
+desc user;
+desc user_group;
+desc reply;
+
+-- 커뮤니티 리플
+SELECT u.id 'id', u.email 'email', u.profile_img 'profile_img', u.nickname 'nickname', g.name 'usergroup',
+		r.no 'no', r.content 'content', r.date 'date', r.group 'group', r.reply_id 'reply_id', r.class_no 'class_no', r.curriculm_no 'curriculm_no'
+FROM user u JOIN user_group g JOIN reply r
+ON u.user_group_no = g.no AND u.id = r.user_id
+WHERE r.class_no = 1;
+
+SELECT * FROM user_group g JOIN user u JOIN reply r;
+
+-- 비디오 시청 리플
+SELECT u.id 'id', u.pass 'pass', u.name 'name', u.email 'email', u.creator_url 'creator_url',
+	u.profile_img 'profile_img', u.nickname 'nickname', u.number 'number', u.joinDate 'joinDate', g.name 'usergroup' 
+FROM user u JOIN user_group g
+ON u.user_group_no = g.no;
+
+
+
 
 SELECT cl.no 'no', cl.cre_id 'creator', cl.cover_img 'cover_img', cl.title 'title', cl.content 'content'
 FROM class cl JOIN category ca
@@ -129,24 +181,18 @@ INSERT INTO receiver_info(name, number,address1,address2,address3,delievery_msg)
 
 
 
--- -----------------------------------------------------
--- Data for table `learnrun`.`category`
--- -----------------------------------------------------
 START TRANSACTION;
 USE `learnrun`;
-
-insert into category(no,name) values(1,'요리');
-insert into category(no,name) values(2,'카메라');
-insert into category(no,name) values(3,'공예');
-insert into category(no,name) values(4,'코딩');
-insert into category(no,name) values(5,'음악');
-insert into category(no,name) values(6,'켈리그래피');
-insert into category(no,name) values(7,'운동');
-insert into category(no,name) values(8,'그림');
+INSERT INTO `learnrun`.`category` (`no`, `name`, `img`) VALUES (1, '요리', '/3_img/cateimg/food.png');
+INSERT INTO `learnrun`.`category` (`no`, `name`, `img`) VALUES (2, '카메라', '/3_img/cateimg/crafts.png');
+INSERT INTO `learnrun`.`category` (`no`, `name`, `img`) VALUES (3, '미용', '/3_img/cateimg/art.png');
+INSERT INTO `learnrun`.`category` (`no`, `name`, `img`) VALUES (4, '코딩', '/3_img/cateimg/design.png');
+INSERT INTO `learnrun`.`category` (`no`, `name`, `img`) VALUES (5, '음악', '/3_img/cateimg/music.png');
+INSERT INTO `learnrun`.`category` (`no`, `name`, `img`) VALUES (6, '켈리그래피', '/3_img/cateimg/calligraphy.png');
+INSERT INTO `learnrun`.`category` (`no`, `name`, `img`) VALUES (7, '운동', '/3_img/cateimg/activity.png');
+INSERT INTO `learnrun`.`category` (`no`, `name`, `img`) VALUES (8, '미술', '/3_img/cateimg/art.png');
 
 COMMIT;
-
-
 -- -----------------------------------------------------
 -- Data for table `learnrun`.`class`
 -- -----------------------------------------------------
