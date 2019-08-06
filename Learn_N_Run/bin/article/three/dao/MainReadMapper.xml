@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="article.three.dao.MainReadDAO">
+
+	
+	<select id="top5InfoSELECT" resultType="article.three.dto.cccdto">
+		<![CDATA[
+		SELECT c.no, d.classpop, c.cre_id, c.cover_img, c.title, c.detail_category,
+				c.content, c.material_img, c.material_content, c.expiration, c.tuition, c.category_no
+		FROM class c join (SELECT class_no, COUNT(*) 'classpop' FROM buyer
+							group by class_no
+							ORDER BY classpop DESC LIMIT 5) d
+		ON d.class_no = c.no
+		GROUP BY c.no;
+		]]>
+	</select>
+</mapper>

@@ -1,5 +1,4 @@
 package article.one.controller;
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -36,164 +35,131 @@ import article.one.command.selectTuitionService;
 @WebServlet("*.do")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
-	public void init() throws ServletException {
-		System.out.println("connection start");
-	}
-
+	public void init() throws ServletException {System.out.println("connection start");}
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("doget");
-		doHandler(request, response);
-	}
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doHandler(request, response); }
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("doPost");
-		doHandler(request, response);
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doHandler(request, response); }
+	
+	protected void doHandler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+/* 한글처리 */request.setCharacterEncoding("UTF-8");
+/* 한글처리 */response.setContentType("text/html;charset=UTF-8");
 
-	protected void doHandler(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		getCommand(request, response);
-
-		/* 한글처리 */request.setCharacterEncoding("UTF-8");
-		/* 한글처리 */response.setContentType("text/html;charset=UTF-8");
-
-		/* ▲커맨드 추출 */
-		String path = null;
-
-		/* ▲포워딩할 경로 String으로 저장 */
-		if (getCommand(request, response).equals("login.do")) {
-			System.out.println("불려짐");
-			LoginCheckService forward = new LoginCheckService();
-			forward.excute(request, response);
-			path = "main.jsp";
-
-		} else if (getCommand(request, response).equals("selectMessage.do")) {
-			SelectMessageService forward = new SelectMessageService();
-			forward.excute(request, response);
-
-		} else if (getCommand(request, response).equals("selectDetailMessage.do")) {
-			SelectDetailMessageService forward = new SelectDetailMessageService();
-			forward.excute(request, response);
-
-		} else if (getCommand(request, response).equals("insertMessage.do")) {
-			SendMessageService forward = new SendMessageService();
-			forward.excute(request, response);
-
-		} else if (getCommand(request, response).equals("/article1/deleteMessage.do")) {
-			DeleteMessageService forward = new DeleteMessageService();
-			forward.excute(request, response);
-			path = "selectMessage.do";
-		} else if (getCommand(request, response).equals("/article1/event.do")) {
-			getEmailService forward = new getEmailService();
-			forward.excute(request, response);
-			path = "event.jsp";
-		} else if (getCommand(request, response).equals("/article1/coupon3.do")) {
-			coupon3Service forward = new coupon3Service();
-			forward.excute(request, response);
-			path = "event.jsp";
-		} else if (getCommand(request, response).equals("/article1/coupon1.do")) {
-			coupon1EmailSendService forward = new coupon1EmailSendService();
-			forward.excute(request, response);
-
-		} else if (getCommand(request, response).equals("/article1/coupon1_register_h.do")) {
-			coupon1RegisterService forward = new coupon1RegisterService();
-			forward.excute(request, response);
-			path = "event.jsp";
-		} else if (getCommand(request, response).equals("/article1/selectCouponCount.do")) {
-			selectCouponCountService forward = new selectCouponCountService();
-			forward.excute(request, response);
-
-		} else if (getCommand(request, response).equals("/article1/buyClassInfo.do")) {
-			Buy_getClassInfoService forward = new Buy_getClassInfoService();
-			forward.excute(request, response);
-			path = "paymentInfo.jsp";
-		} else if (getCommand(request, response).equals("/article1/payment.do")) {
-			selectTuitionService forward = new selectTuitionService();
-			forward.excute(request, response);
-			path = "payment.jsp";
-		} else if (getCommand(request, response).equals("/article1/buyersubmit.do")) {
-			InsertbuyClassService forward = new InsertbuyClassService();
-			forward.excute(request, response);
-			path = "mainEx.jsp";
-		} else if (getCommand(request, response).equals("/article1/join.do")) {
-			JoinRegisterService forward = new JoinRegisterService();
-			forward.excute(request, response);
-
-		} else if (getCommand(request, response).equals("/article1/signout.do")) {
-			delUserService forward = new delUserService();
-			forward.excute(request, response);
-
-		} else if (getCommand(request, response).equals("/article1/idCheckService.do")) {
-			idCheckService forward = new idCheckService();
-			forward.excute(request, response);
-<<<<<<< HEAD
-		}else if (command.equals("/article1/delUserService.do")) {
-=======
-		} else if (getCommand(request, response).equals("/article1/delUser.do")) {
->>>>>>> c2843549eb6f5e5660dd3dd3518237e99c3edb24
-			delUserService forward = new delUserService();
-			forward.excute(request, response);
-			path = "mainEx.jsp";
-		} else if (getCommand(request, response).equals("/article1/updateUser.do")) {
-			updateUser forward = new updateUser();
-			forward.excute(request, response);
-			path = "getUserInfo.do";
-		} else if (getCommand(request, response).equals("/article1/updateCreator.do")) {
-			updateCreator forward = new updateCreator();
-			forward.excute(request, response);
-			path = "getUserInfo.do";
-		} else if (getCommand(request, response).equals("/article1/getMyClassInfo.do")) {
-			getMyClassService forward = new getMyClassService();
-			forward.excute(request, response);
-			path = "classInfo.jsp";
-		} else if (getCommand(request, response).equals("getUserInfo.do")) {
-			System.out.println("하이");
-			getUserInfoService forward = new getUserInfoService();
-			forward.excute(request, response);
-			path = "/article1/modifymember1.jsp";
-		} else if (getCommand(request, response).equals("logout.do")) {
-			LogoutService forward = new LogoutService();
-			forward.excute(request, response);
-			path = "main.jsp";
-		} else if (getCommand(request, response).equals("/article1/pwdCheck.do")) {
-			pwdCheck forward = new pwdCheck();
-			forward.excute(request, response);
-<<<<<<< HEAD
-		}else if (command.equals("/article1/AddCreatorService.do")) {
-			System.out.println(request.getParameter("number"));
-=======
-		} else if (getCommand(request, response).equals("/article1/AddCreatorService.do")) {
->>>>>>> c2843549eb6f5e5660dd3dd3518237e99c3edb24
-			AddCreatorService forward = new AddCreatorService();
-			forward.excute(request, response);
-		}
-
-		if (path != null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-			/* ▲포워딩주소설정 */
-			dispatcher.forward(request, response);
-		}
-		/* ▲설정된주소로 res+req 전달하여 포워딩 */
-
-	}
-
-	public static String getCommand(HttpServletRequest request, HttpServletResponse response) {
 		String uri = request.getRequestURI();
 		String conpath = request.getContextPath();
 		String command = uri.substring(conpath.length());
-		String realCommand = "";
-		if (command.indexOf("article") == -1) {
-			realCommand = command;
-		} else {
-			realCommand = command.substring(command.indexOf("article") + 9);
+		/*▲커맨드 추출*/
+		
+		String path = null;
+		/*▲포워딩할 경로 String으로 저장*/
+		
+		if (command.equals("/article1/login.do")) {
+			LoginCheckService forward = new LoginCheckService();
+			forward.excute(request, response);
+			path="mainEx.jsp";
+		}else if (command.equals("/article1/selectMessage.do")) {
+			SelectMessageService forward = new SelectMessageService();
+			forward.excute(request, response);
+			
+		}else if (command.equals("/article1/selectDetailMessage.do")) {
+			SelectDetailMessageService forward = new SelectDetailMessageService();
+			forward.excute(request, response);
+			
+		}else if (command.equals("/article1/insertMessage.do")) {
+			SendMessageService forward = new SendMessageService();
+			forward.excute(request, response);
+			
+		}else if (command.equals("/article1/deleteMessage.do")) {
+			DeleteMessageService forward = new DeleteMessageService();
+			forward.excute(request, response);
+			path="selectMessage.do";
+		}else if (command.equals("/article1/event.do")) {
+			getEmailService forward = new getEmailService();
+			forward.excute(request, response);
+			path="event.jsp";
+		}else if (command.equals("/article1/coupon3.do")) {
+			coupon3Service forward = new coupon3Service();
+			forward.excute(request, response);
+			path="event.jsp";
+		}else if (command.equals("/article1/coupon1.do")) {
+			coupon1EmailSendService forward = new coupon1EmailSendService();
+			forward.excute(request, response);
+			
+		}else if (command.equals("/article1/coupon1_register_h.do")) {
+			coupon1RegisterService forward = new coupon1RegisterService();
+			forward.excute(request, response);
+			path="event.jsp";
+		}else if (command.equals("/article1/selectCouponCount.do")) {
+			selectCouponCountService forward = new selectCouponCountService();
+			forward.excute(request, response);
+			
+		}else if (command.equals("/article1/buyClassInfo.do")) {
+			Buy_getClassInfoService forward = new Buy_getClassInfoService();
+			forward.excute(request, response);
+			path="paymentInfo.jsp";
+		}else if (command.equals("/article1/payment.do")) {
+			selectTuitionService forward = new selectTuitionService();
+			forward.excute(request, response);
+			path="payment.jsp";
+		}else if (command.equals("/article1/buyersubmit.do")) {
+			InsertbuyClassService forward = new InsertbuyClassService();
+			forward.excute(request, response);
+			path="mainEx.jsp";
+		}else if (command.equals("/article1/join.do")) {
+			JoinRegisterService forward = new JoinRegisterService();
+			forward.excute(request, response);
+			
+		}else if (command.equals("/article1/signout.do")) {
+			delUserService forward = new delUserService();
+			forward.excute(request, response);
+			
+		}else if (command.equals("/article1/idCheckService.do")) {
+			idCheckService forward = new idCheckService();
+			forward.excute(request, response);
+		}else if (command.equals("/article1/delUser.do")) {
+			delUserService forward = new delUserService();
+			forward.excute(request, response);
+			path="mainEx.jsp";
+		}else if (command.equals("/article1/updateUser.do")) {
+			updateUser forward = new updateUser();
+			forward.excute(request, response);
+			path="getUserInfo.do";
+		}else if (command.equals("/article1/updateCreator.do")) {
+			updateCreator forward = new updateCreator();
+			forward.excute(request, response);
+			path="getUserInfo.do";
+		}else if (command.equals("/article1/getMyClassInfo.do")) {
+			getMyClassService forward = new getMyClassService();
+			forward.excute(request, response);
+			path = "classInfo.jsp";
+			
+		}else if (command.equals("/article1/getUserInfo.do")) {
+			System.out.println("하이");
+			getUserInfoService forward = new getUserInfoService();
+			forward.excute(request, response);
+			path = "modifymember.jsp";
+		}else if (command.equals("/article1/logout.do")) {
+			LogoutService forward = new LogoutService();
+			forward.excute(request, response);
+			path = "mainEx.jsp";
+		}else if (command.equals("/article1/pwdCheck.do")) {
+			pwdCheck forward = new pwdCheck();
+			forward.excute(request, response);
+		}else if (command.equals("/article1/AddCreatorService.do")) {
+			AddCreatorService forward = new AddCreatorService();
+			forward.excute(request, response);
 		}
-		return realCommand;
-	};
-
+		
+		
+		if(path != null) {
+		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+		/*▲포워딩주소설정*/
+		dispatcher.forward(request, response);
+		}
+		/*▲설정된주소로 res+req 전달하여 포워딩*/		
+	}
 }

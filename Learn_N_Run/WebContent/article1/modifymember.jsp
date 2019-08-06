@@ -309,7 +309,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
    </div>
    </div>
    </div>
-<jsp:include page="fincate.jsp"></jsp:include>
+<%-- <jsp:include page="fincate.jsp"></jsp:include> --%>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>
 
 </body>
