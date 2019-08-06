@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import article.one.dao.UserDAIOImpl;
 import dto.UserDTO;
@@ -44,9 +45,9 @@ public class JoinRegisterService implements Service{
 
 					System.out.println(" 회원가입 확인해주세요 ");
 					out.close();
-					
+									
 				}else {
-					
+
 					PrintWriter out = response.getWriter();
 					out.println("<script>");
 					out.println("alert('회원가입 되었습니다.');");
@@ -55,6 +56,8 @@ public class JoinRegisterService implements Service{
 					
 					System.out.println(" 회원 가입 완료 ");
 					out.close();
+					
+					
 				}
 		}
 }

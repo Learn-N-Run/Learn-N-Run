@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import article.one.dao.UserDAIOImpl;
 import dto.UserDTO;
 
@@ -18,27 +20,30 @@ public class AddCreatorService implements Service{
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		String name = (String)session.getAttribute("name");
 		
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
 		String nickname = request.getParameter("nickname");
 		String email = request.getParameter("email");
-		int number = Integer.parseInt(request.getParameter("number"));
+		System.out.println(request.getParameter("number"));
+		int number1 = Integer.parseInt(request.getParameter("number")); 
 		String url = request.getParameter("url");
 		String profile_img = request.getParameter("profile_img");
 		
-		UserDTO bean = new UserDTO();
-		bean.setId(id);
-		bean.setName(name);
-		bean.setNickname(nickname);
-		bean.setEmail(email);
-		bean.setNumber(number);
-		bean.setProfile_img(profile_img);
-		bean.setCreator_url(url);
+		UserDTO dto = new UserDTO();
+		dto.setId(id);
+		dto.setName(name);
+		dto.setNickname(nickname);
+		dto.setEmail(email);
+		/* dto.setNumber(number1); */
+		dto.setProfile_img(profile_img);
+		dto.setCreator_url(url);
 				
 		UserDAIOImpl dao = new UserDAIOImpl();
 				
-		int result = dao.AddCreator(bean);
+		int result = dao.AddCreator(dto);
 		
 		if (result == 0) {
 			PrintWriter out = response.getWriter();

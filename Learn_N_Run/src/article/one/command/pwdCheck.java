@@ -1,7 +1,6 @@
 package article.one.command;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,24 +8,32 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import article.one.dao.UserDAIOImpl;
+import dto.UserDTO;
 
 public class pwdCheck implements Service{
 
 	@Override
-	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		String pass = request.getParameter("pass");
-		
+		String pass = request.getParameter("pwd");
+				
 		UserDAIOImpl dao = new UserDAIOImpl();
-		int result = dao.userCheck(id, pass); //userCheck활용해서 정보수정, 탈퇴
-		
-		response.getWriter().print(result);
+		UserDTO dto = dao.getUserInfo(id);
 		
 		
+		if(pass.equals(dto.getPass())) {
+			response.getWriter().print(1);
+		} else {
+			response.getWriter().print(0);
+			
+		}
+
 	}
+
 }

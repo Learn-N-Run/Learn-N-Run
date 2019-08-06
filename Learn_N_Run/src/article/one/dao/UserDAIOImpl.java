@@ -101,27 +101,29 @@ public class UserDAIOImpl implements UserDAO{
 	}
 	/*회원수정1*/
 	@Override
-	public void updateUser(UserDTO dto) {
-		sql="UPDATE user SET pass=?, email=? WHERE id=?";
-		
+	public int updateUser(UserDTO dto) {
+		int result = 0;
+				
 		try {
-			dto = new UserDTO();
 			con = getConnection();
+			sql="UPDATE user SET pass=?, email=? WHERE id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getPass());
 			pstmt.setString(2, dto.getEmail());
 			pstmt.setString(3, dto.getId());
-			pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("updateUser() 오류: " + e);
 		} finally {
 			freeResource();
 		}
+		return result;
 	}
 	
 	/*회원수정2*/
 	@Override
-	public void updateCreator(UserDTO dto) {
+	public int updateCreator(UserDTO dto) {
+		int result = 0;
 		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=?, where id=?";	
 		
 		try {
@@ -134,13 +136,13 @@ public class UserDAIOImpl implements UserDAO{
 			pstmt.setString(5, dto.getNickname());
 			pstmt.setInt(6, dto.getNumber());
 			pstmt.setString(7, dto.getId());
-			pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("updateCreator() 오류: " + e);
 		} finally {
 			freeResource();
 		}
-		
+		return result;
 	}
 	
 	/*회원탈퇴*/
@@ -167,15 +169,15 @@ public class UserDAIOImpl implements UserDAO{
 	/*아이디 유효성*/
 	@Override
 	public int idCheck(String id) {
-		int result = 1;
+		int result = 0;
 		try {
 			con = getConnection();
-			sql = "select * from user where id = ?";
+			sql = "SELECT * FROM user WHERE id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) result = 0;
+			if(rs.next()) result=1;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -184,14 +186,43 @@ public class UserDAIOImpl implements UserDAO{
 		}
 		return result;
 	}
+	
+	//정보수정, 탈퇴
+		@Override
+		public int pwdCheck(UserDTO dto) {
+				int check = 0;
+				try {
+					con = getConnection();
+					sql = "select pass from user where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getId());
+					rs = pstmt.executeQuery();
 
-	//로그인 시 아이디,비밀번호,정보수정, 탈퇴
+					if (rs.next()) {
+						if (dto.getPass().equals(rs.getString("pass"))) {
+							check = 1;
+						} else { 
+							check = 0; 
+						}
+					} else { 
+						check = -1;
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					freeResource();
+				}
+				return check;
+		}
+	
+	//로그인 시 아이디,비밀번호
 	@Override
 	public int userCheck(String id, String pass) {
 			int check = 0;
 			try {
 				con = getConnection();
-				sql = "select* from user where id=?";
+				sql = "select * from user where id=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
@@ -228,19 +259,20 @@ public class UserDAIOImpl implements UserDAO{
 	
 	//크리에이터 신청 처리
 	@Override
-	public int AddCreator(UserDTO bean) {
+	public int AddCreator(UserDTO dto) {
 		int result = 0;
 		try {
 			con = getConnection();
-			sql="UPDATE user SET email=?, creator_url=?, profile_img=?, nickname=?, number=? user_group=2";
+			sql="UPDATE user SET email=?, creator_url=?, profile_img=?, nickname=?, number=? user_group=2 WHERE id=? AND name=?";
 			pstmt = con.prepareStatement(sql);
-			UserDTO dto = new UserDTO();
 			pstmt.setString(1, dto.getEmail());
 			pstmt.setString(2, dto.getCreator_url());
 			pstmt.setString(3, dto.getProfile_img());
 			pstmt.setString(4, dto.getNickname());
 			pstmt.setInt(5, dto.getNumber());
-			pstmt.executeUpdate();
+			pstmt.setString(6, dto.getId());
+			pstmt.setString(7, dto.getName());
+			result = pstmt.executeUpdate();
 						
 		} catch (Exception e) {
 			System.out.println("AddCreator() " + result);
@@ -723,26 +755,6 @@ public class UserDAIOImpl implements UserDAO{
 		return Group;
 	}
 	
-	//유저 이름 값 가져오기
-		public String getUserName(String userid) {
-			String name = "";
-			String sql ="SELECT name FROM user where id=?";
-			try {
-				con = getConnection();
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, userid);
-				rs = pstmt.executeQuery();
-				if(rs.next()){
-					name = rs.getString("name");
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				freeResource();
-			}
-			return name;
-		}
-
 	//유저 정보 가져오기, 유저수정시
 	public UserDTO getUserInfo(String id) {
 		String sql ="SELECT * FROM user where id=?";

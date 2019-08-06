@@ -26,8 +26,8 @@ $(function(){
             url: "pwdCheck.do",
             data: {pwd : pwd},
             success: function(data){
-               if(data == 0){
-                  $("#pwdErr").text("비밀번호가 틀립니다.");
+               if(result == 0){
+                  $("#pwdErr").text("비밀번호를 확인해주세요.");
                }else{
                   $("#pwdErr").text('');
                }
@@ -99,7 +99,7 @@ function pwdCheckFunction() {
       alert("기존 비밀번호를 입력해주세요.");
    }
    else if($("#pwdErr").text() !=''){
-      alert("기존 비밀번호가 다릅니다.");
+      alert("비밀번호를 확인해주세요.");
    }else{
       $("#check").show();
    }
@@ -119,19 +119,20 @@ function modify(){
       $("#emailErr").text("필수 입력 사항입니다.");
       result = 0;
    }
-   if(newpwd.val()=='') {
-      $("#newpwd").val(pwd.val()); //신규 비밀번호 값이 비워져있을 경우 무조건 기존 비밀번호의 값 셋팅
-   } 
    
    if(result==0){
       alert("필수 사항을 기입해주세요.");
       return false;
    }
    
-   if($("#pwd").text()!=''||$("#newpwd").text()!=''||$("#newpwdCkd").text()!=''||$("#email").text()!=''){
+   if($("#pwdErr").text()!=''||$("#newpwdErr").text()!=''||$("#pwdCheckMessage").text()!=''||$("#emailErr").text()!=''){
       alert("오류 사항을 확인 후 다시 입력해주세요.");
       return false;
    } 
+   
+   if(newpwd.val()=='') {
+	      $("#newpwd").val(pwd.val()); //신규 비밀번호 값이 비워져있을 경우 무조건 기존 비밀번호의 값 셋팅
+	} 
    
 }
 

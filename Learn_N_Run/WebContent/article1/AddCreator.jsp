@@ -40,7 +40,7 @@ $(function(){
 		if(number ==''){
 			$("#numberErr").text("필수 입력 사항입니다.");
 		}else{ 
-			var reg = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
+			var reg = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
 			if(!reg.test(number)){
 				$("#numberErr").text("올바른 핸드폰 번호를 입력해주세요.");
 			}else{ $("#numberErr").text(''); }
@@ -94,20 +94,37 @@ function Creatorregister(){
 		return false;
 	} 
 }
+
+function readIMAGE(input){ //input type="file"태그를 매개변수로 전달받아서
+
+	if(input.files && input.files[0]){
+		//FileReader객체 생성
+		var reader = new FileReader();
+		//지정한 img태그에 File안에 있는 내용을 읽어 들인다.
+		reader.readAsDataURL(input.files[0]);
+		//파일을 모두 읽어 들였다면
+		reader.onload = function(ProgressEvent){
+			//읽어들인 File객체 정보는 매개변수로 넘어오는
+			//ProgressEvent객체 내부의 target속성에 JSON데이터 형식으로 저장되어 있다.
+			//또한 JSON객체 데이터 내부에는 result속성에 읽어들인 File정보가 저장되어 있다.
+			$('#preview').attr('src', ProgressEvent.target.result);
+		}
+	}
+	
+}
 </script>
 </head>
 <body>
 <div class="container">
    <div class="mt-5 p-5 rounded" style="background-color: #f5f6f7;"> <!-- 적용할 때는 mt-5 삭제해도됨 margin-top을 크기 5만큼 준다. p-5-> padding 전체를 크기 5만큼 준다라는 뜻 -->
-      <form action="AddCreatorService.do" method="post" onsubmit="return Creatorregister()">
+      <form action="AddCreatorService.do" method="post" enctype="multipart/form-data" onsubmit="return Creatorregister()">
       <h2 class="text-center">크리에이터 신청</h2>
       <p class="text-center mb-3 text-muted"><span class="text-danger">*</span>는 필수 입력 사항입니다.</p>
       <div class="m-auto">
       	 <div class="row mb-4">
       		<div class="col-5 m-auto profile_img">
       			<label for="profile_img"><span class="text-danger">*</span>프로필 이미지</label>
-      			<div id="profile_img"><img src="${pageContext.request.contextPath}/article1/img/profile_basic.png"></div>
-      			<button class="btn btn-outline-info">사진 변경</button>
+      			<div id="profile_img" style="margin-bottom:10px"><img id="preview" src="img/${requestScope.user.profile_img }"><input type="file" accept="image/*" name="profile_img" onchange="readIMAGE(this);"></div>
       		</div>
       	</div>
          <div class="row mb-4">
@@ -128,7 +145,7 @@ function Creatorregister(){
             </div>
             <div class="col-5 m-auto">
                <label for="number"><span class="text-danger">*</span> 휴대폰번호</label>
-               <input type="text" class="form-control" id="number" name="number" placeholder="010-0000-0000">
+               <input type="text" class="form-control" id="number" name="number" placeholder="010-0000-0000(숫자만 입력)">
                <span style="color: red;" id="numberErr"></span>
             </div>
          </div>

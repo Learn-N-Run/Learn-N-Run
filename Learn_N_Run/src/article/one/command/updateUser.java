@@ -29,9 +29,12 @@ public class updateUser implements Service{
 		dto.setId(id);
 		dto.setEmail(request.getParameter("email"));
 		dto.setPass(request.getParameter("newpwd"));
+		System.out.println("회원이 수정 할 이메일" + request.getParameter("email"));
+		System.out.println("수정 될 비밀번호" + request.getParameter("newpwd"));
 		
 		UserDAIOImpl dao = new UserDAIOImpl();
-		dao.updateUser(dto);
+		int result = dao.updateUser(dto);
+		System.out.println("updateUser() " + result);
 		
 	}
 }

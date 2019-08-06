@@ -76,11 +76,11 @@ function idCheckFunction() {
         type: 'post',
         url: 'idCheckService.do',
         data: {id: id},
-        success : function(result){
+        success : function(data){
             if(result == 1){
-                alert('사용 가능한 아이디 입니다.');
+               		alert('사용할 수 없는 아이디 입니다.');
                 }else{
-                alert('사용할 수 없는 아이디입니다.');
+              		alert('사용 가능한 아이디 입니다.');
                 }
             }
     });
@@ -125,7 +125,7 @@ function register(){
 		alert("필수 사항을 기입해주세요.");
 		return false;
 	}
-	if($("#idErr").text()!=''||$("#pwdErr").text()!=''||$("#emailErr").text()!=''$("#nameErr").text()!=''||){
+	if($("#idErr").text()!=''||$("#pwdErr").text()!=''||$("#emailErr").text()!=''||$("#nameErr").text()!=''){
 		alert("오류 사항을 확인 후 다시 입력해주세요.");
 		return false;
 	} 

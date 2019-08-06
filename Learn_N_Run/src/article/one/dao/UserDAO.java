@@ -27,12 +27,12 @@ public interface UserDAO {
 	/*
 	 * 유저 추가 sql = "INSERT into user(~~,user_group_no) VALUES(?,1); 1번 일반유저 2번 크리에이터
 	 */
-	void updateUser(UserDTO dto);
+	int updateUser(UserDTO dto);
 	/*
 	 *  일반회원 개인정보 수정
 	 */
 	
-	void updateCreator(UserDTO dto);
+	int updateCreator(UserDTO dto);
 
 	/*
 	 * 유저 개인정보 수정, pass값 select해서 확인후, update시킴 ResultSet값 인트형으로 받아서, 유효성검사. sql =
@@ -51,6 +51,10 @@ public interface UserDAO {
 	 * (회원가입 시)유저 아이디 중복검사 확인. //sql = "SELECT* FROM user where id=?"
 	 */
 	
+	int pwdCheck(UserDTO dto);
+	/*
+	 * (정보수정, 탈퇴시) 비밀번호로 아이디값 확인
+	 */
 	
 	int userCheck(String id, String pass);
 
@@ -74,7 +78,7 @@ public interface UserDAO {
 	 * requset.getsession.setAttribute("idGroup"); Session session =
 	 * request.getSession(); session.setAttribute("idGroup");
 	 */
-	int AddCreator(UserDTO bean);
+	int AddCreator(UserDTO dto);
 
 	/*
 	 * 크리에이터 등급 올리기, url,nickname,profileimg, 본인인증 email확인후. User에 업데이트시,
