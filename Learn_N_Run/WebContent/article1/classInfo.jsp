@@ -79,13 +79,19 @@
 }
 .title_h {
 	height: 100px;
-	padding: 30px 20px 10px 30px;
-	background-color: black;
+    padding: 30px 20px 10px 30px;
+    background-color: black;
+    border-radius: 40px 40px 40px 40px;
+    margin-top: 10px;
+    box-shadow: 5px 5px 5px 5px grey;
 }
 
 .title_h>p {
 	font-size: 30px;
-	color: white;
+    color: white;
+    width: 16%;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
 }
 
 .myClass_content_h {
