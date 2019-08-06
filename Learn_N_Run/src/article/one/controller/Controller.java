@@ -136,7 +136,6 @@ public class Controller extends HttpServlet {
 			getMyClassService forward = new getMyClassService();
 			forward.excute(request, response);
 			path = "classInfo.jsp";
-			
 		}else if (command.equals("/article1/getUserInfo.do")) {
 			System.out.println("하이");
 			getUserInfoService forward = new getUserInfoService();

@@ -14,8 +14,11 @@
 <!-- jquery 사용 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+function replaceAll(str, searchStr, replaceStr) {
+	  return str.split(searchStr).join(replaceStr);
+	}
+
 $(function(){
-	
 	//닉네임 확인
 	$("#nickname").blur(function(){
 		var nickname = $(this).val();
@@ -40,12 +43,13 @@ $(function(){
 		if(number ==''){
 			$("#numberErr").text("필수 입력 사항입니다.");
 		}else{ 
-			var reg = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
+			var reg = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
 			if(!reg.test(number)){
 				$("#numberErr").text("올바른 핸드폰 번호를 입력해주세요.");
 			}else{ $("#numberErr").text(''); }
 		}
 	});
+	//파일크기 유효성
 	
 	//이메일 유효성
 	 $("#email").blur(function(){
@@ -67,6 +71,7 @@ function Creatorregister(){
 	var number = $("#number");
 	var email = $("#email");
 	var url = $("#url");
+	var preview = $("#preview");
 			
 	if(nickname.val()==''){
 		$("#nicknameErr").text("닉네임을 입력하세요.");
@@ -84,15 +89,21 @@ function Creatorregister(){
 		$("#urlErr").text("url주소를 입력하세요.");
 		result = 0;
 	}
+	if (preview.attr("src") == '') {
+		$("#profile_imgErr").text("파일을 입력하세요.");
+		result = 0;
+	}
 
 	if(result==0){
 		alert("필수 사항을 기입해주세요.");
 		return false;
 	}
-	if($("#nicknameErr").text()!=''||$("#numberErr").text()!=''||$("#emailErr").text()!=''||$("#urlErr").text()!=''){
+	if($("#nicknameErr").text()!=''||$("#numberErr").text()!=''||$("#emailErr").text()!=''||$("#urlErr").text()!='' || $("#profile_imgErr").text()!=''){
 		alert("입력사항을 빠짐없이 기입 후 다시 시도해주세요.");
 		return false;
 	} 
+	number = number.val().replace(/-/g,""); // '-' 문자 제거
+	$("#number").val(number); //제거 후 다시 number값으로 저장
 }
 
 function readIMAGE(input){ //input type="file"태그를 매개변수로 전달받아서
@@ -108,6 +119,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 			//ProgressEvent객체 내부의 target속성에 JSON데이터 형식으로 저장되어 있다.
 			//또한 JSON객체 데이터 내부에는 result속성에 읽어들인 File정보가 저장되어 있다.
 			$('#preview').attr('src', ProgressEvent.target.result);
+			$("#profile_imgErr").text(''); 
 		}
 	}
 	
@@ -115,8 +127,10 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 </script>
 </head>
 <body>
+<jsp:include page="/1_Include/header.jsp"/>
+	<div id="wrap">
 <div class="container">
-   <div class="mt-5 p-5 rounded" style="background-color: #f5f6f7;"> <!-- 적용할 때는 mt-5 삭제해도됨 margin-top을 크기 5만큼 준다. p-5-> padding 전체를 크기 5만큼 준다라는 뜻 -->
+   <div class="mt-5 p-5 rounded" style="background-color: #f5f6f7;"> 
       <form action="AddCreatorService.do" method="post" enctype="multipart/form-data" onsubmit="return Creatorregister()">
       <h2 class="text-center">크리에이터 신청</h2>
       <p class="text-center mb-3 text-muted"><span class="text-danger">*</span>는 필수 입력 사항입니다.</p>
@@ -124,7 +138,11 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
       	 <div class="row mb-4">
       		<div class="col-5 m-auto profile_img">
       			<label for="profile_img"><span class="text-danger">*</span>프로필 이미지</label>
-      			<div id="profile_img" style="margin-bottom:10px"><img id="preview" src="img/${requestScope.user.profile_img }"><input type="file" accept="image/*" name="profile_img" onchange="readIMAGE(this);"></div>
+      			<div id="profile_img" style="margin-bottom:10px">
+      				<img style="width:200px; height:250px;" id="preview" src="">
+      				<input type="file" accept="image/*" id="profile_img" name="profile_img" onchange="readIMAGE(this);">
+      				<span style="color: red;" id="profile_imgErr"></span>
+      			</div>
       		</div>
       	</div>
          <div class="row mb-4">
@@ -144,8 +162,8 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
                <input type="text" class="form-control" id="name" name="name" readonly value="${sessionScope.name}">
             </div>
             <div class="col-5 m-auto">
-               <label for="number"><span class="text-danger">*</span> 휴대폰번호</label>
-               <input type="text" class="form-control" id="number" name="number" placeholder="010-0000-0000(숫자만 입력)">
+               <label for="number"><span class="text-danger">*</span> 핸드폰번호</label>
+               <input type="text" class="form-control" id="number" name="number" placeholder="010-1234-5678(숫자만 입력하세요.)">
                <span style="color: red;" id="numberErr"></span>
             </div>
          </div>
@@ -169,5 +187,8 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
       </form>       
    </div>
 </div>
+</div>
+<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
+<jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>

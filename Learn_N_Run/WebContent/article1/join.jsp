@@ -37,7 +37,25 @@ $(function(){
 			var reg = RegExp(/^[a-zA-Z0-9]{4,12}$/);
 			if(!reg.test(id)){
                 $("#idErr").text("올바른 아이디를 입력하세요.");
-			}else{ $("#idErr").text(''); }
+			}else{ 
+				$.ajax({
+			        type: 'post',
+			        url: 'idCheckService.do',
+			        data: {id: id},
+			        success : function(data){
+			            if(data == 1){
+			               		$("#idErr").text("이미 사용중인 아이디 입니다.");
+			                }else{
+			              		alert('사용 가능한 아이디 입니다.');
+			              		$("#idErr").text("");
+			                }
+			            },
+			        error: function(){
+			        	alert('서버 내부 오류가 발생했습니다. \n다시 시도해주세요.');
+			        	$("#idErr").text("오류 사항을 확인해주세요.");
+			        }
+			    });
+			}
 		}
 	});
 
@@ -72,18 +90,7 @@ $(function(){
 //아이디 중복 체크
 function idCheckFunction() {
     var id = $('#id').val();
-    $.ajax({
-        type: 'post',
-        url: 'idCheckService.do',
-        data: {id: id},
-        success : function(data){
-            if(result == 1){
-               		alert('사용할 수 없는 아이디 입니다.');
-                }else{
-              		alert('사용 가능한 아이디 입니다.');
-                }
-            }
-    });
+    
 }
 
 //비밀번호 확인
@@ -133,7 +140,8 @@ function register(){
 </script>
 </head>
 <body>
-
+<jsp:include page="../1_Include/header.jsp"></jsp:include>
+<div id="wrap">
 	<div class="required_fieldin">
 		<h1 style="text-align:center; margin-top:30px;"> 회원가입 </h1>
 			<form class="required_field" action="join.do" method="post" onsubmit="return register()">
@@ -143,7 +151,7 @@ function register(){
 					<span style="color: red;" id="nameErr"></span>
 				</div>
 				<div class="mem_form_group">
-		            <label for="id">아이디</label><button class="idCheckbtn" onclick="idCheckFunction();" type="button">중복체크</button></td> 
+		            <label for="id">아이디</label><br>
 					<input type="text" class="mem_reg_id" id="id" name="id" placeholder="아이디를 입력해주세요."><br>
 					<span style="color: red;" id="idErr"></span>
 				</div>
@@ -171,6 +179,10 @@ function register(){
 				</div>
 		</form>
 	</div>
+</div>
+	<%--인클루드 카테고리 ,footer영역 --%>
+	<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
+	<jsp:include page="../1_Include/footer.jsp"></jsp:include>
 
 </body>
 </html>

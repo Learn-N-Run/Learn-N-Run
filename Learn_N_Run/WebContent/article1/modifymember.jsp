@@ -26,7 +26,7 @@ $(function(){
             url: "pwdCheck.do",
             data: {pwd : pwd},
             success: function(data){
-               if(result == 0){
+               if(data == 0){
                   $("#pwdErr").text("비밀번호를 확인해주세요.");
                }else{
                   $("#pwdErr").text('');
@@ -251,7 +251,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 	                 <button class="btn btn-outline-info">회원 수정</button>&nbsp;&nbsp;&nbsp;&nbsp;
 	                 <input type="reset" value="다시 입력" class="btn btn-outline-secondary">
           		</div>
-		      </div>
+          		</div>
 		      </form>
        </c:if>
        
@@ -276,7 +276,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 	            <label for="pwd"><span class="text-danger">*</span> 현재 비밀번호</label>
 	         </div>
 	         <div class="col-4">
-	            <input type="password" class="form-control" id="pwd" placeholder="********"> <!-- name="pwd"지움, DB에는 신규 비밀번호 값만 들어감 -->
+	            <input type="password" class="form-control" id="pwd" placeholder="********">
 	            <span style="color: red;" id="pwdErr"></span>
 	         </div>
 	         <div><input type="button" id="pwdCheck" value="비밀번호 변경" onclick="pwdCheckFunction()"></div>
@@ -309,7 +309,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
    </div>
    </div>
    </div>
-<%-- <jsp:include page="fincate.jsp"></jsp:include> --%>
+<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>
 
 </body>

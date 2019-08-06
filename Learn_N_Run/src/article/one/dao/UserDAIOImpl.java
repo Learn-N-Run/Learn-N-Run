@@ -87,7 +87,7 @@ public class UserDAIOImpl implements UserDAO{
                 sql = "INSERT INTO COUPON(user_id,sale1,sale2,sale3) values(?,0,0,0)";
                 
                 pstmt = con.prepareStatement(sql);
-                pstmt.setString(1, dto.getName());
+                pstmt.setString(1, dto.getId());
                 
                 pstmt.executeUpdate();
             }
@@ -263,7 +263,7 @@ public class UserDAIOImpl implements UserDAO{
 		int result = 0;
 		try {
 			con = getConnection();
-			sql="UPDATE user SET email=?, creator_url=?, profile_img=?, nickname=?, number=? user_group=2 WHERE id=? AND name=?";
+			sql="UPDATE user SET email=?, creator_url=?, profile_img=?, nickname=?, number=?, user_group_no=2 WHERE id=? AND name=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getEmail());
 			pstmt.setString(2, dto.getCreator_url());

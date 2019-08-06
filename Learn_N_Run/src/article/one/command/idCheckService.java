@@ -20,6 +20,8 @@ public class idCheckService implements Service{
 		
 		UserDAIOImpl dao = new UserDAIOImpl();
 		int result = dao.idCheck(id);
+		
+		response.getWriter().print(result);
 		System.out.println("중복 검사할 id :" + id);
 		System.out.println("중복 검사 result :" + result);
 		
