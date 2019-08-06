@@ -71,13 +71,13 @@
 			<ul id="ul_h">
 				<a href="getUserInfo.do"><li>내정보</li></a>
 				<a href="getMyClassInfo.do"><li>내 수강목록</li></a>
-				<a href="javascript:;"><li>찜 목록</li></a>
+				<a href="jjim.me"><li>찜 목록</li></a>
 				<a href="javascript:;" id="coupon_h"><li>쿠폰함</li></a>
 				<c:if test="${sessionScope.Group == 1 }">
 				<a href="AddCreator.jsp"><li>크리에이터 지원</li></a>	
 				</c:if>
 				<c:if test="${sessionScope.Group == 2 }">
-				<a href="javascript:;" ><li>내 클래스</li></a>
+				<a href="crt_getAllClassList.me" ><li>내 클래스</li></a>
 				</c:if>
 				<a href="javascript:;" id="logout_h"><li>로그아웃</li></a>
 				<a href="${contextpath }/article1/signout.jsp"><li>회원탈퇴</li></a>

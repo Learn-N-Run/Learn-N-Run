@@ -209,7 +209,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="fincate.jsp"></jsp:include>
+<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 <jsp:include page="/1_Include/header.jsp"/>
 	<div id="wrap">
 			<div id="center">
