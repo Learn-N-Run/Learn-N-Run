@@ -24,16 +24,14 @@
 	<h3>
 		<font color="tomato">Category</font>
 	</h3>
-	<div id="TH_category" class="row">
+	<div id="TH_category">
 
 <c:forEach items="${listMap.categoryList}" var="category">
 
-		<div class="col-lg-1 col-xs-4">
-			<div class="TH_onclickContent"
-				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
-				<img class="TH_cateimg" src="${contextpath}/${category.image}">
-				<p>${category.name}</p>
-			</div>
+		<div class="TH_onclickContent"
+			onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+			<img class="TH_cateimg" src="${contextpath}${category.image}">
+			<p>${category.name}</p>
 		</div>
 
 </c:forEach>

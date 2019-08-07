@@ -21,15 +21,15 @@
 </head>
 <body> 
 	<div id="wrap">
-		<h3>
-			<font color="tomato">커뮤니티</font>
-		</h3>
 		
+
+		<div id="TH_community">
+			<h3>
+				<font color="tomato">커뮤니티</font>
 <c:if test="${reply ne null }">
 			개의 글
 </c:if>
-
-		<div id="TH_community">
+			</h3>
 			<form action="">
 				<div class="input-group">
 					<input type="hidden" name="classNo" value="">
@@ -102,6 +102,6 @@
 			</tfoot>
 		</table>
 	</div>
-	
+
 </body>
 </html>

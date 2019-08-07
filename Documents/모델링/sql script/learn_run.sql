@@ -12,7 +12,7 @@ ON r.no = t.no;
 
 
 desc learnrun.reply;
-
+DROP TABLE reply;
 desc reply;
 select * from subject;
 select * from reply;
@@ -26,19 +26,63 @@ select * from receiver_info;
 SELECT * FROM curriculum;
 
 
-INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('1', '1', 'creatertest01', '본문', '1');
-INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('2', '2', 'user1', '본문', '1');
+INSERT INTO `learnrun`.`reply` (`no`, `user_id`, `content`, `class_no`) VALUES ('1', 'creatertest01', '본문', '1');
+INSERT INTO `learnrun`.`reply` (`no`, `user_id`, `content`, `class_no`) VALUES ('2', 'user1', '본문', '1');
 INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('3', '2', 'user2', '태클', '1');
 INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('4', '2', 'user3', '태클', '1');
-INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('5', '5', 'user1', '본문', '1');
+INSERT INTO `learnrun`.`reply` (`no`,  `user_id`, `content`, `class_no`) VALUES ('5',  'user1', '본문', '1');
 INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('6', '5', 'user1', '태클', '1');
-INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('7', '5', 'user1', '태클', '1');
+INSERT INTO `learnrun`.`reply` (`no`, `target_no`, `user_id`, `content`, `class_no`) VALUES ('8', '1', 'user1', '태클', '1');
+
+-- 커뮤니티
+
+SELECT r.no no, r.target_no target_no, r.user_id user_id, r.content content,
+	 r.date date, r.class_no class_no, r.curriculum_no curriculum_no, j.count count
+FROM reply r LEFT JOIN (SELECT no, COUNT(*) count
+					FROM reply
+					WHERE target_no is null
+					GROUP BY no) j
+ON r.no = j.no
+WHERE r.no = 1;
+
+SELECT r.no no, r.target_no target_no, r.user_id user_id, r.content content,
+	 r.date date, r.class_no class_no, r.curriculum_no curriculum_no, j.count count
+FROM reply r LEFT JOIN (SELECT no, COUNT(*) count
+					FROM reply
+					WHERE target_no is null
+					GROUP BY no) j
+ON r.no = j.no
+WHERE r.target_no is null
+ORDER BY r.no ASC LIMIT 0, 5;
+
+SELECT no
+			FROM reply r 
+			WHERE target_no = #{targetNo}
+			ORDER BY r.no ASC LIMIT 0, 10;
+
 
 SELECT *
-FROM reply r LEFT JOIN reply t
-ON r.no = t.target_no
-ORDER BY r.no DESC;
+FROM reply
+WHERE target_no = 2
+ORDER BY no DESC LIMIT 0, 10;
 
+
+
+
+
+desc reply;
+
+
+-- 커뮤니티 댓글여부
+SELECT no, COUNT(*) count
+FROM reply
+WHERE target_no is null
+GROUP BY no;
+
+
+
+
+select * from reply;
 desc curriculum;
 
 desc class;
@@ -176,9 +220,9 @@ COMMIT;
 INSERT INTO receiver_info(name, number,address1,address2,address3,delievery_msg) VALUES("홍길",01000000000,"주소1","주2소","3주소","딜리버리 메세지");
 
 
+SELECT * FROM category;
 
-
-
+ALTER TABLE category CHANGE img image varchar(300);
 
 
 START TRANSACTION;

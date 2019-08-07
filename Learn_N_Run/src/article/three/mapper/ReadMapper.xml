@@ -31,6 +31,12 @@
 		<result property="usergroup" column="usergroup"/>
 	</resultMap>
 
+	<parameterMap type="java.util.HashMap" id="NumberKeySetting">
+		<parameter property="no"/>
+		<parameter property="targetNo"/>
+		<parameter property="startLimitIndex"/>
+		<parameter property="LimitCount"/>
+	</parameterMap>
 	
 	<select id="TopClassSelect" resultType="PopularClassDTO">
 		<![CDATA[
@@ -80,8 +86,8 @@
 		]]>	
 	</select>
 <!-- TODO:LIMIT 필요 -->
-	<select id="ClassReplyList" parameterType="int" resultMap="ClassReplyListBean">
-	<![CDATA[	
+    <select id="ClassReplyList" parameterType="int" resultMap="ClassReplyListBean">
+		<![CDATA[	
 			SELECT u.id 'id', u.email 'email', u.profile_img 'profile_img', u.nickname 'nickname',
 					g.name 'usergroup', r.no 'no', r.content 'content', r.date 'date',
 					r.group 'group', r.reply_id 'reply_id', r.class_no 'class_no',
@@ -89,11 +95,41 @@
 			FROM user u JOIN user_group g JOIN reply r
 			ON u.user_group_no = g.no 
 			AND u.id = r.user_id
-			WHERE r.class_no = #{class_no};
+			WHERE r.class_no = #{class_no};		
 		]]>
 	</select>
-
+	<select id="CummunityReplyList" parameterMap="NumberKeySetting" resultType="ReplyDTO">
+		<![CDATA[
+			SELECT r.no no, r.target_no target_no, r.user_id user_id, r.content content,
+				 r.date date, r.class_no class_no, r.curriculum_no curriculum_no, j.count count
+			FROM reply r LEFT JOIN (SELECT no, COUNT(*) count
+									FROM reply
+									WHERE target_no is null
+									GROUP BY no) j
+			ON r.no = j.no
+			WHERE r.target_no is null
+			AND r.target_no = 0
+			AND r.class_no = #{no}
+			ORDER BY r.no ASC LIMIT #{startLimitIndex}, 10;
+		]]>
+	</select>
+	<select id="ReplyLoading" parameterMap="NumberKeySetting" resultType="ReplyDTO">
+		<![CDATA[	
+			SELECT *
+			FROM reply
+			WHERE target_no = #{targetNo}
+			ORDER BY no DESC LIMIT #{startLimitIndex}, 10;
+		]]>
+	</select>
 <!-- 	
+	
+	<select id="" resultType="">
+			
+	
+	
+	</select>
+	
+	
 	<select id="VideoReplySelect" parameterType="int" resultType="ReplyDTO">
 		<![CDATA[
 			SELECT * FROM reply

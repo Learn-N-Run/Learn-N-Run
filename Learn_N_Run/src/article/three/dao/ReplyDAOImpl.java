@@ -78,13 +78,12 @@ public class ReplyDAOImpl implements ReplyDAO{
          while (rs.next()) {
             bean = new ReplyDTO();
             bean.setNo(rs.getInt(1)); 
-            bean.setContent(rs.getString(2));
-            bean.setDate(rs.getTimestamp(3));
-            bean.setGroup(rs.getInt(4));
-            bean.setReply_id(rs.getString(5));
+            bean.setTarget_no(rs.getInt(2));
+            bean.setUser_id(rs.getString(3));
+            bean.setContent(rs.getString(4));
+            bean.setDate(rs.getTimestamp(5));
             bean.setClass_no(rs.getInt(6));
             bean.setCurriculum_no(rs.getInt(7));
-            
             // 다 저장된 빈객체를 백터에 저장
             r.add(bean);
          }
@@ -104,18 +103,15 @@ public class ReplyDAOImpl implements ReplyDAO{
          try {
             getCon();
             
-            String sql ="insert into reply values(null,?,?,1,?,?,?)";
+            String sql ="insert into reply(target_no, user_id, content, curriculum_no)"
+            		+ " values(?,?,?,?)";
             
             pstmt =con.prepareStatement(sql);
-
-
            
-            pstmt.setString(1, dto.getContent());
-            pstmt.setTimestamp(2, dto.getDate());
-            
-            pstmt.setString(3, dto.getReply_id());
-            pstmt.setInt(4, dto.getClass_no());
-            pstmt.setInt(5, dto.getCurriculum_no() );
+            pstmt.setInt(1, dto.getTarget_no());
+            pstmt.setString(3, dto.getUser_id());
+            pstmt.setString(3, dto.getContent());
+            pstmt.setInt(4, dto.getCurriculum_no());
            
             
             pstmt.executeUpdate();      
@@ -153,18 +149,17 @@ public class ReplyDAOImpl implements ReplyDAO{
 		try {
             getCon();
             
-            String sql ="insert into reply values(null,?,?,2,?,?,?)";
+            String sql ="insert into reply(target_no, user_id, content, class_no)"
+            		+ " values(?,?,?,?)";
             
             pstmt =con.prepareStatement(sql);
 
 
            
-            pstmt.setString(1, dto.getContent());
-            pstmt.setTimestamp(2, dto.getDate());
-            
-            pstmt.setString(3, dto.getReply_id());
+            pstmt.setInt(1, dto.getTarget_no());
+            pstmt.setString(2, dto.getUser_id());
+            pstmt.setString(3, dto.getContent());
             pstmt.setInt(4, dto.getClass_no());
-            pstmt.setInt(5, dto.getCurriculum_no() );
            
             
             pstmt.executeUpdate();      

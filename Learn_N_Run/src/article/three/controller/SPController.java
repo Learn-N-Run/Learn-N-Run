@@ -63,16 +63,22 @@ public class SPController{
 		return "CategoryClassView";
 	}
 
-	@RequestMapping(value = "/community", method = RequestMethod.GET)
+	
+//ajax
 	public String ClassReplyList(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 	
-		int classno = Integer.parseInt(request.getParameter("no"));
-		List<HashMap> replyList = sqlsession.selectList("article.three.mapper.ReadDAO.ClassReplyList",classno);
+		List<ReplyDTO> replyList = CummunityReplyList(request, response);
 		model.addAttribute("community", replyList);
 		
 		return "inc_reply/community";
 	}
 
+//ajax
+	public String targetReplyList(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		targetReplyList(request, response);
+		
+		return null;
+	}
 /* 커맨드 리스트(분류예정) */
 	public List<PopularClassDTO> BuyerTopClassSelect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
@@ -112,7 +118,6 @@ public class SPController{
 	}
 	
 	public List<ClassDTO> cateClassView(HttpServletRequest request, HttpServletResponse response) throws Exception{
-
 		
 		String cateName = request.getParameter("category");
 		
@@ -140,7 +145,36 @@ public class SPController{
 		return null;
 	}
 	
+	public List<ReplyDTO> CummunityReplyList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		Map keyMap = new HashMap();
 
+		if (request.getParameter("startLimitIndex") != null) {
+			keyMap.put("startLimitIndex", request.getParameter("startLimitIndex"));
+		}else {
+			keyMap.put("startLimitIndex", 0);
+		}
+		List<ReplyDTO> replyList = sqlsession.selectList("article.three.mapper.ReadDAO.CummunityReplyList",keyMap);
+		
+		return replyList;
+	}
 	
-	
+	public List<ReplyDTO> targetReplyList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		Map keyMap = new HashMap();
+		
+		if (request.getParameter("startLimitIndex") != null) {
+			keyMap.put("no", request.getParameter("classNo"));
+			keyMap.put("startLimitIndex", request.getParameter("startLimitIndex"));
+			keyMap.put("targetNo", request.getParameter("targetNo"));
+		}else {
+			keyMap.put("no", request.getParameter("classNo"));
+			keyMap.put("startLimitIndex", 0);
+			keyMap.put("targetNo", request.getParameter("targetNo"));
+		}
+		
+		List<ReplyDTO> targetReplyList = sqlsession.selectList("article.three.mapper.ReadDAO.ReplyLoading",keyMap);
+		
+		return targetReplyList;
+	}
 }
