@@ -25,7 +25,6 @@ public class SelectDetailMessageService implements Service{
 		System.out.println(request.getParameter("messageNo"));
 		int messageNo =Integer.parseInt(request.getParameter("messageNo"));
 		
-		System.out.println(messageNo);
 		MessageDTO dto = dao.getMessageInfo(messageNo);
 		JSONObject json = new JSONObject();
 		json.put("send_id", dto.getSend_user().getId());
@@ -33,7 +32,8 @@ public class SelectDetailMessageService implements Service{
 		json.put("read_yn", dto.getRead_yn());
 		json.put("send_time", dto.getSend_time().toString().replaceAll(":", ".").replaceAll("-", "."));
 		PrintWriter out = response.getWriter();
-		System.out.println(json.toJSONString());
 		out.println(json.toJSONString());
+		out.flush();
+		out.close();
 	}
 }

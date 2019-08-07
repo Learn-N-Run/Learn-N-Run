@@ -1,0 +1,287 @@
+@CHARSET "UTF-8";
+
+#wrap01{
+	width: 100%;
+	height: auto;
+}
+
+#sec01{
+	margin-left: 15%;
+	margin-top: 3%;
+	border: 1px solid #8ec7ff;
+	height: 600px;
+	width: 70%;
+}
+
+.title{
+	width: 100%;
+	height: 80px;
+	border-bottom: 1px solid #8ec7ff;
+	
+}
+
+/*img div 둘다*/
+#class_left_right{
+	
+	height: 520px;
+	width: 100%;
+}
+
+/*cover_img div*/
+.cover_img_left{
+	float: left;
+	border-right: 1px solid #8ec7ff;
+	height: 100%;
+	width: 50%;
+}
+.cover_img{
+	
+	margin-left: 5%;
+	margin-top: 5%;
+	height: 85%;
+	width: 90%;
+	border-radius: 2%; 
+}
+
+.cover_img>img{
+	width: 100%;
+	height: 100%;
+	border-radius: 2%; 
+	
+}
+.cover_img_input{
+	margin-top: 1%;
+	height: 30px;
+	width: 80%;
+	margin-left: 5%;
+}
+/*오른쪽 tution div*/
+.tuition_right{
+	float: left;
+	height: 100%;
+	width: 50%;
+}
+.tuition_right_up{
+	border: 1px solid #8ec7ff;
+	width: 80%;
+	height: 50%;
+	margin-top: 3%;
+	margin-left: 10%;
+}
+
+.expiration_both{
+	width: 100%;
+	height: 20%;
+	border-bottom: 1px solid #dedede;
+}
+.expiration_label{
+	float: left;
+	width: 40%;
+	height: 100%;
+	border-right: 1px solid #dedede;
+	font-size: 18px;
+	padding-top: 3%;
+	color: tomato;
+}
+.expiration_div{
+	float: left;
+	width: 60%;
+	height: 100%;
+	font-size: 15px;
+	padding-top: 3%;
+}
+
+.tuition_both{
+	width: 100%;
+	height: 20%;
+	border-bottom: 1px solid #dedede;
+}
+.tuition_label{
+	float: left;
+	width: 40%;
+	height: 100%;
+	border-right: 1px solid #dedede;
+	font-size: 18px;
+	padding-top: 3%;
+	color: tomato;
+}
+.tuition_div{
+	float: left;
+	width: 60%;
+	height: 100%;
+	font-size: 15px;
+	padding-top: 3%;
+}
+
+
+.category_both{
+	width: 100%;
+	height: 20%;
+	border-bottom: 1px solid #dedede;
+}
+.category_label{
+	float: left;
+	width: 40%;
+	height: 100%;
+	border-right: 1px solid #dedede;
+	font-size: 18px;
+	padding-top: 3%;
+	color: tomato;
+}
+.category_div{
+	float: left;
+	width: 60%;
+	height: 100%;
+	font-size: 15px;
+	padding-top: 3%;
+}
+
+.content_both{
+	width: 100%;
+	height: 40%;
+	}
+.content_label{
+	float: left;
+	width: 40%;
+	height: 100%;
+	border-right: 1px solid #dedede;
+	font-size: 18px;
+	padding-top: 8%;
+	color: tomato;
+}
+.content_div{
+	float: left;
+	width: 60%;
+	height: 100%;
+	color: tomato;
+	font-weight:bold;
+	padding-top: 1%;
+	font-size: 15px;
+}
+
+
+
+.tuition_right_down{
+	border: 1px solid #8ec7ff;
+	width: 80%;
+	height: 40%;
+	margin-top: 2%;
+	margin-left: 10%;
+}
+
+.img_left_div{
+	float: left;
+	width: 60%;
+	height: 100%;
+	border-right: 1px solid #dedede;
+}
+.img_div{
+	height: 100%;
+	width: 100%;
+}
+
+
+.img_div img{
+	width: 100%;
+	height: 100%;
+}
+.img_right_div{
+	float: left;
+	width: 40%;
+	height: 100%;
+}
+
+.material_label{
+	width: 100%;
+	height: 30%;
+	font-size: 18px;
+	border-bottom: 1px solid #dedede;
+	padding-top: 20px;
+	color: tomato;
+}
+.material_div{
+	width: 100%;
+	height: 70%;
+	padding-top: 20%;
+	
+}
+
+
+
+#sec02{
+	margin-left: 15%;
+	border: 1px solid #8ec7ff;
+	height: 780px;
+	width: 70%;
+}
+.video{
+	width: 100%;
+	height: 80px;
+	border-bottom: 1px solid #8ec7ff;
+
+}
+.div_for_video{
+	margin-top: 2%;
+	margin-left: 5%;
+	height: 330px;
+	width: 90%;
+}
+
+.for_video{
+	margin-top: 1%;
+	float: left;
+	border: 1px solid #8ec7ff;
+	border-radius: 1%;
+	margin-left: 1%;
+	height: 300px;
+	width: 32%;
+}
+
+.subject_div{
+	width: 100%;
+	height: 15%;
+}
+.video_preview{
+	width: 100%;
+	height: 75%;
+}
+.video_preview>video{
+	width: 100%;
+	height: 100%;
+}
+.video_input{
+	height: 10%;
+	width: 100%;
+}
+.video_input input{
+	margin-top: 1%;
+}
+
+
+/*이전단계, 다음단계 버튼*/
+#btn_submit{
+	border-top: 2px solid #00f000;
+	height: 150px;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 40px;
+}
+
+.btn_pre1{
+	margin-left: 43%;
+}	
+
+.btn_pre1, .btn_next1{
+	border: 0;
+	background-color: rgb(28, 184, 65);
+	font-size: 20px;
+	color: white;
+	margin-top: 5%;
+	width: 120px; height: 40px;
+}
+.btn_pre1:hover{
+	background-color: rgb(30, 200, 65);
+}
+.btn_next1:hover {
+	background-color: rgb(30, 200, 65);
+}

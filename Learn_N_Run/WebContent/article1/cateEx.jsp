@@ -77,6 +77,6 @@
   <div class="div_h" id="about"><a href="logout.do" class="p_h">크리에이터 지원</a>
   </div>
 </section>
-	<jsp:include page="couponEx.jsp"></jsp:include>
+<%-- 	<jsp:include page="couponEx.jsp"></jsp:include> --%>
 </body>
 </html>

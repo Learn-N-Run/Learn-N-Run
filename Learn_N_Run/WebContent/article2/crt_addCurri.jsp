@@ -1,21 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
-<%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
-<!--JQUERY(1EA), BOOTSTRAP(2EA) CDN START LINE-->
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<!--외부참조 + CDN END -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/crt_addCurri.css?fd">
+<%
+	int classNo = Integer.parseInt(request.getParameter("classNo"));
+	
+%>
+
+
+<link rel="stylesheet" href="css/crt_addCurri.css?p">
+<script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 
 //JQuery를 이용해서 <input type="file">태그에서 미리보기 기능 구현하자.
@@ -82,24 +79,14 @@ $(function(){
 </head>
 <body>
 <!-- header 부분 -->
-<jsp:include page="/1_Include/header.jsp"></jsp:include>
 
+<jsp:include page="/1_Include/header.jsp" />
 
 <div id="wrap">
 
  <section id="sec05">
- 	<ul id="side_bar">
- 			<label>카테고리 분류</label>
-			<li class="list"><a>개인정보수정</a></li>
-			<li class="list"><a>내클래스</a></li>
-			<li class="list"><a>클래스수강목록</a></li>
-			<li class="list"><a>찜목록</a></li>
-			<li class="list"><a>쪽지함</a></li>
-			<li class="list"><a>댓글관리</a></li>
-			<li class="list"><a>로그아웃</a></li>
-			<li class="list"><a>회원탈퇴</a></li>
-			<li class="list"><a>쿠폰함</a></li>
-		</ul>
+ 	
+	
  </section>
  
  <!-- section1,2,3을 감싸는 wrap2 -->
@@ -130,7 +117,7 @@ $(function(){
 	 
 	 </section>
 
-<form action="uploadAction.jsp" method="post" enctype="multipart/form-data">	 
+<form action="crt_addCurri.me" method="post" enctype="multipart/form-data">	 
 	 
 	 <section id="sec02">
 	 	<div class="sec02_label_div">
@@ -226,7 +213,7 @@ $(function(){
 	 				동영상 강의를 업로드 해 주세요.
 	 			</div>
 	 			<div class="subject3_input_file">
-	 				<input type="file" multiple accept="video/*" name="url3" onchange="readURL1(this,3)">
+	 			<input type="file" multiple accept="video/*" name="url3" onchange="readURL1(this,3)">
 	 			</div>
 	 		</div>
 	 	</div>		
@@ -246,11 +233,16 @@ $(function(){
 		<a href="crt_addClass.jsp"><input type="button" class="btn_pre1" value="Prev"></a>
 		<input type="submit" class="btn_next1" value="Next">
 	</div>
+	
+	<input type="hidden" name="classNo" value=<%=classNo%>>
+	
 </form>	  
+
 </div>
 	 <!-- wrap2끝나는 부분 -->
 </div>
  <!-- wrap끝나는 부분 -->
+ <jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>

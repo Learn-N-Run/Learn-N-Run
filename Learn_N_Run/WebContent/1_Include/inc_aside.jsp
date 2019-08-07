@@ -68,14 +68,46 @@ $(function(){
 
 	/*쪽지 상세보기에서 돌아가기를 눌렀을때*/
 	$(".reset1_h").click(function(){
-		$(".message_main").fadeIn("fast");
+		$("#remo").remove();
+		$.ajax({
+			type:'POST',
+			url : "selectMessage.do",
+			success : function(data,textStatus,jqXHR) {
+				$(".mask_h").fadeIn("fast")
+				var jsonInfo = JSON.parse(data);
+				var messageInfo = "";
+					
+				for(var i in jsonInfo.message){
+					if(jsonInfo.message[i].read_yn==0){ 
+						messageInfo += "<tr style='color:blue' id='detail_content' data-value="+jsonInfo.message[i].messageNo+"><td>"+jsonInfo.message[i].send_id+"</td>"
+						messageInfo += "<td style='color:blue'>"+jsonInfo.message[i].content+"</td>";
+						messageInfo += "<td style='color:blue'>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>";
+						}
+					else{
+						messageInfo += "<tr id='detail_content' data-value="+jsonInfo.message[i].messageNo+"><td>"+jsonInfo.message[i].send_id+"</td>"
+						messageInfo += "<td>"+jsonInfo.message[i].content+"</td>";
+						messageInfo += "<td>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>";
+						}
+					
+				}
+				if(jsonInfo.message.read_yn==0){
+					$("#detail_content").css()
+				}
+				$(".table_h_h").html(messageInfo);
+				page();
+			},error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
+          });
 		$(".container2_h").fadeOut("fast");
+		$(".message_main").fadeIn("fast");
 	});
 
 
 	/*나가기 버튼을 눌렸을때, mask 없앰*/
 	$(".outMessage_h").click(function(){
 		$(".mask_h").css("display","none");
+		$("#remo").remove();
 	});
 
 	/*답장 버튼을 눌렀을때*/
@@ -93,15 +125,23 @@ $(function(){
 			success : function(data,textStatus,jqXHR) {
 				$(".mask_h").fadeIn("fast")
 				var jsonInfo = JSON.parse(data);
-				alert(data)
 				var messageInfo = "";
 					
 				for(var i in jsonInfo.message){
-					messageInfo += "<tr id='detail_content' data-value="+jsonInfo.message[i].messageNo+"><td>"+jsonInfo.message[i].send_id+"</td>"
-					/* messageInfo += "<input type='hidden' id='messageNo' name='messageNo' value='"+jsonInfo.message[i].messageNo+"'>" */
-					messageInfo += "<td>"+jsonInfo.message[i].content+"</td>";
-					messageInfo += "<td>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>";
-					messageInfo += "<td>"+jsonInfo.message[i].read_yn+"</td></tr>";
+					if(jsonInfo.message[i].read_yn==0){ 
+						messageInfo += "<tr style='color:blue' id='detail_content' data-value="+jsonInfo.message[i].messageNo+"><td>"+jsonInfo.message[i].send_id+"</td>"
+						messageInfo += "<td style='color:blue'>"+jsonInfo.message[i].content+"</td>";
+						messageInfo += "<td style='color:blue'>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>";
+						}
+					else{
+						messageInfo += "<tr id='detail_content' data-value="+jsonInfo.message[i].messageNo+"><td>"+jsonInfo.message[i].send_id+"</td>"
+						messageInfo += "<td>"+jsonInfo.message[i].content+"</td>";
+						messageInfo += "<td>"+jsonInfo.message[i].send_time.replace(".",":")+"</td>";
+						}
+					
+				}
+				if(jsonInfo.message.read_yn==0){
+					$("#detail_content").css()
 				}
 				$(".table_h_h").html(messageInfo);
 				page();
@@ -109,6 +149,7 @@ $(function(){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
           });
+		
 	});
 	
 	function page() {
@@ -151,13 +192,6 @@ $(function(){
 			    nowp = 0;      // 한번만 페이징 생성
 			    endp = numPages;
 			   }
-			   
-			   // [처음]
-			   $('<br /><span class="page-number" cursor: "pointer">[처음]</span>').bind('click', {newPage: page},function(event) {
-			          currentPage = 0;   
-			          $table.trigger('repaginate');  
-			          $($(".page-number")[2]).addClass('active').siblings().removeClass('active');
-			      }).appendTo($pager).addClass('clickable');
 			    // [이전]
 			      $('<span class="page-number" cursor: "pointer">&nbsp;&nbsp;&nbsp;[이전]&nbsp;</span>').bind('click', {newPage: page},function(event) {
 			          if(currentPage == 0) return; 
@@ -165,26 +199,12 @@ $(function(){
 			    $table.trigger('repaginate'); 
 			    $($(".page-number")[(currentPage-nowp)+2]).addClass('active').siblings().removeClass('active');
 			   }).appendTo($pager).addClass('clickable');
-			    // [1,2,3,4,5,6,7,8]
-			   for (var page = nowp ; page < endp; page++) {
-			    $('<span class="page-number" cursor: "pointer" style="margin-left: 8px;"></span>').text(page + 1).bind('click', {newPage: page}, function(event) {
-			     currentPage = event.data['newPage'];
-			     $table.trigger('repaginate');
-			     $($(".page-number")[(currentPage-nowp)+2]).addClass('active').siblings().removeClass('active');
-			     }).appendTo($pager).addClass('clickable');
-			   } 
 			    // [다음]
 			      $('<span class="page-number" cursor: "pointer">&nbsp;&nbsp;&nbsp;[다음]&nbsp;</span>').bind('click', {newPage: page},function(event) {
 			    if(currentPage == numPages-1) return;
 			        currentPage = currentPage+1;
 			    $table.trigger('repaginate'); 
 			     $($(".page-number")[(currentPage-nowp)+2]).addClass('active').siblings().removeClass('active');
-			   }).appendTo($pager).addClass('clickable');
-			    // [끝]
-			   $('<span class="page-number" cursor: "pointer">&nbsp;[끝]</span>').bind('click', {newPage: page},function(event) {
-			           currentPage = numPages-1;
-			           $table.trigger('repaginate');
-			           $($(".page-number")[endp-nowp+1]).addClass('active').siblings().removeClass('active');
 			   }).appendTo($pager).addClass('clickable');
 			     
 			     $($(".page-number")[2]).addClass('active');
@@ -194,13 +214,11 @@ $(function(){
 			   $table.trigger('repaginate');
 		});
 		
-		
 	}
 
 	/*받은 쪽지함에서 컬럼한개를 눌렀을때 상세페이지 로딩*/
 	$(document).on("click","#detail_content",function(){
 		var hi= $(this).attr("data-value");
-		alert(hi)
 		$.ajax({
 			type: "POST",
 			url : "selectDetailMessage.do",
@@ -209,9 +227,7 @@ $(function(){
 				$(".message_main").fadeOut("fast");
 				$(".container2_h").fadeIn("fast");
 				var jsonIn = JSON.parse(data);
-				alert(jsonIn.send_id);
 				$("#receiver_id").val(jsonIn.send_id).html("<span>"+jsonIn.send_time+"</span");
-				
 				$(".textsize").text(jsonIn.content);
 			},error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -226,7 +242,6 @@ $(function(){
 		url : "insertMessage.do",
 		data : {"receiver_id" : $("#real_receiver_id").val(), "content" : $(".textsize").val() },
 		success : function(data,textStatus,jqXHR) {
-			alert(data);
 			if(data==1){
 				alert("받는이 아이디를 확인하세요")
 			}else{
@@ -259,7 +274,9 @@ $(function(){
 				}
 			});	
 			
-		}else{alert("삭제안해")}
+		}else{
+			return false;
+		}
 		
 	});
 	
@@ -270,7 +287,6 @@ $(function(){
 		}else{
 			return false;
 		}
-		
 	});
 });
 </script>
@@ -327,16 +343,14 @@ $(function(){
 						<thead>
 							<tr>
 								<td width="15%">보낸 사람</td>
-								<td width="60%">제 목</td>
+								<td width="60%">내 용</td>
 								<td width="15%">받은 시간</td>
-								<td width="10%">읽음 유무</td>
 							</tr>
 						</thead>
 						<tbody class="table_h_h">
 						</tbody>
 					</table>
 				</div>
-				<span>[1]</span>
 			</div>
 			<div align="right" class="bottom_button">
 				<button type="button" class="message_send_h hover_button_h">쪽지 쓰기</button>

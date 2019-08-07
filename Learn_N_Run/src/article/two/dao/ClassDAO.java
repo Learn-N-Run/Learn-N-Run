@@ -8,12 +8,12 @@ import dto.CategoryDTO;
 import dto.ClassDTO;
 import dto.CurriculumDTO;
 import dto.JjimDTO;
-
+import dto.SubjectDTO;
 
 public interface ClassDAO {
 
 	// 클래스 생성부분.
-	void addClass(String id);
+	int addClass(String id);
 
 	/*
 	 * Class생성 클릭시 Class정보를 추가시킴. sql = "INSERT INTO class (cre_id) VALUES (?);
@@ -75,7 +75,7 @@ public interface ClassDAO {
 	 * "SET no=?,cover_img,title,detail_~ category_no = (SELECT no FROM category where name=?);"
 	 * "SELECT * FROM curriculum where class_no=?";
 	 */
-	void delClass(ClassDTO dto);
+	void delClass(int classNo);
 	/*
 	 * Class table에 저장되어 있는 No값을 삭제해버림. 고유 No삭제하면, 자동으로 하위항목까지 모두 삭제되는지 확인까지 필수.
 	 * ClassBean 삭제하면 클래스 하위 항목들 삭제될 수있게. sql = "DELETE FROM class WHERE no=?";
@@ -83,7 +83,7 @@ public interface ClassDAO {
 	 */
 
 	// 클래스 상세보기 페이지
-	ClassDTO classInfo(int no);
+	CurriculumDTO classInfo(int no);
 	/*
 	 * 메인 content영역 + 우측 nav바 영역 여기서 내페이지도 수강신청 가능한지 회의해보기.아니면 select 한번 더해야함. sql =
 	 * SELECT c.cover_img, ct.name, c.detail_category, c.material_img, c.tuition, c.material_content, c.content, u.creator_url, u.nickname 
@@ -94,7 +94,7 @@ public interface ClassDAO {
 	 * WHERE c.no = ?;
 	 */
 
-	List<CategoryDTO> categoryInfo(CategoryDTO dto);
+	Vector<CurriculumDTO> categoryInfo(CurriculumDTO cudto);
 	/*
 	 * 비슷한 카테고리 sql = "SELECT c.comver_img, c.title FROM class c JOIN category ct ON
 	 * c.category_no = ct.no WHERE ct.name=? ORDER BY LIMIT 4;"
@@ -107,4 +107,31 @@ public interface ClassDAO {
 	 */
 
 	Vector<JjimDTO> jjimRegiter(String userid, int classno);
+
+
+	//crt_classList.jsp 페이지에서 모든 클래스 List 보여주기
+	Vector<ClassDTO> getAllClassList(String id);
+
+	Vector<JjimDTO> deleteJjim(int jjimno, String userid);
+
+	int jjimchk(String userid, int classno);
+
+	Vector<JjimDTO> selJjim(String userid);
+
+	Vector<JjimDTO> jjimRegister(String userid, int classno);
+	
+	Vector<SubjectDTO> curriInfo(CurriculumDTO cudto);
+
+	ClassDTO curriCulumInfo(int classNo);
+	
+	int buychk(String userid, int no);
+	
+	CurriculumDTO getCurriNum(int classNo);
+
+	Vector<SubjectDTO> subjectInfo(int curriNo);
+
+	ClassDTO ModifyClass(ClassDTO dto,  int classNo, int curriNo);
+
+	
+	
 }

@@ -71,7 +71,6 @@
 		});
 			
 		$("#receive_coupon1_h").click(function() {
-			alert($("#code_check").val() + $(".EmailNumber_h").val() )
 			if( $("#code_check").val() == $(".EmailNumber_h").val() ){
 				location.href="coupon1_register_h.do";
 			}else{
@@ -128,7 +127,7 @@
 	
 	.event_wrap{
 		margin : 100px auto;
-		background-image: url('img/event2.png');
+		background-image: url('/Learn_N_Run/article1/img/event2.png');
 		width: 90%;
 		height: 1200px;
 		background-size: 100% 100%;
@@ -137,7 +136,7 @@
 	}
 
 	.event_wrap1{
-		background-image: url('img/event1.png');
+		background-image: url('/Learn_N_Run/article1/img/event1.png');
 		width: 90%;
 		height: 1200px;
 		background-size: 100% 100%;
@@ -146,7 +145,7 @@
 
 	.event_wrap2{
 		margin: 50px 50px 50px 50px;
-		background-image: url('img/event3.png');
+		background-image: url('/Learn_N_Run/article1/img/event3.png');
 		width: 90%;
 		height: 1200px;
 		background-size: 100% 100%;

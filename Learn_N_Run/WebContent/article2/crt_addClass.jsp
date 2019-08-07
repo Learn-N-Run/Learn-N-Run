@@ -1,28 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--페이지인코딩 --%><%request.setCharacterEncoding("UTF-8"); %>
-<%--프로젝트경로선언--%><c:set var="contextpath" value="${pageContext.request.contextPath}"/>
+<%--페이지인코딩 --%>
+<%request.setCharacterEncoding("UTF-8"); %>
+<%
+	int classNo = Integer.parseInt(request.getParameter("classNo"));
+%>
+
+<%--프로젝트경로선언--%>
+<c:set var="contextpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width">
+<!--외부참조(script.js, style.css) START LINE -->
+<link rel="stylesheet" href="./css/style.css">
+<script src="./js/script.js"></script>
 <!--JQUERY(1EA), BOOTSTRAP(2EA) CDN START LINE-->
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="css/crt_addClass.css?a">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<!--외부참조 + CDN END -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/crt_addClass.css?a">
 <title>클래스 생성</title>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!--외부참조 + CDN END -->
 <script type="text/javascript">
 
 // 이미지 파일 첨부시 미리보기 기능을 구현하는 함수
 function read_1(input){ // <input type = "file"> 태그 매개변수로 전달 받음
-	console.debug(input);
-	console.debug(input.files);
+	/* console.debug(input);
+	console.debug(input.files); */
 	
 	//참고 :
 	//<input type = "file">인 태그 객체의 files속성을 호출하면
@@ -46,7 +53,7 @@ function read_1(input){ // <input type = "file"> 태그 매개변수로 전달 �
 		reader.readAsDataURL(input.files[0]);
 		
 		reader.onload = function(ProgressEvent){
-				console.debug(ProgressEvent)
+				/* console.debug(ProgressEvent) */
 				
 				//id가 preview인 <img> 태그에 attr메소드를 이용해
 				// 파일 첨부 시 미리보기 이미지를 나타내기 위해
@@ -57,7 +64,6 @@ function read_1(input){ // <input type = "file"> 태그 매개변수로 전달 �
 				
 		}
 	}
-	
 }
 
 function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 받음
@@ -97,35 +103,21 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 				
 		}
 	}
-	
 }
+
+
 
 
 </script>
 
 </head>
 <body>
-
+	
 <!-- header 부분 -->
-<jsp:include page="/1_Include/header.jsp"></jsp:include>
-
+<jsp:include page="/1_Include/header.jsp" />
 <div id="wrap">
-
-	<section id="sec05">
- 	<ul id="side_bar">
- 			<label>카테고리 분류</label>
-			<li class="list"><a>개인정보수정</a></li>
-			<li class="list"><a>내클래스</a></li>
-			<li class="list"><a>클래스수강목록</a></li>
-			<li class="list"><a>찜목록</a></li>
-			<li class="list"><a>쪽지함</a></li>
-			<li class="list"><a>댓글관리</a></li>
-			<li class="list"><a>로그아웃</a></li>
-			<li class="list"><a>회원탈퇴</a></li>
-			<li class="list"><a>쿠폰함</a></li>
-		</ul>
- 	</section>
- 
+	<section id = "sec05">
+	</section>	
  	<!-- section1,2,3을 감싸는 wrap2 -->
  	<div id="wrap2">
 		<section id="sec01">
@@ -167,14 +159,26 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 				<%-- 첨부할 다른 이미지 파일을 선택해서 변화가 일어나면 
 					 readURL이라는 함수 호출시 변화가 일어난 input태그 전달
 					 --%>
-					<td><input type="file" name = "cover_img" onchange = "read_1(this)"></td>
+					<td>
+					<input type="file" name = "cover_img" onchange = "read_1(this)">
+					</td>
 			</tr>
 			
 			<tr>
 				<td colspan = "2">클래스 제목 추가</td>
 			</tr>
+			
 			<tr>
 				<td colspan = "2"><input type="text" id = "cla_title" size = "50" name = "title"></td>
+			</tr>
+			
+			<tr>
+				<td colspan = "2">클래스 소개글 추가</td>
+			</tr>
+			<tr>
+				<td colspan = "2">
+					<textarea name = "content"  cols = "100" rows = "5" placeholder="크리에이터님 소개와 클래스에 대한 간략한 소개 부탁드립니다."></textarea>
+				</td>
 			</tr>
 			
 			<tr>
@@ -207,14 +211,7 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 				</td>
 			</tr>
 			
-			<tr>
-				<td colspan = "2">클래스 상세 정보 추가</td>
-			</tr>
-			<tr>
-				<td colspan = "2">
-					<input type="text" size = "50" name = "content" >
-				</td>
-			</tr>
+			
 			
 			<tr>
 				<td colspan = "2">클래스 준비물 정보 추가
@@ -226,7 +223,7 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 					<%-- 첨부할 다른 이미지 파일을 선택해서 변화가 일어나면 
 						 readURL이라는 함수 호출시 변화가 일어난 input태그 전달
 					 --%>
-					<input type="file" name = "material_img" onchange = "read_2(this)">
+					<input type="file" name = "material_img" onchange = "read_2(this);">
 				</td>	
 			</tr>
 			
@@ -243,14 +240,14 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 		<input type="reset" class="btn_pre1" value="Reset">
 		<input type="submit" class="btn_next1" value="Next">
 	</div>
-		
+	<input type="hidden" name="classNo" value=<%=classNo%>>	
 		</form>
 	<!-- wrap2끝나는 부분 -->
 	
 	
 </div>
 <!-- wrap끝나는 부분 -->
-
+<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>

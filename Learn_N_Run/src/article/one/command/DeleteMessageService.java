@@ -17,7 +17,6 @@ public class DeleteMessageService implements Service {
 		response.setContentType("text/html;charset=UTF-8");
 		
 		int messageNo = Integer.parseInt(request.getParameter("messageNo"));
-		System.out.println(messageNo);
 		UserDAIOImpl dao = new UserDAIOImpl();
 		dao.delMessage(messageNo);
 	}

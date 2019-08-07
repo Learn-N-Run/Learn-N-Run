@@ -1,5 +1,6 @@
 package article.one.dao;
 
+import java.awt.print.Printable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,8 +66,7 @@ public class UserDAIOImpl implements UserDAO{
 			}
 	}
 	
-
-	
+	/*회원가입*/
 	@Override
 	public int addUser(UserDTO dto) {
 		int result = 0; // 0: 실패, 1: 성공
@@ -87,7 +87,7 @@ public class UserDAIOImpl implements UserDAO{
                 sql = "INSERT INTO COUPON(user_id,sale1,sale2,sale3) values(?,0,0,0)";
                 
                 pstmt = con.prepareStatement(sql);
-                pstmt.setString(1, dto.getName());
+                pstmt.setString(1, dto.getId());
                 
                 pstmt.executeUpdate();
             }
@@ -99,11 +99,32 @@ public class UserDAIOImpl implements UserDAO{
 		}
 		return result;
 	}
-		
-
+	/*회원수정1*/
 	@Override
-	public void updateUser(UserDTO dto) {
-		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=?, ";	
+	public int updateUser(UserDTO dto) {
+		int result = 0;
+				
+		try {
+			con = getConnection();
+			sql="UPDATE user SET pass=?, email=? WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getPass());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getId());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("updateUser() 오류: " + e);
+		} finally {
+			freeResource();
+		}
+		return result;
+	}
+	
+	/*회원수정2*/
+	@Override
+	public int updateCreator(UserDTO dto) {
+		int result = 0;
+		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=? where id=?";	
 		
 		try {
 			con = getConnection();
@@ -114,15 +135,18 @@ public class UserDAIOImpl implements UserDAO{
 			pstmt.setString(4, dto.getProfile_img());
 			pstmt.setString(5, dto.getNickname());
 			pstmt.setInt(6, dto.getNumber());
-			pstmt.executeUpdate();
+			pstmt.setString(7, dto.getId());
+			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("updateUser오류: " + e);
+			System.out.println("updateCreator() 오류: " + e);
+			e.printStackTrace();
 		} finally {
 			freeResource();
 		}
-		
+		return result;
 	}
 	
+	/*회원탈퇴*/
 	@Override
 	public int delUser(String id, String pass) {
 		int result = 0;
@@ -142,18 +166,19 @@ public class UserDAIOImpl implements UserDAO{
 		}
 		return result;	
 	}
-	//아이디 중복검사 메소드
+	
+	/*아이디 유효성*/
 	@Override
 	public int idCheck(String id) {
-		int result = 1;
+		int result = 0;
 		try {
 			con = getConnection();
-			sql = "select * from user where id = ?";
+			sql = "SELECT * FROM user WHERE id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) result = 0;
+			if(rs.next()) result=1;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -162,14 +187,43 @@ public class UserDAIOImpl implements UserDAO{
 		}
 		return result;
 	}
+	
+	//정보수정, 탈퇴
+		@Override
+		public int pwdCheck(UserDTO dto) {
+				int check = 0;
+				try {
+					con = getConnection();
+					sql = "select pass from user where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getId());
+					rs = pstmt.executeQuery();
 
-	//로그인 시 아이디체크 메소드
+					if (rs.next()) {
+						if (dto.getPass().equals(rs.getString("pass"))) {
+							check = 1;
+						} else { 
+							check = 0; 
+						}
+					} else { 
+						check = -1;
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					freeResource();
+				}
+				return check;
+		}
+	
+	//로그인 시 아이디,비밀번호
 	@Override
 	public int userCheck(String id, String pass) {
 			int check = 0;
 			try {
 				con = getConnection();
-				sql = "select* from user where id=?";
+				sql = "select * from user where id=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
@@ -193,12 +247,6 @@ public class UserDAIOImpl implements UserDAO{
 	}
 
 	@Override
-	public int emailCheck(String email) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public UserDTO UserInfo(String id) {
 		// TODO Auto-generated method stub
 		return null;
@@ -209,11 +257,30 @@ public class UserDAIOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	//크리에이터 신청 처리
 	@Override
-	public int updateCreator(UserDTO bean) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int AddCreator(UserDTO dto) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql="UPDATE user SET email=?, creator_url=?, profile_img=?, nickname=?, number=?, user_group_no=2 WHERE id=? AND name=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getEmail());
+			pstmt.setString(2, dto.getCreator_url());
+			pstmt.setString(3, dto.getProfile_img());
+			pstmt.setString(4, dto.getNickname());
+			pstmt.setInt(5, dto.getNumber());
+			pstmt.setString(6, dto.getId());
+			pstmt.setString(7, dto.getName());
+			result = pstmt.executeUpdate();
+						
+		} catch (Exception e) {
+			System.out.println("AddCreator() " + result);
+		} finally {
+			freeResource();
+		}
+		return result;
 	}
 
 	//메세지 보내기
@@ -297,7 +364,7 @@ public class UserDAIOImpl implements UserDAO{
 		ArrayList<MessageDTO> list = new ArrayList<MessageDTO>();
 		try {
 			con = getConnection();
-			sql = "select* from message where receiver_id=? order by send_time";
+			sql = "select* from message where receiver_id=? order by send_time desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -312,7 +379,6 @@ public class UserDAIOImpl implements UserDAO{
 				dto.setContent(rs.getString("content"));
 				dto.setSend_time(rs.getTimestamp("send_time"));
 				dto.setRead_yn(rs.getInt("read_yn"));
-				System.out.println(dto);
 				list.add(dto);
 			}
 
@@ -481,11 +547,8 @@ public class UserDAIOImpl implements UserDAO{
 						+ "values(?,(select no from receiver_info order by no desc limit 1),?,now(),?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
-				System.out.println(id);
 				pstmt.setInt(2, bean.getLast_tuition());
-				System.out.println(bean.getLast_tuition());
 				pstmt.setInt(3, classNo);
-				System.out.println(classNo);
 				int result2 = pstmt.executeUpdate();
 				if(result2 == 1) {
 					if(cdto.getSale1()==1) {
@@ -632,9 +695,10 @@ public class UserDAIOImpl implements UserDAO{
 		return email;
 	}
 
+	//내가 구매한 클래스 정보 확인
 	public List getMyclassInfo(String id) {
 		ArrayList list = new ArrayList();	
-        sql = "SELECT c.cover_img,c.title, c.title,b.order_date, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration_date, "
+        sql = "SELECT c.cover_img,c.no,c.title, c.title,b.order_date, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration_date, "
         		+ "cate.name FROM class c "
 				+ "JOIN buyer b ON (c.no=b.class_no) "
 				+ "JOIN user u ON (u.id=b.user_id) "
@@ -650,6 +714,7 @@ public class UserDAIOImpl implements UserDAO{
 				BuyerDTO bdto = new BuyerDTO();
 				BuyerDTO bdto1 = new BuyerDTO();
 				CategoryDTO catedto = new CategoryDTO();
+				cdto.setNo(rs.getInt("c.no"));
 				cdto.setCover_img(rs.getString("c.cover_img"));	
 				cdto.setTitle(rs.getString("c.title"));
                 bdto.setExpiration_date(rs.getTimestamp("expiration_date"));
@@ -672,6 +737,7 @@ public class UserDAIOImpl implements UserDAO{
 		return list;
 	}
 
+	//유저 그룹 값 가져고기
 	public int getUserGroup(String userid) {
 		int Group =0;
 		String sql ="SELECT user_group_no FROM user where id=?";
@@ -690,7 +756,8 @@ public class UserDAIOImpl implements UserDAO{
 		}
 		return Group;
 	}
-
+	
+	//유저 정보 가져오기, 유저수정시
 	public UserDTO getUserInfo(String id) {
 		String sql ="SELECT * FROM user where id=?";
 		UserDTO dto = new UserDTO();

@@ -2,7 +2,6 @@
 
 #wrap{
 	width: 100% 
-/* 	width: 1200px; */
 }
 
 /*왼쪽 bar*/
@@ -15,32 +14,7 @@
 	width: 15%;
 	border-right: 1px solid #dedede;
 }
-#side_bar label{
-	margin-bottom: 30px;
-	margin-top: 40px;
-	font-size: 22px;
-	margin-left: 30px;
-}
-#side_bar li{
-	width: 100%;
-	font-size: 16px;
-	line-height: 35px;
-	border-bottom: 1px solid #dedede;
-}
-#side_bar li:hover a{
-	text-decoration: none;
-	background-color: #9fcfff;
-	color: tomato;
-	font-weight: bold;
-	font-size: 18px;	
-}
-#side_bar li:hover{
-	background-color: #9fcfff;
-	
-}
-#side_bar li a{
-	color: black;
-}
+
 
 
 #wrap2{
