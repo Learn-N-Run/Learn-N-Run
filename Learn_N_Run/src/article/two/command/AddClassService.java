@@ -30,7 +30,7 @@ public class AddClassService implements Service{
 		ClassDAOImpl dao = new ClassDAOImpl();
 		int classNo = dao.addClass(id);
 				
-		forward.setPath("/Learn_N_Run/article2/crt_addClass.jsp?classNo="+classNo);
+		forward.setPath("crt_addClass.jsp?classNo="+classNo);
 		forward.setRedirect(true);
 		
 		return forward;

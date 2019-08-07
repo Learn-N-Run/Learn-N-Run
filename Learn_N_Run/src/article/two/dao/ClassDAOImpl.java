@@ -390,7 +390,7 @@ public class ClassDAOImpl implements ClassDAO{
 	          }
 	          if(result == 1){
 	        	  for(int i=0; i<saveFiles.size(); i++){
-	             	sql = "insert into subject(subject,url,curriculm_no) values(?,?,?)";
+	             	sql = "insert into subject(subject,url,curriculum_no) values(?,?,?)";
 		        	pstmt = con.prepareStatement(sql);
 		        	pstmt.setString(2, String.valueOf(saveFiles.get(i)));
 		        	pstmt.setString(1, subject[i]);
@@ -664,7 +664,7 @@ public class ClassDAOImpl implements ClassDAO{
 			con=getConnection();
 			
 			 sql = "select s.subject " + 
-			 		"from curriculum cu join subject s on s.curriculm_no = cu.no " + 
+			 		"from curriculum cu join subject s on s.curriculum_no = cu.no " + 
 			 		"where cu.no = ?";
 			
 			pstmt = con.prepareStatement(sql);
@@ -730,7 +730,113 @@ public class ClassDAOImpl implements ClassDAO{
 			
 		return classDto;
 	}
-	
 
+	@Override
+	public int buychk(String userid, int no) {
+		int bcheck = 0;
+		
+		try {
+	    	  con = getConnection();
+	    	  sql = "select * from buyer where user_id = ? and class_no = ?";
+	    	  pstmt = con.prepareStatement(sql);
+	    	  
+	    	  pstmt.setString(1, userid);
+	    	  pstmt.setInt(2, no);
+
+	    	  rs = pstmt.executeQuery();
+	    	  
+	    	  if(rs.next()) {
+	    		  bcheck = 1;
+	    	  }else {
+	    		  bcheck = -1;
+	    	  }
+	    	  
+	    	  
+	      }catch(Exception e) {
+	         System.out.println("buychk 메소드에서 오류 " + e.getMessage());
+	      }finally{
+	    	  freeResource();
+	      }
+		
+		return bcheck;
+	}
+	@Override
+	public ClassDTO ModifyClass(ClassDTO dto, int classNo, int curriNo) {
+		
+		try {
+			con = getConnection();
+			sql = "update class set title=?, detail_category=?, material_content=?, expiration=?, tuition=? where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getDetail_category());
+			pstmt.setString(3, dto.getMaterial_content());
+			pstmt.setInt(4, dto.getExpiration());
+			pstmt.setInt(5, dto.getTuition());
+			pstmt.setInt(6, classNo);
+			
+			pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.getMessage();
+		}finally{
+			freeResource();
+		}
+		
+		return null;
+	}
+
+	@Override
+	public CurriculumDTO getCurriNum(int classNo) {
+			CurriculumDTO curriDto = new CurriculumDTO();
+		try {
+			con= getConnection();
+			sql = "select * from curriculum where class_no=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			
+			rs= pstmt.executeQuery();
+			
+			while(rs.next()){
+				curriDto.setNo(rs.getInt("no"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		return curriDto;
+		
+	}
 	
+	@Override
+	public Vector<SubjectDTO> subjectInfo(int curriNo) {
+		Vector<SubjectDTO> v = new Vector<SubjectDTO>();
+		
+		try {
+			//커넥션 풀
+			con = getConnection();
+			//sql구문
+			sql = "select * from subject where curriculum_no=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, curriNo);
+			
+			rs= pstmt.executeQuery();
+			
+			while(rs.next()){
+				SubjectDTO subjectDto = new SubjectDTO();
+				subjectDto.setSubject(rs.getString("subject"));
+				subjectDto.setUrl(rs.getString("url"));	
+				v.add(subjectDto);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+			
+		return v;
+	}
+
 }//ClassDAOImpl 끝나는 부분

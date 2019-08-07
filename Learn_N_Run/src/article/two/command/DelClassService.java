@@ -27,7 +27,7 @@ public class DelClassService implements Service{
 		
 		out.println("<script>");
 		out.println("alert('클래스가 삭제 되었습니다.');");
-		out.println("location.href='getAllClassList.me';");
+		out.println("location.href='/Learn_N_Run/article2/crt_getAllClassList.me';");
 		out.println("</script>");
 		out.close();
 		

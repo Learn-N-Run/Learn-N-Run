@@ -41,7 +41,7 @@
 			<a href="event.do">이벤트 페이지로 이동</a>
 			<button type="button" id="buyClass_h">구매하기</button>
 			<a href="getUserInfo.do">내 정보 수정페이지로 이동</a>
-			<button onclick="location.href = 'classInfo.me?no=25'">클래스 확인</button>
+			<button onclick="location.href = '/Learn_N_Run/article2/classInfo.me?no=2'">클래스 확인</button>
 		</div>
 	</div>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>

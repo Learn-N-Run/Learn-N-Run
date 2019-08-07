@@ -45,13 +45,13 @@
 		    text-decoration: none;
 		}
 		.category_h ul li:HOVER{
-		    background: url('img/category.png');
+		    background: url('/Learn_N_Run/article1/img/category.png');
    			background-size: 100% 100%;
 			color: white;
 		}
 		
 		.category_h ul li:ACTIVE{
-			background: url("img/category.png");
+			background: url("/Learn_N_Run/article1/img/category.png");
    			background-size: 100% 100%;
 			color: white;
 		} 
@@ -60,7 +60,7 @@
 			text-align: center;
 			width: 50px;
 			height: 50px;
-			background: url('img/updown.png');
+			background: url('/Learn_N_Run/article1/img/updown.png');
 			background-size: 100% 100%;
 		}
 
@@ -69,15 +69,15 @@
 <body>
 		<div class="category_h">
 			<ul id="ul_h">
-				<a href="getUserInfo.do"><li>내정보</li></a>
-				<a href="getMyClassInfo.do"><li>내 수강목록</li></a>
+				<a href="/Learn_N_Run/article1/getUserInfo.do"><li>내정보</li></a>
+				<a href="/Learn_N_Run/article1/getMyClassInfo.do"><li>내 수강목록</li></a>
 				<a href="/Learn_N_Run/article2/jjim.me"><li>찜 목록</li></a>
 				<a href="javascript:;" id="coupon_h"><li>쿠폰함</li></a>
 				<c:if test="${sessionScope.Group == 1 }">
 				<a href="AddCreator.jsp"><li>크리에이터 지원</li></a>	
 				</c:if>
 				<c:if test="${sessionScope.Group == 2 }">
-				<a href="crt_getAllClassList.me" ><li>내 클래스</li></a>
+				<a href="${contextpath}/article2/crt_getAllClassList.me" ><li>내 클래스</li></a>
 				</c:if>
 				<a href="javascript:;" id="logout_h"><li>로그아웃</li></a>
 				<a href="${contextpath }/article1/signout.jsp"><li>회원탈퇴</li></a>

@@ -17,6 +17,7 @@ import article.two.command.DelClassService;
 import article.two.command.GetAllClassList;
 import article.two.command.JjimRegisterService;
 import article.two.command.JjimService;
+import article.two.command.ModifyClassService;
 import article.two.command.Service;
 import article.two.command.UpdateClassService;
 import article.two.command.UploadClassService;
@@ -78,7 +79,7 @@ public class Controller extends HttpServlet {
 		}else if (getCommand(request, response).equals("crt_deleteClass.me")) {
 			forward = new DelClassService();
 			action = forward.excute(request, response);
-			path="crt_classList.jsp";
+			
 		}else if (getCommand(request, response).equals("crt_getAllClassList.me")) {
 			forward = new GetAllClassList();
 			action = forward.excute(request, response);
@@ -96,6 +97,11 @@ public class Controller extends HttpServlet {
 		}else if (getCommand(request, response).equals("crt_curriCulumInfo.me")) {
 			forward = new CurriCulumInfoService();
 			action = forward.excute(request, response);	
+		}
+
+		else if (getCommand(request, response).equals("crt_modifyClass.me")) {
+			forward = new ModifyClassService();
+			action = forward.excute(request, response);
 		}
 		
 		

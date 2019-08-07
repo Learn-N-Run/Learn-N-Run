@@ -236,8 +236,7 @@
                           	<c:forEach var="list" items="${requestScope.MyclassList }">				
 								<tr>
 									<td>
-										<h1>${list.no }</h1>
-										<%-- <a href="/Learn_N_Run/article2/classInfo.me?no=${requestScope.no}"><div class="class_qwfqwf_h"><img src='img/${list.cover_img }'></div></a> --%>
+										<a href="/Learn_N_Run/article2/classInfo.me?no=${list.no}"><div class="class_qwfqwf_h"><img src='img/${list.cover_img }'></div></a>
 										<div class="class_qwf_h">${list.title }</div>
 									</td>
 									<td>${list.category.name }</td>

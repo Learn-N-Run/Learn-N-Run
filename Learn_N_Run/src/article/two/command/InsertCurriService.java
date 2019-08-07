@@ -41,7 +41,7 @@ public class InsertCurriService implements Service {
 		//1. 업로드할 파일의 경로 지정
 		String path = "D:\\메모장연습";
 		//2. 업로드하는 파일의 최대 크기를 제한(100MB)
-		int maxSize = 1024*1024*100;
+		int maxSize = 1024*1024*300;
 		//3. 업로드할 파일의 이름이 한글 파일일 경우 encoding설정
 		String encoding = "UTF-8";
 		

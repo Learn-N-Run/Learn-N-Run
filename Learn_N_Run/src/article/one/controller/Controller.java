@@ -55,7 +55,7 @@ public class Controller extends HttpServlet {
 		if (getCommand(request, response).equals("login.do")) {
 			LoginCheckService forward = new LoginCheckService();
 			forward.excute(request, response);
-			path="mainEx.jsp";
+			path="/article1/mainEx.jsp";
 			
 		}else if (getCommand(request, response).equals("selectMessage.do")) {
 			SelectMessageService forward = new SelectMessageService();
@@ -110,7 +110,7 @@ public class Controller extends HttpServlet {
 		}else if (getCommand(request, response).equals("buyersubmit.do")) {
 			InsertbuyClassService forward = new InsertbuyClassService();
 			forward.excute(request, response);
-			path="mainEx.jsp";
+			path="/article1/mainEx.jsp";
 			
 		}else if (getCommand(request, response).equals("join.do")) {
 			JoinRegisterService forward = new JoinRegisterService();
@@ -127,7 +127,7 @@ public class Controller extends HttpServlet {
 		}else if (getCommand(request, response).equals("delUser.do")) {
 			delUserService forward = new delUserService();
 			forward.excute(request, response);
-			path="mainEx.jsp";
+			path="/article1/mainEx.jsp";
 			
 		}else if (getCommand(request, response).equals("updateUser.do")) {
 			updateUser forward = new updateUser();

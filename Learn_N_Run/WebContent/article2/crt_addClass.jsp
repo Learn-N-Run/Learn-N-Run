@@ -116,7 +116,8 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 <!-- header 부분 -->
 <jsp:include page="/1_Include/header.jsp" />
 <div id="wrap">
-		
+	<section id = "sec05">
+	</section>	
  	<!-- section1,2,3을 감싸는 wrap2 -->
  	<div id="wrap2">
 		<section id="sec01">

@@ -45,7 +45,7 @@ public class deleteJjimService implements Service {
 		System.out.println(userid);
 		System.out.println(jjimno);
 		
-		forward.setPath("/Learn_N_Run/article2/jjim.jsp");
+		forward.setPath("/article2/jjim.jsp");
 		
 		forward.setRedirect(false);
 		

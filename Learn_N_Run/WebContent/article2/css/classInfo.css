@@ -5,7 +5,7 @@
 
 	 margin: 0 auto;
 
-	 width: 1280px;
+	 width: 1200px;
 	}
 	
 	/*section 안에 div태그 */
@@ -24,7 +24,7 @@
 	
 	/*전체화면 우측 컨텐츠*/
 	#submit_c{
-  		 width: 340px;
+  		 width: 300px;
   		 background-color: white;
   		 border : 1px solid;
   		 position: fixed;
@@ -55,6 +55,7 @@
 	/*닉네임 표시 영역*/
 	.nick_c{
 	height: 35px;
+	font-size: 25px;
 	}
 	
 	
@@ -168,11 +169,9 @@
 		font-size: 20px;
 		color: white;
 		margin-top: 5%;
-		width: 338px; 
+		width: 298px; 
 		height: 60px;
 		border-radius: 5%;	
-		
-		
 		
 		font-family: 'Jua', sans-serif;
 		
@@ -183,8 +182,26 @@
 }
 	
 	
+	.curi_img_c{
+		width: 300px;
+		height: 200px;
+	}
 	
+	.topic_c{
+		text-overflow: ellipsis;
+ 	 	display: -webkit-box;
+   		-webkit-line-clamp: 3;
+  		-webkit-box-orient: vertical;
+  	 	overflow-wrap: break-word;
+		overflow: hidden;
+		color: rgb(133, 138, 141);
+		font-size: 28px;
+	}
 	
+	.subject_c{
+		
+		font-size: 20px;
+	}
 	
 	
 	

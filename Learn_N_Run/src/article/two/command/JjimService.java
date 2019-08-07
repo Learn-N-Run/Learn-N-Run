@@ -44,7 +44,7 @@ public class JjimService implements Service{
 		
 		System.out.println(userid);
 		
-		forward.setPath("jjim.jsp");
+		forward.setPath("/article2/jjim.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

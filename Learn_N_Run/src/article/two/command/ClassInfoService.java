@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import article.two.dao.ClassDAOImpl;
 import dto.ClassDTO;
@@ -25,24 +25,29 @@ public class ClassInfoService implements Service{
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		int no = Integer.parseInt(request.getParameter("no"));
+		HttpSession session = request.getSession();
 		
+		String userid = (String) session.getAttribute("id");
+		
+		
+		int no = Integer.parseInt(request.getParameter("no"));
+	
 		
 		//ClassDAOImpl, ClassDTO 객체 생성
 		ClassDAOImpl dao = new ClassDAOImpl();
 		
 		CurriculumDTO cudto =  dao.classInfo(no);
 		
-		
-	
-		
 		Vector<CurriculumDTO> catev = dao.categoryInfo(cudto);
 		
 		Vector<SubjectDTO> suv = dao.curriInfo(cudto);
 		
+		int bcheck  = dao.buychk(userid, no);
+		
 		request.setAttribute("cudto", cudto);
 		request.setAttribute("catev", catev);
 		request.setAttribute("suv", suv);
+		request.setAttribute("bcheck", bcheck);
 		
 		System.out.println(no);
 		System.out.println(cudto.getClassinfo().getCategory().getName());
@@ -50,7 +55,7 @@ public class ClassInfoService implements Service{
 		System.out.println(cudto.getMajor_topic());
 		System.out.println(cudto.getNo());
 		
-		forward.setPath("/Learn_N_Run/article2/classInfo.jsp");
+		forward.setPath("classInfo.jsp");
 		forward.setRedirect(false);
 		
 		

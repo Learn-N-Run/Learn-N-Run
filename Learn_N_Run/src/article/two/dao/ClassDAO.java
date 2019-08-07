@@ -123,4 +123,15 @@ public interface ClassDAO {
 	Vector<SubjectDTO> curriInfo(CurriculumDTO cudto);
 
 	ClassDTO curriCulumInfo(int classNo);
+	
+	int buychk(String userid, int no);
+	
+	CurriculumDTO getCurriNum(int classNo);
+
+	Vector<SubjectDTO> subjectInfo(int curriNo);
+
+	ClassDTO ModifyClass(ClassDTO dto,  int classNo, int curriNo);
+
+	
+	
 }

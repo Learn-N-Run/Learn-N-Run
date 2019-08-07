@@ -181,7 +181,6 @@ function register(){
 	</div>
 </div>
 	<%--인클루드 카테고리 ,footer영역 --%>
-	<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 	<jsp:include page="../1_Include/footer.jsp"></jsp:include>
 
 </body>

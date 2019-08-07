@@ -20,7 +20,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel = "stylesheet" href = "css/classInfo.css">
+<link rel = "stylesheet" href = "${contextpath}/article2/css/classInfo.css">
 <link rel = "stylesheet" href = "css/bootstrap.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -50,10 +50,10 @@
 			
 			
 			
-			<!-- 화면 줄였을 때 생기는 좌측에 보여지는 #submit영역  -->
+			<!-- 화면 줄였을 때 중앙에 보여지는 #submit영역  -->
 			<section class = "submit_cc">
 			
-				<div class = "nick_c"><h5>By. ${cudto.classinfo.creator.nickname}</h5></div>
+				<div class = "nick_c">By. ${cudto.classinfo.creator.nickname}</div>
 				<hr>
 				<div class = "title_c">
    							${cudto.classinfo.title}</div>
@@ -72,6 +72,8 @@
 				<hr>
 				
 				<table  style="width: 100%;">
+				
+				<c:if test="${bcheck == -1 }">
 					<tr>
 						<td colspan="2">
 							<fmt:formatNumber var="tuition" value = "${cudto.classinfo.tuition}" pattern="###,###"/>
@@ -80,16 +82,29 @@
 							</h2>
 						</td>
 					</tr>
+					</c:if>
 					
 					<tr>
+					<c:if test="${bcheck == -1}">
 						<td width="50%;">
 							<div>
 								<button class = "jjimnsubmit_c" onclick = "location.href='jjimRegister.me?no=${cudto.classinfo.no}'" >찜하기</button>
 							</div>
 						</td>
 						<td width="50%;">
-							<button class = "jjimnsubmit_c" onclick = "location.href = 'buyClassInfo.do?classno=${cudto.classinfo.no}'" >신청하기</button>
+							<button class = "jjimnsubmit_c" onclick = "location.href = 'buyClassInfo.do?classno=${cudto.classinfo.no}'">신청하기</button>
 						</td>
+					</c:if>
+					<c:if test="${bcheck == 1}">
+						<td width="50%;">
+							<div>
+								<button class = "jjimnsubmit_c" onclick = "location.href='jjimRegister.me?no=${cudto.classinfo.no}'" >찜하기</button>
+							</div>
+						</td>
+						<td width="50%;">
+							<button class = "jjimnsubmit_c" onclick = "#">강의 듣기</button>
+						</td>
+					</c:if>
 					</tr>	
 				</table>
 				
@@ -101,7 +116,7 @@
 				<input type="hidden" name="calsstuition" id="classtuitionid" value="${cudto.classinfo.tuition}">
 				
 			</section>
-			<!-- 화면 줄였을 때 생기는 좌측에 보여지는 #submit영역  끝-->
+			<!-- 화면 줄였을 때 중앙에 보여지는 #submit영역  끝-->
 			
 			<!-- 클래스 상세보기 페이지마다 보여지는 고정 이미지 -->
 			<section style="margin-bottom : 15px; width: 100%; height: 350px; background-color: #fff;  background: url('img/class_class.PNG'); background-size: 100% 100%; margin-top: 15px;"></section> 
@@ -115,20 +130,19 @@
 			<!-- 커리큘럼 소개 영역 -->
 			<section>
 				<h3>●) 커리큘럼 소개</h3><br>
-				<img alt="" src="upload/${cudto.thumbnail}">
-				<h4>${cudto.major_topic}</h4>
+				<img alt="" src="upload/${cudto.thumbnail}" class ="curi_img_c">
+				
+				<span class = "topic_c">${cudto.major_topic}</span> <br>
+				
 					<c:forEach var = "suv" items="${requestScope.suv}">
-					★ ${suv.subject}<br>
+						<font class = "subject_c">★ ${suv.subject}</font> <br><br>
 					</c:forEach>
+					
 			</section>
 			
 			<hr>
 			
-			<!-- 클래스 상세보기 댓글 추가해야 함-->
-			<section>
-				<h3>●) 댓글영역</h3>
-			</section>
-			<hr>
+			
 			
 		
 			<!-- 크리에이터 url 영역 -->
@@ -150,12 +164,12 @@
 					
 					<tr>
 						<td height="200">
-							<img alt="" src="upload/${cudto.classinfo.material_img}" width="30%" height="100%">
+							<img alt="" src="upload/${cudto.classinfo.material_img}" width="30%" height="85%">
 						</td>
 					</tr>
 					
 					<tr>
-						<td style = "font-family: 'Jua', sans-serif;">▷ ${cudto.classinfo.material_content}</td>
+						<td style = "font-size: 25px; font-family: 'Jua', sans-serif;">▷ ${cudto.classinfo.material_content}</td>
 					</tr>
 			</table>
 			</section>
@@ -182,6 +196,13 @@
 			</c:forEach>
 			
 			</section> 
+			<hr>
+			
+			<!-- 클래스 상세보기 댓글 추가해야 함-->
+			<section>
+				<h3>●) 댓글영역</h3>
+			</section>
+			<hr>
 			
 		</div>
 		
@@ -210,23 +231,30 @@
 					</tr>
 					<tr>
 						<td>
-							<img alt="" src="upload/${cudto.classinfo.material_img}" width="300px" height="200px">
+							<img alt="" src="upload/${cudto.classinfo.material_img}" width="298px" height="180px">
 						</td>
 					</tr>
 					<tr>
-						<td style = "font-family: 'Jua', sans-serif;">▷ ${cudto.classinfo.material_content}</td>
+						<td style = "font-size: 25px; font-family: 'Jua', sans-serif;">▷ ${cudto.classinfo.material_content}</td>
 					</tr>
 				</table>
 				
 				<!-- 준비물 kit 표시  끝-->
-				
+				<c:if test="${bcheck == -1}">
 				<div>
 					<button class = "jjimnsubmit_c" onclick = "location.href='jjimRegister.me?no=${cudto.classinfo.no}'">찜하기</button>
 				</div>
 				<div>
 					<button class = "jjimnsubmit_c" onclick = "location.href = 'buyClassInfo.do?classno=${cudto.classinfo.no}'" > 수강료 : ￦ ${tuition} <br> 신청하기</button>
 				</div>
-				
+				</c:if>
+				<c:if test="${bcheck == 1}">
+				<div>
+					<button class = "jjimnsubmit_c" onclick = "location.href='jjimRegister.me?no=${cudto.classinfo.no}'">찜하기</button>
+				</div>
+				<div>
+					<button class = "jjimnsubmit_c" onclick = "#">강의 듣기</button>
+				</c:if>
 				
 				
 			</div>		
@@ -234,9 +262,7 @@
 		<!-- 페이지 우측 표시 컨텐츠 끝-->
 	</section>
 	
-	<%
-		session.setAttribute("id", "normal");
-	%>
+	
 	
 </div>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>

@@ -49,7 +49,7 @@
 <!-- 페이지 전체를 감싸는 div 영역 -->
 <div id="wrap">
 
-<form action="crt_classList.me" method="post">
+<form action="/Learn_N_Run/article2/crt_classList.me" method="post">
 
    <!-- 첫번째 section영역 -->
 	<div class = "sec01">
@@ -78,7 +78,6 @@
 						</button>
 						<div class="toggle1">
 							<a href="#" onClick="delete_class(${classList.no})">삭제하기</a>
-							<a href="#" onClick="modify_class()">수정하기</a>
 						</div>
 					</div>
 				</div>

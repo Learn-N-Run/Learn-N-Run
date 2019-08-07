@@ -49,7 +49,7 @@ public class JjimRegisterService implements Service{
 			
 			System.out.println(result);
 			
-			forward.setPath("jjim.jsp");
+			forward.setPath("/article2/jjim.jsp");
 			forward.setRedirect(false);
 			
 			return forward;
@@ -68,7 +68,7 @@ public class JjimRegisterService implements Service{
 		System.out.println(classno);
 		System.out.println(result);
 		
-		forward.setPath("/Learn_N_Run/article2/jjim.jsp");
+		forward.setPath("/article2/jjim.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

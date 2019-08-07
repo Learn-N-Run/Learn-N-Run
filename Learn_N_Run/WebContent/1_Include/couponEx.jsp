@@ -84,17 +84,17 @@ $(function() {
 		}
 		
 		.coupon1{
-			background: url("img/5000coupon.png");
+			background: url("/Learn_N_Run/article1/img/5000coupon.png");
 			background-size: 100% 100%;
 		}
 		
 		.coupon2{
-			background: url("img/7000coupon.png");
+			background: url("/Learn_N_Run/article1/img/7000coupon.png");
 			background-size: 100% 100%;
 		}
 		
 		.coupon3{
-			background: url("img/10000coupon.png");
+			background: url("/Learn_N_Run/article1/img/10000coupon.png");
 			background-size: 100% 100%;
 		}
 
