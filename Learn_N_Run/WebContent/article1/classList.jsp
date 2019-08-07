@@ -236,7 +236,8 @@
                           	<c:forEach var="list" items="${requestScope.MyclassList }">				
 								<tr>
 									<td>
-										<div class="class_qwfqwf_h"><img src='img/${list.cover_img }'></div>
+										<h1>${list.no }</h1>
+										<%-- <a href="/Learn_N_Run/article2/classInfo.me?no=${requestScope.no}"><div class="class_qwfqwf_h"><img src='img/${list.cover_img }'></div></a> --%>
 										<div class="class_qwf_h">${list.title }</div>
 									</td>
 									<td>${list.category.name }</td>
@@ -250,44 +251,6 @@
 	                    </c:choose>
 						</tbody>
 					</table>
-                  <%--   <c:choose>
-                        <c:when test="${requestScope.MyclassList == '[]' }">
-                        	<br>
-                            <h1>구매한 수강정보가 없습니다.</h1>
-                        </c:when>
-                        <c:otherwise>
-                            <c:forEach var="list" items="${requestScope.MyclassList }">							
-                            <div class="myClass_content_h">
-								<div class="myClass_img">
-									<img src="img/${list.cover_img }">
-								</div>
-								<div class="myClass_title_category">
-									<div class="myClass_title">
-										<span>[수강명]</span> <br> <br> ${list.title }
-									</div>
-									<div class="myClass_category">
-										<span>[카테고리명]</span><br> <br>${list.category.name }
-									</div>
-								</div>
-								<div class="myClass_buyTime">
-									<p>
-										<span>[수강 신청일]</span><br>
-										<fmt:formatDate var="order_date" value="${list.buyer.order_date}" pattern="yyyy-MM-dd" /> 
-										${order_date }
-									</p>
-								</div>
-                                <div class="myClass_expiration">
-                                	<p>
-                                        <span>[수강 만료일]</span><br>
-                                        <fmt:formatDate var="expiration_date" value="${list.buyer.expiration_date}" pattern="yyyy-MM-dd" /> 
-                                        ${expiration_date }
-									</p>
-								</div>
-								<div style="clear: both;"></div>
-							</div>
-						</c:forEach>
-                        </c:otherwise>
-                    </c:choose> --%>
 			</div>
 		</div>
 	</div>

@@ -164,7 +164,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
             </div>
             <div class="col-5 m-auto">
                <label for="number"><span class="text-danger">*</span> 핸드폰번호</label>
-               <input type="text" class="form-control" id="number" name="number" placeholder="010-1234-5678(숫자만 입력하세요.)">
+               <input type="text" class="form-control" id="number" name="number" placeholder="예) 010-1234-5678">
                <span style="color: red;" id="numberErr"></span>
             </div>
          </div>

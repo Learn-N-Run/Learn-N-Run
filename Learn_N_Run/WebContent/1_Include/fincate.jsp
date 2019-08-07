@@ -71,7 +71,7 @@
 			<ul id="ul_h">
 				<a href="getUserInfo.do"><li>내정보</li></a>
 				<a href="getMyClassInfo.do"><li>내 수강목록</li></a>
-				<a href="jjim.me"><li>찜 목록</li></a>
+				<a href="/Learn_N_Run/article2/jjim.me"><li>찜 목록</li></a>
 				<a href="javascript:;" id="coupon_h"><li>쿠폰함</li></a>
 				<c:if test="${sessionScope.Group == 1 }">
 				<a href="AddCreator.jsp"><li>크리에이터 지원</li></a>	

@@ -698,7 +698,7 @@ public class UserDAIOImpl implements UserDAO{
 	//내가 구매한 클래스 정보 확인
 	public List getMyclassInfo(String id) {
 		ArrayList list = new ArrayList();	
-        sql = "SELECT c.cover_img,c.title, c.title,b.order_date, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration_date, "
+        sql = "SELECT c.cover_img,c.no,c.title, c.title,b.order_date, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration_date, "
         		+ "cate.name FROM class c "
 				+ "JOIN buyer b ON (c.no=b.class_no) "
 				+ "JOIN user u ON (u.id=b.user_id) "
@@ -714,6 +714,7 @@ public class UserDAIOImpl implements UserDAO{
 				BuyerDTO bdto = new BuyerDTO();
 				BuyerDTO bdto1 = new BuyerDTO();
 				CategoryDTO catedto = new CategoryDTO();
+				cdto.setNo(rs.getInt("c.no"));
 				cdto.setCover_img(rs.getString("c.cover_img"));	
 				cdto.setTitle(rs.getString("c.title"));
                 bdto.setExpiration_date(rs.getTimestamp("expiration_date"));

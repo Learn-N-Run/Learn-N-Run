@@ -36,7 +36,7 @@ public class delUserService implements Service{
 
 			out.println("<script>");
 			out.println("alert('회원탈퇴가 완료되었습니다 이용해주셔서 감사합니다.');");
-			out.println("location.href='mainEx.jsp';");
+			out.println("location.href='/Learn_N_Run/article1/mainEx.jsp';");
 			out.print("</script>");
 			System.out.println("회원탈퇴 성공");
 			out.close();
