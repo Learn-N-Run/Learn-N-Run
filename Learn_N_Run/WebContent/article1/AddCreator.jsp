@@ -37,7 +37,7 @@ $(function(){
 			$("#urlErr").text(''); }
 		});
 	
-	//휴대폰 확인
+/* 	//휴대폰 확인
 	$("#number").blur(function(){
 		var number = $(this).val();
 		if(number ==''){
@@ -48,7 +48,8 @@ $(function(){
 				$("#numberErr").text("올바른 핸드폰 번호를 입력해주세요.");
 			}else{ $("#numberErr").text(''); }
 		}
-	});
+	}); */
+	
 	//파일크기 유효성
 	
 	//이메일 유효성

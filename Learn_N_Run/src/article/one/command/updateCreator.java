@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -34,6 +35,8 @@ public class updateCreator implements Service{
 		} catch (Exception e) {
 			System.out.println("업로드 실패");
 		}
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
 		
 		UserDTO dto = new UserDTO();
 		dto.setNickname(multi.getParameter("nickname"));
@@ -42,6 +45,8 @@ public class updateCreator implements Service{
 		dto.setNumber(Integer.parseInt(multi.getParameter("number")));
 		dto.setProfile_img(fileName);
 		dto.setCreator_url(multi.getParameter("url"));
+		dto.setId(id);
+		
 		
 		UserDAIOImpl dao = new UserDAIOImpl();
 		dao.updateCreator(dto);

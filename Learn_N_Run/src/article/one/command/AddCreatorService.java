@@ -25,8 +25,11 @@ public class AddCreatorService implements Service{
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		String name = (String)session.getAttribute("name");
-		
-		String path = session.getServletContext().getRealPath("/")+"article1/filestorage";
+		String path = "D:\\메모장연습";
+		/*
+		 * String path =
+		 * session.getServletContext().getRealPath("/")+"article1/filestorage";
+		 */
 		int maxSize = 1024*1024*10;
 		MultipartRequest multi = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
 		
@@ -65,7 +68,7 @@ public class AddCreatorService implements Service{
 			
 			out.println("<script>");
 			out.println("alert('크리에이터 신청이 완료되었습니다, 강의를 등록해주세요.');");
-			out.println("location.href='/mainEx.jsp';");
+			out.println("location.href='/Learn_N_Run/article1/mainEx.jsp';");
 			out.print("</script>");
 
 			System.out.println("크리에이터 성공");

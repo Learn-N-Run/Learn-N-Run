@@ -124,7 +124,7 @@ public class UserDAIOImpl implements UserDAO{
 	@Override
 	public int updateCreator(UserDTO dto) {
 		int result = 0;
-		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=?, where id=?";	
+		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=? where id=?";	
 		
 		try {
 			con = getConnection();
@@ -139,6 +139,7 @@ public class UserDAIOImpl implements UserDAO{
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("updateCreator() 오류: " + e);
+			e.printStackTrace();
 		} finally {
 			freeResource();
 		}

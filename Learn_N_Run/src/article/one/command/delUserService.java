@@ -38,7 +38,6 @@ public class delUserService implements Service{
 			out.println("alert('회원탈퇴가 완료되었습니다 이용해주셔서 감사합니다.');");
 			out.println("location.href='mainEx.jsp';");
 			out.print("</script>");
-
 			System.out.println("회원탈퇴 성공");
 			out.close();
 		
@@ -47,7 +46,7 @@ public class delUserService implements Service{
 			PrintWriter out = response.getWriter();
 
 			out.println("<script>");
-			out.println("alert('회원탈퇴를 다시 시도해 주세요.');");
+			out.println("alert('아이디 혹은 비밀번호가 일치하지 않습니다.');");
 			out.println("history.back();");
 			out.print("</script>");
 

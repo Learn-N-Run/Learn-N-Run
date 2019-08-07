@@ -184,7 +184,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
       <h2 class="text-center">회원정보 수정</h2>
       <p class="text-center mb-5 text-muted"><span class="text-danger">*</span>는 필수 입력 사항입니다.</p>
       	<c:if test="${sessionScope.Group == 2 }">
-		      <form action="updateCreator.do" method="post" enctype="multipart/form-data">
+		      <form action="updateCreator.do" method="post" enctype="multipart/form-data" onsubmit="return modify()">
 		      <div class="m-auto">
 		      	<div class="row mb-4">
 	        		 <div class="col-4" style="text-align: right">프로필 이미지</div>
