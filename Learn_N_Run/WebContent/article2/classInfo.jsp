@@ -2,9 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-
-
 <%--페이지인코딩 --%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%--프로젝트경로선언--%>
@@ -204,6 +201,10 @@
 			</section>
 			<hr>
 			
+			
+<jsp:include page="/article3/inc_classInfo/curriculumList.jsp"/>
+<jsp:include page="/article3/inc_classInfo/community.jsp"/>
+			
 		</div>
 		
 		
@@ -261,7 +262,6 @@
 		</div>
 		<!-- 페이지 우측 표시 컨텐츠 끝-->
 	</section>
-	
 	
 	
 </div>

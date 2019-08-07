@@ -19,12 +19,20 @@
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
 </head>
-<body>
+<body style="overflow-x:hidden; overflow-y:auto;"> 
+	
+<%-- header--%>
+<c:import url="/1_Include/header.jsp"></c:import>
+	
+	
+<c:import url="/article3/inc_playVideo/Player.jsp"></c:import>	
+	
 
-		<video src="">
-			dsadfasd
-		</video>
-
+<c:import url="/article3/inc_playVideo/VideoReply.jsp"></c:import>
+	
+	
+<%-- footer.jsp--%>
+<c:import url="/1_Include/footer.jsp"></c:import>
 
 </body>
 </html>

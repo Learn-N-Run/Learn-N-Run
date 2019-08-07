@@ -81,7 +81,7 @@
 <title></title>
 </head>
 <body>
-<div style="content: ''; height: 200px;"></div>
+<div style="content: ''; height: 200px;">&nbsp;</div>
 <%-- aside.jsp include --%>
 <c:import url="/1_Include/inc_aside.jsp"></c:import>
 

@@ -50,12 +50,11 @@ public class Controller extends HttpServlet {
 /* 한글처리 */response.setContentType("text/html;charset=UTF-8");
 		
 		String path = null;
-		/*▲포워딩할 경로 String으로 저장*/
 		
 		if (getCommand(request, response).equals("login.do")) {
 			LoginCheckService forward = new LoginCheckService();
 			forward.excute(request, response);
-			path="/article1/mainEx.jsp";
+			path="/main.jsp";
 			
 		}else if (getCommand(request, response).equals("selectMessage.do")) {
 			SelectMessageService forward = new SelectMessageService();
@@ -166,11 +165,9 @@ public class Controller extends HttpServlet {
 		
 		
 		if(path != null) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-		/*▲포워딩주소설정*/
-		dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+			dispatcher.forward(request, response);
 		}
-		/*▲설정된주소로 res+req 전달하여 포워딩*/		
 	}
 	
 	public static String getCommand(HttpServletRequest request, HttpServletResponse response) {

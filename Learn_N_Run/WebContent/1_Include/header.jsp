@@ -321,13 +321,10 @@
 			</div>
 		</div>
 	</header>
+<div class="well visible-lg-block">
 
-<ol class="breadcrumb visible-lg-block">
-  <li><a href="/index.kr">Library</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active"><a>Data</a></li>
-</ol>
-<div style="content: ''; height: 10px;"></div>
+</div>
+<div style="content: ''; height: 10px;">&nbsp;</div>
 
 <!-- 햄버거메뉴 -->	
 <script type="text/javascript">

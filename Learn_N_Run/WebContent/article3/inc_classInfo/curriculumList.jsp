@@ -20,7 +20,6 @@
 	<title>Learn & Run</title>
 </head>
 <body> 
-<div id="wrap">
 	<div id="TH_curriculumContents">
 		<div style="padding-bottom: 30px;">
 			<div style="font-size: 24px; font-weight: bold; color: tomato;" >
@@ -47,6 +46,6 @@
 			</div>
 		</div>
 	</div>
-</div>
+	
 </body>
 </html>

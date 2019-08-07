@@ -1,7 +1,5 @@
 package article.three.controller;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,13 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import article.three.command.AddClassReplyCommand;
+import article.three.command.AddCommunityReplyCommand;
 import article.three.command.CommunityReplyCommand;
 import article.three.command.DelClassReplyCommand;
 import article.three.command.DeleteCommunityReplyCommand;
-import article.three.command.AddClassReplyCommand;
-import article.three.command.AddCommunityReplyCommand;
-import dto.ClassDTO;
-import dto.ReplyDTO;
 
 @WebServlet("*.po")
 public class Controller extends HttpServlet {

@@ -20,8 +20,6 @@
 	<title>Learn & Run</title>
 </head>
 <body> 
-	<div id="wrap">
-		
 
 		<div id="TH_community">
 			<h3>
@@ -59,7 +57,7 @@
 							</div>
 						</div>
 						<div class="TH_replyContent">
-							<p>로렘단축키같은건 이클립스는로렘단축키같은건 이클립스는로렘단축키같은건 이클립스는로렘단축키같은건 이클립스는로렘단축키같은건 이클립스는로렘단축키같은건 이클립스는로렘단축키같은건 이클립스는로렘단축키같은건 이클립스는로렘단축키같은건 이클립스는</p>
+							<p>Generate Lorem Ipsum placeholder text for use in your graphic, print and web layouts, and discover plugins for your favorite writing, design and blogging tools.</p>
 						</div>
 					</td>
 				</tr>
@@ -78,7 +76,9 @@
 									시간
 								</h6>
 							</div>
-							<p>내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용내용이내용내용내용내용</p>					
+							<p>Generate Lorem Ipsum placeholder text for use in your graphic, print and web layouts, and discover plugins for your favorite writing, design and blogging tools.
+								Generate Lorem Ipsum placeholder text for use in your graphic, print and web layouts, and discover plugins for your favorite writing, design and blogging tools.
+							</p>					
 						</div>
 					</td>
 				</tr>
@@ -101,7 +101,6 @@
 				</tr>
 			</tfoot>
 		</table>
-	</div>
 
 </body>
 </html>

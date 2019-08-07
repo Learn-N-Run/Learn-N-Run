@@ -49,12 +49,6 @@ public class ClassInfoService implements Service{
 		request.setAttribute("suv", suv);
 		request.setAttribute("bcheck", bcheck);
 		
-		System.out.println(no);
-		System.out.println(cudto.getClassinfo().getCategory().getName());
-		System.out.println(cudto.getClassinfo().getCreator().getNickname());
-		System.out.println(cudto.getMajor_topic());
-		System.out.println(cudto.getNo());
-		
 		forward.setPath("classInfo.jsp");
 		forward.setRedirect(false);
 		
