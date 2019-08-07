@@ -12,17 +12,14 @@
 	<link rel="stylesheet" href="${contextpath}/article3/css/style.css">
 	<script src="${contextpath}/article3/js/script.js"></script>
 <!--JQUERY(1EA), BOOTSTRAP(2EA) CDN START LINE-->
-<<<<<<< HEAD
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-=======
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
->>>>>>> 구현-3팀-from-develop
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
 </head>
