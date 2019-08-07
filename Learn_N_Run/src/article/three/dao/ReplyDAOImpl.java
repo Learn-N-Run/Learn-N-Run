@@ -43,12 +43,12 @@ public class ReplyDAOImpl implements ReplyDAO{
    
    public void getCon() {
       try {
-         // 1.WAS서버와 연결된 DBApp웹프로젝트의 모든 정보를 가지고 있는 컨텍스트객체 생성
+         
          Context init = new InitialContext();
-         // 2.연결된 WAS서버에서 DataSource(커넥션풀) 검색해서 가져오기
+         
          DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/learnrun");
-         // DataSource(커넥션풀)에서 DB연동객체 (커넥션) 가져오기
-         con = ds.getConnection(); // DB연결
+         
+         con = ds.getConnection(); 
 
       } catch (Exception err) {
          err.printStackTrace();
@@ -102,7 +102,7 @@ public class ReplyDAOImpl implements ReplyDAO{
    public void addCommunityReply(ReplyDTO dto) {
       
          try {
-            getCon();//커넥션 풀에서 가져옴
+            getCon();
             
             String sql ="insert into reply values(null,?,?,1,?,?,?)";
             
@@ -150,14 +150,50 @@ public class ReplyDAOImpl implements ReplyDAO{
 
 	@Override
 	public void addClassReply(ReplyDTO dto) {
-		// TODO Auto-generated method stub
+		try {
+            getCon();
+            
+            String sql ="insert into reply values(null,?,?,2,?,?,?)";
+            
+            pstmt =con.prepareStatement(sql);
+
+
+           
+            pstmt.setString(1, dto.getContent());
+            pstmt.setTimestamp(2, dto.getDate());
+            
+            pstmt.setString(3, dto.getReply_id());
+            pstmt.setInt(4, dto.getClass_no());
+            pstmt.setInt(5, dto.getCurriculum_no() );
+           
+            
+            pstmt.executeUpdate();      
+            
+            System.out.println(pstmt);
+            con.close();pstmt.close();   
+         } catch (Exception e) {
+            e.printStackTrace();
+         } 
 		
 	}
 
 	@Override
-	public int delClassReply(ReplyDTO dto, String id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void delClassReply(int reply_no) {
+		int result = 0;
+		try {
+			getCon();
+			String sql = "DELETE FROM reply WHERE no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, reply_no);
+			result = pstmt.executeUpdate();
+			System.out.println("delUser return:" + result);
+			
+		} catch (Exception e) {
+			System.out.println("delUser 오류: " + e);
+		} finally {
+			freeResource();
+		}
+		
 	}
 
    

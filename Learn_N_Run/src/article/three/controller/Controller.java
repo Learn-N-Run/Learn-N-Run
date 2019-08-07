@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import article.three.command.CommunityReplyCommand;
+import article.three.command.DelClassReplyCommand;
 import article.three.command.DeleteCommunityReplyCommand;
+import article.three.command.AddClassReplyCommand;
 import article.three.command.AddCommunityReplyCommand;
 import dto.ClassDTO;
 import dto.ReplyDTO;
@@ -59,12 +61,14 @@ public class Controller extends HttpServlet {
     	  CommunityReplyCommand forward = new CommunityReplyCommand();
           forward.excute(request, response);
          path="CommunityReply.jsp";
-      }else if (command.equals("여기에넣으세요")) {
-         
-         path="";
-      }else if (command.equals("여기에넣으세요")) {
-         
-         path="";
+      }else if (command.equals("/article3/inc_videoView/ClassReplyUpdate.po")) {
+    	  AddClassReplyCommand cReply = new AddClassReplyCommand();
+    	  cReply.excute(request, response);
+         path="videoReply.jsp";
+      }else if (command.equals("/article3/inc_videoView/ClassReplyDelete.po")) {
+         DelClassReplyCommand cReply1 = new DelClassReplyCommand();
+         cReply1.excute(request, response);
+         path="videoReply";
       }else if (command.equals("여기에넣으세요")) {
          
          path="";
