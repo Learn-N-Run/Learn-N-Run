@@ -20,8 +20,13 @@
 	<title>Learn & Run</title>
 </head>
 <body>
-	
-	<c:redirect url="/index.kr"/>
-	
+	<c:choose>
+	<c:when test="${id ne null}">
+		<c:redirect url="/index.kr"/>
+	</c:when>
+	<c:otherwise>
+		<c:redirect url="/anonymous.kr"/>
+	</c:otherwise>
+	</c:choose>
 </body>
 </html>

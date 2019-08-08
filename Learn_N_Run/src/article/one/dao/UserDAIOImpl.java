@@ -45,7 +45,7 @@ public class UserDAIOImpl implements UserDAO{
 	
 	/*자원해제 메소드*/
 	public void freeResource() {
-
+	
 		if (con != null)
 			try {
 				con.close();

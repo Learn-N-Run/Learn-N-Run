@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel = "stylesheet" href = "${contextpath}/article2/css/classInfo.css">
 <link rel = "stylesheet" href = "css/bootstrap.css">
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
 
@@ -121,7 +120,7 @@
 			<!-- 클래스 소개글 ~ -->
 			<section class = "intro_c">
 				<h3>●) 클래스 소개글</h3><br>
-				<font style="font-family: 'Jua', sans-serif; font-size: 35px;">&nbsp; ${cudto.classinfo.content} </font>
+				<font class = "font_c" >&nbsp; ${cudto.classinfo.content} </font>
 			</section>
 			<hr>
 			<!-- 커리큘럼 소개 영역 -->

@@ -278,16 +278,7 @@ $(function(){
 			return false;
 		}
 		
-	});
-	
-	$(document).on("click","#logout_h", function() {
-		var result = confirm("정말 로그아웃하시겠습니까?");
-		if(result){
-			location.href="logout.do";	
-		}else{
-			return false;
-		}
-	});
+	})
 });
 </script>
 
@@ -296,7 +287,7 @@ $(function(){
 	
 <!-- TODO: login-box -->
     <div id="login-box" class="login-popup">
-		<form class="form_h" action="login.do" method="post">
+		<form class="form_h" action="Learn_N_Run/article1/login.do" method="post">
 			<a class="close_h">EXIT</a>
 	        <svg id="ryan" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
 	            <path d="M0,150 C0,65 120,65 120,150" fill="#e0a243" stroke="#000" stroke-width="2.5" />
@@ -323,7 +314,7 @@ $(function(){
 	        <input class="H_inputText" id="H_login_id" name="userid" type="text" placeholder="email">
 	        <input class="H_inputText" id="H_login_pass" name="userpass" type="password" placeholder="Password">
 	        <input type="submit" class="H_submit" value="Let's log in!">
-	        <a href="#" class="H_join">Join us!</a>
+	        <a href="${contextpath}/article1/join.jsp" class="H_join">Join us!</a>
 	    </form>
    </div>
 <!-- 로그인 팝업 -->	

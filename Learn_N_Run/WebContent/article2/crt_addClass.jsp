@@ -247,7 +247,6 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 	
 </div>
 <!-- wrap끝나는 부분 -->
-<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>

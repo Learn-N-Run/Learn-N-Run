@@ -21,6 +21,12 @@
 <!--외부참조 + CDN END -->
 
 	<title></title>
+	<style type="text/css">
+		.item{
+			background-color: black;
+			
+		}
+	</style>
 </head>
 <body>
 	<div id="wrap">

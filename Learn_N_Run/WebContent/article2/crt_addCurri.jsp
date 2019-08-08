@@ -242,7 +242,6 @@ $(function(){
 	 <!-- wrap2끝나는 부분 -->
 </div>
  <!-- wrap끝나는 부분 -->
- <jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>

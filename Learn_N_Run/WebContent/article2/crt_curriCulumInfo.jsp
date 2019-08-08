@@ -1,30 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
-<head>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	int classNo = Integer.parseInt(request.getAttribute("classNo").toString());
 	int curriNo = Integer.parseInt(request.getAttribute("curriNo").toString());
-	
 %>
-
+<!DOCTYPE html>
+<html>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/crt_curriCulumInfo.css?abgd">
-<title>Insert title here</title>
-
-
 <script src="//code.jquery.com/jquery.min.js"></script>
+
 <script type="text/javascript">
-
-
-
-
-
-
 //JQuery를 이용해서 <input type="file">태그에서 미리보기 기능 구현하자.
 		
 function readIMAGE(input){ //input type="file"태그를 매개변수로 전달받아서
@@ -46,14 +35,13 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 	
 }
 </script>
+<title>Insert title here</title>
 </head>
-
-
 <body>
+<c:set var="curriNo" value="${classNo}"></c:set>
+<c:set var="classNo" value=""></c:set>
 <!-- header 부분 -->
 <jsp:include page="/1_Include/header.jsp"></jsp:include>
-<!-- side바 부분 -->
-<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 
 <wrap id=wrap01>
 	<form action="crt_modifyClass.me" method="post" enctype="multipart/form-data">

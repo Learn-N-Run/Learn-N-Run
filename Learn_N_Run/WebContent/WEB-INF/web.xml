@@ -39,5 +39,4 @@
 		<servlet-name>spring</servlet-name>
 		<url-pattern>*.kr</url-pattern>
 	</servlet-mapping>
- 
 </web-app>

@@ -29,6 +29,12 @@ public class SPController{
 	private SqlSession sqlsession;
 	ReadDAO readDAO;
 	
+	@RequestMapping(value = "/anonymous")
+	public String anonymousIndexView(Model model){
+		
+		return "AnonymousIndex";
+	}
+	
 	@RequestMapping(value = "/index")
 	public String indexview(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		

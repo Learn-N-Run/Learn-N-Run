@@ -44,7 +44,8 @@
 				<div class="TH_onclickContent" 
 					onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
 					${classlist.title}
-					<img src="${contextpath}/${classlist.cover_img}">
+					<img src="${contextpath}${classlist.cover_img}"
+						width="300" height="300">
 				</div>
 			</div>
 </c:forEach>

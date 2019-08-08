@@ -45,9 +45,6 @@
 		background: rgba(0,0,0,0.9);
 		max-width: 50px;
 		max-height: 50px;
-		position: fixed;
-		right: 1vw;
-		bottom: 25vh;
 		z-index: 1000;
   		border: 1px solid rgba(0,0,0,0);		 
 		border-radius: 100%;
@@ -55,29 +52,45 @@
 	    transition: all 0.5s;
 	    animation-name: visiblemark;
 	    animation-duration: 1s;
-	    
 	}
 	@keyframes visiblemark{
 		from{opacity: 0;}
 		to{opacity: 1;}
 	}
-	
 	.textLauncherIcon{
 		position: fixed !important;
-		bottom: 17vh !important; 
-		right: 1vw !important;
+		bottom: -4px !important; 
+		right: 42px !important;
 		width: 50px !important;
 		height: 50px !important;
 	}
 	.textLauncherIcon:HOVER{
 		background: tomato !important;
 		transition: all 0.5s !important;
-		
 	}
 	.jeJOWG *, .cZHGZB *{
 		display: none !important;
 	}
+	#inc_githubfooterParent{
+		position: fixed;
+		bottom: -4px;
+		transform: rotate(-45deg);
+		right: -10px;
+		z-index: 10000;
+	}
+	@media(max-width:1200px){
+		
+		
+		
+	}
 </style>
+	<c:if test="${sessionScope.id eq null}">
+		<style type="text/css">
+		.textLauncherIcon{
+			display: none !important;
+		}	
+		</style>
+	</c:if>
 <title></title>
 </head>
 <body>
@@ -86,7 +99,7 @@
 <c:import url="/1_Include/inc_aside.jsp"></c:import>
 
 <%-- footer github logo --%>
-	<a href="javascript:togglefooter()">
+	<a id="inc_githubfooterParent" href="javascript:togglefooter()">
 		<img id="inc_githubfooter"
 			 src="${contextpath}/3_img/GitHub-Mark-Light-64px.png">
 	</a>

@@ -114,6 +114,7 @@ public class Controller extends HttpServlet {
 		}else if (getCommand(request, response).equals("join.do")) {
 			JoinRegisterService forward = new JoinRegisterService();
 			forward.excute(request, response);
+			path="/main.jsp";
 			
 		}else if (getCommand(request, response).equals("signout.do")) {
 			delUserService forward = new delUserService();
@@ -144,7 +145,6 @@ public class Controller extends HttpServlet {
 			path = "/article1/classList.jsp";
 			
 		}else if (getCommand(request, response).equals("getUserInfo.do")) {
-			System.out.println("하이");
 			getUserInfoService forward = new getUserInfoService();
 			forward.excute(request, response);
 			path = "/article1/modifymember.jsp";
@@ -152,7 +152,7 @@ public class Controller extends HttpServlet {
 		}else if (getCommand(request, response).equals("logout.do")) {
 			LogoutService forward = new LogoutService();
 			forward.excute(request, response);
-			path = "/article1/mainEx.jsp";
+			path = "/main.jsp";
 			
 		}else if (getCommand(request, response).equals("pwdCheck.do")) {
 			pwdCheck forward = new pwdCheck();

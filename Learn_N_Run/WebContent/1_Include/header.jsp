@@ -67,7 +67,8 @@
 
 /* 햄버거메뉴 */
 	#inc_hamburger {
-		display:none;
+		display: inline;
+		z-index: 1000;
 		position: fixed;
 		float: right;
 		right: 1vw;
@@ -220,46 +221,40 @@
 			transform: translate(-50%, 200%);
 		}
 	}
-
-	@media(max-width:1200px){
-		#inc_hamburger{
-			display: inline;
- 			z-index: 1000;
-		}
-		#inc_menuList>ul{
-			position: fixed;
-			float: right;
-			top: 0px;
-			right: 0px;
- 			width: 200px;
- 			height: 100vh;
- 			z-index: 1;
- 			padding-top: 100px;
- 			animation-duration: 1s;
- 			animation-name: slide_for_left;
- 			background-color: rgba(255,255,255,0.8);
-		}
-		#inc_menuList>ul>li>a{
-			color: rgba(0,0,0,0.5);
-			
-		}		
+	#inc_onmenuset{ 
+		position: fixed;
+		float: right;
+		top: 0px;
+		right: 0px;
+			width: 200px;
+			height: 100vh;
+			z-index: 1;
+			padding-top: 100px;
+			animation-duration: 1s;
+			animation-name: slide_for_left;
+			background-color: rgba(255,255,255,0.8);
 	}
-		@keyframes slide_for_left{
-			0%{
-				background-color: rgba(255,255,255,0);
-			}
-			100%{
-				background-color: rgba(255,255,255,0.8);
-			}
-		}
+
+	#inc_menuList>ul>li:nth-child(1n+3){
+/* 		display:inline; */
+	}
 	
+	@keyframes slide_for_left{
+		0%{
+			background-color: rgba(255,255,255,0);
+		}
+		100%{
+			background-color: rgba(255,255,255,0.8);
+		}
+	}
+
 </style>
 <title></title>
 </head>
 <body>
 	<header id="inc_header">
 		<div id="inc_mainlogo" class="col-xs-2" align="center">
-			<a href="${contextpath}/index.kr" style="display:inline-block; padding: 10px; vertical-align: middle; width: 100px; height: 100px;">
+			<a href="${contextpath}/main.jsp" style="display:inline-block; padding: 10px; vertical-align: middle; width: 100px; height: 100px;">
 				<img src="${contextpath}/3_img/large.png" style="width:80px; height: 80px;">
 			</a>
 		</div>
@@ -278,15 +273,16 @@
 					</form>
 				</div>
 				<div class="col-xs-5">
+				
+<c:if test="${sessionScope.id ne null}">
+				
 					<button id="inc_hamburger">
 						<span></span>
 						<span></span>
 						<span></span>
 					</button>
-					<div id="inc_menuList" class="visible-lg-block">
+					<div id="inc_menuList" class="visible-xs-block">
 						<ul class="list-inline">
-							<!-- 세션영역에서 유저빈의 유무 판별 --> 
-							<c:if test="${sessionScope.id != null }">
 								<li>
 									<a href="javascript:;" id="message_info_h">
 										쪽지함
@@ -298,25 +294,38 @@
 									</a>
 								</li>
 								<li>
-									<a href="getUserInfo.do">
+									<a href="/Learn_N_Run/article1/getUserInfo.do">
 										 마이페이지
 									</a>
 								</li>
-							</c:if>
-							<c:if test="${sessionScope.id == null }">
 								<li>
-									<a href="#login-box" class="login-window">
-										로그인
+									<a href="/Learn_N_Run/article2/crt_getAllClassList.me">
+										 내 클래스
 									</a>
 								</li>
 								<li>
-									<a href="${contextpath}/article1/join.jsp">
-										회원가입
+									<a href="/Learn_N_Run/article1/getMyClassInfo.do">
+										 내 수강목록
 									</a>
 								</li>
-							</c:if>
-						</ul>
-					</div>
+								<li>
+									<a href="/Learn_N_Run/article2/jjim.me">
+										 찜 목록
+									</a>
+								</li>
+								<li>
+									<a href="javascript:"; id="coupon_h">
+										 쿠폰함 여긴 따로 넣을거 
+									</a>
+								</li>
+								<li>
+									<a href="/Learn_N_Run/article1/signout.jsp">
+										 회원탈퇴 여긴 따로 넣을거
+									</a>
+								</li>
+							</ul>
+						</div>
+</c:if>
 				</div>
 			</div>
 		</div>
@@ -324,21 +333,59 @@
 <div class="well visible-lg-block">
 
 </div>
+
+<c:if test="${requestScope.TH_navContents ne null}">
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("TH_navContents").show();
+		});
+	</script>
+</c:if>
+
 <div style="content: ''; height: 10px;">&nbsp;</div>
+<!-- 로드되면 값 확인해서 나오는 안내 모달 -->
+<div class="modal fade" id="TH_navContents">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p>${TH_navContents}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- 햄버거메뉴 -->	
 <script type="text/javascript">
 	var inc_menuList = document.querySelector('#inc_menuList');
-	var inc_menu_ul = document.querySelector('#inc_menuList>ul');
+	var inc_onmenuset = document.querySelector('#inc_menuList>ul');
 	
 	document.getElementById('inc_hamburger').addEventListener('click', function() {
 		if (this.className == 'on'){
 			this.classList.remove('on');
-			inc_menuList.classList.add('visible-lg-block');
+			inc_menuList.classList.add('visible-xs-block');
+			inc_onmenuset.removeAttribute('id','inc_onmenuset');
 		}else{
 			this.classList.add('on');
-			inc_menuList.classList.remove('visible-lg-block');
+			inc_onmenuset.setAttribute('id','inc_onmenuset');
+			inc_menuList.classList.remove('visible-xs-block');
 		}});
+	
+	$(document).on("click","#logout_h", function() {
+		var result = confirm("정말 로그아웃하시겠습니까?");
+		if(result){
+			location.href="Learn_N_Run/article1/logout.do";	
+		}else{
+			return false;
+		}
+	});
+	
 </script>
 </body>
 </html>

@@ -64,7 +64,6 @@ function signout(){
 			</div>
 		</form>
 	</div>
-	<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 	<jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>

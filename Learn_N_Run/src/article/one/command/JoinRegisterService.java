@@ -33,30 +33,22 @@ public class JoinRegisterService implements Service{
 					
 			int result = dao.addUser(dto);
 			
+			PrintWriter out = response.getWriter();
 			//가입 실패
 			if(result == 0) {
 				
-					PrintWriter out = response.getWriter();
-					
+				request.setAttribute("TH_navTitle", "회원 가입 실패");				
+				request.setAttribute("TH_navContents", "회원 가입을 다시 시도해 주세요");
+				
 					out.println("<script>");
-					out.println("alert('회원 가입을 다시 시도해 주세요');");
 					out.println("history.back();");
 					out.print("</script>");
-
-					System.out.println(" 회원가입 확인해주세요 ");
-					out.close();
-									
-				}else {
-
-					PrintWriter out = response.getWriter();
-					out.println("<script>");
-					out.println("alert('회원가입 되었습니다.');");
-                    out.println("location.href='mainEx.jsp';");
-                    out.println("</script>");
+                    out.close();
 					
-					System.out.println(" 회원 가입 완료 ");
-					out.close();
-					
+			}else {
+				
+				request.setAttribute("TH_navTitle", "회원 가입 완료");
+				request.setAttribute("TH_navContents", "회원가입 되었습니다.");
 					
 				}
 		}

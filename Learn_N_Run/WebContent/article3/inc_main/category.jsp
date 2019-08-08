@@ -41,7 +41,7 @@
 		<div class="col-lg-1 col-xs-3 ">
 			<div class="TH_onclickContent cateimg"
 				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${categoryinfo.name}'">
-				<img class="TH_cateimg" src="${contextpath}/${categoryinfo.image}">
+				<img class="TH_cateimg" src="${contextpath}${categoryinfo.image}">
 				<div>
 					${categoryinfo.name}
 				</div>

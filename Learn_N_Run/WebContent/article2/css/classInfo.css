@@ -19,7 +19,18 @@
 	
 	}
 	
-	
+	.font_c{
+      height: 150px;
+      text-overflow: ellipsis;
+        display: -webkit-box;
+         -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+         overflow-wrap: break-word;
+      overflow: hidden;
+      font-family: 'Jua';
+      sans-serif; font-size: 35px;
+   
+   }
 	
 	
 	/*전체화면 우측 컨텐츠*/

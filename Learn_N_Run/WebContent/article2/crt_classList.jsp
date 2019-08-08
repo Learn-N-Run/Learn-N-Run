@@ -12,10 +12,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${contextpath }/article2/css/crt_classList.css?fbq">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-
 	
 	$(function(){
 		$(".toggle1").hide();
@@ -96,7 +94,7 @@
 		<h4 style="font-weight: bold; color: tomato; font-size: 20px;"> 도움말 </h4>
 		<div class="notice">	
 			<div>
-				<a href="index.jsp">
+				<a href="main.jsp">
 					<p class="notice1_1">크리에이터가 되는 방법&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>></p>
 					<p class="notice1_2">
 					저희 페이지가 처음이신가요? Learn&Run에서 크리에이터가 되는 방법을 소개해드리겠습니다. 
@@ -105,7 +103,7 @@
 			</div>
 			
 			<div>
-				<a href="index.jsp">
+				<a href="main.jsp">
 					<p class="notice2_1">클래스 제작은 어떻게 이루어지나요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>></p>
 					<p class="notice2_2">
 					클래스 제작 순서와 Learn&Run 페이지에서 제공하는 지원들을 알려드립니다.
@@ -116,7 +114,6 @@
 		</div>			
 	</div> <!-- sec02끝나는 부분 -->
 </div><!-- 전체 영역 끝나는 부분 -->
-<jsp:include page="/1_Include/fincate.jsp"></jsp:include>
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>
