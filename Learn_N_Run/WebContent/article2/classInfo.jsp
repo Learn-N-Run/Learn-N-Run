@@ -90,11 +90,11 @@
 					<c:if test="${bcheck == 1}">
 						<td width="50%;">
 							<div>
-								<button class = "jjimnsubmit_c" onclick = "location.href='/Learn_N_Run/article2/jjimRegister.me?no=${cudto.classinfo.no}'" >찜하기</button>
+								<button class = "jjimnsubmit_c" onclick = "location.href = '/Learn_N_Run/article2/jjimRegister.me?no=${cudto.classinfo.no}'" >찜하기</button>
 							</div>
 						</td>
 						<td width="50%;">
-							<button class = "jjimnsubmit_c" onclick = "location.href='/Learn_N_Run/article3/.kr?no=${cudto.classinfo.no}'">강의 듣기</button>
+							<button class = "jjimnsubmit_c" onclick = "location.href = '/Learn_N_Run/article3/getcurrivideo.kr?no=${cudto.classinfo.no}'">강의 듣기</button>
 						</td>
 					</c:if>
 					</tr>	

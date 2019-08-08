@@ -21,8 +21,8 @@
 </head>
 <body>
 
-		<video src="">
-			dsadfasd
+		<video>
+			<source src="${subject_list[0].url}">
 		</video>
 
 

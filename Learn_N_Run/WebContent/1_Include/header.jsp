@@ -286,7 +286,7 @@
 						<ul class="list-inline">
 								<li>
 									<a href="javascript:;" id="message_info_h" class="TH_menubar">
-										쪽지함
+										내 쪽지함
 									</a>
 								</li>
 								<li>
@@ -319,11 +319,6 @@
 										 쿠폰보관함
 									</a>
 								</li>
-								<li>
-									<a href="/Learn_N_Run/article1/signout.jsp" class="TH_menubar">
-										 회원탈퇴
-									</a>
-								</li>
 							</ul>
 						</div>
 </c:if>
@@ -331,6 +326,8 @@
 			</div>
 		</div>
 	</header>
+
+<c:import url="/1_Include/couponEx.jsp"></c:import>
 
 <!-- 햄버거메뉴 -->	
 <script type="text/javascript">

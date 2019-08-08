@@ -19,7 +19,7 @@ $(function() {
 			}
 		});
 	});	
-});	
+});
 </script>
 
 <title>Insert title here</title>
@@ -36,8 +36,8 @@ $(function() {
    			height: 400px;
 		    -webkit-border-radius: 3px;
 		    -webkit-box-shadow: 0px 0px 20px #999;
-		    left: 15%;
-		    top: 11%;
+		    left: 1vw;
+		    top: 11vh;
 		}
 		
 		.coupon_title_h{

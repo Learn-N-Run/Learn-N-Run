@@ -301,10 +301,15 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 	         </div>
 	      </div>
 	      <div class="text-center mt-5">
-	                 <button class="btn btn-outline-info">회원 수정</button>&nbsp;&nbsp;&nbsp;&nbsp;
-	                 <input type="reset" value="다시 입력" class="btn btn-outline-secondary">
+	          <button class="btn btn-outline-info">회원 수정</button>&nbsp;&nbsp;&nbsp;&nbsp;
+	          <input type="reset" value="다시 입력" class="btn btn-outline-secondary">&nbsp;&nbsp;&nbsp;&nbsp;
           </div>
       </form>
+      <hr>
+      <div align="center">
+      		<button class="btn btn-outline-danger" onclick="location.href='/Learn_N_Run/article1/signout.jsp'">
+      		회원 탈퇴로 이동할래요</button>
+      </div>
       </c:if>
    </div>
    </div>

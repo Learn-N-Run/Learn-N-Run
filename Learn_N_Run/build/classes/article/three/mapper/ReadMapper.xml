@@ -44,6 +44,32 @@
 		<result property="category" column="category"/>
 	</resultMap>
 	
+	<select id="getcurriVideo" parameterType="SubjectInfoDTO" resultType="SubjectInfoDTO">
+		<![CDATA[
+			SELECT cl.title title, cl.no classno, cr.major_topic topic, s.no subjectno,
+					s.subject subject, s.url url, cl.cover_img coverimg
+			FROM curriculum cr
+			JOIN subject s
+			JOIN class cl
+			ON cr.no = s.curriculum_no
+			AND cr.class_no = cl.no
+			WHERE cl.no=#{classno};
+		]]>
+	</select>
+	
+	<select id="getsubjectVideo" parameterType="SubjectInfoDTO" resultType="SubjectInfoDTO">
+		<![CDATA[
+			SELECT cl.title title, cl.no classno, cr.major_topic topic, s.no subjectno,
+					s.subject subject, s.url url, cl.cover_img coverimg
+			FROM curriculum cr
+			JOIN subject s
+			JOIN class cl
+			ON cr.no = s.curriculum_no
+			AND cr.class_no = cl.no
+			WHERE s.no=#{subjectno};
+		]]>
+	</select>
+	
 	<select id="TopClassSelect" resultType="PopularClassDTO">
 		<![CDATA[
 			SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
@@ -116,17 +142,21 @@
 			WHERE r.target_no is null
 			AND r.target_no = 0
 			AND r.class_no = #{no}
-			ORDER BY r.no ASC LIMIT #{startLimitIndex}, 10;
+			ORDER BY r.no ASC;
 		]]>
+		
+<!-- 		 LIMIT #{startLimitIndex}, 10; -->
 	</select>
 	<select id="ReplyLoading" parameterMap="NumberKeySetting" resultType="ReplyDTO">
 		<![CDATA[	
 			SELECT *
 			FROM reply
 			WHERE target_no = #{targetNo}
-			ORDER BY no DESC LIMIT #{startLimitIndex}, 10;
+			ORDER BY no DESC
 		]]>
 	</select>
+	
+<!-- 	 LIMIT #{startLimitIndex}, 10; -->
 	
 <!-- 	
 ajax	

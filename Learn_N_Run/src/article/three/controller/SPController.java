@@ -21,6 +21,7 @@ import dto.CurriculumDTO;
 import dto.InterestedClassDTO;
 import dto.PopularClassDTO;
 import dto.ReplyDTO;
+import dto.SubjectInfoDTO;
 
 @Controller
 public class SPController{
@@ -34,6 +35,44 @@ public class SPController{
 		
 		return "AnonymousIndex";
 	}
+	
+	@RequestMapping(value = "/getcurrivideo")
+	public String getcurrivideo(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		List<SubjectInfoDTO> subject_list;
+		
+		if (request.getParameter("subjectno") != null) {
+			
+			SubjectInfoDTO dto = SubjectInfoDTO.builder().subjectno(Integer.parseInt(request.getParameter("subjectno"))).build();
+			subject_list = sqlsession.selectList("article.three.mapper.ReadDAO.getsubjectVideo",dto);
+			
+		}else if (request.getParameter("no") != null) {
+			
+			SubjectInfoDTO dto = SubjectInfoDTO.builder().classno(Integer.parseInt(request.getParameter("no"))).build();
+			subject_list = sqlsession.selectList("article.three.mapper.ReadDAO.getcurriVideo",dto);
+			
+		}else {
+			
+			subject_list = null;
+			
+		}
+		
+		String path;
+		
+		if (subject_list == null) {
+			
+			path = "main";
+			
+		}else {
+			model.addAttribute("subject_list", subject_list);
+			path = "main";
+		}
+		
+		return path;
+	}
+	
+	
+	
 	
 	@RequestMapping(value = "/index")
 	public String indexview(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -85,6 +124,7 @@ public class SPController{
 		
 		return null;
 	}
+	
 /* 커맨드 리스트(분류예정) */
 	public List<PopularClassDTO> BuyerTopClassSelect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
@@ -97,6 +137,7 @@ public class SPController{
 			popList = sqlsession.selectList("article.three.mapper.ReadDAO.TopClassSelect",cateName);
 		}
 
+		
 		return popList;
 	}
 
