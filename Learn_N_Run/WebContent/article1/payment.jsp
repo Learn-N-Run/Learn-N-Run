@@ -380,7 +380,7 @@
 				</div>
 
 				<div class="content_wrap_h">
-					<form action="buyersubmit.do?classNo=${classNo }" method="post" id="buy_class_submit_h" onsubmit="return registerReceiver()">
+					<form action="/Learn_N_Run/article1/buyersubmit.do?classNo=${classNo}" method="post" id="buy_class_submit_h" onsubmit="return registerReceiver()">
 						<!-- 배송 정보 입력창 부분 -->
 						<section class="deliver_h">
 							<h4>배송 정보</h4>

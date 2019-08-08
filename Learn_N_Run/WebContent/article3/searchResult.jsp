@@ -19,21 +19,45 @@
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
 </head>
-<body style="overflow-x:hidden; overflow-y:auto;"> 
+<body style="overflow-x:hidden; overflow-y:auto;">
 
-<%-- header--%>
 <c:import url="/1_Include/header.jsp"></c:import>
-	
-	<div class="embed-responsive embed-responsive-16by9">
-		<iframe width="100%" height="100%"
-				src="${contextpath}/article3/class_play/Player.jsp"
-				frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen>
-		</iframe>
+
+	<div id="wrap">
+		<div style="padding-bottom: 30px;">
+			<div style="font-size: 24px; font-weight: bold; color: tomato;" >
+				검색결과
+			</div>
+			<hr>
+			<div>
+					<hr>
+				<div style="font-size: 18px; font-weight: bold; color: tomato;">
+					카테고리
+				</div>	
+					<hr>
+				<div>
+				
+				
+				</div>	
+					<hr>
+			</div>
+			<div>
+				<div style="font-size: 18px; font-weight: bold; color: tomato;">
+					제목
+				</div>
+					<hr>
+				<div>
+				
+				
+				</div>
+					<hr>
+			</div>
+		</div>
 	</div>
 	
 	
-<%-- footer.jsp--%>
+	
+	
 <c:import url="/1_Include/footer.jsp"></c:import>
 
 </body>

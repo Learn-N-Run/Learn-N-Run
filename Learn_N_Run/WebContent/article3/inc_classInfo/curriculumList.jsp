@@ -34,15 +34,21 @@
 		</div>
 		
 		<div class="TH_curriculuminfo row">
-			<img class="col-lg-3 col-xs-12" src="${contextpath}/3_img/bbb.jpg">
+			<img class="col-lg-3 col-xs-12" src="${contextpath}${cudto.thumbnail}">
 			<div class="col-lg-9 col-xs-12">
 
-<c:set var="i" value="1"></c:set>
+			<p style="font-size: 1.1em; font-weight: bold; margin: 5px 0px; ">
+				${cudto.major_topic}
+			</p>
+<c:forEach var = "suv" items="${requestScope.suv}" varStatus="status" >
 
 				<p>
-					<span class="TH_subjectNum">${i}</span>
-					서브젝트 목록이에요
+					<span class="TH_subjectNum">${status.count}</span>
+					${suv.subject}
 				</p>
+
+</c:forEach>				
+
 			</div>
 		</div>
 	</div>

@@ -31,6 +31,13 @@
 	.TH_onclickContent:HOVER{
 		cursor: pointer;
 	}
+	.TH_thumbnailContent:HOVER{
+		cursor: pointer;
+	}
+	.TH_thumbnailContent>img{
+		width: 260px;
+		height: auto;
+	}
 	.TH_cateimg{
 		width: 90px;
 		height: 90px;
@@ -41,15 +48,8 @@
 	}
 	.TH_inter-button, .TH_pop-button, .TH_event-button{
 		position: absolute;
-		top: 50%;
-		width: 27px;
-		height: 44px;
-		margin-top: -22px;
-		z-index: 10;
+		z-index: 11;
 		cursor: pointer;
-		background-size: 27px 44px;
-		background-position: center;
-		background-repeat: no-repeat;
 	}
 	#TH_category{
 		text-align: center;
@@ -62,6 +62,7 @@
 		margin-bottom: 10px;
 		margin-top: 10px; 
 		padding: 5px;
+		min-height: 70vh;
 	}
 	.TH_replyContents{
 		padding: 10px;

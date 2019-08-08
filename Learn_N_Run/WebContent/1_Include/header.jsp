@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -68,7 +69,7 @@
 /* 햄버거메뉴 */
 	#inc_hamburger {
 		display: inline;
-		z-index: 1000;
+		z-index: 10000;
 		position: fixed;
 		float: right;
 		right: 1vw;
@@ -221,22 +222,22 @@
 			transform: translate(-50%, 200%);
 		}
 	}
+	
 	#inc_onmenuset{ 
 		position: fixed;
 		float: right;
 		top: 0px;
 		right: 0px;
-			width: 200px;
-			height: 100vh;
-			z-index: 1;
-			padding-top: 100px;
-			animation-duration: 1s;
-			animation-name: slide_for_left;
-			background-color: rgba(255,255,255,0.8);
+		width: 200px;
+		height: 100vh;
+		z-index: 1000;
+		padding-top: 100px;
+		animation-duration: 1s;
+		animation-name: slide_for_left;
+		background-color: rgba(255,255,255,0.8);
 	}
-
-	#inc_menuList>ul>li:nth-child(1n+3){
-/* 		display:inline; */
+	.TH_menubar{
+		display:none;
 	}
 	
 	@keyframes slide_for_left{
@@ -247,11 +248,11 @@
 			background-color: rgba(255,255,255,0.8);
 		}
 	}
-
+	
 </style>
 <title></title>
 </head>
-<body>
+<body style="overflow-x: hidden;">
 	<header id="inc_header">
 		<div id="inc_mainlogo" class="col-xs-2" align="center">
 			<a href="${contextpath}/main.jsp" style="display:inline-block; padding: 10px; vertical-align: middle; width: 100px; height: 100px;">
@@ -260,7 +261,7 @@
 		</div>
 		<div class="col-xs-10">
 			<div class="inc_floating" align="left">
-				<div class="col-xs-7">
+				<div class="col-xs-9">
 					<form action="" method="GET">
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="카테고리 + 제목" style="color: gray;" >
@@ -272,7 +273,7 @@
 						</div>
 					</form>
 				</div>
-				<div class="col-xs-5">
+				<div class="col-xs-3">
 				
 <c:if test="${sessionScope.id ne null}">
 				
@@ -281,46 +282,46 @@
 						<span></span>
 						<span></span>
 					</button>
-					<div id="inc_menuList" class="visible-xs-block">
+					<div id="inc_menuList">
 						<ul class="list-inline">
 								<li>
-									<a href="javascript:;" id="message_info_h">
+									<a href="javascript:;" id="message_info_h" class="TH_menubar">
 										쪽지함
 									</a>
 								</li>
 								<li>
-									<a href="javascript:;" id="logout_h">
+									<a href="javascript:;" id="logout_h" class="TH_menubar">
 										로그아웃
 									</a>
 								</li>
 								<li>
-									<a href="/Learn_N_Run/article1/getUserInfo.do">
-										 마이페이지
+									<a href="/Learn_N_Run/article1/getUserInfo.do" class="TH_menubar">
+										 회원정보 수정
 									</a>
 								</li>
 								<li>
-									<a href="/Learn_N_Run/article2/crt_getAllClassList.me">
+									<a href="/Learn_N_Run/article2/crt_getAllClassList.me" class="TH_menubar">
 										 내 클래스
 									</a>
 								</li>
 								<li>
-									<a href="/Learn_N_Run/article1/getMyClassInfo.do">
+									<a href="/Learn_N_Run/article1/getMyClassInfo.do" class="TH_menubar">
 										 내 수강목록
 									</a>
 								</li>
 								<li>
-									<a href="/Learn_N_Run/article2/jjim.me">
-										 찜 목록
+									<a href="/Learn_N_Run/article2/jjim.me" class="TH_menubar">
+										 찜목록
 									</a>
 								</li>
 								<li>
-									<a href="javascript:"; id="coupon_h">
-										 쿠폰함 여긴 따로 넣을거 
+									<a href="javascript:"; id="coupon_h" class="TH_menubar">
+										 쿠폰보관함
 									</a>
 								</li>
 								<li>
-									<a href="/Learn_N_Run/article1/signout.jsp">
-										 회원탈퇴 여긴 따로 넣을거
+									<a href="/Learn_N_Run/article1/signout.jsp" class="TH_menubar">
+										 회원탈퇴
 									</a>
 								</li>
 							</ul>
@@ -330,52 +331,36 @@
 			</div>
 		</div>
 	</header>
-<div class="well visible-lg-block">
-
-</div>
-
-<c:if test="${requestScope.TH_navContents ne null}">
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#TH_navContents").show();
-		});
-	</script>
-</c:if>
-
-<div style="content: ''; height: 10px;">&nbsp;</div>
-<!-- 로드되면 값 확인해서 나오는 안내 모달 -->
-<div class="modal fade" id="TH_navContents">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">${requestScope.TH_navTitle}</h4>
-      </div>
-      <div class="modal-body">
-        <p>${requestScope.TH_navContents}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- 햄버거메뉴 -->	
 <script type="text/javascript">
-	var inc_menuList = document.querySelector('#inc_menuList');
 	var inc_onmenuset = document.querySelector('#inc_menuList>ul');
+	var TH_menubar = document.querySelectorAll('.TH_menubar');
 	
 	document.getElementById('inc_hamburger').addEventListener('click', function() {
 		if (this.className == 'on'){
+			
 			this.classList.remove('on');
-			inc_menuList.classList.add('visible-xs-block');
+
 			inc_onmenuset.removeAttribute('id','inc_onmenuset');
+			
+			for ( var it in TH_menubar) {
+					TH_menubar[it].style.display = 'none';
+			};
+			
 		}else{
+			
 			this.classList.add('on');
+			
 			inc_onmenuset.setAttribute('id','inc_onmenuset');
-			inc_menuList.classList.remove('visible-xs-block');
+			
+			for ( var it in TH_menubar) {
+				TH_menubar[it].style.display = 'block';
+			};
+			
 		}});
+	
+	
 	
 	$(document).on("click","#logout_h", function() {
 		var result = confirm("정말 로그아웃하시겠습니까?");

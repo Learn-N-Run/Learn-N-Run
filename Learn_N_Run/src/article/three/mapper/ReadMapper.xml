@@ -38,6 +38,12 @@
 		<parameter property="LimitCount"/>
 	</parameterMap>
 	
+	<resultMap type="java.util.HashMap" id="searchResult">
+		<result property="class" column="class"/>
+		<result property="classno" column="classno"/>
+		<result property="category" column="category"/>
+	</resultMap>
+	
 	<select id="TopClassSelect" resultType="PopularClassDTO">
 		<![CDATA[
 			SELECT cl.no 'classNo',cl.cre_id 'creator',cl.cover_img 'coverImg',cl.title 'title',ca.no 'categoryNo', ca.name 'categoryName', 
@@ -121,15 +127,20 @@
 			ORDER BY no DESC LIMIT #{startLimitIndex}, 10;
 		]]>
 	</select>
+	
 <!-- 	
-	
-	<select id="" resultType="">
-			
-	
-	
+ajax	
+	<select id="searchResult" parameterType="String" resultMap="searchResult">
+		<![CDATA[
+		SELECT cl.title class, ca.name category, cl.no classno
+		FROM category ca JOIN class cl
+		ON ca.no = cl.category_no
+		WHERE cl.title LIKE "%%"
+		OR ca.name LIKE "%%" LIMIT 5;
+		]]>
 	</select>
 	
-	
+
 	<select id="VideoReplySelect" parameterType="int" resultType="ReplyDTO">
 		<![CDATA[
 			SELECT * FROM reply

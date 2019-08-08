@@ -49,7 +49,7 @@ public class ClassInfoService implements Service{
 		request.setAttribute("suv", suv);
 		request.setAttribute("bcheck", bcheck);
 		
-		forward.setPath("classInfo.jsp");
+		forward.setPath("/article2/classInfo.jsp");
 		forward.setRedirect(false);
 		
 		

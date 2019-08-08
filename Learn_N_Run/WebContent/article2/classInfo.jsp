@@ -22,15 +22,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
 
-<script type="text/javascript">
-	
-
-</script>
-
 <title>클래스 상세보기</title>
 </head>
-<body>
+<body style="overflow-x: hidden;">
 <jsp:include page="/1_Include/header.jsp" />
+
 <div id = "wrap">
 	
 	
@@ -40,8 +36,8 @@
 		
 			<!-- 클래스 섬네일 -->
 			<section class = "thumb_c"> 
-				<img src="upload/${cudto.classinfo.cover_img}" width="100%" height="100%">
-			</section> 
+				<img src="${contextpath}${cudto.classinfo.cover_img}" width="100%" height="100%">
+			</section>
 			<hr>
 			
 			
@@ -73,7 +69,7 @@
 					<tr>
 						<td colspan="2">
 							<fmt:formatNumber var="tuition" value = "${cudto.classinfo.tuition}" pattern="###,###"/>
-							<h2 align="left" style=" font-family: 'Jua', sans-serif;" >
+							<h2 align="left">
 								수강료 : ￦ ${tuition}
 							</h2>
 						</td>
@@ -84,21 +80,21 @@
 					<c:if test="${bcheck == -1}">
 						<td width="50%;">
 							<div>
-								<button class = "jjimnsubmit_c" onclick = "location.href='jjimRegister.me?no=${cudto.classinfo.no}'" >찜하기</button>
+								<button class = "jjimnsubmit_c" onclick = "location.href='/Learn_N_Run/article2/jjimRegister.me?no=${cudto.classinfo.no}'" >찜하기</button>
 							</div>
 						</td>
 						<td width="50%;">
-							<button class = "jjimnsubmit_c" onclick = "location.href = 'buyClassInfo.do?classno=${cudto.classinfo.no}'">신청하기</button>
+							<button class = "jjimnsubmit_c" onclick = "location.href = '/Learn_N_Run/article1/buyClassInfo.do?classno=${cudto.classinfo.no}'">신청하기</button>
 						</td>
 					</c:if>
 					<c:if test="${bcheck == 1}">
 						<td width="50%;">
 							<div>
-								<button class = "jjimnsubmit_c" onclick = "location.href='jjimRegister.me?no=${cudto.classinfo.no}'" >찜하기</button>
+								<button class = "jjimnsubmit_c" onclick = "location.href='/Learn_N_Run/article2/jjimRegister.me?no=${cudto.classinfo.no}'" >찜하기</button>
 							</div>
 						</td>
 						<td width="50%;">
-							<button class = "jjimnsubmit_c" onclick = "#">강의 듣기</button>
+							<button class = "jjimnsubmit_c" onclick = "location.href='/Learn_N_Run/article3/.kr?no=${cudto.classinfo.no}'">강의 듣기</button>
 						</td>
 					</c:if>
 					</tr>	
@@ -119,32 +115,21 @@
 			<hr>
 			<!-- 클래스 소개글 ~ -->
 			<section class = "intro_c">
-				<h3>●) 클래스 소개글</h3><br>
+				<h3 style="font-size: 24px; font-weight: bold; color: tomato;">
+				클래스 소개글</h3><br>
 				<font class = "font_c" >&nbsp; ${cudto.classinfo.content} </font>
 			</section>
 			<hr>
 			<!-- 커리큘럼 소개 영역 -->
-			<section>
-				<h3>●) 커리큘럼 소개</h3><br>
-				<img alt="" src="upload/${cudto.thumbnail}" class ="curi_img_c">
-				
-				<span class = "topic_c">${cudto.major_topic}</span> <br>
-				
-					<c:forEach var = "suv" items="${requestScope.suv}">
-						<font class = "subject_c">★ ${suv.subject}</font> <br><br>
-					</c:forEach>
-					
-			</section>
+<jsp:include page="/article3/inc_classInfo/curriculumList.jsp"/>
 			
 			<hr>
-			
-			
-			
 			
 			<!-- 크리에이터 url 영역 -->
 			<section style="width: 100%; height: 100px;">
 				<div>
-					<h3>●) 크리에이터 sns 및 채널</h3>
+					<h3 style="font-size: 24px; font-weight: bold; color: tomato;">
+					크리에이터 sns 및 채널</h3>
 					<button onclick="location.href = '${cudto.classinfo.creator.creator_url}'" class = "btn btn-default">크리에이터 URL 및 CHANNEL</button>
 				</div>
 			</section>
@@ -154,18 +139,19 @@
 			<!-- 클래스 준비물 정보 영역 -->
 			
 			<section style="width: 100%;">
-			<h3>●) 준비물 Pakage</h3>
+			<h3 style="font-size: 24px; font-weight: bold; color: tomato;">
+			준비물 Pakage</h3>
 			
 			<table  style="width: 100%;">
 					
 					<tr>
 						<td height="200">
-							<img alt="" src="upload/${cudto.classinfo.material_img}" width="30%" height="85%">
+							<img alt="" src="${contextpath}${cudto.classinfo.material_img}" width="30%" height="85%">
 						</td>
 					</tr>
 					
 					<tr>
-						<td style = "font-size: 25px; font-family: 'Jua', sans-serif;">▷ ${cudto.classinfo.material_content}</td>
+						<td style = "font-size: 25px;"> ${cudto.classinfo.material_content}</td>
 					</tr>
 			</table>
 			</section>
@@ -176,15 +162,17 @@
 			
 			<!-- 비슷한 카테고리 영역 부분 -->
 			<section style="margin-top: 50px;">
-				<h3>●) 동일한 카테고리 클래스</h3>
+				<h3 style="font-size: 24px; font-weight: bold; color: tomato;">
+				동일한 카테고리 클래스
+				</h3>
 			</section>
 			
 			<section class = "sec02_c">
 			
 			<c:forEach var = "catev" items="${requestScope.catev}">
 			<div  id = "one_c">
-			<a href = "classInfo.me?no=${catev.classinfo.no}" style="text-decoration: none;">
-				<div style="width: 100%; height: 150px; overflow : hidden;"><img alt="" src="upload/${catev.classinfo.cover_img}" width="100%" height="100%"></div>
+			<a href = "/Learn_N_Run/article2/classInfo.me?no=${catev.classinfo.no}" style="text-decoration: none;">
+				<div style="width: 100%; height: 150px; overflow : hidden;"><img alt="" src="${contextpath}${catev.classinfo.cover_img}" width="100%" height="100%"></div>
 				<div style="width: 100%; height: 20px;"><h6>${catev.classinfo.category.name } * ${catev.classinfo.creator.nickname}</h6></div>
 				<div id = "one_div_c">${catev.classinfo.title }</div>
 			</a>
@@ -194,15 +182,12 @@
 			</section> 
 			<hr>
 			
-			<!-- 클래스 상세보기 댓글 추가해야 함-->
 			<section>
-				<h3>●) 댓글영역</h3>
+<jsp:include page="/article3/inc_classInfo/community.jsp"/>
 			</section>
 			<hr>
 			
 			
-<jsp:include page="/article3/inc_classInfo/curriculumList.jsp"/>
-<jsp:include page="/article3/inc_classInfo/community.jsp"/>
 			
 		</div>
 		
@@ -231,29 +216,29 @@
 					</tr>
 					<tr>
 						<td>
-							<img alt="" src="upload/${cudto.classinfo.material_img}" width="298px" height="180px">
+							<img src="${contextpath}${cudto.classinfo.material_img}" width="260px" height="auto">
 						</td>
 					</tr>
 					<tr>
-						<td style = "font-size: 25px; font-family: 'Jua', sans-serif;">▷ ${cudto.classinfo.material_content}</td>
+						<td>${cudto.classinfo.material_content}</td>
 					</tr>
 				</table>
 				
 				<!-- 준비물 kit 표시  끝-->
 				<c:if test="${bcheck == -1}">
 				<div>
-					<button class = "jjimnsubmit_c" onclick = "location.href='jjimRegister.me?no=${cudto.classinfo.no}'">찜하기</button>
+					<button class = "jjimnsubmit_c" onclick = "location.href='/Learn_N_Run/article2/jjimRegister.me?no=${cudto.classinfo.no}'">찜하기</button>
 				</div>
 				<div>
-					<button class = "jjimnsubmit_c" onclick = "location.href = 'buyClassInfo.do?classno=${cudto.classinfo.no}'" > 수강료 : ￦ ${tuition} <br> 신청하기</button>
+					<button class = "jjimnsubmit_c" onclick = "location.href ='/Learn_N_Run/article1/buyClassInfo.do?classno=${cudto.classinfo.no}'" > 수강료 : ￦ ${tuition} <br> 신청하기</button>
 				</div>
 				</c:if>
 				<c:if test="${bcheck == 1}">
 				<div>
-					<button class = "jjimnsubmit_c" onclick = "location.href='jjimRegister.me?no=${cudto.classinfo.no}'">찜하기</button>
+					<button class = "jjimnsubmit_c" onclick = "location.href='/Learn_N_Run/article2/jjimRegister.me?no=${cudto.classinfo.no}'">찜하기</button>
 				</div>
 				<div>
-					<button class = "jjimnsubmit_c" onclick = "#">강의 듣기</button>
+					<button class = "jjimnsubmit_c" onclick = "">강의 듣기</button>
 				</c:if>
 				
 				

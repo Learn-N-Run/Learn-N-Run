@@ -37,9 +37,14 @@
 	#submit_c{
   		 width: 300px;
   		 background-color: white;
-  		 border : 1px solid;
   		 position: fixed;
    		 margin-bottom: 100px;
+   		 box-shadow: rgba(0,0,0,0.2) 5px 5px 5px,
+   		 			 rgba(0,0,0,0.2) -5px -5px 5px,
+   		 			 rgba(0,0,0,0.2) 5px -5px 5px,
+   		 			 rgba(0,0,0,0.2) -5px 5px 5px;
+   		 padding: 10px;
+   		 border-radius: 20px;
 	}
 	
 	/*섬네일 이미지 영역*/
@@ -180,16 +185,14 @@
 		font-size: 20px;
 		color: white;
 		margin-top: 5%;
-		width: 298px; 
-		height: 60px;
-		border-radius: 5%;	
-		
-		font-family: 'Jua', sans-serif;
-		
+		width: 100%; 
+		height: auto;
+		border-radius: 20px;
+		transition: all 0.5s;
 	}
 	
 	.jjimnsubmit_c:hover {
-	background-color: rgb(0, 0,0);
+	background-color: tomato;
 }
 	
 	
@@ -217,9 +220,8 @@
 	
 	
 	/*화면 줄였을 때  보여지는 컨텐츠*/
-	 @media (max-width: 1500px) {
+	 @media (max-width: 1200px) {
 	#wrap{
-
 	 	margin: 0 auto;
 		}
 	.show_c{

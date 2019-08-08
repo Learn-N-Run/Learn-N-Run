@@ -19,7 +19,7 @@
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
 </head>
-<body style="overflow-x:hidden; overflow-y:auto;"> 
+<body style="overflow-x:hidden;"> 
 
 <%-- header--%>
 <c:import url="/1_Include/header.jsp"></c:import>
@@ -41,11 +41,11 @@
 <c:forEach items="${classinfo.cateClassList}" var="classlist">
 
 			<div class="col-lg-3 col-xs-6">
-				<div class="TH_onclickContent" 
+				<div class="TH_thumbnailContent thumbnail" 
 					onclick="location.href = '${contextpath}/article2/classInfo.me?no=${classlist.no}'">
-					${classlist.title}
 					<img src="${contextpath}${classlist.cover_img}"
-						width="300" height="300">
+						style="width: 290; height: auto;">
+					${classlist.title}
 				</div>
 			</div>
 </c:forEach>

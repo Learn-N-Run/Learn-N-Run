@@ -67,8 +67,8 @@
 
 			<div class="swiper-slide TH_onclickContent" onclick="location.href='article2/classInfo.me?no=${inter.classNo}'">
 				<div class="thumbnail">
-					<img src=" "
-						 alt=" ">
+					<img src="${contextpath}${inter.coverImg}"
+						 alt="${inter.title}">
 					<div class="caption">
 					<h6>${inter.title}</h6>
 					<p>${inter.interestedCount}</p>
@@ -80,10 +80,10 @@
 
 		</div>
 		<div class="swiper-pagination"></div>
-		<a id="TH_inter-button-prev" class="left carousel-control" href="#TH_event" data-slide="prev" style="color: tomato !important; background-image: none !important;">
+		<a id="TH_inter-button-prev" class="TH_inter-button left carousel-control" href="#TH_event" data-slide="prev" style="color: tomato !important; background-image: none !important;">
 			<span class="glyphicon glyphicon-chevron-left"></span>
 		</a>
-		<a id="TH_inter-button-next"  class="right carousel-control" href="#TH_event" data-slide="next" style="color: tomato !important; background-image: none !important;">
+		<a id="TH_inter-button-next"  class="TH_inter-button right carousel-control" href="#TH_event" data-slide="next" style="color: tomato !important; background-image: none !important;">
 			<span class="glyphicon glyphicon-chevron-right"></span>
 		</a>
 	</div>

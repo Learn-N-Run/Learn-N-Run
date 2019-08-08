@@ -123,7 +123,7 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 		<section id="sec01">
 			<div class="sec01_div1">
 				<div class="sec01_div1_1">
-					<a href="crt_classList.jsp"><&nbsp;나의 클래스로 돌아가기</a>
+					<a href="/Learn_N_Run/article2/crt_classList.jsp"><&nbsp;나의 클래스로 돌아가기</a>
 					<h3>1단계 : 클래스 기본 정보 작성하기</h3>
 					<div>
 						<p>클래스의 기본 정보를 작성해 주세요.</p>
@@ -135,9 +135,9 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 			</div>
 			<div class="sec01_div2">
 				<div class="sec01_div2_1">
-					<a href="crt_addClass.jsp" class="sec01_div2_1a">클래스 내용</a>
-					<a href="crt_addCurri.jsp" class="sec01_div2_2a">커리큘럼</a>
-					<a href="crt_upload.jsp" class="sec01_div2_3a">클래스 등록</a>
+					<a href="/Learn_N_Run/article2/crt_addClass.jsp" class="sec01_div2_1a">클래스 내용</a>
+					<a href="/Learn_N_Run/article2/crt_addCurri.jsp" class="sec01_div2_2a">커리큘럼</a>
+					<a href="/Learn_N_Run/article2/crt_upload.jsp" class="sec01_div2_3a">클래스 등록</a>
 				</div>
 			
 			</div>
@@ -146,7 +146,7 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 	
 	</div>
 	
-	<form action = "updateClass.me" method = "post" enctype="multipart/form-data">
+	<form action = "/Learn_N_Run/article2/updateClass.me" method = "post" enctype="multipart/form-data">
 		
 		<table style= "margin: 30px auto; width: 78%;" id = "table_c">
 			

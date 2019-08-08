@@ -37,19 +37,19 @@ public class JoinRegisterService implements Service{
 			//가입 실패
 			if(result == 0) {
 				
-				request.setAttribute("TH_navTitle", "회원 가입 실패");				
-				request.setAttribute("TH_navContents", "회원 가입을 다시 시도해 주세요");
-				
-					out.println("<script>");
-					out.println("history.back();");
-					out.print("</script>");
-                    out.close();
-					
+				out.println("<script>");
+				out.println("history.back();");
+				out.print("</script>");
+			
+				out.close();
+                    
 			}else {
-				
-				request.setAttribute("TH_navTitle", "회원 가입 완료");
-				request.setAttribute("TH_navContents", "회원가입 되었습니다.");
-					
+                out.println("<script>");
+                out.println("alert('회원가입 되었습니다.');");
+                out.println("location.href='/Learn_N_Run/main.jsp';");
+                out.println("</script>");
+                
+                out.close();
 				}
 		}
 }

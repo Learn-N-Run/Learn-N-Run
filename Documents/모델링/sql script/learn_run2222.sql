@@ -1,19 +1,14 @@
-drop database learnrun;
 use learnrun;
-
+drop database learnrun;
 
 show tables;
 
-
-SELECT * FROM user_group;
-SELECT * FROM class;
-SELECT * FROM reply;
-DELETE FROM class WHERE no = 1;
-
 SELECT * FROM user;
 
-SELECT ca.name category, cl.title class
+desc class;
+
+SELECT cl.title class, ca.name category 
 FROM category ca JOIN class cl
 ON ca.no = cl.category_no
-WHERE ca.name LIKE "%요리%"
-OR cl.title LIKE "%요리%";
+WHERE cl.title LIKE "%요%"
+OR ca.name LIKE "%요%";

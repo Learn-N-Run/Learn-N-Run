@@ -28,11 +28,7 @@
 			
 		</div>
 		<div class="col-lg-6">
-			
-			
-			메모
-			
-			
+<textarea class="form-control" maxlength="1000" rows="20"></textarea>
 		</div>
 	</div>
 </body>

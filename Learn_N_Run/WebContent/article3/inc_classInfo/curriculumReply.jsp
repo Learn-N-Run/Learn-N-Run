@@ -22,16 +22,13 @@
 <body> 
 
 		<div id="TH_community">
-			<h3>
-				<font color="tomato">커뮤니티</font>
 <c:if test="${reply ne null }">
 			개의 글
 </c:if>
-			</h3>
 			<form action="">
 				<div class="input-group">
 					<input type="hidden" name="classNo" value="">
-					<input type="hidden" name="userID" value="">
+					<input type="hidden" name="userID" value="${sessionScope.id}">
 					<input class="form-control" type="text" name="classReplyContents" placeholder="댓글을 입력해주세요">
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="button">등록</button>

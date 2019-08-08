@@ -109,7 +109,7 @@ public class Controller extends HttpServlet {
 		}else if (getCommand(request, response).equals("buyersubmit.do")) {
 			InsertbuyClassService forward = new InsertbuyClassService();
 			forward.excute(request, response);
-			path="/article1/mainEx.jsp";
+			path="/article1/getMyClassInfo.do";
 			
 		}else if (getCommand(request, response).equals("join.do")) {
 			JoinRegisterService forward = new JoinRegisterService();

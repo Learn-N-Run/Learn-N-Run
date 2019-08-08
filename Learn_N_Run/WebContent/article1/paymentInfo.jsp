@@ -207,13 +207,13 @@
 					<h4>구매 목록</h4>
 					<div class="section_h">
 						<div class="section_1_h">
-							<img src="img/${requestScope.cover_img }">
+							<img src="${contextpath}${requestScope.cover_img }">
 						</div>
 						<div class="section_2_h">
 							<span>1. [온라인 수강권]</span>
 						</div>
 						<div class="section_2_h">
-							<p>${requestScope.title }</p>
+							<p>${requestScope.title}</p>
 						</div>
 					</div>
 					
@@ -222,7 +222,7 @@
 				<section class="deliver_1_h">
 					<div class="section_h">
 						<div class="section_1_h">
-							<img src="img/${requestScope.material_img }">
+							<img src="${contextpath}${requestScope.material_img }">
 						</div>
 						<div class="section_2_h">
 							<span>2. [준비물]</span>
@@ -236,8 +236,7 @@
 					<table>
 						<tbody>
 							<tr class="table_1_h">
-								<th align="right">총 금액 : </th>
-								<td align="left"> ${tuition}</td>
+								<td>총 금액 : 	${tuition}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -253,7 +252,7 @@
 				</div>
 				
 				<div class="last_pay">
-					<button type="button"><a href="payment.do?classno=${classNo}">다음으로</a></button>
+					<button type="button"><a href="/Learn_N_Run/article1/payment.do?classno=${classNo}">다음으로</a></button>
 				</div>
 			</div>
 		</div>

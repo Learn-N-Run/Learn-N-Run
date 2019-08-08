@@ -67,8 +67,8 @@
 
 			<div class="swiper-slide TH_onclickContent" onclick="location.href='article2/classInfo.me?no=${pop.classNo}'">
 				<div class="thumbnail">
-					<img src=" "
-						 alt=" ">
+					<img src="${contextpath}${pop.coverImg}"
+						 alt="${pop.title}" width="">
 					<div class="caption">
 					<h6>${pop.title}</h6>
 					<p>${pop.topRankCount}</p>
@@ -79,10 +79,10 @@
 
 		</div>
    		<div class="swiper-pagination"></div>
-		<a id="TH_pop-button-prev" class="left carousel-control" href="#TH_event" data-slide="prev" style="color: tomato !important; background-image: none !important;">
+		<a id="TH_pop-button-prev" class="TH_pop-button left carousel-control" href="#TH_event" data-slide="prev" style="color: tomato !important; background-image: none !important;">
 			<span class="glyphicon glyphicon-chevron-left"></span>
 		</a>
-		<a id="TH_pop-button-next"  class="right carousel-control" href="#TH_event" data-slide="next" style="color: tomato !important; background-image: none !important;">
+		<a id="TH_pop-button-next"  class="TH_pop-button right carousel-control" href="#TH_event" data-slide="next" style="color: tomato !important; background-image: none !important;">
 			<span class="glyphicon glyphicon-chevron-right"></span>
 		</a>
 	</div>
