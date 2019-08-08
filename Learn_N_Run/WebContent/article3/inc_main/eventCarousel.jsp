@@ -24,7 +24,12 @@
 	<style type="text/css">
 		.item{
 			background-color: black;
-			
+		}
+		#TH_event{
+			box-shadow: rgba(0,0,0,0.2) 5px 5px 5px,
+						rgba(0,0,0,0.2) -5px -5px 5px,
+						rgba(0,0,0,0.2) 5px -5px 5px,
+						rgba(0,0,0,0.2) -5px 5px 5px;
 		}
 	</style>
 </head>
@@ -38,24 +43,16 @@
 				<li data-target = "#TH_event" data-slide-to = "0" class="active"></li>
 				<li data-target = "#TH_event" data-slide-to = "1"></li>
 				<li data-target = "#TH_event" data-slide-to = "2"></li>
-				<li data-target = "#TH_event" data-slide-to = "3"></li>
-				<li data-target = "#TH_event" data-slide-to = "4"></li>
 			</ol>
 			<div id="TH_eventCarousel" class ="carousel-inner">
 				<div class="item active">
-					<img src="${contextpath}/article3/img/침영어 (0).jpg">
+					<img src="${contextpath}/3_img/event1_s.png">
 				</div>			
 				<div class= "item">
-					<img src="${contextpath}/article3/img/침영어 (1).jpg">
+					<img src="${contextpath}/3_img/event2_s.png">
 				</div>
 				<div class= "item">
-					<img src="${contextpath}/article3/img/침영어 (2).jpg">
-				</div>
-				<div class= "item">
-					<img src="${contextpath}/article3/img/영어강의 (1).jpg">
-				</div>
-				<div class= "item">
-					<img src="${contextpath}/article3/img/영어강의 (2).jpg">
+					<img src="${contextpath}/3_img/event3_s.png">
 				</div>
 			</div>
 			<a class="left carousel-control" href="#TH_event" data-slide="prev" style="color: tomato !important; background-image: none !important;">
