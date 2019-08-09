@@ -54,7 +54,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 		<div id="class_left_right">
 			<!-- 이미지 -->
 			<div class="cover_img_left">
-				<div class="cover_img"><img src="upload/${classDto.cover_img }"></img></div>
+				<div class="cover_img"><img src="/Learn_N_Run${classDto.cover_img }"></img></div>
 				<div class="cover_img_input"><%-- <input type="file" name="cover_img" accept="image/*" onchange="readIMAGE(this);" value="${classDto.cover_img }"> --%></div>
 			</div>
 			<div class="tuition_right">
@@ -90,7 +90,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 				<!-- 준비물쪽 -->
 				<div class="tuition_right_down">
 					<div class="img_left_div">
-						<div class="img_div"><img src="upload/${classDto.material_img }"></img></div>
+						<div class="img_div"><img src="/Learn_N_Run${classDto.material_img }"></img></div>
 					</div>
 					<div class="img_right_div" align="center">
 						<div class="material_label"><label>준비물</label></div>
@@ -121,7 +121,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 		 				<label style="width: 20%; height: 90%; font-size: 15px; text-align: center; color: tomato;">주제 ${i.count}</label><input type="text" name="subject" value="${v.subject }" readonly="readonly" style="width: 80%; font-size:16px; height: 99%; padding-left: 10px; color: black;" >
 		 			</div>
 		 			<div class="video_preview" id="video_preview">
-			 				<video controls src="upload/${v.url }"></video>
+			 				<video controls src="/Learn_N_Run${v.url }"></video>
 			 					 			
 		 			
 		 				

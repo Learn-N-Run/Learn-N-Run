@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 <!--외부참조(script.js, style.css) START LINE -->
@@ -23,6 +24,18 @@
 	<c:choose>
 	<c:when test="${id ne null}">
 		<c:redirect url="/index.kr"/>
+	</c:when>
+	<c:when test="${result == 0 }">
+		<script type="text/javascript">
+			alert("해당 비밀번호가 일치하지 않습니다.")
+			history.back();
+		</script>
+	</c:when>
+	<c:when test="${result == -1 }">
+		<script type="text/javascript">
+			alert("해당 아이디 정보가 없습니다.")
+			history.back();
+		</script>
 	</c:when>
 	<c:otherwise>
 		<c:redirect url="/anonymous.kr"/>

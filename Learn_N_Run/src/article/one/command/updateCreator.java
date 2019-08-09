@@ -22,7 +22,7 @@ public class updateCreator implements Service{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
 		
-		String path = "D:\\메모장연습";
+		String path = "D:\\team3 dev tools\\workspace\\Learn_N_Run\\WebContent\\4_contents\\profile";
 	      //2. 업로드하는 파일의 최대 크기를 제한(100MB)
 		int maxSize = 1024*1024*100;
 	      //3. 업로드할 파일의 이름이 한글 파일일 경우 encoding설정
@@ -43,7 +43,7 @@ public class updateCreator implements Service{
 		dto.setEmail(multi.getParameter("email"));
 		dto.setPass(multi.getParameter("newpwd"));
 		dto.setNumber(Integer.parseInt(multi.getParameter("number")));
-		dto.setProfile_img(fileName);
+		dto.setProfile_img("/4_contents/profile/"+fileName);
 		dto.setCreator_url(multi.getParameter("url"));
 		dto.setId(id);
 		

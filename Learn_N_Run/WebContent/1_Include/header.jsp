@@ -338,6 +338,11 @@
 									</a>
 								</li>
 								<li>
+									<a href="/Learn_N_Run/article1/AddCreator.jsp" class="TH_menubar">
+										크리에이터 지원
+									</a>
+								</li>
+								<li>
 									<a href="/Learn_N_Run/article1/getMyClassInfo.do" class="TH_menubar">
 										 내 수강목록
 									</a>
@@ -396,7 +401,7 @@
 	$(document).on("click","#logout_h", function() {
 		var result = confirm("정말 로그아웃하시겠습니까?");
 		if(result){
-			location.href="Learn_N_Run/article1/logout.do";	
+			location.href="/Learn_N_Run/article1/logout.do";	
 		}else{
 			return false;
 		}

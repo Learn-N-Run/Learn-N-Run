@@ -189,7 +189,7 @@ function readIMAGE(input){ //input type="file"태그를 매개변수로 전달�
 		      	<div class="row mb-4">
 	        		 <div class="col-4" style="text-align: right">프로필 이미지</div>
 	        		 <div class="col-4">
-						<div id="profile_img" style="margin-bottom:10px"><img id="preview" src="img/${requestScope.user.profile_img }"><input type="file" accept="image/*" name="profile_img" onchange="readIMAGE(this);"></div>
+						<div id="profile_img" style="margin-bottom:10px"><img id="preview" src="/Learn_N_Run${requestScope.user.profile_img }"><input type="file" accept="image/*" name="profile_img" onchange="readIMAGE(this);"></div>
 					</div>
 	    		</div>
 	    		<div class="row mb-4">

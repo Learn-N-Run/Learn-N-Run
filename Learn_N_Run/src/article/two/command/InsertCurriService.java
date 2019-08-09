@@ -39,7 +39,8 @@ public class InsertCurriService implements Service {
 	// 1) 파일 업로드.		
 		//cos.jar파일로 MultipartRequest 클래스 생성: 파일 업로드 담당하는 클래스
 		//1. 업로드할 파일의 경로 지정
-		String path = "D:\\메모장연습";
+		String conpath = request.getContextPath();
+		String path = "D:\\team3 dev tools\\workspace\\Learn_N_Run\\WebContent\\4_contents\\curr";
 		//2. 업로드하는 파일의 최대 크기를 제한(100MB)
 		int maxSize = 1024*1024*300;
 		//3. 업로드할 파일의 이름이 한글 파일일 경우 encoding설정
@@ -77,7 +78,7 @@ public class InsertCurriService implements Service {
 				thumbnail = realname;
 			}else{
 				
-				saveFiles.add(realname);
+				saveFiles.add("/4_contents/curr/"+realname);
 			}
 			
 			
@@ -95,7 +96,7 @@ public class InsertCurriService implements Service {
 			
 			String major_topic = multi.getParameter("major_topic");
 			curridto.setMajor_topic(major_topic);
-			curridto.setThumbnail(thumbnail);
+			curridto.setThumbnail("/4_contents/curr/"+thumbnail);
 			dto.setNo(Integer.parseInt(multi.getParameter("classNo")));
 		
 		

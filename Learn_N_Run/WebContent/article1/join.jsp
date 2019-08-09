@@ -15,6 +15,10 @@
 <script type="text/javascript">
 $(function(){
 	
+	$("#btn_login").on("click",function(){
+		history.back();
+	});
+	
 	//이름 유효성
 	$("#name").blur(function(){
 		var name = $(this).val();
@@ -144,6 +148,7 @@ function register(){
 <div id="wrap">
 	<div class="required_fieldin">
 		<h1 style="text-align:center; margin-top:30px;"> 회원가입 </h1>
+		<h4 style="text-align: center;  color: red">Learn & Run에서 무엇이든 배워보세요!</h4>
 			<form class="required_field" action="join.do" method="post" onsubmit="return register()">
 				<div class="mem_form_group">
 		            <label for="name">이름</label><br>
@@ -175,7 +180,7 @@ function register(){
 					<input type="submit" id="mem_submit" value="가입하기">
 				</div>
 				<div>
-					<input type="submit" id="btn_login" value="로그인">
+					<button type="button" id="btn_login" >처음으로</button>
 				</div>
 		</form>
 	</div>

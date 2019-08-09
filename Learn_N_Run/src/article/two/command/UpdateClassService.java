@@ -29,7 +29,7 @@ public class UpdateClassService implements Service{
 		
 		
 		
-		String path = "D:\\메모장연습";
+		String path = "D:\\team3 dev tools\\workspace\\Learn_N_Run\\WebContent\\4_contents\\cover";
 		
 
 		int max = 1024*1024*100;
@@ -60,12 +60,12 @@ public class UpdateClassService implements Service{
 			CategoryDTO catedto = new CategoryDTO();
 			catedto.setNo(category);
 			
-			cdto.setCover_img(cover_img);
+			cdto.setCover_img("/4_contents/cover/"+cover_img);
 			cdto.setTitle(title);
 			cdto.setCategory(catedto);
 			cdto.setDetail_category(detail_category);
 			cdto.setContent(content);
-			cdto.setMaterial_img(material_img);
+			cdto.setMaterial_img("/4_contents/cover/"+material_img);
 			cdto.setMaterial_content(material_content);
 			
 			ClassDAOImpl cdao = new ClassDAOImpl();

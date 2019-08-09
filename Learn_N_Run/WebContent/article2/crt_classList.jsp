@@ -60,7 +60,7 @@
 				<input type="hidden" id="classList_val" name="no" value="${classList.no }">
 				<div>
 					<div id="class_image">
-   						<img src="upload/${classList.cover_img }" alt="">
+   						<img src="/Learn_N_Run${classList.cover_img }" alt="">
    					</div>
 							
 					<div id="class_name">

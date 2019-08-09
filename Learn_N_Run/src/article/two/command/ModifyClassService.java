@@ -28,7 +28,7 @@ public class ModifyClassService implements Service{
 		// 1) 파일 업로드.		
 		//cos.jar파일로 MultipartRequest 클래스 생성: 파일 업로드 담당하는 클래스
 		//1. 업로드할 파일의 경로 지정
-		String path = "D:\\메모장연습";
+		String path = "D:\\team3 dev tools\\workspace\\Learn_N_Run\\WebContent\\4_contents\\curr";
 		//2. 업로드하는 파일의 최대 크기를 제한(300MB)
 		int maxSize = 1024*1024*10;
 		//3. 업로드할 파일의 이름이 한글 파일일 경우 encoding설정
