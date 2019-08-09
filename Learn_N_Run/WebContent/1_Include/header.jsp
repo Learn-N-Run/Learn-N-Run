@@ -284,6 +284,7 @@
 					</button>
 					<div id="inc_menuList">
 						<ul class="list-inline">
+							<c:if test="${sessionScope.Group == 2}">
 								<li>
 									<a href="javascript:;" id="message_info_h" class="TH_menubar">
 										내 쪽지함
@@ -319,6 +320,39 @@
 										 쿠폰보관함
 									</a>
 								</li>
+							</c:if>
+							<c:if test="${sessionScope.Group == 1 }">
+								<li>
+									<a href="javascript:;" id="message_info_h" class="TH_menubar">
+										내 쪽지함
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" id="logout_h" class="TH_menubar">
+										로그아웃
+									</a>
+								</li>
+								<li>
+									<a href="/Learn_N_Run/article1/getUserInfo.do" class="TH_menubar">
+										 회원정보 수정
+									</a>
+								</li>
+								<li>
+									<a href="/Learn_N_Run/article1/getMyClassInfo.do" class="TH_menubar">
+										 내 수강목록
+									</a>
+								</li>
+								<li>
+									<a href="/Learn_N_Run/article2/jjim.me" class="TH_menubar">
+										 찜목록
+									</a>
+								</li>
+								<li>
+									<a href="javascript:"; id="coupon_h" class="TH_menubar">
+										 쿠폰보관함
+									</a>
+								</li>
+							</c:if>
 							</ul>
 						</div>
 </c:if>

@@ -152,7 +152,7 @@ public class Controller extends HttpServlet {
 		}else if (getCommand(request, response).equals("logout.do")) {
 			LogoutService forward = new LogoutService();
 			forward.excute(request, response);
-			path = "/Learn_N_Run/";
+			path = "/main.jsp";
 			
 		}else if (getCommand(request, response).equals("pwdCheck.do")) {
 			pwdCheck forward = new pwdCheck();
