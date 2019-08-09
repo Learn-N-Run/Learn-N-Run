@@ -29,7 +29,7 @@
 <c:forEach items="${listMap.categoryList}" var="category">
 
 		<div class="TH_onclickContent"
-			onclick="location.href = '${contextpath}/categoryinfo.kr?category=${category.name}'">
+			onclick="location.href = '${contextpath}/article3/categoryinfo.kr?category=${category.name}'">
 			<img class="TH_cateimg" src="${contextpath}${category.image}">
 			<p>${category.name}</p>
 		</div>
@@ -40,7 +40,7 @@
 
 		<div class="col-lg-1 col-xs-3 ">
 			<div class="TH_onclickContent cateimg"
-				onclick="location.href = '${contextpath}/categoryinfo.kr?category=${categoryinfo.name}'">
+				onclick="location.href = '${contextpath}/article3/categoryinfo.kr?category=${categoryinfo.name}'">
 				<img class="TH_cateimg" src="${contextpath}${categoryinfo.image}">
 				<div>
 					${categoryinfo.name}

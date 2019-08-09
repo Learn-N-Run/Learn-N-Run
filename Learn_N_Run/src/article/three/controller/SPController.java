@@ -30,25 +30,27 @@ public class SPController{
 	private SqlSession sqlsession;
 	ReadDAO readDAO;
 	
-	@RequestMapping(value = "/anonymous")
+	@RequestMapping(value = "/article3/anonymous")
 	public String anonymousIndexView(Model model){
 		
-		return "AnonymousIndex";
+		return "/article3/AnonymousIndex";
 	}
 	
-	@RequestMapping(value = "/getcurrivideo")
+	@RequestMapping(value = "/article3/getcurrivideo*")
 	public String getcurrivideo(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		List<SubjectInfoDTO> subject_list;
-		
+	
+		SubjectInfoDTO dto = new SubjectInfoDTO();
+
 		if (request.getParameter("subjectno") != null) {
-			
-			SubjectInfoDTO dto = SubjectInfoDTO.builder().subjectno(Integer.parseInt(request.getParameter("subjectno"))).build();
+
+			dto.setClassno(Integer.parseInt(request.getParameter("subjectno")));
 			subject_list = sqlsession.selectList("article.three.mapper.ReadDAO.getsubjectVideo",dto);
 			
 		}else if (request.getParameter("no") != null) {
 			
-			SubjectInfoDTO dto = SubjectInfoDTO.builder().classno(Integer.parseInt(request.getParameter("no"))).build();
+			dto.setClassno(Integer.parseInt(request.getParameter("no")));
 			subject_list = sqlsession.selectList("article.three.mapper.ReadDAO.getcurriVideo",dto);
 			
 		}else {
@@ -61,11 +63,11 @@ public class SPController{
 		
 		if (subject_list == null) {
 			
-			path = "main";
+			path = "/main";
 			
 		}else {
 			model.addAttribute("subject_list", subject_list);
-			path = "main";
+			path = "/article3/PlayCurriculum";
 		}
 		
 		return path;
@@ -89,10 +91,10 @@ public class SPController{
 		
 		model.addAttribute("listMap", classinfo);
 		
-		return "index";
+		return "/article3/index";
 	}
 
-	@RequestMapping(value = "/categoryinfo", method = RequestMethod.GET)
+	@RequestMapping(value = "/article3/categoryinfo", method = RequestMethod.GET)
 	public String categoryView(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 
 		Map classinfo = new HashMap();
@@ -105,7 +107,7 @@ public class SPController{
 		
 		model.addAttribute("classinfo", classinfo);
 		
-		return "CategoryClassView";
+		return "/article3/CategoryClassView";
 	}
 
 	
@@ -115,7 +117,7 @@ public class SPController{
 		List<ReplyDTO> replyList = CummunityReplyList(request, response);
 		model.addAttribute("community", replyList);
 		
-		return "inc_reply/community";
+		return "/article3/inc_reply/community";
 	}
 
 //ajax
@@ -187,11 +189,6 @@ public class SPController{
 		return null;
 	}
 
-	public CurriculumDTO getVideo(CurriculumDTO dto, int subjectNo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	public List<ReplyDTO> CummunityReplyList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		Map keyMap = new HashMap();

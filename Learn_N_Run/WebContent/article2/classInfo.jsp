@@ -94,7 +94,9 @@
 							</div>
 						</td>
 						<td width="50%;">
-							<button class = "jjimnsubmit_c" onclick = "location.href = '/Learn_N_Run/article3/getcurrivideo.kr?no=${cudto.classinfo.no}'">강의 듣기</button>
+							<div>
+								<input type="button" class = "jjimnsubmit_c" onclick="location.href = '/Learn_N_Run/article3/getcurrivideo.kr?no=${cudto.classinfo.no}'" value="강의 듣기">
+							</div> 
 						</td>
 					</c:if>
 					</tr>	
@@ -238,11 +240,11 @@
 					<button class = "jjimnsubmit_c" onclick = "location.href='/Learn_N_Run/article2/jjimRegister.me?no=${cudto.classinfo.no}'">찜하기</button>
 				</div>
 				<div>
-					<button class = "jjimnsubmit_c" onclick = "">강의 듣기</button>
+					<input type="button" class = "jjimnsubmit_c" onclick="location.href = '/Learn_N_Run/article3/getcurrivideo.kr?no=${cudto.classinfo.no}'" value="강의 듣기">
+				</div>		
 				</c:if>
 				
-				
-			</div>		
+			</div>
 		</div>
 		<!-- 페이지 우측 표시 컨텐츠 끝-->
 	</section>

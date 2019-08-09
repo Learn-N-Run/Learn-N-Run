@@ -46,7 +46,7 @@
 	
 	<select id="getcurriVideo" parameterType="SubjectInfoDTO" resultType="SubjectInfoDTO">
 		<![CDATA[
-			SELECT cl.title title, cl.no classno, cr.major_topic topic, s.no subjectno,
+			SELECT cl.title title, cr.major_topic topic, cl.no classno, s.no subjectno,
 					s.subject subject, s.url url, cl.cover_img coverimg
 			FROM curriculum cr
 			JOIN subject s
@@ -59,7 +59,7 @@
 	
 	<select id="getsubjectVideo" parameterType="SubjectInfoDTO" resultType="SubjectInfoDTO">
 		<![CDATA[
-			SELECT cl.title title, cl.no classno, cr.major_topic topic, s.no subjectno,
+			SELECT cl.title title, cr.major_topic topic, cl.no classno, s.no subjectno,
 					s.subject subject, s.url url, cl.cover_img coverimg
 			FROM curriculum cr
 			JOIN subject s

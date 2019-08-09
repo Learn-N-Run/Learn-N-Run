@@ -20,11 +20,33 @@
 	<title>Learn & Run</title>
 </head>
 <body>
+<div>
+	<div class="col-lg-8">
+	
+			<video height="auto" width="100%">
+	
+<c:forEach items="${subject_list}" var="sb" varStatus="status" >
+	
+				<source src="${contextpath}${sb.url}">
+	
+</c:forEach>
+	
+			</video>
+	</div>
+	<div class="col-lg-4">
+	<table class="table table-hover">
+		<tbody>
+			<tr>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+	
+	</div>
 
-		<video>
-			<source src="${subject_list[0].url}">
-		</video>
-
+</div>
 
 </body>
 </html>

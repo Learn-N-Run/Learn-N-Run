@@ -49,13 +49,13 @@
 			
 				<tr>
 				<td id = "iag_c">
-					<a href = "classInfo.me?no=${cv.classinfo.no}"><div><img src="upload/${cv.classinfo.cover_img}" width="100%;" height="100%;"></div></a>
+					<a href = "/Learn_N_Run/article2/classInfo.me?no=${cv.classinfo.no}"><div><img src="${contextpath}${cv.classinfo.cover_img}" width="100%;" height="100%;"></div></a>
 				</td>
 					<td>${cv.classinfo.title }</td>
 					<td align="center">${cv.classinfo.category.name } ★ ${cv.user.nickname}</td>
 					<fmt:formatNumber var="tuition" value = "${cv.classinfo.tuition}" pattern="###,###"/>
 					<td>￦ ${tuition}</td>
-					<td align="center"><button class = "deljjim_c" onclick="location.href = 'deleteJjim.me?no=${cv.no}'">찜 해제</button></td>
+					<td align="center"><button class = "deljjim_c" onclick="location.href = '/Learn_N_Run/article2/deleteJjim.me?no=${cv.no}'">찜 해제</button></td>
 				</tr>
 			</c:forEach>
 			
@@ -69,27 +69,3 @@
 	<jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
