@@ -30,7 +30,7 @@ public class SPController{
 	private SqlSession sqlsession;
 	ReadDAO readDAO;
 	
-	@RequestMapping(value = "/article3/anonymous")
+	@RequestMapping(value = "/anonymous")
 	public String anonymousIndexView(Model model){
 		
 		return "/article3/AnonymousIndex";

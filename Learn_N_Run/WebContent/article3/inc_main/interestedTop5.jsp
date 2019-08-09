@@ -71,11 +71,9 @@
 						 alt="${inter.title}">
 					<div class="caption">
 					<h6>${inter.title}</h6>
-					<p>${inter.interestedCount}</p>
 					</div>
 				</div>
 			</div>
-			
 </c:forEach>
 
 		</div>

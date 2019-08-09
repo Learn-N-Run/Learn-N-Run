@@ -71,7 +71,6 @@
 						 alt="${pop.title}" width="">
 					<div class="caption">
 					<h6>${pop.title}</h6>
-					<p>${pop.topRankCount}</p>
 					</div>
 				</div>
 			</div>
