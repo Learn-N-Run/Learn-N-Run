@@ -20,14 +20,21 @@
 	<title>Learn & Run</title>
 </head>
 <body>
-	<div>
+	<div id="wrap" style="box-shadow: 5px 5px 5px rgba(0,0,0,0.2),
+										-5px -5px 5px rgba(0,0,0,0.2),
+										5px -5px 5px rgba(0,0,0,0.2),
+										-5px 5px 5px rgba(0,0,0,0.2);
+							height: 60vh;
+							padding: 20px;">
 		<div class="col-lg-6">
-			%nbsp;
-			
+			<c:import url="/article3/inc_classInfo/community.jsp"></c:import>
 			
 			
 		</div>
 		<div class="col-lg-6">
+					<h3>
+				<font color="tomato">메모장</font>
+				</h3>
 <textarea class="form-control" maxlength="1000" rows="20"></textarea>
 		</div>
 	</div>

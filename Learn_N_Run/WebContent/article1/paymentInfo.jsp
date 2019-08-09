@@ -244,15 +244,15 @@
 				
 				<div>
 <pre>
-   [유의사항]
-	1. 본인이 구매하려고 하시는 목록이 정확한지 확인후에 '다음버튼'을 클릭하세요
-	2. 한번 결재된 이후에는 환불하기가 번거롭습니다. 주의하시고 결재해주세요.
-	3. 다른 문의사항이 있으시면 우측하단에 문의하기 버튼을 누르세요. 빠른 시일 내에 답변드리겠습니다.
+[유의사항]
+  1. 본인이 구매하려고 하시는 목록이 정확한지 확인후에 '다음버튼'을 클릭하세요
+  2. 한번 결재된 이후에는 환불하기가 번거롭습니다. 주의하시고 결재해주세요.
+  3. 다른 문의사항이 있으시면 우측하단에 문의하기 버튼을 누르세요. 빠른 시일 내에 답변드리겠습니다.
 </pre>
 				</div>
 				
 				<div class="last_pay">
-					<button type="button"><a href="/Learn_N_Run/article1/payment.do?classno=${classNo}">다음으로</a></button>
+					<button type="button" onclick="location.href='/Learn_N_Run/article1/payment.do?classno=${classNo}'">다음으로</button>
 				</div>
 			</div>
 		</div>

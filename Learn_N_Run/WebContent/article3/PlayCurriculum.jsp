@@ -19,16 +19,19 @@
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
 </head>
-<body> 
+<body>
+ 
 <c:import url="/1_Include/header.jsp"></c:import>
 
-	
+<div id="wrap">
+
 <c:import url="/article3/inc_playVideo/Player.jsp"></c:import>	
 	
 
 <c:import url="/article3/inc_playVideo/VideoReply.jsp"></c:import>
 	
-	
+</div>
+
 <c:import url="/1_Include/footer.jsp"></c:import>
 
 </body>

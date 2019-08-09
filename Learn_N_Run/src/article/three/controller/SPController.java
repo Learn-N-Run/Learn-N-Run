@@ -40,9 +40,9 @@ public class SPController{
 	public String getcurrivideo(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		List<SubjectInfoDTO> subject_list;
-	
+		
 		SubjectInfoDTO dto = new SubjectInfoDTO();
-
+		
 		if (request.getParameter("subjectno") != null) {
 
 			dto.setClassno(Integer.parseInt(request.getParameter("subjectno")));

@@ -18,35 +18,59 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--외부참조 + CDN END -->
 	<title>Learn & Run</title>
+<style type="text/css">
+#TH_viewVideo{
+	padding: 20px;
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.2),
+				-5px -5px 5px rgba(0,0,0,0.2),
+				5px -5px 5px rgba(0,0,0,0.2),
+				-5px 5px 5px rgba(0,0,0,0.2);
+	height: 60vh;
+}
+</style>
 </head>
 <body>
-<div>
-	<div class="col-lg-8">
-	
-			<video height="auto" width="100%">
-	
-<c:forEach items="${subject_list}" var="sb" varStatus="status" >
-	
-				<source src="${contextpath}${sb.url}">
-	
-</c:forEach>
-	
-			</video>
-	</div>
-	<div class="col-lg-4">
-	<table class="table table-hover">
-		<tbody>
-			<tr>
-				<td></td>
-			</tr>
-		</tbody>
-	</table>
-	
-	
-	
-	</div>
 
-</div>
+	
+	<div id="TH_viewVideo" id="wrap" >
+		<h3>
+			<font color="tomato">커리큘럼 시청</font>
+		</h3>
+	
+		<div class="col-lg-9">
+		
+				<video style="max-width: 40vw; height: auto; display: inline;" poster="${contextpath}${subject_list[0].coverimg}" controls="controls" >
+	<c:forEach items="${subject_list}" var="sb">
+					<source src="${contextpath}${sb.url}">
+	</c:forEach>
+				</video>
+				
+		</div>
+		<div class="col-lg-3">&nbsp;
+		<table class="table table-hover">
+			<tbody>
+	
+	<c:forEach items="${subject_list}" var="sb">
+				
+				<tr>
+					<td>
+						<a href="/Learn_N_Run/article3/getcurrivideo.kr?subjectno=${sb.subjectno}"
+							style="text-decoration: none; font-weight: bold; color: tomato;">
+							${sb.subject}.${sb.topic}
+						</a>
+					</td>
+				</tr>
+				
+	</c:forEach>
+	
+			</tbody>
+		</table>
+		
+		
+		
+		</div>
+	
+	</div>
 
 </body>
 </html>
