@@ -22,10 +22,10 @@
 <body>
 	<c:choose>
 	<c:when test="${id ne null}">
-		<c:redirect url="/index.kr"/>
+		<c:redirect url="/article3/index.kr"/>
 	</c:when>
 	<c:otherwise>
-		<c:redirect url="/anonymous.kr"/>
+		<c:redirect url="/article3/anonymous.kr"/>
 	</c:otherwise>
 	</c:choose>
 </body>
