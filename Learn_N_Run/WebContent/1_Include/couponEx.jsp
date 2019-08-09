@@ -117,7 +117,7 @@ $(function() {
 				<td class="coupon3_h"></td>
 			</tr>
 		</table>
-		<a href="event.do"><div class="coupon_bottom_h">쿠폰 받으러 가기!</div></a>
+		<a href="/Learn_N_Run/article1/event.do"><div class="coupon_bottom_h">쿠폰 받으러 가기!</div></a>
 	</div>
 </body>
 </html>

@@ -116,10 +116,6 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 <!-- header 부분 -->
 <jsp:include page="/1_Include/header.jsp" />
 <div id="wrap">
-	<section id = "sec05">
-	</section>	
- 	<!-- section1,2,3을 감싸는 wrap2 -->
- 	<div id="wrap2">
 		<section id="sec01">
 			<div class="sec01_div1">
 				<div class="sec01_div1_1">
@@ -237,15 +233,18 @@ function read_2(input){ // <input type = "file"> 태그 매개변수로 전달 �
 		</table>
 		
  	<div id="btn_submit">
-		<input type="reset" class="btn_pre1" value="Reset">
-		<input type="submit" class="btn_next1" value="Next">
+ 		<div class="col-xs-6">
+			<input type="reset" class="btn btn-default" value="Reset">
+		</div>
+ 		<div class="col-xs-6">
+			<input type="submit" class="btn btn-default" value="Next">
+		</div>
 	</div>
 	<input type="hidden" name="classNo" value=<%=classNo%>>	
 		</form>
 	<!-- wrap2끝나는 부분 -->
 	
 	
-</div>
 <!-- wrap끝나는 부분 -->
 <jsp:include page="/1_Include/footer.jsp"></jsp:include>
 </body>
