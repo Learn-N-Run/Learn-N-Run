@@ -9,24 +9,20 @@
 > Tag version<br>
 
 > + v1.0.1(Beta)<BR>
-
 > - v1.0.1(Alpha)<BR>
-> - v1.0.0(Alpha)
-
-<BR>
+> - v1.0.0(Alpha)<BR>
 > 버전 별로 태그 되어있습니다.
-<BR>
-
 
 <BR>
 
-> ### 참여자
-> [성시현 (조장)](sihyun5250@naver.com) : sihyun5250@naver.com <BR>
-> [장영진](bearrolling90@gmail.com) : bearrolling90@gmail.com <BR>
-> [신형석](pinocchio0228@gmail.com) : pinocchio0228@gmail.com <BR>
-> [이승학](las2706@naver.com) : las2706@naver.com <BR>
-> [서창현](gowso89@naver.com) : gowso89@naver.com <BR>
-> [고태흥](yume7168@naver.com) : yume7168@naver.com <BR>
+
+> ### 참여자<BR>
+> [성시현 (조장)](https://github.com/sihyun5250) : sihyun5250@naver.com <BR>
+> [장영진](https://github.com/candyade) : bearrolling90@gmail.com <BR>
+> [신형석](https://github.com/pinocchio0228) : pinocchio0228@gmail.com <BR>
+> [이승학](https://github.com/hak00) : las2706@naver.com <BR>
+> [서창현](https://github.com/gowso22) : gowso89@naver.com <BR>
+> [고태흥](https://github.com/Ko-TaeHeung) : yume7168@naver.com <BR>
 
 <BR>
 
