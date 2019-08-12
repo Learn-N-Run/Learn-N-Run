@@ -1,0 +1,423 @@
+@CHARSET "UTF-8";
+
+/*전체를 감싸는 wrap*/
+#wrap{
+	width: 100%;
+}	
+/*왼쪽 bar*/
+#sec05{
+	height: 1820px;
+	float: left;
+	margin-top: 0;
+	margin-left: 0;
+	background-color: #f7f7f7;
+	width: 11%;
+	border-right: 1px solid #dedede;
+}
+
+
+
+#wrap2{
+	float: left;
+	width: 89%;
+}
+/*section1 부분*/
+#sec01{
+	width: 100%; height: 250px;
+	background-color: 	#3d3a3a;}
+	
+.sec01_div1{
+	padding-top: 20px;
+	border-bottom: 1px solid #dedede;
+	height: 80%;
+	color: white;
+	}
+
+/*각각 왼쪽 여백을 20%로 주자*/
+.sec01_div1_1, .sec01_div2{
+	margin-left: 15%;
+}
+
+.sec01_div1_1>a{
+	color: white;
+}
+.sec01_div1_1>a:hover{
+ 	color: #e77b34;
+ 	text-decoration: none;	
+}
+.sec01_div1_1>h3:hover{
+ 	color: #9fcfff;
+ 	
+}
+
+.sec01_div2{
+	height: 20%;
+	padding-top: 15px;
+}
+.sec01_div2_1>a{
+	color: white;
+}
+.sec01_div2_1>a:hover{
+	color: #e77b34;
+	text-decoration: none;
+}
+.sec01_div2_2a, .sec01_div2_3a{
+	margin-left: 20px;
+}
+
+.sec01_div2_2a{
+	color: #e77b34 !important;
+}
+
+
+
+/*section02부분*/
+
+#sec02{
+	width: 100%;
+	height: 580px;
+	}
+.sec02_label_div{
+	/* border: 1px solid green; */ 
+	width: 100%;
+	height: 120px;
+	padding-top: 70px;
+	padding-left: 41%;
+	font-size: 30px;
+	color: #3c3c3c;
+ 
+}
+
+
+#thumbnail_wrap{
+
+	margin-top: 50px;
+	clear: both;
+	/* border: 1px solid #dedede; */
+	width: 70%;
+	margin-left: 15%;
+	height: 350px;
+	
+}
+
+/*커리큘럼 썸네일 왼쪽부분*/
+.thumbnail_left{
+	margin-left: 1.5%;
+	float: left;
+	/* border: 1px solid #dedede; */
+	width: 48%;
+	height: 350px;
+	border-radius: 2%;
+}
+.thumbnail_left_subject{
+	padding-top: 30px;
+	height: 30%;
+	width: 100%;
+	font-size: 25px;
+}
+
+/*썸네일 미리보기*/
+.thumbnail_preview_wrap{
+	margin-left: 1.5%;
+	float: left;
+	border: 1px solid #dedede;
+	width: 48%;
+	height: 350px;
+	border-radius: 2%;
+}
+.thumbnail_preview{
+	/* border: 1px solid black; */
+	width: 100%;
+	height: 90%;
+	background-color: #f7f7f7;
+	font-size: 20px;
+	color: tomato;
+}
+.thumbnail_preview label:nth-of-type(1){
+	margin-top: 25%;
+	
+}
+
+
+.thumbnail_preview>img{
+	width: 100%;
+    height: 100%; 
+    border-radius: 1%; 
+}
+.thumbnail_preview_input{
+	border-top: 1px solid #dedede;
+	width: 100%;
+	height: 10%;
+	padding-top: 5px;
+	padding-left: 2px;
+}
+
+
+/*section03부분*/
+#sec03{
+	border-top: 1px solid orange;
+	width: 100%;
+	height: auto;
+}
+.sec03_label_div{
+	/* border: 1px solid blue;  */
+	width: 100%;
+	height: 120px;
+	padding-top: 70px;
+	padding-left: 39%;
+	font-size: 30px;
+	color: #3c3c3c;
+	
+	
+}
+.sec03_major_topic_div{
+	padding-top: 50px;
+	padding-left: 80px;
+	/* border: 1px solid black; */
+	width: 100%;
+	height: 120px;
+	font-size: 25px;
+}
+.major_topic{
+	margin-left: 20px;
+}
+
+
+.sec03_subject_div{
+	/* border: 1px solid blue; */
+	width: 90%;
+	height: 40px;
+	margin-left: 5%;
+	
+	
+}
+
+/*소주제1*/
+.sec03_subject1_div{
+	float: left;	
+	/* border: 2px solid #dedede;  */
+	width: 32%;
+	height: 400px;
+	margin-left: 1%;
+	margin-top: 20px;
+}
+.subject1_label_div{
+	/* border-bottom: 1px solid #dedede; */
+	width: 100%;
+	height: 10%;
+	color: tomato;
+	padding-top: 5px;padding-left: 5px;
+	font-size: 20px;
+}
+.subject1_input_div{
+	width: 100%;
+	height: 10%;
+	border: 1px solid #dedede;
+}
+.subject1_input_div input{
+	border: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	padding-top: 2px;
+}
+
+
+.subject1_preview{
+	border: 1px solid black;
+	width: 100%;
+	height: 72%;
+	background-color: black;
+	color: white;
+	font-size: 15px;
+}
+.subject1_preview label{
+	margin-top: 20%;
+}
+.subject1_preview>video{
+	width: 100%;
+	height: 100%;
+}
+
+.subject1_input_file{
+	border: 1px solid #dedede;
+	width: 100%;
+	height: 8%;
+}
+
+.subject1_input_file input{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+
+/*소주제2*/
+.sec03_subject2_div{
+	float: left;	
+	/* border: 2px solid #dedede; */
+	width: 32%;
+	height: 400px;
+	margin-left: 1%;
+	margin-top: 20px;
+}
+.subject2_label_div{
+	/* border-bottom: 1px solid #dedede; */
+	width: 100%;
+	height: 10%;
+	color: tomato;
+	padding-top: 5px;padding-left: 5px;
+	font-size: 20px;
+}
+.subject2_input_div{
+	width: 100%;
+	height: 10%;
+	border: 1px solid #dedede;
+}
+.subject2_input_div input{
+	border: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	padding-top: 2px;
+}
+
+.subject2_preview{
+	border: 1px solid black;
+	width: 100%;
+	height: 72%;
+	background-color: black;
+	color: white;
+	font-size: 15px;
+}
+.subject2_preview label{
+	margin-top: 20%;
+}
+.subject2_preview>video{
+	width: 100%;
+	height: 100%;
+}
+
+.subject2_input_file{
+	border: 1px solid #dedede;
+	width: 100%;
+	height: 8%;
+}
+
+.subject2_input_file input{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+
+/*소주제3*/
+.sec03_subject3_div{
+	float: left;	
+	width: 32%;
+	height: 400px;
+	margin-left: 1%;
+	margin-top: 20px;
+}
+.subject3_label_div{
+	
+	width: 100%;
+	height: 10%;
+	color: tomato;
+	padding-top: 5px;padding-left: 5px;
+	font-size: 20px;
+}
+.subject3_input_div{
+	width: 100%;
+	height: 10%;
+	border: 1px solid #dedede;
+}
+.subject3_input_div input{
+	border: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	padding-top: 2px;
+}
+
+.subject3_preview{
+	border: 1px solid black;
+	width: 100%;
+	height: 72%;
+	background-color: black;
+	color: white;
+	font-size: 15px;
+}
+.subject3_preview label{
+	margin-top: 20%;
+}
+.subject3_preview>video{
+	width: 100%;
+	height: 100%;
+}
+.subject3_input_file{
+	border: 1px solid #dedede;
+	width: 100%;
+	height: 8%;
+}
+
+.subject3_input_file input{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+
+
+
+/*section04 챕터 추가버튼*/
+#sec04{
+	clear: both;
+	/* border: 1px solid black; */
+	width: 100%;
+	height: 200px;
+}
+
+.btn_chapter{
+	margin-left: 40%;
+	border: 1px solid tomato;
+	border-radius: 10px;
+	color: tomato;
+	background-color: white;
+	height: 50px;
+	width: 200px;	
+	font-size: 20px;
+	margin-top: 80px;
+}	
+.btn_chapter:hover {
+	border: 1px solid tomato;
+	border-radius: 10px;
+	color: white;
+	background-color: tomato;
+	
+}
+
+
+/*이전단계, 다음단계 버튼*/
+#btn_submit{
+	border-top: 1px solid orange;
+	height: 150px;
+	width: 100%;
+	margin-top: 40px;
+}
+
+.btn_pre1{
+	margin-left: 39%;
+}	
+
+.btn_pre1, .btn_next1{
+	border: 0;
+	background-color: rgb(28, 184, 65);
+	font-size: 20px;
+	color: white;
+	margin-top: 5%;
+	width: 120px; height: 40px;
+}
+.btn_pre1:hover{
+	background-color: rgb(30, 200, 65);
+}
+.btn_next1:hover {
+	background-color: rgb(30, 200, 65);
+}

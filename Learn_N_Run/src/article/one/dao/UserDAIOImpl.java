@@ -1,49 +1,249 @@
-package artcle.one.dao;
+package article.one.dao;
 
+import java.awt.print.Printable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Address;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 import dto.BuyerDTO;
+import dto.CategoryDTO;
+import dto.ClassDTO;
 import dto.CouponDTO;
-import dto.JjimDTO;
 import dto.MessageDTO;
 import dto.UserDTO;
 
 public class UserDAIOImpl implements UserDAO{
 
-	@Override
-	public void addUser(UserDTO dto) {
-		// TODO Auto-generated method stub
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	DataSource ds = null;
+	String sql="";
+	
+	/*connection객체 얻기 메소드*/
+	private Connection getConnection() throws Exception{
+		Connection con = null;
 		
+		Context init = new InitialContext();
+		DataSource ds = (DataSource)init.lookup("java:comp/env/jdbc/learnrun");
+		con = ds.getConnection();
+		return con;
 	}
-
-	@Override
-	public int updateUser(UserDTO dto, String pass) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	/*자원해제 메소드*/
+	public void freeResource() {
+	
+		if (con != null)
+			try {
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		if (rs != null)
+			try {
+				rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		if (pstmt != null)
+			try {
+				pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
-
+	
+	/*회원가입*/
 	@Override
-	public void delUser(UserDTO dto) {
-		// TODO Auto-generated method stub
+	public int addUser(UserDTO dto) {
+		int result = 0; // 0: 실패, 1: 성공
+
+		try {
+			con = getConnection();
+			sql = "INSERT INTO user(name, id, pass, email, user_group_no, joinDate) VALUES(?,?,?,?,1,now())";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getId());
+			pstmt.setString(3, dto.getPass());
+			pstmt.setString(4, dto.getEmail());
+					
+			result = pstmt.executeUpdate();
+
+            if(result == 1) {
+                sql = "INSERT INTO COUPON(user_id,sale1,sale2,sale3) values(?,0,0,0)";
+                
+                pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, dto.getId());
+                
+                pstmt.executeUpdate();
+            }
+            
+		} catch (Exception e) {
+			System.out.println("addUser()에서 오류: " + e);
+		} finally {
+			freeResource();
+		}
+		return result;
+	}
+	/*회원수정1*/
+	@Override
+	public int updateUser(UserDTO dto) {
+		int result = 0;
+				
+		try {
+			con = getConnection();
+			sql="UPDATE user SET pass=?, email=? WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getPass());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getId());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("updateUser() 오류: " + e);
+		} finally {
+			freeResource();
+		}
+		return result;
+	}
+	
+	/*회원수정2*/
+	@Override
+	public int updateCreator(UserDTO dto) {
+		int result = 0;
+		sql="update user set pass=?, email=?, creator_url=?, profile_img=?, nickname=?, number=? where id=?";	
 		
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getPass());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getCreator_url());
+			pstmt.setString(4, dto.getProfile_img());
+			pstmt.setString(5, dto.getNickname());
+			pstmt.setInt(6, dto.getNumber());
+			pstmt.setString(7, dto.getId());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("updateCreator() 오류: " + e);
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		return result;
 	}
-
+	
+	/*회원탈퇴*/
+	@Override
+	public int delUser(String id, String pass) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql = "DELETE FROM user WHERE id=? and pass=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+			result = pstmt.executeUpdate();
+			System.out.println("delUser return:" + result);
+			
+		} catch (Exception e) {
+			System.out.println("delUser 오류: " + e);
+		} finally {
+			freeResource();
+		}
+		return result;	
+	}
+	
+	/*아이디 유효성*/
 	@Override
 	public int idCheck(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try {
+			con = getConnection();
+			sql = "SELECT * FROM user WHERE id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result=1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return result;
 	}
+	
+	//정보수정, 탈퇴
+		@Override
+		public int pwdCheck(UserDTO dto) {
+				int check = 0;
+				try {
+					con = getConnection();
+					sql = "select pass from user where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getId());
+					rs = pstmt.executeQuery();
 
+					if (rs.next()) {
+						if (dto.getPass().equals(rs.getString("pass"))) {
+							check = 1;
+						} else { 
+							check = 0; 
+						}
+					} else { 
+						check = -1;
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					freeResource();
+				}
+				return check;
+		}
+	
+	//로그인 시 아이디,비밀번호
 	@Override
 	public int userCheck(String id, String pass) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+			int check = 0;
+			try {
+				con = getConnection();
+				sql = "select * from user where id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
 
-	@Override
-	public int emailCheck(String email) {
-		// TODO Auto-generated method stub
-		return 0;
+				if (rs.next()) {
+					if (pass.equals(rs.getString("pass"))) {
+						check = 1;
+					} else { 
+						check = 0; 
+					}
+				} else { 
+					check = -1;
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				freeResource();
+			}
+			return check;
 	}
 
 	@Override
@@ -57,77 +257,549 @@ public class UserDAIOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	//크리에이터 신청 처리
 	@Override
-	public int updateCreator(UserDTO bean) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int AddCreator(UserDTO dto) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql="UPDATE user SET email=?, creator_url=?, profile_img=?, nickname=?, number=?, user_group_no=2 WHERE id=? AND name=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getEmail());
+			pstmt.setString(2, dto.getCreator_url());
+			pstmt.setString(3, dto.getProfile_img());
+			pstmt.setString(4, dto.getNickname());
+			pstmt.setInt(5, dto.getNumber());
+			pstmt.setString(6, dto.getId());
+			pstmt.setString(7, dto.getName());
+			result = pstmt.executeUpdate();
+						
+		} catch (Exception e) {
+			System.out.println("AddCreator() " + result);
+		} finally {
+			freeResource();
+		}
+		return result;
 	}
 
+	//메세지 보내기
 	@Override
-	public void sendMessage(MessageDTO dto, String id) {
-		// TODO Auto-generated method stub
+	public int sendMessage(MessageDTO dto, String send_id) {
+		int RightIdCheck =0;
+		sql = "select id from user where id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getReceiver_user().getId());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				sql = "insert into message(send_id,receiver_id,content,send_time,read_yn) values(?,?,?,now(),0)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, send_id);
+				pstmt.setString(2, dto.getReceiver_user().getId());
+				pstmt.setString(3, dto.getContent());
+				pstmt.executeUpdate();
+				RightIdCheck = 0;
+			}else {
+				RightIdCheck = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		
+		return RightIdCheck;
 		
 	}
 
+	//이벤트 페이지 이메일 보내기
 	@Override
 	public void sendMail(String receiver, String code_check) {
-		// TODO Auto-generated method stub
-		
+		Properties p = System.getProperties();
+		p.put("mail.smtp.host", "smtp.gmail.com");
+		p.put("mail.smtp.port", "465");
+		p.put("mail.smtp.auth", "true");
+		p.put("mail.smtp.socketFactory.port", "465");
+		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		p.put("mail.smtp.socketFactory.fallback", "false");
+		javax.mail.Authenticator auth = new MyAuthentication();
+
+		Session session = Session.getDefaultInstance(p, auth);
+		MimeMessage msg = new MimeMessage(session);
+
+		try {
+			msg.setSentDate(new Date());
+			Address from = new InternetAddress("Learn&Run");
+			msg.setFrom(from);
+
+			InternetAddress to = new InternetAddress(receiver);
+			msg.setRecipient(Message.RecipientType.TO, to);
+
+			msg.setSubject("Learn&Run 인증번호 입니다.", "UTF-8");
+
+			msg.setText("인증번호 :" + code_check, "UTF-8");
+			msg.setHeader("content-Type", "text/html");
+
+			javax.mail.Transport.send(msg);
+			System.out.println("이메일 보냄!");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
+	//안읽은 쿠폰 갯수 확인.
 	@Override
 	public int countReadMessage(String id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	//쪽지함 클릭했을때.
 	@Override
-	public List<MessageDTO> getMessage(MessageDTO bean, String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MessageDTO> getMessage(MessageDTO dto,String id) {
+		ArrayList<MessageDTO> list = new ArrayList<MessageDTO>();
+		try {
+			con = getConnection();
+			sql = "select* from message where receiver_id=? order by send_time desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			UserDTO udto = new UserDTO();
+			
+			while (rs.next()) {
+				dto = new MessageDTO();
+				dto.setNo(rs.getInt("no"));
+				udto.setId(rs.getString("send_id"));
+				dto.setSend_user(udto);
+				dto.setContent(rs.getString("content"));
+				dto.setSend_time(rs.getTimestamp("send_time"));
+				dto.setRead_yn(rs.getInt("read_yn"));
+				list.add(dto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (con != null)
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+		return list;
 	}
 
+	//메세지 상세보기 페이지
 	@Override
 	public MessageDTO getMessageInfo(int MessageNo) {
-		// TODO Auto-generated method stub
-		return null;
+		MessageDTO dto = new MessageDTO();
+		try {
+			con = getConnection();
+			sql = "select * from message where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, MessageNo);
+			rs = pstmt.executeQuery();
+			
+			UserDTO udto = new UserDTO();
+			if(rs.next()) {
+				udto.setId(rs.getString("send_id"));
+				dto.setSend_user(udto);
+				dto.setContent(rs.getString("content"));
+				dto.setSend_time(rs.getTimestamp("send_time"));
+				
+				if(rs.getInt("read_yn")==0) {
+				sql = "update message set read_yn=1 where no=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, MessageNo);
+				pstmt.executeUpdate();
+				dto.setRead_yn(rs.getInt("read_yn"));
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (con != null)
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+		return dto;
 	}
 
+	//메세지 삭제
 	@Override
 	public void delMessage(int no) {
-		// TODO Auto-generated method stub
-		
+		sql = "delete from message where no=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
 	}
 
+	//나의 쿠폰 정보 확인 메소드
 	@Override
 	public CouponDTO myCouponInfo(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		CouponDTO dto = null;
+		try {
+			sql = "SELECT * from coupon where user_id=?";
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			dto = new CouponDTO();
+			if(rs.next()) {
+			 	dto.setSale1(rs.getInt("sale1"));
+			 	dto.setSale2(rs.getInt("sale2"));
+			 	dto.setSale3(rs.getInt("sale3"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return dto;
 	}
 
+	//클래스 구매버튼 눌렀을때, 클래스 정보 확인 메소드
 	@Override
-	public int buyClass(int classNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public ClassDTO buyClass(int classNo) {
+		sql = "select * from class where no=?";
+		ClassDTO dto = null;
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			rs = pstmt.executeQuery();
+			dto = new ClassDTO();
+			if(rs.next()) {
+				dto.setCover_img(rs.getString("cover_img"));
+				dto.setTitle(rs.getString("title"));
+				dto.setMaterial_img(rs.getString("material_img"));
+				dto.setMaterial_content(rs.getString("material_content"));
+				dto.setTuition(rs.getInt("tuition"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		
+		return dto;
 	}
 
+	
+	//class 구매(쿠폰있음)
 	@Override
-	public CouponDTO CouponClass(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addBuy(BuyerDTO bean, String id, int classNo) {
-		// TODO Auto-generated method stub
+	public void addBuy(BuyerDTO bean, CouponDTO cdto, String id, int classNo) {
+		sql = "insert into receiver_info (name,number,address1,address2,address3,delievery_msg) values (?,?,?,?,?,?)";
+		try {
+			con = getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bean.getReceiver().getName());
+			pstmt.setInt(2, bean.getReceiver().getNumber());
+			pstmt.setString(3, bean.getReceiver().getAddress1());
+			pstmt.setString(4, bean.getReceiver().getAddress2());
+			pstmt.setString(5, bean.getReceiver().getAddress3());
+			pstmt.setString(6, bean.getReceiver().getDelievery_msg());
+			int result = pstmt.executeUpdate();
+			if(result == 1) {
+				sql = "insert into buyer(user_id,receiver_info_no,last_tuition,order_date,class_no) "
+						+ "values(?,(select no from receiver_info order by no desc limit 1),?,now(),?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setInt(2, bean.getLast_tuition());
+				pstmt.setInt(3, classNo);
+				int result2 = pstmt.executeUpdate();
+				if(result2 == 1) {
+					if(cdto.getSale1()==1) {
+                        sql = "update coupon set sale1 = 0 where user_id=?";
+                    }else if(cdto.getSale2()==1) {
+                        sql = "update coupon set sale2 = 0 where user_id=?";
+					}else if(cdto.getSale3()==1) {
+                        sql = "update coupon set sale3 = 0 where user_id=?";
+					}
+					pstmt = con.prepareStatement(sql);
+                    pstmt.setString(1, id);
+					pstmt.executeUpdate();
+				}else {
+					con.rollback();
+				}
+			}else {
+				con.rollback();
+			}
+			con.commit();
+			con.setAutoCommit(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();	
+		}
 		
 	}
-
+	
+	//class 구매(쿠폰없음)
 	@Override
-	public JjimDTO getJjim(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void addBuy(BuyerDTO bean, String id, int classNo) {
+		sql = "insert into receiver_info (name,number,address1,address2,address3,delievery_msg) values (?,?,?,?,?,?)";
+		try {
+			con = getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bean.getReceiver().getName());
+			pstmt.setInt(2, bean.getReceiver().getNumber());
+			pstmt.setString(3, bean.getReceiver().getAddress1());
+			pstmt.setString(4, bean.getReceiver().getAddress2());
+			pstmt.setString(5, bean.getReceiver().getAddress3());
+			pstmt.setString(6, bean.getReceiver().getDelievery_msg());
+			int result = pstmt.executeUpdate();
+			if(result == 1) {
+				sql = "insert into buyer(user_id,receiver_info_no,last_tuition,order_date,class_no) "
+						+ "values(?,(select no from receiver_info order by no desc limit 1),?,now(),?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setInt(2, bean.getLast_tuition());
+				pstmt.setInt(3, classNo);
+				pstmt.executeUpdate();
+			}else {
+				con.rollback();
+			}
+			con.commit();
+			con.setAutoCommit(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+				
+}
+	//1번쿠폰 받기
+	@Override
+	public int getCoupon1(String id) {
+		int register = 1;
+		sql = "select sale1 from coupon where sale1=0 AND user_id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+					sql = "update coupon set sale1=1 where user_id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+			}else {
+				register = 0;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return register;
+	}
+	
+	//3번 쿠폰 받기. 
+	@Override
+	public int getCoupon3(String id) {
+		int register = 1;
+		sql = "select sale1 from coupon where sale3=0 AND user_id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				sql = "select * from user where user_group_no=2 AND id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					sql = "update coupon set sale3=1 where user_id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+				}else {
+					register = -1;
+				}
+			}else {
+				register = 0;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return register;
+	}
+	
+	//이벤트 페이지 유저 이메일 정보 뿌려주기.
+	@Override
+	public String getEmail(String id) {
+		String email = "";
+		sql = "select * from user where id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				email = rs.getString("email");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return email;
+	}
+
+	//내가 구매한 클래스 정보 확인
+	public List getMyclassInfo(String id) {
+		ArrayList list = new ArrayList();	
+        sql = "SELECT c.cover_img,c.no,c.title, c.title,b.order_date, DATE_ADD(b.order_date, INTERVAL c.expiration DAY) as expiration_date, "
+        		+ "cate.name FROM class c "
+				+ "JOIN buyer b ON (c.no=b.class_no) "
+				+ "JOIN user u ON (u.id=b.user_id) "
+				+ "JOIN category cate ON(c.category_no=cate.no) where u.id=?";
+			try {
+		con = getConnection();
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1,id);
+		rs = pstmt.executeQuery();
+		if(rs != null){
+			while(rs.next()){
+				ClassDTO cdto = new ClassDTO();
+				BuyerDTO bdto = new BuyerDTO();
+				BuyerDTO bdto1 = new BuyerDTO();
+				CategoryDTO catedto = new CategoryDTO();
+				cdto.setNo(rs.getInt("c.no"));
+				cdto.setCover_img(rs.getString("c.cover_img"));	
+				cdto.setTitle(rs.getString("c.title"));
+                bdto.setExpiration_date(rs.getTimestamp("expiration_date"));
+                bdto.setOrder_date(rs.getTimestamp("b.order_date"));
+				catedto.setName(rs.getString("cate.name"));
+                cdto.setCategory(catedto);
+                cdto.setBuyer(bdto);
+                
+                list.add(cdto);
+			}
+		}else{
+			return null;
+		}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				freeResource();
+			}
+		
+		return list;
+	}
+
+	//유저 그룹 값 가져고기
+	public int getUserGroup(String userid) {
+		int Group =0;
+		String sql ="SELECT user_group_no FROM user where id=?";
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				Group = rs.getInt("user_group_no");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return Group;
+	}
+	
+	//유저 정보 가져오기, 유저수정시
+	public UserDTO getUserInfo(String id) {
+		String sql ="SELECT * FROM user where id=?";
+		UserDTO dto = new UserDTO();
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setId(rs.getString("id"));
+				dto.setCreator_url(rs.getString("creator_url"));
+				dto.setEmail(rs.getString("email"));
+				dto.setName(rs.getString("name"));
+				dto.setPass(rs.getString("pass"));
+				dto.setProfile_img(rs.getString("profile_img"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setNumber(rs.getInt("number"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return dto;
 	}
 	
 }
+
+//메일 보내기 위한 g메일 아이디 비밀번호 저장.
+class MyAuthentication extends javax.mail.Authenticator {
+	javax.mail.PasswordAuthentication pa;
+
+	public MyAuthentication() {
+		String id = "seunghak173";
+		String pw = "gkrtmd12";
+
+		pa = new javax.mail.PasswordAuthentication(id, pw);
+	}
+
+	public javax.mail.PasswordAuthentication getPasswordAuthentication() {
+		return pa;
+	}
+}
+
+

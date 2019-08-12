@@ -1,0 +1,136 @@
+@CHARSET "UTF-8";
+
+/*페이지 전체*/
+#wrap{
+	margin: 0 auto;
+	margin-top: 40px !important;
+	width: 1280px; 
+
+	}
+
+/*1번째 section 영역*/
+.sec01{
+	
+	margin: auto;
+	width: 90%;
+}
+/*보여지는 클래스의 layout*/	
+.sec01>.allClass>div{
+	float: left;
+	margin-left: 1%;
+	margin-top: 1%;
+	width: 32%; height: 300px;
+	border-radius: 1%;	
+}
+
+
+/*클래스 생성 layout*/
+#class_create{
+	border: 1px solid #e5e5e5;
+	background-color: #f1f1f1;
+}
+/*클래스 생성 버튼*/
+#btn_create{
+	margin: 130px 50px;
+	color: tomato;
+	font-size: 22px;
+	font-weight: bold;
+	background-color: #f1f1f1;
+	border: 0px;
+}
+
+/* 클래스 썸네일 넣는 곳의 layout*/
+#class_image{
+	width: 100%;
+	height: 70%;
+	background-color: #d9d9d9;
+	border-top-left-radius: 2%;
+	border-top-right-radius: 2%;
+}
+/* img가 클래스 전체를 덮도록 크기 지정*/
+#class_image>img{
+	width: 100%;
+	height: 100%;
+	border-top-left-radius: 2%;
+	border-top-right-radius: 2%;
+}
+
+/* 클래스명과 클래스명이 불러와 지는 div*/
+#class_name{
+	float: left;
+	border-left: 2px solid #dedede;
+	border-bottom: 2px solid #dedede;
+	width: 80%;
+	height: 30%;
+	border-bottom-left-radius: 2%;
+}
+/*삭제버튼 layout*/
+#class_btn{
+	float: left;
+	border-right: 2px solid #dedede;
+	border-bottom: 2px solid #dedede;
+	width: 20%;
+	height: 30%;
+	border-bottom-right-radius: 2%;
+}
+/*삭제 버튼 꾸미기*/
+#class_btn>button{
+	width: 40px;
+	height: 25px;
+	border: 0;
+	margin-top: 20px;
+	margin-left: 17px;
+	background-color: white;
+}
+.class_name_1{
+	padding-top: 15px;
+	padding-left: 10px;
+	font-weight: bold;
+	color: #3c3c3c;
+	
+}
+.class_name_2{
+	font-size: 17px;
+	margin-top: 5px;
+	padding-left: 20px;
+	
+	color: #0080ff;
+}
+
+
+
+/*2번째 section 영역*/
+.sec02{
+	margin: auto;
+	clear: both;
+	padding-top: 20px;
+	width: 90%;  height: 400px;
+}
+.sec02>.notice>div{
+	float: left;
+	margin-left: 1%;
+	margin-top: 1%;
+	width: 32%; height: 180px;
+	border-radius: 2%;	
+	border: 2px solid #dedede;
+}
+
+.notice1_1, .notice2_1{
+	font-size: 16px;
+	font-weight: bold;
+	color: black;
+	padding-left: 13px;
+	margin-top: 13px;
+	height: 25px;
+}
+
+.notice1_2, .notice2_2{
+	font-size: 15px;
+	font-weight: bold;
+	color: #7c7c7c;
+	margin-left: 14px;
+	width: 90%;
+}
+.notice div a:HOVER {
+	text-decoration: none;
+}

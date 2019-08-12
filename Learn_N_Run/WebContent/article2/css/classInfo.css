@@ -1,0 +1,237 @@
+@charset "UTF-8";
+
+	/*전체 div*/
+	#wrap{
+
+	 margin: 0 auto;
+
+	 width: 1200px;
+	}
+	
+	/*section 안에 div태그 */
+	#wrap>.sec01_c>div{
+		float: left;
+		margin-right: 3%;
+	}
+	/*전체 화면에서의 좌측 컨텐츠*/
+	.show_c{
+	width: 63%;
+	
+	}
+	
+	.font_c{
+     height: 150px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    font-family: 'Jua';
+    sans-serif: ;
+     font-size: 0.9em;
+    font-weight: 600;
+   }
+	
+	
+	/*전체화면 우측 컨텐츠*/
+	#submit_c{
+  		 width: 300px;
+  		 background-color: white;
+  		 position: fixed;
+   		 margin-bottom: 100px;
+   		 box-shadow: rgba(0,0,0,0.2) 5px 5px 5px,
+   		 			 rgba(0,0,0,0.2) -5px -5px 5px,
+   		 			 rgba(0,0,0,0.2) 5px -5px 5px,
+   		 			 rgba(0,0,0,0.2) -5px 5px 5px;
+   		 padding: 10px;
+   		 border-radius: 20px;
+	}
+	
+	/*섬네일 이미지 영역*/
+	.thumb_c{
+	width: 100%; 
+	height: 500px;
+	margin-bottom: 15px;
+	}
+	
+	/*클래스 소개글 영역*/
+	.intro_c{
+	width: 100%; 
+	margin-bottom: 15px;
+	
+	}
+	
+	/* 클래스 소개 영역 글꼴*/
+	
+	.content_font_c{
+		font-family: 'Jua', sans-serif;
+	}
+	
+	/*닉네임 표시 영역*/
+	.nick_c{
+	height: 35px;
+	font-size: 25px;
+	}
+	
+	
+	/*클래스 제목 텍스트 영역*/
+	.title_c{
+		height: 120px;
+		text-overflow: ellipsis;
+ 	 	display: -webkit-box;
+   		-webkit-line-clamp: 3;
+  		-webkit-box-orient: vertical;
+  	 	overflow-wrap: break-word;
+		overflow: hidden;
+   		font-size: 25px;
+  		font-weight: bold;
+  		line-height: 38px;
+  		margin: 0px;
+	}
+	
+	/*카테고리 알릴 영역*/
+	.category_sec_c{
+		height: 30px;
+	}
+	
+
+	
+	
+	
+	/* 화면 줄였을 때 생길 #submit*/
+	.submit_cc{
+		width: 100%;
+		display: none;
+	}
+	.submit_cc>div{
+		width: 100%;
+		margin-bottom: 5px;
+	}
+	
+	
+	
+	/* #submit 안에 찜하기 쪽 추가 css*/
+	.bnt_c{
+		width : 338px;
+	}
+	
+	/* #submit 안에 수강하기버튼 쪽 추가 css*/
+	.bbb_c{
+		background-color: #000;
+		color : #fff;
+	}
+	
+	/*footer쪽 추가 css*/
+	footer{
+	clear: both;
+	}
+	
+	/*비슷한 카테고리 보여주는 영역*/
+	
+	.sec02_c{
+		height: 300px;
+		margin-bottom: 50px;
+	}
+	
+	.sec02_c>div{
+	
+	float: left; 
+	width: 22%; 
+	margin: 0.5%; 
+	height: 200px; 
+	margin-top: 5%;
+	margin-left: 2%;
+	}
+	
+	/*비슷한 카테고리 영역의 섬네일 이미지 */
+	#one_c>a>div>img{
+		 width : 100%;
+		 transition: all 0.3s ease-in 0s;
+	}
+	
+	/*비슷한 카테고리의 섬네일 이미지 마우스 오버시*/
+	#one_c>a>div:hover>img{
+		transform: scale(1.1) translateZ(0px);
+		
+		
+	}
+	
+	/*비슷한 카테고리영역 섬네일 이미지 밑의 제목 텍스트 설정 */
+	#one_div_c{
+	text-overflow: ellipsis;
+   	display: -webkit-box;
+    -webkit-line-clamp: 2;
+   	-webkit-box-orient: vertical;
+   	overflow-wrap: break-word;
+   	color: #000;
+   	overflow: hidden;
+   	font-size: 16px;
+   	font-weight: normal;
+    line-height: 25px;
+  							
+  	margin: 0px;
+    height: 50px;
+	}
+	
+	
+	
+	
+	/*비슷한 카테고리 보여주는 영역 끝*/
+	
+	.jjimnsubmit_c{
+		background-color: #aeaeae;
+		border: 0;
+		font-size: 20px;
+		color: white;
+		margin-top: 5%;
+		width: 100%; 
+		height: auto;
+		border-radius: 20px;
+		transition: all 0.5s;
+	}
+	
+	.jjimnsubmit_c:hover {
+	background-color: tomato;
+}
+	
+	
+	.curi_img_c{
+		width: 300px;
+		height: 200px;
+	}
+	
+	.topic_c{
+		text-overflow: ellipsis;
+ 	 	display: -webkit-box;
+   		-webkit-line-clamp: 3;
+  		-webkit-box-orient: vertical;
+  	 	overflow-wrap: break-word;
+		overflow: hidden;
+		color: rgb(133, 138, 141);
+		font-size: 28px;
+	}
+	
+	.subject_c{
+		
+		font-size: 20px;
+	}
+	
+	
+	
+	/*화면 줄였을 때  보여지는 컨텐츠*/
+	 @media (max-width: 1200px) {
+	#wrap{
+	 	margin: 0 auto;
+		}
+	.show_c{
+		
+		width: 80%;
+		}
+	.submit_cc{
+		display: block;
+		}
+	#submit_c{
+		display: none;
+		}
+	
+}
+	

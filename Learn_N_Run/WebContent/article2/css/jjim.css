@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+#wrap{
+	width: 1200px;
+	margin: 0 auto;
+	}
+	
+	/*왼쪽 bar*/
+#sec05{
+	height: 1820px;
+	float: left;
+	margin-top: 0;
+	margin-left: 0;
+	width: 15%;
+	border-right: 1px solid #dedede;
+}
+#side_bar label{
+	margin-bottom: 30px;
+	margin-top: 40px;
+	font-size: 22px;
+	margin-left: 30px;
+}
+#side_bar li{
+	width: 100%;
+	font-size: 16px;
+	line-height: 35px;
+	border-bottom: 1px solid #dedede;
+}
+#side_bar li:hover{
+	background-color: #9fcfff;	
+}
+#side_bar li a{
+	color: black;
+}
+#side_bar li a:hover{
+	text-decoration: none;
+	color: black;
+}
+	
+	
+	
+	
+	#table_c tr:nth-of-type(1)
+	{ 
+		background-color: black;
+		color : #ffffff;
+	}
+	
+	 #table_c tr>th{
+ 	text-align: center;
+ }
+	
+	#table_c{
+	 border-spacing: 25px;  
+	 border-collapse: separate;
+	 margin : 15px auto; 
+	
+	}
+	
+	#iag_c>a>div>img{
+		 transition: all 0.3s ease-in 0s;
+	}
+	#iag_c>a>div{
+		width: 320px;
+		height: 200px;
+		overflow: hidden;
+	}
+	#iag_c>a>div:hover>img{
+		transform: scale(1.1) translateZ(0px);
+	}
+	
+	.title_h {
+	
+	height: 100px;
+    padding: 30px 20px 10px 30px;
+    background-color: black;
+    border-radius: 40px 40px 40px 40px;
+  	margin: 10px auto;
+    box-shadow: 5px 5px 5px 5px grey;
+}
+
+.title_h>p {
+	font-size: 30px;
+    color: white;
+    width: 12%;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+	
+	
+	
+	
+	.deljjim_c{
+		background-color: grey;
+		border: 0;
+		font-size: 20px;
+		color: white;
+		margin-top: 5%;
+		width: 120px; height: 40px;	
+		border-radius: 5%;
+	}
+	
+	.deljjim_c:hover {
+	background-color: black;
+}
+	
+	
+	
+ #table_c tr>td{
+ 	font-size: 23px;
+ 	
+ 	font-family: 'Jua', sans-serif;
+ }
+ 
+  #table_c tr>th{
+ 	font-size: 15px;
+ }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
