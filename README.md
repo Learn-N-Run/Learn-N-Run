@@ -21,12 +21,12 @@
 <BR>
 
 > ### 참여자
-> [성시현 (조장)](sihyun5250@naver.com) : sihyun5250@naver.com
-> [장영진](bearrolling90@gmail.com) : bearrolling90@gmail.com
-> [신형석](pinocchio0228@gmail.com) : pinocchio0228@gmail.com
-> [이승학](las2706@naver.com) : las2706@naver.com
-> [서창현](gowso89@naver.com) : gowso89@naver.com
-> [고태흥](yume7168@naver.com) : yume7168@naver.com
+> [성시현 (조장)](sihyun5250@naver.com) : sihyun5250@naver.com <BR>
+> [장영진](bearrolling90@gmail.com) : bearrolling90@gmail.com <BR>
+> [신형석](pinocchio0228@gmail.com) : pinocchio0228@gmail.com <BR>
+> [이승학](las2706@naver.com) : las2706@naver.com <BR>
+> [서창현](gowso89@naver.com) : gowso89@naver.com <BR>
+> [고태흥](yume7168@naver.com) : yume7168@naver.com <BR>
 
 <BR>
 
