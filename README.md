@@ -43,3 +43,8 @@
 > (원 방법론과 다소 차이가 있을 수도 있습니다.)
 
 <BR>
+
+
+<a href="https://github.com/Learn-N-Run/Learn-Run/blob/develop/Documents/Learn%26Run.pdf">
+  ☞프로젝트 ppt파일 보기☜
+</a>
